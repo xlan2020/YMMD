@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public ImageSwitcher imageSwitcher;
+    public GameObject image;
     private bool trRunning = false;
     private string prevSentence;
     private string prevSpeakerName;
@@ -101,8 +102,8 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            // waits for 15 frames; still working on Deltatime
-            yield return StartCoroutine(WaitFor.FramesNum(15));
+            // waits for 3 frames; still working on Deltatime
+            yield return StartCoroutine(WaitFor.FramesNum(3));
         }
         trRunning = false;
 
@@ -111,6 +112,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         sentences.Clear();
+        image.SetActive(true);
     }
 
 
