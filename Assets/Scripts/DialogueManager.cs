@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public ImageSwitcher imageSwitcher;
     public GameObject image;
+    [SerializeField] Button printer;
     private bool trRunning = false;
     private string prevSentence;
     private string prevSpeakerName;
@@ -112,6 +113,10 @@ public class DialogueManager : MonoBehaviour
     {
         sentences.Clear();
         image.SetActive(true);
+        if (printer)
+        {
+            printer.enabled =true;
+        }
     }
 
 
