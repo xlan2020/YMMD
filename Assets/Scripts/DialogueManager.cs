@@ -43,7 +43,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         DisplayNextSentence();
-
     }
 
     // Displays next sentence
