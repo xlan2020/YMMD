@@ -8,8 +8,8 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public ImageSwitcher imageSwitcher;
-    public GameObject image;
-    [SerializeField] Button printer;
+    public GameObject[] toBeActivated;
+    [SerializeField] Button activateButton;
     private bool trRunning = false;
     private string prevSentence;
     private string prevSpeakerName;
@@ -22,6 +22,12 @@ public class DialogueManager : MonoBehaviour
         // FIFO Q that stores sentence as strings.
         sentences = new Queue<string>();
         names = new Queue<string>();
+
+        // disable button
+        if (activateButton)
+        {
+            activateButton.enabled = false;
+        }
 
     }
 
@@ -77,7 +83,11 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            imageSwitcher.Switch();
+            if (imageSwitcher)
+            {
+                imageSwitcher.Switch();
+            }
+
             currentSentence = sentences.Dequeue();
             StartCoroutine(TypeSentence(currentSentence));
             currentSpeakerName = names.Dequeue();
@@ -112,10 +122,15 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         sentences.Clear();
-        image.SetActive(true);
-        if (printer)
+
+        foreach (GameObject o in toBeActivated)
         {
-            printer.enabled =true;
+            o.SetActive(true);
+        }
+            
+        if (activateButton)
+        {
+            activateButton.enabled =true;
         }
     }
 
