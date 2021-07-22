@@ -8,6 +8,7 @@ public class SceneLoader : MonoBehaviour
 {
     public float transitionTime = 1f;
     private bool loaded = false;
+    [SerializeField] Player player;
 
     void Start()
     {
@@ -18,7 +19,8 @@ public class SceneLoader : MonoBehaviour
     }
 
     IEnumerator LoadScene(int levelIndex)
-    {
+    {//save inventory
+        player.SaveInventory();
         // wait
         yield return new WaitForSeconds(transitionTime);
 

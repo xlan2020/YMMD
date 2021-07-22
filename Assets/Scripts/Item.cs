@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item 
 {
     public float price;
     public string itemName;
     public string description;
+    public Sprite spriteImage;
 
 }
