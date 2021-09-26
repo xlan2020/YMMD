@@ -25,7 +25,7 @@ public class Hoop : MonoBehaviour
         {
             g.SetTarget(false);
         }
-
+        /*
         // randomly choose a target goal
         Random random = new Random();
         int num = random.Next(0, 7);
@@ -33,6 +33,7 @@ public class Hoop : MonoBehaviour
 
         // start hoop
         this.StartHoop(goals[num].GetX(), goals[num].GetY()) ;
+        */
     }
 
     // set&get location (is there a way to set/get center loc?)

@@ -82,6 +82,7 @@ public class GoalManager : MonoBehaviour
     public void Fail(int situation)
     {
         // failed, start new round;
+        // change boss img: imageswitcher.switch
         // situation 1: clicked wrong goal; didn't click; too late - already arrived;
         if (situation == 1)
         {
@@ -112,7 +113,7 @@ public class GoalManager : MonoBehaviour
         points += grade;
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         // exit game(return to previous scene); add money to pocket based on points;
     }
