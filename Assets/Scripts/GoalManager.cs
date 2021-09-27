@@ -5,26 +5,129 @@ using UnityEngine;
 public class GoalManager : MonoBehaviour
 {
 
-    public Hoop hoop;
+
+    [SerializeField] Hoop hoop;
+    [SerializeField] GameObject GoalGroup;
+    [SerializeField] float speed = 5.0f;
+    [SerializeField] Color[] colors;
+    [SerializeField] Color failColor;
+    [SerializeField] Color originColor;
+    public Goal ClickedGoal;
+    public bool Clicked;
     public int points;
     public int rounds = 0;
+    private Goal[] goals;
+    private Vector2 hoopOrigin;
+    private Goal TargetGoal;
+    private bool startSpin;
+    private float travelDistance;
+    private float totalTravelDistance;
 
+    int colorLevel = -3;
+
+    void Start()
+    {
+        hoopOrigin = hoop.transform.position;
+        goals = GoalGroup.GetComponentsInChildren<Goal>();
+        Debug.Log(goals.Length);
+    }
     void Update()
     {
         // if goal on click, 
         // this.JudgeGoal(/* on_click goal*/);
         // if clicked when hoop's movement animation towards target is finished, failed;
         // if didn't click, failed;
+
+
+
+
+        if (startSpin)
+        {
+
+            travelDistance = Vector2.Distance(hoop.transform.position, TargetGoal.transform.position);
+            if (TargetGoal != ClickedGoal)
+            {
+                colorLevel = Mathf.FloorToInt(travelDistance * colors.Length / totalTravelDistance - 0.00001f);
+            }
+            if (colorLevel == -1)
+            {
+
+                hoop.ChangeColor(failColor);
+            }
+            if (Mathf.FloorToInt(travelDistance * colors.Length / totalTravelDistance - 0.00001f) == -1)
+            {
+
+                startFall();
+            }
+            else
+            {
+                if (Clicked)
+                {
+                    if (TargetGoal == ClickedGoal)
+                    {
+                        hoop.ChangeColor(colors[colorLevel]);
+
+                    }
+                    else
+                    {
+
+                        hoop.ChangeColor(failColor);
+                    }
+                }
+            }
+            //hoop.changeColor(colors[]);
+            float step = speed * Time.deltaTime;
+
+            // move sprite towards the target location
+            hoop.transform.position = Vector2.MoveTowards(hoop.transform.position, TargetGoal.transform.position, step);
+        }
     }
 
+    private void startFall()
+    {
+        startSpin = false;
+        hoop.StartFall();
+    }
     public void StartNewGame()
     {
         // start over the process;
-        hoop = new Hoop();
-        hoop.RandGoal();
+        resetHoop();
+        setRandomGoal();
+        startHoop();
         rounds++;
     }
 
+    private void startHoop()
+    {
+        hoop.ResetAnimation();
+        startSpin = true;
+        hoop.StartSpin();
+    }
+
+    private void resetHoop()
+    {
+        hoop.transform.position = hoopOrigin;
+        ClickedGoal = null;
+        Clicked = false;
+        hoop.ChangeColor(originColor);
+
+    }
+
+    private void setRandomGoal()
+    {
+        // make sure all goals are initially false
+        foreach (Goal g in goals)
+        {
+            g.SetTarget(false);
+        }
+        // randomly choose a target goal
+        int num = Random.Range(0, goals.Length);
+        TargetGoal = goals[num];
+        TargetGoal.SetTarget(true);
+        totalTravelDistance = Vector2.Distance(hoopOrigin, TargetGoal.transform.position);
+        // start hoop
+        //this.StartHoop(goals[num].GetX(), goals[num].GetY());
+    }
     public void JudgeGoal(Goal click_goal)
     {
         /*

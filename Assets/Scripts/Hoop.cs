@@ -1,61 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hoop : MonoBehaviour
 {
-    // input goals list;
-    public Goal[] goals;
+    [SerializeField] Image[] images;
+    [SerializeField] Animator animationController;
     // initial loc;
     private int x_loc = 0;
     private int y_loc = 0;
 
     // start hoop moving animations, x and y = target location
-    public void StartHoop(int x, int y)
+    public void StartSpin()
     {
-        // set hoop start location
         // animation of hoop flying towards goal
-        // animation of hoop falling at goal
+        animationController.SetBool("isSpinning", true);
     }
 
-    public void RandGoal()
+    public void ResetAnimation()
     {
-        // make sure all goals are initially false
-        foreach (Goal g in goals)
+        // animation of hoop flying towards goal
+        animationController.SetBool("isFalling", false);
+        animationController.SetBool("isSpinning", false);
+    }
+    public void StartFall()
+    {
+        // animation of hoop flying towards goal
+        animationController.SetBool("isFalling", true);
+        animationController.SetBool("isSpinning", false);
+    }
+
+    public void ChangeColor(Color color)
+    {
+        foreach(Image image in images)
         {
-            g.SetTarget(false);
+            image.color = color;
         }
-        /*
-        // randomly choose a target goal
-        Random random = new Random();
-        int num = random.Next(0, 7);
-        goals[num].SetTarget(true);
-
-        // start hoop
-        this.StartHoop(goals[num].GetX(), goals[num].GetY()) ;
-        */
-    }
-
-    // set&get location (is there a way to set/get center loc?)
-    public void SetX(int x)
-    {
-        // set x;
-        x_loc = x;
-    }
-
-    public void SetY(int y)
-    {
-        // set y;
-        y_loc = y;
-    }
-
-    public int GetX()
-    {
-        return x_loc;
-    }
-
-    public int GetY()
-    {
-        return y_loc;
     }
 }
