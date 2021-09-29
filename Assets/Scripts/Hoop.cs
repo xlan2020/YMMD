@@ -7,9 +7,7 @@ public class Hoop : MonoBehaviour
 {
     [SerializeField] Image[] images;
     [SerializeField] Animator animationController;
-    // initial loc;
-    private int x_loc = 0;
-    private int y_loc = 0;
+
 
     // start hoop moving animations, x and y = target location
     public void StartSpin()
