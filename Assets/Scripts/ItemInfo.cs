@@ -15,7 +15,7 @@ public class ItemInfo : MonoBehaviour
     private void Awake()
     {
         spriteImage = gameObject.GetComponent<SpriteRenderer>().sprite;
-        item = new Item { price = price, itemName = itemName, description = description, spriteImage = spriteImage, destoryOnInteract= destoryOnInteract };
+        item = new Item { price = price, itemName = itemName, description = description, spriteImage = spriteImage, destroyOnInteract = destroyOnInteract };
     }
     public Item GetItem()
     {
