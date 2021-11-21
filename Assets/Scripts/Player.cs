@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private SpriteRenderer sprite; 
+    private Animator animator;
     [SerializeField] float speed = 1f;
     [SerializeField] UI_Inventory uiInventory;
     public bool actionFreeze;
@@ -18,6 +20,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         speed *= 0.001f;
         uiManager = GetComponent<PlayerUIManager>();
         inventory = new Inventory();
@@ -32,7 +36,26 @@ public class Player : MonoBehaviour
     {
         if (!actionFreeze)
         {
+
             horizontalInput = Input.GetAxis("Horizontal");
+
+            if (Mathf.Abs(horizontalInput) > 0.01f)
+            {
+                animator.SetBool("isWalking", true);
+            } else
+            {
+                animator.SetBool("isWalking", false);
+            }
+
+            if (horizontalInput < 0 && !sprite.flipX)
+            {
+                sprite.flipX = true;
+            }
+            if (horizontalInput > 0 && sprite.flipX)
+            {
+                sprite.flipX = false;
+            }
+
             transform.Translate(new Vector2(horizontalInput * speed, 0));
 
             if (Input.GetKeyDown(KeyCode.I))
@@ -46,6 +69,8 @@ public class Player : MonoBehaviour
                 {
                     if (interactItem)
                     {
+                        interactItem.StartDialogue();
+
                         if (interactItem.destroyOnInteract)
                         {
                             interactItem.DestroySelf();

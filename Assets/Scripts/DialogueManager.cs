@@ -122,6 +122,10 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         sentences.Clear();
+        names.Clear();
+        prevSentence = "";
+        prevSpeakerName = "";
+
 
         foreach (GameObject o in toBeActivated)
         {

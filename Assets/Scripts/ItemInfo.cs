@@ -10,6 +10,7 @@ public class ItemInfo : MonoBehaviour
     public string description;
     public Sprite spriteImage;
     public bool destroyOnInteract;
+    public DialogueTrigger dialogueTrigger;
 
     Item item;
     private void Awake()
@@ -29,5 +30,9 @@ public class ItemInfo : MonoBehaviour
     public void SetInteractable(bool action)
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = action;
+    }
+    public void StartDialogue()
+    {
+        dialogueTrigger.TriggerDialogue();
     }
 }
