@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private SpriteRenderer sprite; 
+    private SpriteRenderer sprite;
     private Animator animator;
     [SerializeField] float speed = 1f;
     [SerializeField] UI_Inventory uiInventory;
@@ -38,13 +38,14 @@ public class Player : MonoBehaviour
         if (InkDialogueManager.GetInstance().dialogueIsPlaying)
         {
             actionFreeze = true;
+            animator.SetBool("isWalking", false);
         }
         else
         {
             actionFreeze = false;
         }
 
-            if (!actionFreeze)
+        if (!actionFreeze)
         {
 
             horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour
                 {
                     if (interactItem)
                     {
-                        
+
                         interactItem.TriggerDialogue();
 
                         if (interactItem.destroyOnInteract)
@@ -126,13 +127,16 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
 
-            if (horizontalInput > 0.01f || horizontalInput < 0.01f)
-            {
-                rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
-            }
-        
+        if (actionFreeze)
+        {
+            return;
+        }
+        if (horizontalInput > 0.01f || horizontalInput < 0.01f)
+        {
+            rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
+        }
+
 
     }
 }
