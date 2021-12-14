@@ -34,7 +34,17 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (!actionFreeze)
+        // freeze player when playing dialogue
+        if (InkDialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            actionFreeze = true;
+        }
+        else
+        {
+            actionFreeze = false;
+        }
+
+            if (!actionFreeze)
         {
 
             horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -65,19 +75,20 @@ public class Player : MonoBehaviour
                 showInventory = !showInventory;
                 uiInventory.gameObject.SetActive(showInventory);
             }
-            if (enterInteractable)
+            if (enterInteractable && !InkDialogueManager.GetInstance().dialogueIsPlaying)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (interactItem)
                     {
-                        interactItem.StartDialogue();
+                        
+                        interactItem.TriggerDialogue();
 
                         if (interactItem.destroyOnInteract)
                         {
                             interactItem.DestroySelf();
                         }
-                        interactItem.SetInteractable(false);
+                        //interactItem.SetInteractable(false);// disable object after interation
                         interactItem = null;
                         enterInteractable = false;
                     }
@@ -115,10 +126,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (horizontalInput > 0.01f || horizontalInput < 0.01f)
-        {
-            rb.velocity =(new Vector2(horizontalInput * speed*Time.deltaTime, rb.velocity.y));
-        }
+        
+
+            if (horizontalInput > 0.01f || horizontalInput < 0.01f)
+            {
+                rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
+            }
+        
 
     }
 }

@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public ImageSwitcher imageSwitcher;
     public GameObject[] toBeActivated;
-    [SerializeField] Button activateButton;
+    public Button activateButton;
     private bool trRunning = false;
     private string prevSentence;
     private string prevSpeakerName;
