@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        speed *= 0.001f;
+        //speed *= 0.001f;
         uiManager = GetComponent<PlayerUIManager>();
         inventory = new Inventory();
         if (uiInventory)
@@ -37,14 +37,17 @@ public class Player : MonoBehaviour
         if (!actionFreeze)
         {
 
-            horizontalInput = Input.GetAxis("Horizontal");
-
-            if (Mathf.Abs(horizontalInput) > 0.01f)
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            if (animator != null)
             {
-                animator.SetBool("isWalking", true);
-            } else
-            {
-                animator.SetBool("isWalking", false);
+                if (Mathf.Abs(horizontalInput) > 0.01f)
+                {
+                    animator.SetBool("isWalking", true);
+                }
+                else
+                {
+                    animator.SetBool("isWalking", false);
+                }
             }
 
             if (horizontalInput < 0 && !sprite.flipX)
@@ -56,7 +59,7 @@ public class Player : MonoBehaviour
                 sprite.flipX = false;
             }
 
-            transform.Translate(new Vector2(horizontalInput * speed, 0));
+            Debug.Log(GetComponent<Transform>());
 
             if (Input.GetKeyDown(KeyCode.I))
             {
@@ -109,5 +112,14 @@ public class Player : MonoBehaviour
     public void SaveInventory()
     {
         StaticInventory.ItemArry = inventory.GetItemList();
+    }
+
+    private void FixedUpdate()
+    {
+        if (horizontalInput > 0.01f || horizontalInput < 0.01f)
+        {
+            rb.velocity =(new Vector2(horizontalInput * speed*Time.deltaTime, rb.velocity.y));
+        }
+
     }
 }
