@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
                 sprite.flipX = false;
             }
 
-            Debug.Log(GetComponent<Transform>());
 
             if (Input.GetKeyDown(KeyCode.I))
             {
