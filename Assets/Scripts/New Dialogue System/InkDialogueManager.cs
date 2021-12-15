@@ -8,6 +8,11 @@ using System;
 
 public class InkDialogueManager : MonoBehaviour
 {
+    [Header("Params")]
+
+    public float typingSpeed = 0.04f;
+
+
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
     public Text speakerName;
@@ -30,6 +35,9 @@ public class InkDialogueManager : MonoBehaviour
 
     private static InkDialogueManager instance;
 
+    private Coroutine typingLinesCorotine;
+    private bool canContinueToNextLine;
+
     private void Awake()
     {
         if (instance != null)
@@ -41,6 +49,8 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Start()
     {
+        canContinueToNextLine = true;
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -63,15 +73,35 @@ public class InkDialogueManager : MonoBehaviour
 
     }
 
+    private IEnumerator typingLines(string line)
+    {
+        dialogueText.text = "";
+        canContinueToNextLine = false;
+        foreach (char letter in line.ToCharArray())
+        {
+            dialogueText.text += letter;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        canContinueToNextLine = true;
+    }
+
+
+
     public static InkDialogueManager GetInstance()
     {
         return instance;
     }
+
     public void EnterDialogueMode(TextAsset inkJson)
     {
         currentStory = new Story(inkJson.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+
+        //reset default Names, Portraits if no tags detected
+        speakerName.text = "???";
+        portraitAnimator.Play("default");
+
         ContinueStory();
     }
 
@@ -85,13 +115,18 @@ public class InkDialogueManager : MonoBehaviour
 
     public void ContinueStory()
     {
-        if (currentStory.canContinue)
+
+        if (canContinueToNextLine&&currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            if (typingLinesCorotine != null)
+            {
+                StopCoroutine(typingLinesCorotine);
+            }
+            typingLinesCorotine = StartCoroutine(typingLines(currentStory.Continue()));
             displayChoices();
             handleTags(currentStory.currentTags);
         }
-        else if (currentStory.currentChoices.Count>0)
+        else if (!canContinueToNextLine || currentStory.currentChoices.Count > 0)
         {
             return;
         }
@@ -117,7 +152,7 @@ public class InkDialogueManager : MonoBehaviour
             switch (tagKey)
             {
                 case SPEAKER_TAG:
-                    speakerName.text= tagValue;
+                    speakerName.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
@@ -165,8 +200,13 @@ public class InkDialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        //Debug.Log(choiceIndex);
-        currentStory.ChooseChoiceIndex(choiceIndex);
-        ContinueStory();
+
+        if (canContinueToNextLine)
+        {
+
+            currentStory.ChooseChoiceIndex(choiceIndex);
+            ContinueStory();
+        }
+
     }
 }

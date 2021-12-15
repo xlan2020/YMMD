@@ -1660,19 +1660,6 @@ namespace Ink.Runtime
         public void ChooseChoiceIndex(int choiceIdx)
         {
             var choices = currentChoices;
-            //if(!(choiceIdx >= 0))
-            //{
-            //    throw new System.Exception("1st"+ choiceIdx);
-
-            //}
-            //if(!(choiceIdx < choices.Count))
-            //{
-            //    throw new System.Exception("2nd"+ choiceIdx + ""+ choices.Count);
-            //}
-            //if(!(choiceIdx >= 0 && choiceIdx < choices.Count))
-            //{
-            //    throw new System.Exception("3rd");
-            //}
             Assert (choiceIdx >= 0 && choiceIdx < choices.Count, "choice out of range");
 
             // Replace callstack with the one from the thread at the choosing point, 
