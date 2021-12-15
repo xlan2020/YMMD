@@ -12,10 +12,17 @@ public class InkDialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public Text speakerName;
     public Text dialogueText;
+    public Animator portraitAnimator;
 
     [Header("Choices UI")]
     public GameObject[] choices;
-    private Text[] choicesText; 
+    private Text[] choicesText;
+
+
+    //tags
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+
 
     private Story currentStory;
 
@@ -25,7 +32,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance!= null)
+        if (instance != null)
         {
             Debug.LogWarning("WARNING: keep only one ink dialogue manager per scene!");
         }
@@ -39,7 +46,7 @@ public class InkDialogueManager : MonoBehaviour
 
         choicesText = new Text[choices.Length];
         int index = 0;
-        foreach(GameObject choice in choices)
+        foreach (GameObject choice in choices)
         {
             choicesText[index] = choice.GetComponentInChildren<Text>();
             index++;
@@ -82,6 +89,11 @@ public class InkDialogueManager : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
             displayChoices();
+            handleTags(currentStory.currentTags);
+        }
+        else if (currentStory.currentChoices.Count>0)
+        {
+            return;
         }
         else
         {
@@ -89,17 +101,45 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+    private void handleTags(List<string> currentTags)
+    {
+        foreach (string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+            if (splitTag.Length != 2)
+            {
+                Debug.LogError("tag split fault, there're" + splitTag.Length + "tags.");
+
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey)
+            {
+                case SPEAKER_TAG:
+                    speakerName.text= tagValue;
+                    break;
+                case PORTRAIT_TAG:
+                    portraitAnimator.Play(tagValue);
+                    break;
+                default:
+                    Debug.LogWarning("Unexpected tag from InkJSON");
+                    break;
+            }
+        }
+    }
+
     private void displayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
 
-        if(currentChoices.Count > choices.Length)
+        if (currentChoices.Count > choices.Length)
         {
-            Debug.LogError("Choices overflow UI can support"+ currentChoices.Count);
+            Debug.LogError("Choices overflow what UI can support, it's" + currentChoices.Count);
         }
 
         int index = 0;
-        foreach(Choice choice in currentChoices)
+        foreach (Choice choice in currentChoices)
         {
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
@@ -107,7 +147,7 @@ public class InkDialogueManager : MonoBehaviour
         }
 
         // hide leftover choices 
-        for(int i = index; i< choices.Length; i++)
+        for (int i = index; i < choices.Length; i++)
         {
             choices[i].gameObject.SetActive(false);
 
@@ -125,7 +165,7 @@ public class InkDialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        Debug.Log(choiceIndex);
+        //Debug.Log(choiceIndex);
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
     }
