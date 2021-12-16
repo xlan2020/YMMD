@@ -17,6 +17,7 @@ public class InkDialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public Text speakerName;
     public Text dialogueText;
+    public GameObject continueIcon;
     public Animator portraitAnimator;
 
     [Header("Choices UI")]
@@ -69,19 +70,34 @@ public class InkDialogueManager : MonoBehaviour
         {
             return;
         }
+        // skip the typing effect
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ContinueStory();
 
-
+        }
     }
 
     private IEnumerator typingLines(string line)
     {
         dialogueText.text = "";
+        hideChoices();
+        continueIcon.SetActive(false);
         canContinueToNextLine = false;
+        yield return new WaitForSeconds(0.2f);
         foreach (char letter in line.ToCharArray())
         {
+            // skip the typing effect
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                dialogueText.text = line;
+                break;
+            }
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        continueIcon.SetActive(true);
+        displayChoices();
         canContinueToNextLine = true;
     }
 
@@ -123,7 +139,6 @@ public class InkDialogueManager : MonoBehaviour
                 StopCoroutine(typingLinesCorotine);
             }
             typingLinesCorotine = StartCoroutine(typingLines(currentStory.Continue()));
-            displayChoices();
             handleTags(currentStory.currentTags);
         }
         else if (!canContinueToNextLine || currentStory.currentChoices.Count > 0)
@@ -163,7 +178,13 @@ public class InkDialogueManager : MonoBehaviour
             }
         }
     }
-
+    private void hideChoices()
+    {
+        foreach(GameObject choiceButton in choices)
+        {
+            choiceButton.SetActive(false);
+        }
+    }
     private void displayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
