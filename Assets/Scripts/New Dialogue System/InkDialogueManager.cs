@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using Ink.UnityIntegration;
 using UnityEngine.EventSystems;
 using System;
 
@@ -12,6 +13,8 @@ public class InkDialogueManager : MonoBehaviour
 
     public float typingSpeed = 0.04f;
 
+    [Header("Global Ink File")]
+    public InkFile globalInkFile;
 
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
@@ -39,6 +42,8 @@ public class InkDialogueManager : MonoBehaviour
     private Coroutine typingLinesCorotine;
     private bool canContinueToNextLine;
 
+    private DialogueVariables dialogueVaribles;
+
     private void Awake()
     {
         if (instance != null)
@@ -46,6 +51,7 @@ public class InkDialogueManager : MonoBehaviour
             Debug.LogWarning("WARNING: keep only one ink dialogue manager per scene!");
         }
         instance = this;
+        dialogueVaribles = new DialogueVariables(globalInkFile.filePath);
     }
 
     private void Start()
@@ -108,12 +114,26 @@ public class InkDialogueManager : MonoBehaviour
         return instance;
     }
 
+    public Ink.Runtime.Object GetVariableState(string variableName)
+    {
+        Ink.Runtime.Object variableValue = null;
+        dialogueVaribles.variables.TryGetValue(variableName, out variableValue);
+        if(variableValue == null)
+        {
+            Debug.LogWarning("Ink variable was found to be null: " + variableName);
+        
+        }
+        return variableValue;
+    }
+
     public void EnterDialogueMode(TextAsset inkJson)
     {
         currentStory = new Story(inkJson.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
+
+        dialogueVaribles.StartListening(currentStory);
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
         portraitAnimator.Play("default");
@@ -121,12 +141,18 @@ public class InkDialogueManager : MonoBehaviour
         ContinueStory();
     }
 
+
+
     private IEnumerator ExitDialogueMode()
     {
         yield return new WaitForSeconds(.2f);
+
+        dialogueVaribles.StopListening(currentStory);
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+
     }
 
     public void ContinueStory()
