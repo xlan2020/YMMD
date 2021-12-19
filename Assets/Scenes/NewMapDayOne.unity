@@ -260,9 +260,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 10
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!114 &50246643
 MonoBehaviour:
@@ -366,7 +366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93323394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1301.1136, y: -22.011368, z: -10}
+  m_LocalPosition: {x: -1304.14, y: -22.13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -435,66 +435,6 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
---- !u!1 &129858002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 129858004}
-  - component: {fileID: 129858003}
-  m_Layer: 0
-  m_Name: Confiner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!60 &129858003
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129858002}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 1
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -75.322754, y: -31.147266}
-      - {x: -75.88941, y: -16.691479}
-      - {x: 45.07689, y: -16.482277}
-      - {x: 43.356464, y: -30.847614}
---- !u!4 &129858004
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129858002}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1234.6078, y: 2.3, z: -148.86336}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136885724
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +771,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &267996022
 GameObject:
@@ -1046,7 +986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!68 &401865889
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1771,7 +1711,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &750769062
 GameObject:
@@ -2550,7 +2490,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101559217
 GameObject:
@@ -2835,6 +2775,7 @@ GameObject:
   - component: {fileID: 1290597197}
   - component: {fileID: 1290597195}
   - component: {fileID: 1290597196}
+  - component: {fileID: 1290597198}
   m_Layer: 0
   m_Name: ScrollMapBackground
   m_TagString: Untagged
@@ -2921,6 +2862,44 @@ RectTransform:
   m_AnchoredPosition: {x: -1246, y: -17}
   m_SizeDelta: {x: 3848.1155, y: 652}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!68 &1290597198
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290597194}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -30.19995, y: -6.5}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -51.22998, y: -1.1461582}
+  - {x: -20.540894, y: -1.0834522}
+  - {x: -20.427246, y: -1.4430218}
+  - {x: -20.079346, y: -1.4783249}
+  - {x: -19.865356, y: -1.8007679}
+  - {x: -19.527832, y: -1.8017082}
+  - {x: -19.430298, y: -2.0084171}
+  - {x: -19.112305, y: -2.0109577}
+  - {x: -18.984863, y: -2.2593002}
+  - {x: 19.121826, y: -2.3833427}
+  - {x: 19.087158, y: -2.005087}
+  - {x: 19.592651, y: -2.0110092}
+  - {x: 19.617432, y: -1.6749134}
+  - {x: 20.001343, y: -1.6018581}
+  - {x: 20, y: -1.3189564}
+  - {x: 20.405518, y: -1.3273621}
+  - {x: 20.507935, y: -0.95352554}
+  - {x: 91.08423, y: -1.4259968}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &1351356928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3869,7 +3848,7 @@ RectTransform:
   m_Children:
   - {fileID: 1591431442}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4121,7 +4100,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1887874575
 GameObject:
@@ -4368,7 +4347,6 @@ GameObject:
   - component: {fileID: 1964936392}
   - component: {fileID: 1964936391}
   - component: {fileID: 1964936394}
-  - component: {fileID: 1964936393}
   m_Layer: 0
   m_Name: virtCam
   m_TagString: Untagged
@@ -4429,23 +4407,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1964936393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964936390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ConfineMode: 0
-  m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 129858003}
-  m_ConfineScreenEdges: 1
-  m_Damping: 0
 --- !u!20 &1964936394
 Camera:
   m_ObjectHideFlags: 0
