@@ -1,0 +1,12 @@
+刚火起来那家刨冰店的东西超恶心的。#speaker: 路人A#portrait: 老王
+真的吗？我看小星☆都发了试吃图呢！#speaker: 路人B#portrait: 老王
+哈？他拿身体哪部分吃的？#speaker: 路人A#portrait: 老王
+早啊兄弟。#speaker: 主角#portrait: 主角
+嗨画家，出来这么早，还以为你每天睡到下午呢。#speaker: 路人A#portrait: 老王
+有活要干。你刚才说那个刨冰摊……是boroboro吗？#speaker: 主角#portrait: 主角
+对对，就老板戴个阴间头套那个。#speaker: 路人A#portrait: 老王
+（……果然。不过那个头套很阴间吗？没仔细看过。）#speaker: 主角#portrait: 主角
+怎么，你也想试试？我劝你别。#speaker: 路人A#portrait: 老王
+找老板有点事情。#speaker: 主角#portrait: 主角
+那你可得小心点！我都不知道他是什么人。#speaker: 路人A#portrait: 老王
+那个带头套的也是某一天就出现在了镇子里，哎呦，是哪一天来着……#speaker: 路人A#portrait: 老王

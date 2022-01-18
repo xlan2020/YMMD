@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private SpriteRenderer sprite; 
+    private SpriteRenderer sprite;
     private Animator animator;
     [SerializeField] float speed = 1f;
     [SerializeField] UI_Inventory uiInventory;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        speed *= 0.001f;
+        //speed *= 0.001f;
         uiManager = GetComponent<PlayerUIManager>();
         inventory = new Inventory();
         if (uiInventory)
@@ -34,17 +34,31 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        // freeze player when playing dialogue
+        if (InkDialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            actionFreeze = true;
+            animator.SetBool("isWalking", false);
+        }
+        else
+        {
+            actionFreeze = false;
+        }
+
         if (!actionFreeze)
         {
 
-            horizontalInput = Input.GetAxis("Horizontal");
-
-            if (Mathf.Abs(horizontalInput) > 0.01f)
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            if (animator != null)
             {
-                animator.SetBool("isWalking", true);
-            } else
-            {
-                animator.SetBool("isWalking", false);
+                if (Mathf.Abs(horizontalInput) > 0.01f)
+                {
+                    animator.SetBool("isWalking", true);
+                }
+                else
+                {
+                    animator.SetBool("isWalking", false);
+                }
             }
 
             if (horizontalInput < 0 && !sprite.flipX)
@@ -56,26 +70,26 @@ public class Player : MonoBehaviour
                 sprite.flipX = false;
             }
 
-            transform.Translate(new Vector2(horizontalInput * speed, 0));
 
             if (Input.GetKeyDown(KeyCode.I))
             {
                 showInventory = !showInventory;
                 uiInventory.gameObject.SetActive(showInventory);
             }
-            if (enterInteractable)
+            if (enterInteractable && !InkDialogueManager.GetInstance().dialogueIsPlaying)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (interactItem)
                     {
-                        interactItem.StartDialogue();
+
+                        interactItem.TriggerDialogue();
 
                         if (interactItem.destroyOnInteract)
                         {
                             interactItem.DestroySelf();
                         }
-                        interactItem.SetInteractable(false);
+                        //interactItem.SetInteractable(false);// disable object after interation
                         interactItem = null;
                         enterInteractable = false;
                     }
@@ -109,5 +123,20 @@ public class Player : MonoBehaviour
     public void SaveInventory()
     {
         StaticInventory.ItemArry = inventory.GetItemList();
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (actionFreeze)
+        {
+            return;
+        }
+        if (horizontalInput > 0.01f || horizontalInput < 0.01f)
+        {
+            rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
+        }
+
+
     }
 }
