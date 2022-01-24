@@ -1,11 +1,11 @@
 INCLUDE global.ink
 
-（首先决定一下要使用的画材……不过由于我的家当已经全无，目前并没什么选择。）#speaker: 我 #portrait: 8-2_idle
-    +[筷子/辣油/餐巾纸]
+（首先决定一下要使用的画材……不过由于我的家当已经全无，目前并没什么选择。）#speaker: 我 #portrait: 8-2_idle #choiceBox: material 
+    +[ ]
         哎哟，您这也太给面子了。#speaker: 8-2 #portrait: 8-2_frown
         这可是您点名要的。#speaker: 我
         ->cont
-    +[一次性菜谱/点菜给的铅笔]
+    +[ ]
         你这画材可真挺奢华的。#speaker: 8-2 #portrait: 8-2_frown
         这不是正好配得上你吗？#speaker: 我
         ->cont

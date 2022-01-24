@@ -349,10 +349,8 @@ MonoBehaviour:
   dialogueText: {fileID: 6594406887234795954}
   continueIcon: {fileID: 5611077980821274495}
   portraitAnimator: {fileID: 8450415119389542248}
-  choices:
-  - {fileID: 4031002190819900769}
-  - {fileID: 7190940367021461364}
-  - {fileID: 8790968001851585405}
+  choiceContainer:
+  - {fileID: 8322458828972379563}
 --- !u!1 &2199340254502103988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,6 +1771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7289248440266621099}
+  - component: {fileID: 8322458828972379563}
   m_Layer: 5
   m_Name: ChoicesContainer
   m_TagString: Untagged
@@ -1802,6 +1801,23 @@ RectTransform:
   m_AnchoredPosition: {x: 42.531, y: -79.8341}
   m_SizeDelta: {x: 419.94, y: 69.5147}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8322458828972379563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929146810500816818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf550dfebe040a4788caac8225a987f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choices:
+  - {fileID: 4031002190819900769}
+  - {fileID: 7190940367021461364}
+  - {fileID: 8790968001851585405}
+  tagName: Default
 --- !u!1 &8962566364958275793
 GameObject:
   m_ObjectHideFlags: 0
