@@ -24,23 +24,37 @@ public class InkDialogueManager : MonoBehaviour
     public Animator portraitAnimator;
 
     [Header("Choices UI")]
-    public GameObject[] choices;
+    // each choice container is an instance of the choice class
+    public InkChoiceContainer[] choiceContainer;
+    private Dictionary<string, GameObject[]> choicesDict;
+    private GameObject[] choices; 
     private Text[] choicesText;
 
+    [Header("Drawing Interface Special")]
+    private List<string> currObserveeNames = new List<string>();
+    private bool isObserveeChoices = false;
+    [SerializeField]
+    private ObserveeManager observeeManager;
+    [SerializeField] private SubmitDrawing drawingSubmitter; 
 
     //tags
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
+    private const string CHOICECONTAIN_TAG = "choiceBox";
+    private const string SHOW_OBSERVEE_TAG = "showObservee";
+    private const string CHOICE_TYPE = "choiceType";
 
-
+   
     private Story currentStory;
 
     public bool dialogueIsPlaying { get; private set; }
+   
 
     private static InkDialogueManager instance;
 
     private Coroutine typingLinesCorotine;
     private bool canContinueToNextLine;
+    private bool finishedRequiredOpera;
 
     private DialogueVariables dialogueVaribles;
 
@@ -52,14 +66,25 @@ public class InkDialogueManager : MonoBehaviour
         }
         instance = this;
         dialogueVaribles = new DialogueVariables(globalInkFile.filePath);
+
     }
 
     private void Start()
     {
         canContinueToNextLine = true;
+        finishedRequiredOpera = true;
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+
+        // instantiate the dictionary for choices, and store choices in
+        choicesDict = new Dictionary<string, GameObject[]>();
+        foreach (InkChoiceContainer container in choiceContainer)
+        {
+            choicesDict.Add(container.getName(), container.getChoices());
+        }
+        // initialize the default choices
+        choices = choiceContainer[0].getChoices();
 
         choicesText = new Text[choices.Length];
         int index = 0;
@@ -68,10 +93,11 @@ public class InkDialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<Text>();
             index++;
         }
-    }
+}
 
     private void Update()
     {
+
         if (!dialogueIsPlaying)
         {
             return;
@@ -80,7 +106,6 @@ public class InkDialogueManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ContinueStory();
-
         }
     }
 
@@ -103,7 +128,21 @@ public class InkDialogueManager : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
         continueIcon.SetActive(true);
-        displayChoices();
+
+        if(isObserveeChoices)
+        {
+            handleObserveeChoices();
+            isObserveeChoices = false;
+        } else
+        {
+            displayChoices();
+        }
+
+        if (observeeManager != null)
+        {
+            observeeManager.DisplayCurrObservees();
+        }
+
         canContinueToNextLine = true;
     }
 
@@ -158,7 +197,18 @@ public class InkDialogueManager : MonoBehaviour
     public void ContinueStory()
     {
 
-        if (canContinueToNextLine&&currentStory.canContinue)
+        // might remove this later
+        if (observeeManager != null)
+        {
+             if (observeeManager.CheckFinishCollecting() == false)
+             {
+                return;
+             }
+            observeeManager.ClearUncollected();
+        }
+
+
+        if (canContinueToNextLine && currentStory.canContinue)
         {
             if (typingLinesCorotine != null)
             {
@@ -198,12 +248,34 @@ public class InkDialogueManager : MonoBehaviour
                 case PORTRAIT_TAG:
                     portraitAnimator.Play(tagValue);
                     break;
+                case CHOICECONTAIN_TAG:
+                    // change the choice container
+                    choices = choicesDict[tagValue];
+                    break;
+                case SHOW_OBSERVEE_TAG:
+                    // pop up the observee
+                    observeeManager.AddToCurrLeft(tagValue);
+                    break;
+                case CHOICE_TYPE:
+                    if (tagValue == "observee")
+                    {
+                        isObserveeChoices = true;
+                    }
+                    break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
                     break;
             }
         }
     }
+
+    private void handleObserveeChoices()
+    {
+        drawingSubmitter.CanSubmit(true);
+    }
+
+
+
     private void hideChoices()
     {
         foreach(GameObject choiceButton in choices)
@@ -254,6 +326,5 @@ public class InkDialogueManager : MonoBehaviour
             currentStory.ChooseChoiceIndex(choiceIndex);
             ContinueStory();
         }
-
     }
 }
