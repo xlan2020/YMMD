@@ -27,15 +27,19 @@ public class InkDialogueManager : MonoBehaviour
     // each choice container is an instance of the choice class
     public InkChoiceContainer[] choiceContainer;
     private Dictionary<string, GameObject[]> choicesDict;
-    private GameObject[] choices; 
+    private GameObject[] choices;
     private Text[] choicesText;
 
     [Header("Drawing Interface Special")]
+    [SerializeField] private bool DrawMode = false;
+    [SerializeField] private DrawResultManager DrawResultManager;
+    [SerializeField] private DrawMaterialManager DrawMaterialManager;
+    [SerializeField] private ObserveeManager observeeManager;
+    [SerializeField] private SubmitDrawing drawingSubmitter;
     private List<string> currObserveeNames = new List<string>();
-    private bool isObserveeChoices = false;
-    [SerializeField]
-    private ObserveeManager observeeManager;
-    [SerializeField] private SubmitDrawing drawingSubmitter; 
+    private string choiceType = "BUTTON";
+    private int drawResultIndex;
+    private bool canSkipChoice = false;
 
     //tags
     private const string SPEAKER_TAG = "speaker";
@@ -43,12 +47,13 @@ public class InkDialogueManager : MonoBehaviour
     private const string CHOICECONTAIN_TAG = "choiceBox";
     private const string SHOW_OBSERVEE_TAG = "showObservee";
     private const string CHOICE_TYPE = "choiceType";
+    private const string DRAW_RESULT = "hidden";
 
-   
+
     private Story currentStory;
 
     public bool dialogueIsPlaying { get; private set; }
-   
+
 
     private static InkDialogueManager instance;
 
@@ -71,29 +76,21 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Start()
     {
+
         canContinueToNextLine = true;
         finishedRequiredOpera = true;
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
-        // instantiate the dictionary for choices, and store choices in
-        choicesDict = new Dictionary<string, GameObject[]>();
-        foreach (InkChoiceContainer container in choiceContainer)
-        {
-            choicesDict.Add(container.getName(), container.getChoices());
-        }
-        // initialize the default choices
-        choices = choiceContainer[0].getChoices();
+        initializeChoices();
 
-        choicesText = new Text[choices.Length];
-        int index = 0;
-        foreach (GameObject choice in choices)
+        // initialize draw mode specials
+        if (DrawMode)
         {
-            choicesText[index] = choice.GetComponentInChildren<Text>();
-            index++;
+            DrawMaterialManager.SetMaterialsInteractive(false);
         }
-}
+    }
 
     private void Update()
     {
@@ -129,19 +126,10 @@ public class InkDialogueManager : MonoBehaviour
         }
         continueIcon.SetActive(true);
 
-        if(isObserveeChoices)
-        {
-            handleObserveeChoices();
-            isObserveeChoices = false;
-        } else
-        {
-            displayChoices();
-        }
+        handleChoiceType();
 
-        if (observeeManager != null)
-        {
-            observeeManager.DisplayCurrObservees();
-        }
+        // display observees and drawings if there is one
+        displayVisualsAfterType();
 
         canContinueToNextLine = true;
     }
@@ -153,14 +141,81 @@ public class InkDialogueManager : MonoBehaviour
         return instance;
     }
 
+    private void initializeChoices()
+    {
+        if (choiceContainer.Length > 0)
+        {
+            // instantiate the dictionary for choices, and store choices in
+            choicesDict = new Dictionary<string, GameObject[]>();
+            foreach (InkChoiceContainer container in choiceContainer)
+            {
+                choicesDict.Add(container.getName(), container.getChoices());
+            }
+            // initialize the default choices
+            choices = choiceContainer[0].getChoices();
+
+            choicesText = new Text[choices.Length];
+            int index = 0;
+            foreach (GameObject choice in choices)
+            {
+                choicesText[index] = choice.GetComponentInChildren<Text>();
+                index++;
+            }
+        }
+    }
+    private void displayVisualsAfterType()
+    {
+        if (observeeManager != null)
+        {
+            observeeManager.DisplayCurrObservees();
+        }
+
+        if (DrawResultManager != null)
+        {
+            DrawResultManager.DisplayDrawing();
+            DrawResultManager.SetCanShow(false);
+        }
+
+    }
+    private void handleChoiceType()
+    {
+        switch (choiceType)
+        {
+            case "BUTTON":
+                displayChoices();
+                break;
+            case "MATERIAL":
+                DrawMaterialManager.SetMaterialsInteractive(true);
+                choiceType = "BUTTON";
+                break;
+            case "OBSERVEE":
+                handleObserveeChoices();
+                break;
+            case "OBSERVEE_CANSKIP":
+                handleObserveeChoices();
+                canSkipChoice = true;
+                choiceType = "BUTTON";
+                break;
+            case "DRAW_RESULT":
+                canSkipChoice = true;
+                DrawResultManager.SetCanShow(true);
+                DrawResultManager.SetDrawingResultIndex(drawResultIndex);
+                choiceType = "BUTTON";
+                break;
+            case "AUTO":
+                canSkipChoice = true;
+                choiceType = "BUTTON";
+                break;
+        }
+    }
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
         Ink.Runtime.Object variableValue = null;
         dialogueVaribles.variables.TryGetValue(variableName, out variableValue);
-        if(variableValue == null)
+        if (variableValue == null)
         {
             Debug.LogWarning("Ink variable was found to be null: " + variableName);
-        
+
         }
         return variableValue;
     }
@@ -200,10 +255,10 @@ public class InkDialogueManager : MonoBehaviour
         // might remove this later
         if (observeeManager != null)
         {
-             if (observeeManager.CheckFinishCollecting() == false)
-             {
+            if (observeeManager.CheckFinishCollecting() == false)
+            {
                 return;
-             }
+            }
             observeeManager.ClearUncollected();
         }
 
@@ -257,10 +312,13 @@ public class InkDialogueManager : MonoBehaviour
                     observeeManager.AddToCurrLeft(tagValue);
                     break;
                 case CHOICE_TYPE:
-                    if (tagValue == "observee")
-                    {
-                        isObserveeChoices = true;
-                    }
+                    choiceType = tagValue;
+                    break;
+                case DRAW_RESULT:
+                    drawResultIndex = Int32.Parse(tagValue);
+                    UnityEngine.Debug.Log("The result drawing index is: " + drawResultIndex);
+                    DrawResultManager.SetDrawingResultIndex(drawResultIndex);
+                    DrawResultManager.DisplayDrawing();
                     break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
@@ -269,18 +327,23 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+
     private void handleObserveeChoices()
     {
         drawingSubmitter.CanSubmit(true);
+
     }
 
 
 
     private void hideChoices()
     {
-        foreach(GameObject choiceButton in choices)
+        if (choices.Length > 0 && choiceContainer.Length > 0)
         {
-            choiceButton.SetActive(false);
+            foreach (GameObject choiceButton in choices)
+            {
+                choiceButton.SetActive(false);
+            }
         }
     }
     private void displayChoices()
@@ -327,4 +390,15 @@ public class InkDialogueManager : MonoBehaviour
             ContinueStory();
         }
     }
+
+    public void SkipChoice()
+    {
+        if (canSkipChoice)
+        {
+            canSkipChoice = false;
+            MakeChoice(0);
+            drawingSubmitter.CanSubmit(false);
+        }
+    }
 }
+

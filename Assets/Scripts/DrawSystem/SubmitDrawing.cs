@@ -11,13 +11,13 @@ public class SubmitDrawing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -26,7 +26,7 @@ public class SubmitDrawing : MonoBehaviour
         if (other.gameObject.CompareTag("Observee") && canSubmit)
         {
             Observee ob = other.gameObject.GetComponent<Observee>();
-            dialogueManager.MakeChoice(ob.choiceIndex); 
+            dialogueManager.MakeChoice(ob.choiceIndex);
             canSubmit = false;
             observeeManager.ClearAll();
         }
