@@ -10,10 +10,6 @@ public class Observee : MonoBehaviour
     public int choiceIndex;
     public bool canSkip = false;
     public string description;
-
-    private Vector3 mOffset;
-    private float mZCoord;
-
     private Text descriptionBox;
     private bool isCollected = false;
     private bool canMove = true;
@@ -21,35 +17,23 @@ public class Observee : MonoBehaviour
 
     private Animator animator;
 
+    void Awake()
+    {
+        gameObject.AddComponent<DragDrop>();
+        animator = gameObject.GetComponent<Animator>();
+        descriptionBox = manager.GetDescriptionBox();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
-        animator = gameObject.GetComponent<Animator>();
-        descriptionBox = manager.GetDescriptionBox();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-    }
-
-    public void CanMove(bool b)
-    {
-        canMove = b;
-    }
-
-    void OnMouseDown()
-    {
-        mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
-    }
-
-    void OnMouseUp()
-    {
-        Debug.Log("mouse up on " + tagName);
-        typeDescription(description);
     }
 
     private void typeDescription(string d)
@@ -64,15 +48,6 @@ public class Observee : MonoBehaviour
         // Pixel coordinates of mouse (x,y)
         Vector3 mousePoint = Input.mousePosition;
         return Camera.main.ScreenToWorldPoint(mousePoint);
-    }
-
-    void OnMouseDrag()
-    {
-        if (canMove)
-        {
-            transform.position = GetMouseAsWorldPoint() + mOffset;
-        }
-
     }
 
     public void show()

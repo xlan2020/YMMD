@@ -13,22 +13,25 @@ public class DrawWorkStation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("something enters right screen");
+        // Debug.Log("something stays in the right screen");
         if (other.gameObject.CompareTag("Observee"))
         {
-            other.gameObject.GetComponent<Observee>().SendRight();
-            other.gameObject.GetComponent<Observee>().SetIsCollected(true);
+            Observee observee = other.gameObject.GetComponent<Observee>();
+            observee.SendRight();
+            if (other.gameObject.GetComponent<DragDrop>().IsOnDrop())
+            {
+                observee.SetIsCollected(true);
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("something enters right screen");
         if (other.gameObject.CompareTag("Observee"))
         {
             //other.gameObject.GetComponent<Observee>().CanMove(false);

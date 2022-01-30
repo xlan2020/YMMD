@@ -20,10 +20,10 @@ public class SubmitDrawing : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("something enters the submitted drawing");
-        if (other.gameObject.CompareTag("Observee") && canSubmit)
+        Debug.Log("something stays in the submitted drawing");
+        if (other.gameObject.CompareTag("Observee") && canSubmit && other.gameObject.GetComponent<DragDrop>().IsOnDrop())
         {
             Observee ob = other.gameObject.GetComponent<Observee>();
             dialogueManager.MakeChoice(ob.choiceIndex);

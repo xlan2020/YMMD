@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObserveeManager : MonoBehaviour
 {
     public Observee[] observees;
-    public Text descriptionText; 
+    public Text descriptionText;
     private List<Observee> currLeft;
 
     private Dictionary<string, Observee> observeeDict;
@@ -27,7 +27,7 @@ public class ObserveeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public Text GetDescriptionBox()
