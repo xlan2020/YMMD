@@ -9,6 +9,7 @@ public class SolvableReceiver : MonoBehaviour
 {
     public Solvable TargetSolvable;
     private Animator animator;
+    private AudioSource source;
     public GameObject[] AdditionalReceivers;
 
     private bool _hidden = true;
@@ -17,6 +18,7 @@ public class SolvableReceiver : MonoBehaviour
     {
         animator = gameObject.GetComponent<Animator>();
         animator.SetBool("hidden", true);
+        source = GetComponent<AudioSource>();
 
     }
 
@@ -41,6 +43,7 @@ public class SolvableReceiver : MonoBehaviour
     void show()
     {
         animator.SetBool("hidden", false);
+        source.Play();
         foreach (GameObject o in AdditionalReceivers)
         {
             o.SetActive(true);

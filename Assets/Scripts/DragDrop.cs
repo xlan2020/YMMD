@@ -53,4 +53,9 @@ public class DragDrop : MonoBehaviour
     {
         return _onDrop;
     }
+
+    public bool IsOnDrag()
+    {
+        return _onDrag;
+    }
 }

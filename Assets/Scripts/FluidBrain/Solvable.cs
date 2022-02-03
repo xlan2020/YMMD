@@ -14,12 +14,15 @@ public class Solvable : MonoBehaviour
     public SolvableManager manager;
     private Collider2D collider;
     private DragDrop dragDrop;
+    private AudioSource source;
+    private bool _isPlayingSound = false;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
         dragDrop = GetComponent<DragDrop>();
+        source = GetComponent<AudioSource>();
         collider.enabled = false;
         dragDrop.enabled = false;
     }
@@ -31,7 +34,21 @@ public class Solvable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (source != null)
+        {
+            if (!_isPlayingSound && dragDrop.IsOnDrag())
+            {
+                source.Play();
+                _isPlayingSound = true;
+                UnityEngine.Debug.Log("Play solvable audio!");
+            }
+            if (_isPlayingSound && dragDrop.IsOnDrop())
+            {
+                source.Stop();
+                _isPlayingSound = false;
+                UnityEngine.Debug.Log("Stop solvable audio!");
+            }
+        }
     }
 
     private void SendRight()
