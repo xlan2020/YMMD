@@ -1,7 +1,7 @@
 INCLUDE global.ink
 
-(Log: Enter the drawing interface from DAY1_Map_1)
-(First of all, I should decide what materials to use...but since I've traded in everything I had, there aren't many choices at the moment.) #speaker: Me #choiceType: MATERIAL
+<color=blue> (Log: Enter the drawing interface from DAY1_Map_1)</color>
+<color=blue> (First of all, I should decide what materials to use...but since I've traded in everything I had, there aren't many choices at the moment.) </color>#speaker: Me #choiceType: MATERIAL
     +[ ]
         I wonder what would you do if the restaurant doesn't have a pencil. #speaker: 8-2 #portrait: 8-2_frown
         Paint in your brain. #speaker: Me 
