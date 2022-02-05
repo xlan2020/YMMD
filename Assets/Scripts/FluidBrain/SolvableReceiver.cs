@@ -11,6 +11,7 @@ public class SolvableReceiver : MonoBehaviour
     private Animator animator;
     private AudioSource source;
     public GameObject[] AdditionalReceivers;
+    public SolvableReceiver[] ClearSound;
 
     private bool _hidden = true;
     // Start is called before the first frame update
@@ -35,6 +36,7 @@ public class SolvableReceiver : MonoBehaviour
             if (other.GetComponent<DragDrop>().IsOnDrop() == true)
             {
                 show();
+                ClearOtherSound();
                 TargetSolvable.DoneSolving();
             }
         }
@@ -51,6 +53,23 @@ public class SolvableReceiver : MonoBehaviour
             if (a != null)
             {
                 a.SetBool("hidden", false);
+            }
+        }
+    }
+
+    public void ChangeLowerSound(bool b)
+    {
+        animator.SetBool("lowSound", b);
+        UnityEngine.Debug.Log("lowering sound" + b);
+    }
+
+    private void ClearOtherSound()
+    {
+        if (ClearSound != null)
+        {
+            foreach (SolvableReceiver s in ClearSound)
+            {
+                s.GetComponent<AudioSource>().Stop();
             }
         }
     }

@@ -11,6 +11,8 @@ public class Solvable : MonoBehaviour
     private Vector3 mOffset;
     private bool isDone = false;
     [SerializeField] private Solvable nextSolvable;
+    [SerializeField] private SolvableReceiver[] lowerSounds;
+    public bool LowerSound = false;
     public SolvableManager manager;
     private Collider2D collider;
     private DragDrop dragDrop;
@@ -40,12 +42,14 @@ public class Solvable : MonoBehaviour
             {
                 source.Play();
                 _isPlayingSound = true;
+                ChangeLowerPreviousSound(true);
                 UnityEngine.Debug.Log("Play solvable audio!");
             }
             if (_isPlayingSound && dragDrop.IsOnDrop())
             {
                 source.Stop();
                 _isPlayingSound = false;
+                ChangeLowerPreviousSound(false);
                 UnityEngine.Debug.Log("Stop solvable audio!");
             }
         }
@@ -105,4 +109,14 @@ public class Solvable : MonoBehaviour
         return true;
     }
 
+    private void ChangeLowerPreviousSound(bool b)
+    {
+        if (lowerSounds != null && LowerSound)
+        {
+            foreach (SolvableReceiver r in lowerSounds)
+            {
+                r.ChangeLowerSound(b);
+            }
+        }
+    }
 }
