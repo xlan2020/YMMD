@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
-using Ink.UnityIntegration;
 using UnityEngine.EventSystems;
 using System;
 
 public class InkDialogueManager : MonoBehaviour
 {
+    // variable for the load_globals.ink JSON
+    [Header("Load Globals JSON")]
+    [SerializeField] private TextAsset loadGlobalsJSON;
+
     [Header("Params")]
 
     public float typingSpeed = 0.04f;
-
-    [Header("Global Ink File")]
-    public InkFile globalInkFile;
 
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
@@ -61,7 +61,7 @@ public class InkDialogueManager : MonoBehaviour
     private bool canContinueToNextLine;
     private bool finishedRequiredOpera;
 
-    private DialogueVariables dialogueVaribles;
+    private DialogueVariables dialogueVariables;
 
     private void Awake()
     {
@@ -70,7 +70,8 @@ public class InkDialogueManager : MonoBehaviour
             Debug.LogWarning("WARNING: keep only one ink dialogue manager per scene!");
         }
         instance = this;
-        dialogueVaribles = new DialogueVariables(globalInkFile.filePath);
+        // pass that variable to the DIalogueVariables constructor in the Awake method
+        dialogueVariables = new DialogueVariables(loadGlobalsJSON);
 
     }
 
@@ -211,7 +212,7 @@ public class InkDialogueManager : MonoBehaviour
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
         Ink.Runtime.Object variableValue = null;
-        dialogueVaribles.variables.TryGetValue(variableName, out variableValue);
+        dialogueVariables.variables.TryGetValue(variableName, out variableValue);
         if (variableValue == null)
         {
             Debug.LogWarning("Ink variable was found to be null: " + variableName);
@@ -227,7 +228,7 @@ public class InkDialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
 
 
-        dialogueVaribles.StartListening(currentStory);
+        dialogueVariables.StartListening(currentStory);
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
         portraitAnimator.Play("default");
@@ -241,7 +242,7 @@ public class InkDialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.2f);
 
-        dialogueVaribles.StopListening(currentStory);
+        dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
