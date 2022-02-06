@@ -1,41 +1,41 @@
 INCLUDE global.ink
 
-<color=blue> (Log: Enter the drawing interface from DAY1_Map_1)</color>
-<color=blue> (First of all, I should decide what materials to use...but since I've traded in everything I had, there aren't many choices at the moment.) </color>#speaker: Me #choiceType: MATERIAL
+ (Log: Enter the drawing interface from DAY1_Map_1)
+ (First of all, I should decide what materials to use...but since I've traded in everything I had, there aren't many choices at the moment.) #speaker: Me #choiceType: MATERIAL #speakerMode: thought
     +[ ]
-        I wonder what would you do if the restaurant doesn't have a pencil. #speaker: 8-2 #portrait: 8-2_frown
+        I wonder what would you do if the restaurant doesn't have a pencil. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
         Paint in your brain. #speaker: Me 
         ->start
     +[ ]
-        Soy sauce seriously? How luxurious. #speaker: 8-2 #portrait: 8-2_frown
+        Soy sauce seriously? How luxurious. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
         Isn't this just right for you? #speaker: Me
         ->start
 
 ===start===
-Can I move? Will it bother your performance? What if you take this as an excuse of drawing something terrible… #speaker: 8-2 #portrait: 8-2_smile
+Can I move? Will it bother your performance? What if you take this as an excuse of drawing something terrible… #speaker: 8-2 #portrait: 8-2_smile 
 Move as you want to. #speaker: Me
 All right, I know this. That's what you call an abstract art don't you? #speaker: 8-2 #portrait: 8-2_idle
 Shut up. 
-(Once I start to draw, I need to concentrate and observe my subject. But more than that...) #speaker: Me
-...Actually, say something about yourself. 
-(I need to know about the subject. If any observation pops up, I'll collect it for the drawing. )
-Huh? About me? If this could contribute to a better drawing I'd cooperate. What little secret do you want to know about? #speaker: 8-2 #portrait: 8-2_smile
+(Once I start to draw, I need to concentrate and observe my subject. But more than that...) #speaker: Me #speakerMode: thought
+...Actually, say something about yourself. #speakerMode: norm
+(I need to know about the subject. If any observation pops up, I'll collect it for the drawing. ) #speakerMode: thought
+Huh? About me? If this could contribute to a better drawing I'd cooperate. What little secret do you want to know about? #speaker: 8-2 #portrait: 8-2_smile #speakerMode: norm
 As you like.#speaker: Me
 As I like? Or do you mean - WHO I like? I can see what you want to hear, but you are wrong, I will not waste time on women like some somebody did. #showObservee: woman 
- (...Somebody? Who is he talking about? There's something underneath his smile. ) Keep going. #speaker: Me #showObservee: glasses
-All I love is human knowledge, endless and eternal. #speaker: 8-2 #portrait: 8-2_indiff
+ (...Somebody? Who is he talking about? There's something underneath his smile. ) Keep going. #speaker: Me #showObservee: glasses #speakerMode: thought
+All I love is human knowledge, endless and eternal. #speaker: 8-2 #portrait: 8-2_indiff #speakerMode: norm
 Just Kidding! Just guess, What would I do if I can't sleep? #portrait: 8-2_handsup
-(Let me think... What would he do if he can't sleep? What kinds of person is he? ) --Submit idea to drawing when ready-- #choiceType: OBSERVEE
+(Let me think... What would he do if he can't sleep? What kinds of person is he? ) --Submit idea to drawing when ready-- #choiceType: OBSERVEE #speakerMode: thought
     +   [ ]
           ->woman
     +   [ ] 
            ->glasses
         
 ===woman===
-        Get a mirror and see what your expression is like. You got to be thinking about woman. #speaker: Me
+        Get a mirror and see what your expression is like. You got to be thinking about woman. #speakerMode: norm #speaker: Me
            ->count_sheeps
 ===glasses===
-        I guess you might be reading? ...Don't tell me that you're reading about astrology and magic... #speaker: Me
+        I guess you might be reading? ...Don't tell me that you're reading about astrology and magic... #speaker: Me #speakerMode: norm
            ->count_sheeps
 
 
@@ -47,19 +47,20 @@ The answer is no more than 7. #portrait: 8-2_idle
 Have you played the game 'count to 7'? The point is that you can not count 7. 
 But of course 8 doesn't come after 6, so whenever reaching that number I have to start again. 
 We kept counting and kept losing... When the night is over I still can't count to 7. #showObservee: we #portrait: 8-2_smile 
-(Wait, what he just said sounds important. If I could just add that to the drawing...) #choiceType: OBSERVEE_CANSKIP
+(Wait, what he just said sounds important. If I could just add that to the drawing...) #choiceType: OBSERVEE_CANSKIP #speakerMode: thought
 /*
 For questions in type CANSKIP, the skip choice should always be the first choice - index 0. Else errors would occur. 
 */
     +[ ]
     (...What was that again? Never mind. I might be over-sensitive.) 
-    Counting sheeps is not equal to count to 7. Why don't you just say 7? #speaker: Me
+    Counting sheeps is not equal to count to 7. Why don't you just say 7? #speaker: Me #speakerMode: norm
     -> cant_reach_7
     +[ ]
     -> catch_we
 
 ===catch_we===
-    (Did he just say "We"?) Wait, who are you playing with? #speaker: Me
+    (Did he just say "We"?) #speakerMode: thought
+    Wait, who are you playing with? #speaker: Me #speakerMode: norm
     ... #speaker: 8-2 #portrait: 8-2_indiff
     You sleep with your brothers? You didn't tell me you have a brother. #speaker: Me
     -> cant_reach_7
@@ -78,8 +79,8 @@ Seven is something in this world you can never reach. Painter, do you know why? 
      -> man_decides
 
 ===name_decides===
-    (Eighminus Tue... 8-2... He wanted to be 7 but reducing was overdone. He went pass 7. ) #speaker: Me
-    Is it because your name sounds like Eight minus two? 
+    (Eighminus Tue... 8-2... He wanted to be 7 but reducing was overdone. He went pass 7. ) #speaker: Me #speakerMode: thought
+    Is it because your name sounds like Eight minus two? #speakerMode: norm
     ...Yes, it's all decided. Name decides everything. #speaker: 8-2 #portrait: 8-2_indiff
     It is the identifier. Only through name one can be called... and changed.  #observee: name 
     But isn't it possible that people have identical names? See, Eighminus Tue isn't...ok this is a rare name. But... #speaker: Me
@@ -97,10 +98,11 @@ Seven is something in this world you can never reach. Painter, do you know why? 
     -> done_painting
     
 ===man_decides===
-     (A name decides nothing. Having a name like this doesn't mean that he is good at math or anything. ) #speaker: Me  #portrait: 8-2_idle
-    So you're saying...like how a child did, you also find some troubles in counting? #speaker: Me 
+     (A name decides nothing. Having a name like this doesn't mean that he is good at math or anything. ) #speaker: Me  #portrait: 8-2_idle #speakerMode: thought
+    So you're saying...like how a child did, you also find some troubles in counting? #speaker: Me #speakerMode: norm
     // Hey Painter! You are a better person than this! #speaker: 8-2 #portrait: 8-2_frown
-    (But it can't be. Though he switches topics really fast and manythings are hardly relevant, 8-2 is indeed really smart. ) Sorry, I might be... 
+    (But it can't be. Though he switches topics really fast and manythings are hardly relevant, 8-2 is indeed really smart. ) #speakerMode: thought
+    Sorry, I might be...  #speakerMode: norm
     Yes. That's indeed my limit as who I've grown into. #speaker: 8-2 #portrait: 8-2_smile
     But I am never alone. People are grown to be different, but when they comes together they'd become a whole.
     ...Hold on a sec. Are we still talking about counting numbers below 10? #speaker: Me
@@ -129,7 +131,7 @@ Seven is something in this world you can never reach. Painter, do you know why? 
         -> fraternity
        
     = predecided
-        (Eighminus Tue said that everything is decided by the name - though I'm not 100% sure what he means.)
+        (Eighminus Tue said that everything is decided by the name - though I'm not 100% sure what he means.)#speakerMode: thought
         (But I can see something important. )
         (Inside of his frivolous appearance there's an invisible 'limit' of 7.)
         (It almost seems like something...divine. ) 
@@ -137,7 +139,7 @@ Seven is something in this world you can never reach. Painter, do you know why? 
         (This is the drawing.) #choiceType: DRAW_RESULT #DRAW_RESULT: 0
         -> after_done
     = shabi
-        (This man does jokes a lot. I could hardly tell which is real and which is lie.)
+        (This man does jokes a lot. I could hardly tell which is real and which is lie.)#speakerMode: thought
         (Sometimes he did irritates me a little... But he always kn4ows what he's doing.)
         (He isn't one of those who make fun of people to feel good.)
         (If he call somebody an idiot, he must be calling himself an idiot as well.) 
@@ -145,7 +147,7 @@ Seven is something in this world you can never reach. Painter, do you know why? 
         (Then, I'd offer him a fun drawing too!) #choiceType: DRAW_RESULT #DRAW_RESULT: 1
         -> after_done
     = fraternity
-        (The way 8-2 talks always give me a weird feeling.)
+        (The way 8-2 talks always give me a weird feeling.)#speakerMode: thought
         (Some times the words "we" "us" just slipped out from his mouth.)
         (There should be someone who's really closed to him. They must be important.)
         (It's not like talking about a girlfriend or something. It's almost like... a bunch of people. )
@@ -157,12 +159,12 @@ Seven is something in this world you can never reach. Painter, do you know why? 
 
 
 ===after_done===
-The drawing is done. #speaker: Me #portrait: 8-2_idle 
+The drawing is done. #speaker: Me #portrait: 8-2_idle #speakerMode: norm
 Ohh, quite fast! Let me see... Huh? Huhhhh? #portrait: 8-2_suprised 
 ...... #portrait: 8-2_noexpression
 ...............#speaker: 8-2 #portrait: 8-2_serious
-(Although it's my friend, his expression still makes me feel a little unsettled...) 
-Uh, anything wrong with it?  #speaker: Me 
+(Although it's my friend, his expression still makes me feel a little unsettled...) #speakerMode: thought
+Uh, anything wrong with it?  #speaker: Me #speakerMode: norm
 No...No. There's nothing wrong, even too right. 
 ...But how do you know? I never told you...
 How do you know that it's seven people... #speaker: 8-2 #portrait: 8-2_serious

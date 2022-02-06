@@ -36,6 +36,7 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private DrawMaterialManager DrawMaterialManager;
     [SerializeField] private ObserveeManager observeeManager;
     [SerializeField] private SubmitDrawing drawingSubmitter;
+    public UnityEngine.Color ThoughtColor;
     private List<string> currObserveeNames = new List<string>();
     private string choiceType = "BUTTON";
     private int drawResultIndex;
@@ -48,6 +49,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string SHOW_OBSERVEE_TAG = "showObservee";
     private const string CHOICE_TYPE = "choiceType";
     private const string DRAW_RESULT = "hidden";
+    private const string SPEAKER_MODE_TAG = "speakerMode";
 
 
     private Story currentStory;
@@ -209,6 +211,21 @@ public class InkDialogueManager : MonoBehaviour
                 break;
         }
     }
+
+    private void handleSpeakerMode(string tagValue)
+    {
+        switch (tagValue)
+        {
+            case "thought":
+                dialogueText.color = ThoughtColor;
+                break;
+            case "norm":
+                dialogueText.color = UnityEngine.Color.white;
+                break;
+            default:
+                break;
+        }
+    }
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
         Ink.Runtime.Object variableValue = null;
@@ -320,6 +337,9 @@ public class InkDialogueManager : MonoBehaviour
                     UnityEngine.Debug.Log("The result drawing index is: " + drawResultIndex);
                     DrawResultManager.SetDrawingResultIndex(drawResultIndex);
                     DrawResultManager.DisplayDrawing();
+                    break;
+                case SPEAKER_MODE_TAG:
+                    handleSpeakerMode(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
