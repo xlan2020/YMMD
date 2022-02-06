@@ -8,6 +8,7 @@ public class ObserveeManager : MonoBehaviour
     public Observee[] observees;
     public Text descriptionText;
     private List<Observee> currLeft;
+    public MouseCursor cursor;
 
     private Dictionary<string, Observee> observeeDict;
 
@@ -103,5 +104,15 @@ public class ObserveeManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void SetCursorTrigger(string triggerType)
+    {
+        cursor.SetAnimationTrigger(triggerType);
+    }
+
+    public void SetCursorBool(string name, bool b)
+    {
+        cursor.SetAnimationBool(name, b);
     }
 }

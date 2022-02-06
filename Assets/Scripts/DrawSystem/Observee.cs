@@ -95,4 +95,30 @@ public class Observee : MonoBehaviour
         canSkip = b;
     }
 
+    private void OnMouseEnter()
+    {
+        if (!isCollected)
+        {
+            manager.SetCursorTrigger("observe");
+        }
+        else
+        {
+            manager.SetCursorTrigger("hand");
+        }
+    }
+    private void OnMouseDown()
+    {
+        manager.SetCursorBool("grab", true);
+    }
+
+    private void OnMouseUp()
+    {
+        manager.SetCursorBool("grab", false);
+    }
+
+    private void OnMouseExit()
+    {
+        manager.SetCursorTrigger("default");
+    }
+
 }
