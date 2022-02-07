@@ -10,7 +10,6 @@ public class Observee : MonoBehaviour
     public int choiceIndex;
     public bool canSkip = false;
     public string description;
-    private Text descriptionBox;
     private bool isCollected = false;
     private bool canMove = true;
     private bool hasAppeared = false;
@@ -21,7 +20,6 @@ public class Observee : MonoBehaviour
     {
         gameObject.AddComponent<DragDrop>();
         animator = gameObject.GetComponent<Animator>();
-        descriptionBox = manager.GetDescriptionBox();
     }
 
     // Start is called before the first frame update
@@ -35,13 +33,6 @@ public class Observee : MonoBehaviour
     {
 
     }
-
-    private void typeDescription(string d)
-    {
-        d = description;
-        descriptionBox.text = d;
-    }
-
 
     private Vector3 GetMouseAsWorldPoint()
     {
@@ -114,11 +105,17 @@ public class Observee : MonoBehaviour
     private void OnMouseUp()
     {
         manager.SetCursorBool("grab", false);
+        manager.SetDescription(description);
     }
 
     private void OnMouseExit()
     {
         manager.SetCursorTrigger("default");
+    }
+
+    public void ClearSelf()
+    {
+        gameObject.SetActive(false);
     }
 
 }

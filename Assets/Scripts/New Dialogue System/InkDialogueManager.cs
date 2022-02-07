@@ -16,6 +16,9 @@ public class InkDialogueManager : MonoBehaviour
 
     public float typingSpeed = 0.04f;
 
+    [Header("Sound")]
+    public BGMPlayer BGM;
+
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
     public Text speakerName;
@@ -50,6 +53,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string CHOICE_TYPE = "choiceType";
     private const string DRAW_RESULT = "hidden";
     private const string SPEAKER_MODE_TAG = "speakerMode";
+    private const string BGM_TAG = "bgm";
 
 
     private Story currentStory;
@@ -189,6 +193,7 @@ public class InkDialogueManager : MonoBehaviour
                 break;
             case "MATERIAL":
                 DrawMaterialManager.SetMaterialsInteractive(true);
+                drawingSubmitter.CanSubmit(true);
                 choiceType = "BUTTON";
                 break;
             case "OBSERVEE":
@@ -212,6 +217,20 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+    private void handleBGM(string tagValue)
+    {
+        if (tagValue == "pause")
+        {
+            BGM.Pause();
+            return;
+        }
+        if (tagValue == "play")
+        {
+            BGM.Play();
+            return;
+        }
+        BGM.ChangeBGM(tagValue);
+    }
     private void handleSpeakerMode(string tagValue)
     {
         switch (tagValue)
@@ -340,6 +359,9 @@ public class InkDialogueManager : MonoBehaviour
                     break;
                 case SPEAKER_MODE_TAG:
                     handleSpeakerMode(tagValue);
+                    break;
+                case BGM_TAG:
+                    handleBGM(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");

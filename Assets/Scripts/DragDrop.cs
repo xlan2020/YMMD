@@ -37,6 +37,7 @@ public class DragDrop : MonoBehaviour
     void OnMouseDrag()
     {
         transform.position = GetMouseAsWorldPoint() + mOffset;
+        // UnityEngine.Debug.Log("drag transform is: " + mOffset);
     }
 
     void OnMouseUp()

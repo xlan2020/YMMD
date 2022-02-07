@@ -7,7 +7,9 @@ public class ObserveeManager : MonoBehaviour
 {
     public Observee[] observees;
     public Text descriptionText;
+    public GameObject descriptionBox;
     private List<Observee> currLeft;
+    private Animator descriptionAnimator;
     public MouseCursor cursor;
 
     private Dictionary<string, Observee> observeeDict;
@@ -23,6 +25,8 @@ public class ObserveeManager : MonoBehaviour
             observeeDict.Add(o.tagName, o);
             //Debug.Log("Observee add: " + o.tagName);
         }
+
+        descriptionAnimator = descriptionBox.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,10 +35,23 @@ public class ObserveeManager : MonoBehaviour
 
     }
 
-    public Text GetDescriptionBox()
+    public void SetDescription(string description)
     {
-        return descriptionText;
+        if (description == descriptionText.text)
+        {
+            return;
+        }
+        int rand = 0;
+        do
+        {
+            rand = UnityEngine.Random.Range(0, 3);
+            UnityEngine.Debug.Log("The current page generated is: " + rand);
+        } while (rand == descriptionAnimator.GetInteger("Page"));
+
+        descriptionAnimator.SetInteger("Page", rand);
+        descriptionText.text = description;
     }
+
 
     public Observee GetObservee(string name)
     {
@@ -51,7 +68,7 @@ public class ObserveeManager : MonoBehaviour
     {
         foreach (Observee o in observees)
         {
-            o.gameObject.SetActive(false);
+            o.ClearSelf();
             //Destroy(o.gameObject);
         }
     }

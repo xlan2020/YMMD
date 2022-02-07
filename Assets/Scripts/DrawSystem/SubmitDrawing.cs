@@ -7,6 +7,8 @@ public class SubmitDrawing : MonoBehaviour
     public InkDialogueManager dialogueManager;
     public ObserveeManager observeeManager;
     private bool canSubmit = false;
+    public MouseCursor cursor;
+    public Animator progressAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +24,28 @@ public class SubmitDrawing : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+        GameObject g = other.gameObject;
         Debug.Log("something stays in the submitted drawing");
-        if (other.gameObject.CompareTag("Observee") && canSubmit && other.gameObject.GetComponent<DragDrop>().IsOnDrop())
+        if (g.CompareTag("Observee") && canSubmit && g.GetComponent<DragDrop>().IsOnDrop())
         {
-            Observee ob = other.gameObject.GetComponent<Observee>();
+            Observee ob = g.GetComponent<Observee>();
             dialogueManager.MakeChoice(ob.choiceIndex);
             canSubmit = false;
             observeeManager.ClearAll();
+            cursor.SetAnimationTrigger("default");
+        }
+
+        if (g.CompareTag("DrawMaterial") && canSubmit && g.GetComponent<DragDrop>().IsOnDrop())
+        {
+            UnityEngine.Debug.Log("draw material drop");
+            DrawMaterial mat = g.GetComponent<DrawMaterial>();
+            int choiceIndex = mat.GetChoiceIndex();
+            dialogueManager.MakeChoice(choiceIndex);
+            mat.SubmitSelf();
+            progressAnimator.SetInteger("material", choiceIndex);
+            canSubmit = false;
+            cursor.SetAnimationTrigger("default");
+
         }
     }
 

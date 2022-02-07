@@ -1,6 +1,6 @@
 INCLUDE global.ink
 
- (Log: Enter the drawing interface from DAY1_Map_1)
+ (Log: Enter the drawing interface from DAY1_Map_1) #bgm: 日常
  (First of all, I should decide what materials to use...but since I've traded in everything I had, there aren't many choices at the moment.) #speaker: Me #choiceType: MATERIAL #speakerMode: thought
     +[ ]
         I wonder what would you do if the restaurant doesn't have a pencil. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
@@ -23,8 +23,8 @@ Huh? About me? If this could contribute to a better drawing I'd cooperate. What 
 As you like.#speaker: Me
 As I like? Or do you mean - WHO I like? I can see what you want to hear, but you are wrong, I will not waste time on women like some somebody did. #showObservee: woman 
  (...Somebody? Who is he talking about? There's something underneath his smile. ) Keep going. #speaker: Me #showObservee: glasses #speakerMode: thought
-All I love is human knowledge, endless and eternal. #speaker: 8-2 #portrait: 8-2_indiff #speakerMode: norm
-Just Kidding! Just guess, What would I do if I can't sleep? #portrait: 8-2_handsup
+All I love is human knowledge, endless and eternal. #speaker: 8-2 #portrait: 8-2_indiff #speakerMode: norm 
+Just Kidding! Just guess, What would I do if I can't sleep? #portrait: 8-2_handsup #bgm: 戏谑
 (Let me think... What would he do if he can't sleep? What kinds of person is he? ) --Submit idea to drawing when ready-- #choiceType: OBSERVEE #speakerMode: thought
     +   [ ]
           ->woman
@@ -32,15 +32,15 @@ Just Kidding! Just guess, What would I do if I can't sleep? #portrait: 8-2_hands
            ->glasses
         
 ===woman===
-        Get a mirror and see what your expression is like. You got to be thinking about woman. #speakerMode: norm #speaker: Me
+        Get a mirror and see what your expression is like. You got to be thinking about woman. #speakerMode: norm #speaker: Me 
            ->count_sheeps
 ===glasses===
-        I guess you might be reading? ...Don't tell me that you're reading about astrology and magic... #speaker: Me #speakerMode: norm
+        I guess you might be reading? ...Don't tell me that you're reading about astrology and magic... #speaker: Me #speakerMode: norm  
            ->count_sheeps
 
 
 ===count_sheeps===
-NO-NO-NO, Painter, You don't know what I am deep inside. #speaker: 8-2
+NO-NO-NO, Painter, You don't know what I am deep inside. #speaker: 8-2 #bgm: 日常 #portrait: 8-2_smile
 I would be counting sheeps. I count to sleep every night and when I wake up, the counting still continues! 
 Do you know how many sheeps you can count in one night? 
 The answer is no more than 7. #portrait: 8-2_idle
