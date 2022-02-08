@@ -18,6 +18,12 @@ public class MouseCursor : MonoBehaviour
         transform.position = cursorPos;
     }
 
+    void FixedUpdate()
+    {
+        // Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // transform.position = cursorPos;
+    }
+
     public void SetAnimationTrigger(string triggerName)
     {
         animator.SetTrigger(triggerName);

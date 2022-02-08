@@ -5,6 +5,7 @@ using UnityEngine;
 public class SmallBook : MonoBehaviour
 {
     private Animator animator;
+    public MouseCursor cursor;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +22,25 @@ public class SmallBook : MonoBehaviour
     private void OnMouseEnter()
     {
         animator.SetBool("MouseOn", true);
-        UnityEngine.Debug.Log("mouse on book!");
+        cursor.SetAnimationTrigger("hand");
     }
+
+
+    private void OnMouseDown()
+    {
+        cursor.SetAnimationBool("grab", true);
+    }
+
+
+    private void OnMouseUp()
+    {
+        cursor.SetAnimationBool("grab", false);
+    }
+
 
     private void OnMouseExit()
     {
         animator.SetBool("MouseOn", false);
+        cursor.SetAnimationTrigger("default");
     }
 }

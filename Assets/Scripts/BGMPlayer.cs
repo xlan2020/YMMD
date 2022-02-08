@@ -9,6 +9,7 @@ public class BGMPlayer : MonoBehaviour
     [SerializeField] private AudioClip 黄昏;
     [SerializeField] private AudioClip 戏谑;
     [SerializeField] private AudioClip 紧张;
+    [SerializeField] private AudioClip 悬疑;
     [SerializeField] private AudioClip 柴柴;
 
     // Start is called before the first frame update
@@ -38,6 +39,9 @@ public class BGMPlayer : MonoBehaviour
                 break;
             case "紧张":
                 source.clip = 紧张;
+                break;
+            case "悬疑":
+                source.clip = 悬疑;
                 break;
             case "柴柴":
                 source.clip = 柴柴;

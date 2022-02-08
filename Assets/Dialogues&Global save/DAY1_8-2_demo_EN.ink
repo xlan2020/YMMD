@@ -1,14 +1,18 @@
 INCLUDE global.ink
 
  (Log: Enter the drawing interface from DAY1_Map_1) #bgm: 日常
- (First of all, I should decide what materials to use...but since I've traded in everything I had, there aren't many choices at the moment.) #speaker: Me #choiceType: MATERIAL #speakerMode: thought
+Seriously? You traded in everything including those drawing tools? #speaker: 8-2 #portrait: 8-2_frown #speakerMode: norm
+This is... true. My drawing case is just empty except for this worn out brush. #speaker: Me 
+Now I wonder what you're going to paint with.  #speaker: 8-2 #portrait: 8-2_idle #speakerMode: norm
+(Well... There is going to be away. )
+(Choosing the materials is the first step of a drawing. Though there aren't many choices at the moment.) #speaker: Me #choiceType: MATERIAL #speakerMode: thought
     +[ ]
-        I wonder what would you do if the restaurant doesn't have a pencil. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
+        I wonder what you would do if this restaurant doesn't offer a pencil. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
         Paint in your brain. #speaker: Me 
         ->start
     +[ ]
-        Soy sauce seriously? How luxurious. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
-        Isn't this just right for you? #speaker: Me
+        Ok. Soy sauce. How luxurious. #speaker: 8-2 #portrait: 8-2_frown #speakerMode:norm
+        Isn't this the right fit for someone like you? #speaker: Me
         ->start
 
 ===start===
@@ -161,7 +165,7 @@ Seven is something in this world you can never reach. Painter, do you know why? 
 ===after_done===
 The drawing is done. #speaker: Me #portrait: 8-2_idle #speakerMode: norm
 Ohh, quite fast! Let me see... Huh? Huhhhh? #portrait: 8-2_suprised 
-...... #portrait: 8-2_noexpression
+...... #portrait: 8-2_noexpression #bgm: 悬疑
 ...............#speaker: 8-2 #portrait: 8-2_serious
 (Although it's my friend, his expression still makes me feel a little unsettled...) #speakerMode: thought
 Uh, anything wrong with it?  #speaker: Me #speakerMode: norm
@@ -169,8 +173,8 @@ No...No. There's nothing wrong, even too right.
 ...But how do you know? I never told you...
 How do you know that it's seven people... #speaker: 8-2 #portrait: 8-2_serious
 ... Huh? #speaker: Me
-Nothing.  #speaker: 8-2 #portrait: 8-2_serious
-PAIN~TER~~!!! Well done!
+Nothing.  #speaker: 8-2 #portrait: 8-2_serious 
+PAIN~TER~~!!! Well done! #bgm: 戏谑
 Your future is GOLD! ❤❤! #speaker: 8-2 #portrait: 8-2_excited
 (sign.)...Fine. This time you turned out to think its good? #speaker: Me
 I am telling the truth. Your drawing has a potential- 
@@ -179,10 +183,10 @@ I am telling the truth. Your drawing has a potential-
 Exactly. If you own a person, you can displace them, make them disappear, exchange them for money... 
 But to own someone is never easy. It requires you to describe the essence of the person accurately. 
 I see talent in you! Drawing could be a way to make accurate description. If you can achieve that, then maybe you will be able to... #speaker: 8-2  #portrait: 8-2_idle
-... displace a person. #speaker: 8-2  #portrait: 8-2_serious
+... displace a person. #speaker: 8-2  #portrait: 8-2_serious #bgm: pause
 ... ... #speaker: Me
 ... Just to be clear... I'm not interested in human displacement at all. That's too evil. #speaker: Me
-Oh~ So you become so upright all of a sudden? What are you thinking about at the moment? #speaker: 8-2 #portrait: 8-2_smile 
+Oh~ So you become so upright all of a sudden? What are you thinking about at the moment? #speaker: 8-2 #portrait: 8-2_handsup #bgm: 戏谑
 
 /*
     + [I thought of displacing you.]
