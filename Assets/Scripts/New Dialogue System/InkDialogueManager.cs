@@ -198,6 +198,7 @@ public class InkDialogueManager : MonoBehaviour
                 break;
             case "OBSERVEE":
                 handleObserveeChoices();
+                choiceType = "BUTTON";
                 break;
             case "OBSERVEE_CANSKIP":
                 handleObserveeChoices();
@@ -213,6 +214,8 @@ public class InkDialogueManager : MonoBehaviour
             case "AUTO":
                 canSkipChoice = true;
                 choiceType = "BUTTON";
+                break;
+            default:
                 break;
         }
     }

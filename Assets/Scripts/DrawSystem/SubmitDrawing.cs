@@ -30,16 +30,16 @@ public class SubmitDrawing : MonoBehaviour
         {
             if (g.CompareTag("Observee"))
             {
+                canSubmit = false;
                 Observee ob = g.GetComponent<Observee>();
                 dialogueManager.MakeChoice(ob.choiceIndex);
-                canSubmit = false;
                 observeeManager.DissolveCollected();
                 cursor.SetAnimationTrigger("default");
-                canSubmit = false;
             }
 
             if (g.CompareTag("DrawMaterial"))
             {
+                canSubmit = false;
                 UnityEngine.Debug.Log("draw material drop");
                 DrawMaterial mat = g.GetComponent<DrawMaterial>();
                 int choiceIndex = mat.GetChoiceIndex();
@@ -47,7 +47,6 @@ public class SubmitDrawing : MonoBehaviour
                 mat.SubmitSelf();
                 progressAnimator.SetInteger("material", choiceIndex);
                 cursor.SetAnimationTrigger("default");
-                canSubmit = false;
 
             }
         }

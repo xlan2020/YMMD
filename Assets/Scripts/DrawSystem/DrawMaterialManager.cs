@@ -49,7 +49,7 @@ public class DrawMaterialManager : MonoBehaviour
             }
         }
         DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
-        dissolveEffect.StartDissolve(0.5f);
+        dissolveEffect.StartDissolve(2f);
         dissolveEffect.SetDestroyObjects(objects);
     }
 
