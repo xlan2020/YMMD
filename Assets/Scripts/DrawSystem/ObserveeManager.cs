@@ -52,6 +52,9 @@ public class ObserveeManager : MonoBehaviour
         } while (rand == descriptionAnimator.GetInteger("Page"));
 
         descriptionAnimator.SetInteger("Page", rand);
+
+        AudioSource source = descriptionBox.GetComponent<AudioSource>();
+        source.Play();
         descriptionText.text = description;
     }
 
@@ -70,7 +73,7 @@ public class ObserveeManager : MonoBehaviour
     public void DissolveCollected()
     {
         DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
-        dissolveEffect.StartDissolve(1f);
+        dissolveEffect.StartDissolve(2f);
         List<GameObject> objects = new List<GameObject>();
         foreach (Observee o in currCollected)
         {
@@ -91,7 +94,7 @@ public class ObserveeManager : MonoBehaviour
     {
         foreach (Observee o in currLeft)
         {
-            if (o.CheckIsCollected() == false)
+            if (o.IsCollected() == false)
             {
                 o.gameObject.SetActive(false);
             }
@@ -121,7 +124,7 @@ public class ObserveeManager : MonoBehaviour
     {
         foreach (Observee o in currLeft)
         {
-            if (o.CheckIsCollected() == false && o.CanSkip() == false)
+            if (o.IsCollected() == false && o.CanSkip() == false)
             {
                 return false;
             }

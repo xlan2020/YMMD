@@ -52,7 +52,7 @@ public class Observee : MonoBehaviour
 
     }
 
-    public bool CheckIsCollected()
+    public bool IsCollected()
     {
         return isCollected;
     }

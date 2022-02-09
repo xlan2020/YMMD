@@ -24,7 +24,7 @@ public class DrawWorkStation : MonoBehaviour
         {
             Observee observee = other.gameObject.GetComponent<Observee>();
             observee.SendRight();
-            if (other.gameObject.GetComponent<DragDrop>().IsOnDrop())
+            if (other.gameObject.GetComponent<DragDrop>().IsOnDrop() && !observee.IsCollected())
             {
                 observeeManager.MarkAsCollected(observee);
             }

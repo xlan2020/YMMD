@@ -111,6 +111,10 @@ public class InkDialogueManager : MonoBehaviour
         {
             ContinueStory();
         }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            ContinueStory();
+        }
     }
 
     private IEnumerator typingLines(string line)
@@ -119,11 +123,13 @@ public class InkDialogueManager : MonoBehaviour
         hideChoices();
         continueIcon.SetActive(false);
         canContinueToNextLine = false;
-        yield return new WaitForSeconds(0.2f);
+        // fast skip
+
+        yield return new WaitForSeconds(0.1f);
         foreach (char letter in line.ToCharArray())
         {
             // skip the typing effect
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl))
             {
                 dialogueText.text = line;
                 break;
@@ -132,16 +138,45 @@ public class InkDialogueManager : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
         continueIcon.SetActive(true);
-
         handleChoiceType();
-
         // display observees and drawings if there is one
         displayVisualsAfterType();
 
         canContinueToNextLine = true;
     }
 
+    public void ContinueStory()
+    {
 
+        // might remove this later
+        if (observeeManager != null)
+        {
+            if (observeeManager.CheckFinishCollecting() == false)
+            {
+                return;
+            }
+            observeeManager.ClearUncollected();
+        }
+
+
+        if (canContinueToNextLine && currentStory.canContinue)
+        {
+            if (typingLinesCorotine != null)
+            {
+                StopCoroutine(typingLinesCorotine);
+            }
+            typingLinesCorotine = StartCoroutine(typingLines(currentStory.Continue()));
+            handleTags(currentStory.currentTags);
+        }
+        else if (!canContinueToNextLine || currentStory.currentChoices.Count > 0)
+        {
+            return;
+        }
+        else
+        {
+            StartCoroutine(ExitDialogueMode());
+        }
+    }
 
     public static InkDialogueManager GetInstance()
     {
@@ -289,38 +324,6 @@ public class InkDialogueManager : MonoBehaviour
 
     }
 
-    public void ContinueStory()
-    {
-
-        // might remove this later
-        if (observeeManager != null)
-        {
-            if (observeeManager.CheckFinishCollecting() == false)
-            {
-                return;
-            }
-            observeeManager.ClearUncollected();
-        }
-
-
-        if (canContinueToNextLine && currentStory.canContinue)
-        {
-            if (typingLinesCorotine != null)
-            {
-                StopCoroutine(typingLinesCorotine);
-            }
-            typingLinesCorotine = StartCoroutine(typingLines(currentStory.Continue()));
-            handleTags(currentStory.currentTags);
-        }
-        else if (!canContinueToNextLine || currentStory.currentChoices.Count > 0)
-        {
-            return;
-        }
-        else
-        {
-            StartCoroutine(ExitDialogueMode());
-        }
-    }
 
     private void handleTags(List<string> currentTags)
     {

@@ -49,6 +49,8 @@ public class DissolveEffect : MonoBehaviour
                     UnityEngine.Debug.Log("Destroy gameobject after dissolved.");
                 }
                 destroyObjects.Clear();
+                StopDissolve(2f);
+                dissolveAmount = 0f;
             }
 
         }
