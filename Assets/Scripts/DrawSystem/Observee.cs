@@ -12,9 +12,10 @@ public class Observee : MonoBehaviour
     public string description;
     private bool isCollected = false;
     private bool canMove = true;
+    private bool canSubmit = true;
     private bool hasAppeared = false;
-
     private Animator animator;
+    [SerializeField] private Color StartDissolveColor;
 
     void Awake()
     {
@@ -65,7 +66,6 @@ public class Observee : MonoBehaviour
     {
         animator.SetTrigger("sendRight");
     }
-
     public bool HasAppeared()
     {
         return hasAppeared;
@@ -111,11 +111,6 @@ public class Observee : MonoBehaviour
     private void OnMouseExit()
     {
         manager.SetCursorTrigger("default");
-    }
-
-    public void ClearSelf()
-    {
-        gameObject.SetActive(false);
     }
 
 }

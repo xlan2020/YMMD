@@ -38,15 +38,19 @@ public class DrawMaterialManager : MonoBehaviour
 
     public void ClearUnusedMaterials()
     {
+        List<GameObject> objects = new List<GameObject>();
         foreach (DrawMaterial m in materials)
         {
+            objects.Add(m.gameObject);
+            m.SetInteractive(false);
             if (!m.Submitted())
             {
-                m.SetInteractive(false);
-                m.gameObject.SetActive(false);
 
             }
         }
+        DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
+        dissolveEffect.StartDissolve(0.5f);
+        dissolveEffect.SetDestroyObjects(objects);
     }
 
     public void SetCursorTrigger(string triggerType)

@@ -26,26 +26,30 @@ public class SubmitDrawing : MonoBehaviour
     {
         GameObject g = other.gameObject;
         Debug.Log("something stays in the submitted drawing");
-        if (g.CompareTag("Observee") && canSubmit && g.GetComponent<DragDrop>().IsOnDrop())
+        if (canSubmit && g.GetComponent<DragDrop>().IsOnDrop())
         {
-            Observee ob = g.GetComponent<Observee>();
-            dialogueManager.MakeChoice(ob.choiceIndex);
-            canSubmit = false;
-            observeeManager.ClearAll();
-            cursor.SetAnimationTrigger("default");
-        }
+            if (g.CompareTag("Observee"))
+            {
+                Observee ob = g.GetComponent<Observee>();
+                dialogueManager.MakeChoice(ob.choiceIndex);
+                canSubmit = false;
+                observeeManager.DissolveCollected();
+                cursor.SetAnimationTrigger("default");
+                canSubmit = false;
+            }
 
-        if (g.CompareTag("DrawMaterial") && canSubmit && g.GetComponent<DragDrop>().IsOnDrop())
-        {
-            UnityEngine.Debug.Log("draw material drop");
-            DrawMaterial mat = g.GetComponent<DrawMaterial>();
-            int choiceIndex = mat.GetChoiceIndex();
-            dialogueManager.MakeChoice(choiceIndex);
-            mat.SubmitSelf();
-            progressAnimator.SetInteger("material", choiceIndex);
-            canSubmit = false;
-            cursor.SetAnimationTrigger("default");
+            if (g.CompareTag("DrawMaterial"))
+            {
+                UnityEngine.Debug.Log("draw material drop");
+                DrawMaterial mat = g.GetComponent<DrawMaterial>();
+                int choiceIndex = mat.GetChoiceIndex();
+                dialogueManager.MakeChoice(choiceIndex);
+                mat.SubmitSelf();
+                progressAnimator.SetInteger("material", choiceIndex);
+                cursor.SetAnimationTrigger("default");
+                canSubmit = false;
 
+            }
         }
     }
 

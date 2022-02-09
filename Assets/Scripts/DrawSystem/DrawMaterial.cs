@@ -12,6 +12,8 @@ public class DrawMaterial : MonoBehaviour
     private Animator animator;
     private bool _submitted = false;
 
+    public UnityEngine.Color StartDissolveColor;
+
     private void Awake()
     {
         // button = gameObject.GetComponent<Button>();
@@ -50,12 +52,14 @@ public class DrawMaterial : MonoBehaviour
 
     public void SubmitSelf()
     {
-        UnityEngine.Debug.Log("choice index is: " + this.GetChoiceIndex());
-        animator.SetTrigger("Submit");
+        // UnityEngine.Debug.Log("choice index is: " + this.GetChoiceIndex());
+        // animator.SetTrigger("Submit");
+        _submitted = true;
         this.SetInteractive(false);
         manager.ClearUnusedMaterials();
-        _submitted = true;
     }
+
+
 
     public bool Submitted()
     {

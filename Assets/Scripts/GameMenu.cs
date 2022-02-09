@@ -7,10 +7,13 @@ public class GameMenu : MonoBehaviour
 {
     public MouseCursor cursor;
     private Button menuButton;
+    private AudioSource audio;
+    public AudioClip OpenAudio;
     // Start is called before the first frame update
     void Start()
     {
         menuButton = GetComponent<Button>();
+        audio = GetComponent<AudioSource>();
 
     }
 
@@ -27,5 +30,11 @@ public class GameMenu : MonoBehaviour
     void OnMouseExit()
     {
         cursor.SetAnimationTrigger("default");
+    }
+
+    void OnMouseUp()
+    {
+        audio.clip = OpenAudio;
+        audio.Play();
     }
 }

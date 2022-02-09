@@ -9,6 +9,8 @@ public class ObserveeManager : MonoBehaviour
     public Text descriptionText;
     public GameObject descriptionBox;
     private List<Observee> currLeft;
+    private List<Observee> currCollected;
+
     private Animator descriptionAnimator;
     public MouseCursor cursor;
 
@@ -18,6 +20,7 @@ public class ObserveeManager : MonoBehaviour
     void Start()
     {
         currLeft = new List<Observee>();
+        currCollected = new List<Observee>();
 
         observeeDict = new Dictionary<string, Observee>();
         foreach (Observee o in observees)
@@ -64,20 +67,24 @@ public class ObserveeManager : MonoBehaviour
         observeeDict[name].SetHasAppeared(true);
     }
 
-    public void ClearAll()
+    public void DissolveCollected()
     {
-        foreach (Observee o in observees)
+        DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
+        dissolveEffect.StartDissolve(1f);
+        List<GameObject> objects = new List<GameObject>();
+        foreach (Observee o in currCollected)
         {
-            o.ClearSelf();
-            //Destroy(o.gameObject);
+            objects.Add(o.gameObject);
         }
+        dissolveEffect.SetDestroyObjects(objects);
+        currCollected.Clear();
     }
 
-    public void MarkAsCollected(string name)
+
+    public void MarkAsCollected(Observee o)
     {
-        Observee o = observeeDict[name];
-        o.SendRight();
         o.SetIsCollected(true);
+        currCollected.Add(o);
 
     }
     public void ClearUncollected()
@@ -106,7 +113,6 @@ public class ObserveeManager : MonoBehaviour
             {
                 Debug.Log("Displaying current observee" + o.tagName);
                 this.ShowObservee(o.tagName);
-
             }
         }
     }

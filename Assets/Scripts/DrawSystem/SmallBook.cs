@@ -5,11 +5,18 @@ using UnityEngine;
 public class SmallBook : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource audio;
     public MouseCursor cursor;
+    public AudioClip OpenBookAudio;
+    public AudioClip CloseBookAudio;
+    public AudioClip[] FlipPageAudios;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+
 
     }
 
@@ -35,6 +42,7 @@ public class SmallBook : MonoBehaviour
     private void OnMouseUp()
     {
         cursor.SetAnimationBool("grab", false);
+        OpenBook();
     }
 
 
@@ -43,4 +51,17 @@ public class SmallBook : MonoBehaviour
         animator.SetBool("MouseOn", false);
         cursor.SetAnimationTrigger("default");
     }
+
+    private void OpenBook()
+    {
+        audio.clip = OpenBookAudio;
+        audio.Play();
+    }
+
+    private void CloseBook()
+    {
+        audio.clip = CloseBookAudio;
+        audio.Play();
+    }
+
 }

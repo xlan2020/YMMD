@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DrawWorkStation : MonoBehaviour
 {
+    public ObserveeManager observeeManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class DrawWorkStation : MonoBehaviour
             observee.SendRight();
             if (other.gameObject.GetComponent<DragDrop>().IsOnDrop())
             {
-                observee.SetIsCollected(true);
+                observeeManager.MarkAsCollected(observee);
             }
         }
     }
