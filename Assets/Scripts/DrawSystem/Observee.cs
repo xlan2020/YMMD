@@ -11,8 +11,8 @@ public class Observee : MonoBehaviour
     public bool canSkip = false;
     public string description;
     private bool isCollected = false;
+    private bool canGrab = true;
     private bool canMove = true;
-    private bool canSubmit = true;
     private bool hasAppeared = false;
     private Animator animator;
     [SerializeField] private Color StartDissolveColor;
@@ -86,8 +86,18 @@ public class Observee : MonoBehaviour
         canSkip = b;
     }
 
+
+    public void SetCanGrab(bool b)
+    {
+        canGrab = b;
+    }
+
     private void OnMouseEnter()
     {
+        if (!canGrab)
+        {
+            return;
+        }
         if (!isCollected)
         {
             manager.SetCursorTrigger("observe");
@@ -99,6 +109,10 @@ public class Observee : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (!canGrab)
+        {
+            return;
+        }
         manager.SetCursorBool("grab", true);
     }
 
@@ -110,6 +124,10 @@ public class Observee : MonoBehaviour
 
     private void OnMouseExit()
     {
+        if (!canGrab)
+        {
+            return;
+        }
         manager.SetCursorTrigger("default");
     }
 

@@ -5,7 +5,7 @@ Seriously? You carry this enormous drawing case and it's just entirely empty?  #
 Well... I traded in everything. Oh, actually there is a worn out brush in my pocket.  #speaker: Me 
 Now I wonder what you're going to paint with.  #speaker: 8-2 #portrait: 8-2_idle #speakerMode: norm
 (Well... There is going to be away. )#speaker: Me  #speakerMode: thought
-(Be a painter! I can make marks using ANYTHING! ) #speaker: Me #choiceType: MATERIAL #speakerMode: thought
+(Be a painter! I can make marks using ANYTHING! ) #speaker: Me #choiceType: MATERIAL #speakerMode: thought 
     +[ ]
         Excellent. Now you start to look like a waitor.  #speaker: 8-2 #portrait: 8-2_frown  #speakerMode:norm
         I don't mind if you tip me. #speaker: Me 
@@ -16,12 +16,14 @@ Now I wonder what you're going to paint with.  #speaker: 8-2 #portrait: 8-2_idle
         ->start
 
 ===start===
-Can I move? Will it bother your performance? What if you take this as an excuse of drawing something terrible… #speaker: 8-2 #portrait: 8-2_smile 
-Move as you want to. #speaker: Me
-All right, I know this. That's what you call an abstract art don't you? #speaker: 8-2 #portrait: 8-2_idle
-Shut up. 
 (Once I start to draw, I need to concentrate and observe my subject. But more than that...) #speaker: Me #speakerMode: thought
-...Actually, say something about yourself. #speakerMode: norm
+... #speaker: 8-2 #portrait: 8-2_smile 
+...... #speaker: 8-2 #portrait: 8-2_smile 
+.........(｀∀´)Ψ
+
+(For some reason I couldn't stand this awkwardness. )
+
+Please, say something. #speakerMode: norm
 (I need to know about the subject. If any observation pops up, I'll collect it for the drawing. ) #speakerMode: thought
 Huh? About me? If this could contribute to a better drawing I'd cooperate. What little secret do you want to know about? #speaker: 8-2 #portrait: 8-2_smile #speakerMode: norm
 As you like.#speaker: Me
@@ -42,8 +44,8 @@ Just Kidding! Just guess, What would I do if I can't sleep? #portrait: 8-2_hands
 
 
 ===count_sheeps===
-NO-NO-NO, Painter, You don't know what I am deep inside. #speaker: 8-2 #bgm: 日常 #portrait: 8-2_smile
-I would be counting sheeps. I count to sleep every night and when I wake up, the counting still continues! 
+NO-NO-NO, Painter, You don't know who I am deep inside. #speaker: 8-2 #bgm: 日常 #portrait: 8-2_smile
+I would rather count sheeps. I count to sleep every night and when I wake up, the counting still continues! 
 Do you know how many sheeps you can count in one night? 
 The answer is no more than 7. #portrait: 8-2_idle
 Have you played the game 'count to 7'? The point is that you can not count 7. 
@@ -197,6 +199,19 @@ However, seeing that you are so talented, I will give you some secret tips.
 (He takes out a crumpled piece of paper) Give me the pen... Ok, check your new page in the book. 
 [Additional pages in the replacement manual: There is an extra page of Eighminus Tue's wrinkled paper, which talks about the relationship between possession-accurate description-painting. Part of it is supplemented by Eighminus Tue's second-hand writing.] #speaker: system
 Here, the payment for your drawing--- a little bit more than usual--- I do like it very much. #speaker: 8-2
+->END
+==where_have_you_been==
+Actually, where have you been? 
+Far away. 
+I smell of something 
+something doesn't belong to this world
+this 
+dis-
+continuity
+this 
+dis- con
+
+
 
 -> END
     

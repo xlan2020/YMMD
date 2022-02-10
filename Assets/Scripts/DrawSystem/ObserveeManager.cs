@@ -78,6 +78,7 @@ public class ObserveeManager : MonoBehaviour
         foreach (Observee o in currCollected)
         {
             objects.Add(o.gameObject);
+            o.SetCanGrab(false);
         }
         dissolveEffect.SetDestroyObjects(objects);
         currCollected.Clear();
