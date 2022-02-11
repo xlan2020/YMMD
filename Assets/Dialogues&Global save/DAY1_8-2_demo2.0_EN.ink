@@ -20,9 +20,7 @@ Now I wonder what you're going to paint with.  #speaker: 8-2 #portrait: 8-2_idle
 ... #speaker: 8-2 #portrait: 8-2_smile 
 ...... #speaker: 8-2 #portrait: 8-2_smile 
 .........(｀∀´)Ψ
-
 (For some reason I couldn't stand this awkwardness. )
-
 Please, say something. #speakerMode: norm
 (I need to know about the subject. If any observation pops up, I'll collect it for the drawing. ) #speakerMode: thought
 Huh? About me? If this could contribute to a better drawing I'd cooperate. What little secret do you want to know about? #speaker: 8-2 #portrait: 8-2_smile #speakerMode: norm

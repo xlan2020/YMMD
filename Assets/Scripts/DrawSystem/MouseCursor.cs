@@ -5,10 +5,17 @@ using UnityEngine;
 public class MouseCursor : MonoBehaviour
 {
     private Animator animator;
-    void Start()
+    private bool _inGameMode = true;
+
+    void Awake()
     {
         Cursor.visible = false;
         animator = GetComponent<Animator>();
+        // animator.SetBool("inGame", true);
+    }
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
@@ -31,6 +38,29 @@ public class MouseCursor : MonoBehaviour
     public void SetAnimationBool(string boolName, bool b)
     {
         animator.SetBool(boolName, b);
+    }
+
+    public bool InGameMode()
+    {
+        return _inGameMode;
+    }
+
+    public void SetInGameMode(bool b)
+    {
+        _inGameMode = b;
+        animator.SetBool("inGame", b);
+    }
+
+    public void SetAnimationDefault()
+    {
+        if (_inGameMode)
+        {
+            animator.SetTrigger("default");
+        }
+        else
+        {
+            animator.SetTrigger("arrow");
+        }
     }
 
 }
