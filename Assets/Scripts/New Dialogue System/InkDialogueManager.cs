@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using System;
 
 public class InkDialogueManager : MonoBehaviour
@@ -25,6 +26,9 @@ public class InkDialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject continueIcon;
     public Animator portraitAnimator;
+    public UnityEngine.Color ThoughtColor;
+    public bool StartWithDialogue = true;
+    [SerializeField] private TextAsset StartDialogueJSON;
 
     [Header("Choices UI")]
     // each choice container is an instance of the choice class
@@ -39,11 +43,14 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private DrawMaterialManager DrawMaterialManager;
     [SerializeField] private ObserveeManager observeeManager;
     [SerializeField] private SubmitDrawing drawingSubmitter;
-    public UnityEngine.Color ThoughtColor;
     private List<string> currObserveeNames = new List<string>();
     private string choiceType = "BUTTON";
     private int drawResultIndex;
     private bool canSkipChoice = false;
+    private bool startSolving = false;
+
+    [Header("Solvable Special")]
+    [SerializeField] private SolvableManager solvableManager;
 
     //tags
     private const string SPEAKER_TAG = "speaker";
@@ -54,6 +61,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string DRAW_RESULT = "hidden";
     private const string SPEAKER_MODE_TAG = "speakerMode";
     private const string BGM_TAG = "bgm";
+    private const string SOLVE_TAG = "solve";
 
 
     private Story currentStory;
@@ -88,7 +96,14 @@ public class InkDialogueManager : MonoBehaviour
         finishedRequiredOpera = true;
 
         dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+
+        // I add these lines because I don't know how to do with cross scene and the project is due tomorrow
+        // might delete that sometimes
+        dialoguePanel.SetActive(StartWithDialogue);
+        if (StartWithDialogue)
+        {
+            EnterDialogueMode(StartDialogueJSON);
+        }
 
         initializeChoices();
 
@@ -109,6 +124,7 @@ public class InkDialogueManager : MonoBehaviour
         // skip the typing effect
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            UnityEngine.Debug.Log("continue");
             ContinueStory();
         }
         if (Input.GetKey(KeyCode.LeftControl))
@@ -131,6 +147,7 @@ public class InkDialogueManager : MonoBehaviour
             // skip the typing effect
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl))
             {
+                // UnityEngine.Debug.Log("skip text");
                 dialogueText.text = line;
                 break;
             }
@@ -142,7 +159,15 @@ public class InkDialogueManager : MonoBehaviour
         // display observees and drawings if there is one
         displayVisualsAfterType();
 
-        canContinueToNextLine = true;
+        if (!startSolving)
+        {
+            canContinueToNextLine = true;
+        }
+        else
+        {
+            canContinueToNextLine = false;
+            startSolving = false;
+        }
     }
 
     public void ContinueStory()
@@ -314,6 +339,8 @@ public class InkDialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode()
     {
+
+        UnityEngine.Debug.Log("Hide dialogue panel!");
         yield return new WaitForSeconds(.2f);
 
         dialogueVariables.StopListening(currentStory);
@@ -322,6 +349,7 @@ public class InkDialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
 
+        SceneManager.LoadScene(1);
     }
 
 
@@ -369,6 +397,9 @@ public class InkDialogueManager : MonoBehaviour
                 case BGM_TAG:
                     handleBGM(tagValue);
                     break;
+                case SOLVE_TAG:
+                    handleSolveTag(tagValue);
+                    break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
                     break;
@@ -376,6 +407,24 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+    private void handleSolveTag(string tagValue)
+    {
+        switch (tagValue)
+        {
+            case "none":
+                break;
+            case "hold":
+                solvableManager.SetCanSolve(false);
+                break;
+            case "next":
+                solvableManager.SetCanSolve(true);
+                startSolving = true;
+                break;
+            default:
+                break;
+
+        }
+    }
 
     private void handleObserveeChoices()
     {
@@ -387,38 +436,43 @@ public class InkDialogueManager : MonoBehaviour
 
     private void hideChoices()
     {
-        if (choices.Length > 0 && choiceContainer.Length > 0)
+
+        if (choiceContainer.Length > 0 && choices.Length > 0)
         {
             foreach (GameObject choiceButton in choices)
             {
                 choiceButton.SetActive(false);
             }
         }
+
     }
     private void displayChoices()
     {
-        List<Choice> currentChoices = currentStory.currentChoices;
-
-        if (currentChoices.Count > choices.Length)
+        if (choiceContainer.Length > 0)
         {
-            Debug.LogError("Choices overflow what UI can support, it's" + currentChoices.Count);
-        }
+            List<Choice> currentChoices = currentStory.currentChoices;
 
-        int index = 0;
-        foreach (Choice choice in currentChoices)
-        {
-            choices[index].gameObject.SetActive(true);
-            choicesText[index].text = choice.text;
-            index++;
-        }
+            if (currentChoices.Count > choices.Length)
+            {
+                Debug.LogError("Choices overflow what UI can support, it's" + currentChoices.Count);
+            }
 
-        // hide leftover choices 
-        for (int i = index; i < choices.Length; i++)
-        {
-            choices[i].gameObject.SetActive(false);
+            int index = 0;
+            foreach (Choice choice in currentChoices)
+            {
+                choices[index].gameObject.SetActive(true);
+                choicesText[index].text = choice.text;
+                index++;
+            }
 
+            // hide leftover choices 
+            for (int i = index; i < choices.Length; i++)
+            {
+                choices[i].gameObject.SetActive(false);
+
+            }
+            StartCoroutine(selectFirstChoice());
         }
-        StartCoroutine(selectFirstChoice());
     }
 
     private IEnumerator selectFirstChoice()
@@ -446,8 +500,16 @@ public class InkDialogueManager : MonoBehaviour
         {
             canSkipChoice = false;
             MakeChoice(0);
-            drawingSubmitter.CanSubmit(false);
+            if (DrawMode)
+            {
+                drawingSubmitter.CanSubmit(false);
+            }
         }
+    }
+
+    public void SetCanContinueToNextLine(bool b)
+    {
+        canContinueToNextLine = b;
     }
 }
 

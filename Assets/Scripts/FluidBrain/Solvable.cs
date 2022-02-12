@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Solvable : MonoBehaviour
 {
@@ -17,20 +18,30 @@ public class Solvable : MonoBehaviour
     private Collider2D collider;
     private DragDrop dragDrop;
     private AudioSource source;
+    private SpriteRenderer renderer;
     private bool _isPlayingSound = false;
+    private MouseCursor cursor;
+
+    [Header("Click Type Solvable")]
+    public bool ClickType = false;
+    [SerializeField] private SolvableReceiver TargetClickReceiver;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
-        dragDrop = GetComponent<DragDrop>();
         source = GetComponent<AudioSource>();
+        dragDrop = GetComponent<DragDrop>();
+        renderer = GetComponent<SpriteRenderer>();
         collider.enabled = false;
-        dragDrop.enabled = false;
+        if (dragDrop != null)
+        {
+            dragDrop.enabled = false;
+        }
     }
     void Start()
     {
-
+        cursor = manager.GetCursor();
     }
 
     // Update is called once per frame
@@ -38,14 +49,17 @@ public class Solvable : MonoBehaviour
     {
         if (source != null)
         {
-            if (!_isPlayingSound && dragDrop.IsOnDrag())
+            if (!_isPlayingSound && !ClickType && dragDrop.IsOnDrag())
             {
-                source.Play();
-                _isPlayingSound = true;
+                if (source.clip != null)
+                {
+                    source.Play();
+                    _isPlayingSound = true;
+                }
                 ChangeLowerPreviousSound(true);
                 UnityEngine.Debug.Log("Play solvable audio!");
             }
-            if (_isPlayingSound && dragDrop.IsOnDrop())
+            if (_isPlayingSound && !ClickType && dragDrop.IsOnDrop())
             {
                 source.Stop();
                 _isPlayingSound = false;
@@ -55,6 +69,17 @@ public class Solvable : MonoBehaviour
         }
     }
 
+    public void Show()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("hidden", false);
+        }
+        else if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
+    }
     private void SendRight()
     {
         _inLeft = false;
@@ -80,8 +105,12 @@ public class Solvable : MonoBehaviour
     public void SetInteractive(bool b)
     {
         collider.enabled = b;
-        dragDrop.enabled = b;
+        if (dragDrop != null)
+        {
+            dragDrop.enabled = b;
+        }
         interactive = b;
+
     }
 
     public void DoneSolving()
@@ -119,4 +148,44 @@ public class Solvable : MonoBehaviour
             }
         }
     }
+
+    private void SolveSelf()
+    {
+        TargetClickReceiver.show();
+        TargetClickReceiver.ClearOtherSound();
+        DoneSolving();
+    }
+    private void OnMouseEnter()
+    {
+        if (ClickType)
+        {
+            cursor.SetAnimationTrigger("point");
+        }
+        else
+        {
+            cursor.SetAnimationTrigger("hand");
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        cursor.SetAnimationBool("grab", true);
+    }
+
+    private void OnMouseUp()
+    {
+        cursor.SetAnimationBool("grab", false);
+
+        UnityEngine.Debug.Log("Click on solvable");
+        if (ClickType)
+        {
+            SolveSelf();
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        cursor.SetAnimationDefault();
+    }
+
 }

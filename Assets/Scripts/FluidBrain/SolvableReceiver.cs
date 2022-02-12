@@ -9,16 +9,38 @@ public class SolvableReceiver : MonoBehaviour
 {
     public Solvable TargetSolvable;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private AudioSource source;
     public GameObject[] AdditionalReceivers;
     public SolvableReceiver[] ClearSound;
+    public GameObject[] ClearImage;
+    public SolvableReceiver[] NextReceivers;
+
+    public bool ImmediateTrigger = false;
 
     private bool _hidden = true;
+    private Collider2D collider;
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = false;
+        }
         animator = gameObject.GetComponent<Animator>();
-        animator.SetBool("hidden", true);
+        if (animator == null)
+        {
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.enabled = false;
+            }
+        }
+        else
+        {
+            animator.SetBool("hidden", true);
+        }
         source = GetComponent<AudioSource>();
 
     }
@@ -33,26 +55,50 @@ public class SolvableReceiver : MonoBehaviour
     {
         if (other.gameObject == TargetSolvable.gameObject)
         {
-            if (other.GetComponent<DragDrop>().IsOnDrop() == true)
+            if (other.GetComponent<DragDrop>().IsOnDrop() || ImmediateTrigger)
             {
                 show();
-                ClearOtherSound();
                 TargetSolvable.DoneSolving();
+                GetComponent<Collider2D>().enabled = false;
             }
         }
     }
 
-    void show()
+    public void show()
     {
-        animator.SetBool("hidden", false);
-        source.Play();
+        ClearOtherSound();
+        ClearOtherImages();
+
+        // visually show
+        if (animator != null)
+        {
+            animator.SetBool("hidden", false);
+        }
+        else if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+
+        // play audio
+        if (source != null)
+        {
+            source.Play();
+        }
+
+        EnableNextReceiver();
+
         foreach (GameObject o in AdditionalReceivers)
         {
             o.SetActive(true);
             Animator a = o.GetComponent<Animator>();
+            SpriteRenderer s = o.GetComponent<SpriteRenderer>();
             if (a != null)
             {
                 a.SetBool("hidden", false);
+            }
+            else if (s != null)
+            {
+                s.enabled = true;
             }
         }
     }
@@ -63,13 +109,40 @@ public class SolvableReceiver : MonoBehaviour
         UnityEngine.Debug.Log("lowering sound" + b);
     }
 
-    private void ClearOtherSound()
+    public void ClearOtherSound()
     {
         if (ClearSound != null)
         {
             foreach (SolvableReceiver s in ClearSound)
             {
                 s.GetComponent<AudioSource>().Stop();
+            }
+        }
+    }
+
+    public void ClearOtherImages()
+    {
+        if (ClearImage != null)
+        {
+            foreach (GameObject g in ClearImage)
+            {
+                SpriteRenderer gRenderer = g.GetComponent<SpriteRenderer>();
+                if (gRenderer != null)
+                {
+                    gRenderer.enabled = false;
+                }
+            }
+        }
+    }
+
+    public void EnableNextReceiver()
+    {
+        foreach (SolvableReceiver r in NextReceivers)
+        {
+            Collider2D collider = r.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = true;
             }
         }
     }

@@ -6,6 +6,7 @@ public class MouseCursor : MonoBehaviour
 {
     private Animator animator;
     private bool _inGameMode = true;
+    private bool _inFluidBrain = false;
 
     void Awake()
     {
@@ -61,6 +62,16 @@ public class MouseCursor : MonoBehaviour
         {
             animator.SetTrigger("arrow");
         }
+        if (_inFluidBrain)
+        {
+            animator.SetTrigger("observe");
+        }
+    }
+
+    public void SetInFluidBrain(bool b)
+    {
+        _inFluidBrain = b;
+        animator.SetTrigger("observe");
     }
 
 }

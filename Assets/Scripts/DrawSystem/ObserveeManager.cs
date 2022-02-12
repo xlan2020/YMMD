@@ -17,7 +17,7 @@ public class ObserveeManager : MonoBehaviour
     private Dictionary<string, Observee> observeeDict;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         currLeft = new List<Observee>();
         currCollected = new List<Observee>();

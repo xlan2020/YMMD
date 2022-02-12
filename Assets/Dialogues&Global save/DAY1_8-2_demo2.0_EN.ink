@@ -164,16 +164,16 @@ Seven is something in this world you can never reach. Painter, do you know why? 
 The drawing is done. #speaker: Me #portrait: 8-2_idle #speakerMode: norm
 Ohh, quite fast! Let me see... Huh? Huhhhh? #portrait: 8-2_suprised 
 ...... #portrait: 8-2_noexpression #bgm: 悬疑
-...............#speaker: 8-2 #portrait: 8-2_serious
+...............#speaker: 8-2 #portrait: 8-2_indifference
 (Although it's my friend, his expression still makes me feel a little unsettled...) #speakerMode: thought
 Uh, anything wrong with it?  #speaker: Me #speakerMode: norm
 No...No. There's nothing wrong, even too right. 
 ...But how do you know? I never told you...
-How do you know that it's seven people... #speaker: 8-2 #portrait: 8-2_serious
+How do you know that it's seven people... #speaker: 8-2 #portrait: 8-2_indifference
 ... Huh? #speaker: Me
-Nothing.  #speaker: 8-2 #portrait: 8-2_serious 
+Nothing.  #speaker: 8-2 #portrait: 8-2_indifference
 PAIN~TER~~!!! Well done! #bgm: 戏谑
-Your future is GOLD! ❤❤! #speaker: 8-2 #portrait: 8-2_excited
+Your future is GOLD! ❤❤! #speaker: 8-2 #portrait: 8-2_handsup
 (sign.)...Fine. This time you turned out to think its good? #speaker: Me
 I am telling the truth. Your drawing has a potential- 
 -Painter, Do you know what does it mean to own a person? #speaker: 8-2 #speaker: 8-2 #portrait: 8-2_idle

@@ -11,9 +11,10 @@ public class BGMPlayer : MonoBehaviour
     [SerializeField] private AudioClip 紧张;
     [SerializeField] private AudioClip 悬疑;
     [SerializeField] private AudioClip 柴柴;
+    [SerializeField] private AudioClip 房间;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         source = GetComponent<AudioSource>();
     }
@@ -46,6 +47,9 @@ public class BGMPlayer : MonoBehaviour
             case "柴柴":
                 source.clip = 柴柴;
                 break;
+            case "房间":
+                source.clip = 房间;
+                break;
             default:
                 break;
         }
@@ -61,5 +65,7 @@ public class BGMPlayer : MonoBehaviour
     {
         source.Play();
     }
+
+
 
 }

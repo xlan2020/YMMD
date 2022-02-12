@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public TextAsset inkJSON;
+    //public InkDialogueManager InkDialogueManagerInstance;
 
 
     void Awake()

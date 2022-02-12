@@ -6,9 +6,15 @@ using UnityEngine;
 public class SolvableManager : MonoBehaviour
 {
 
+    public InkDialogueManager dialogueManager;
     public List<Solvable> AllSolvables;
     public Queue<Solvable> solvables;
+
+    public MouseCursor cursor;
     private Solvable currSolvable;
+    private Solvable suspendSolvable;
+    private bool _canSolve = false;
+    private bool _suspending;
     // private List<Solvable> leftSolvables;
     // private List<Solvable> rightSolvables;
 
@@ -36,7 +42,10 @@ public class SolvableManager : MonoBehaviour
         {
             currSolvable = solvables.Dequeue();
         }
-        currSolvable.SetInteractive(true);
+        SuspendInteractiveTillCanSolve(currSolvable);
+        // currSolvable.SetInteractive(true);
+
+        cursor.SetInFluidBrain(true);
     }
 
     // Update is called once per frame
@@ -45,9 +54,41 @@ public class SolvableManager : MonoBehaviour
         // update next solvable
         if (currSolvable != null && solvables.Count > 0 && currSolvable.IsDone())
         {
+            _canSolve = false;
             currSolvable = solvables.Dequeue();
-            currSolvable.SetInteractive(true);
+            currSolvable.Show();
+            dialogueManager.SetCanContinueToNextLine(true);
+            dialogueManager.ContinueStory();
+            SuspendInteractiveTillCanSolve(currSolvable);
+
         }
+
+        if (_suspending && _canSolve)
+        {
+            _suspending = false;
+            suspendSolvable.SetInteractive(true);
+            suspendSolvable = null;
+        }
+    }
+
+    private void SuspendInteractiveTillCanSolve(Solvable s)
+    {
+        suspendSolvable = s;
+        _suspending = true;
+    }
+
+    public void SetCanSolve(bool b)
+    {
+        _canSolve = b;
+    }
+
+    public bool CanSolve()
+    {
+        return _canSolve;
+    }
+    public MouseCursor GetCursor()
+    {
+        return cursor;
     }
 
 }

@@ -24,7 +24,7 @@ public class DialoguePanel : MonoBehaviour
 
     void OnMouseExit()
     {
-        cursor.GetComponent<Animator>().SetTrigger("default");
+        cursor.SetAnimationDefault();
     }
 
 
