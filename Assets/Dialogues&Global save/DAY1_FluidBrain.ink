@@ -20,6 +20,11 @@ So itchy that I want to scratch. I want to hold something firmly. This fish scal
 Feel it - #solve: next 
 Ouch! ...wait, what is that? #solve: next
 Blood spatters. Hands dirty. #solve: next
+solve blood, fish pilled. #solve: next
+fish closer. #solve: next
+drag texture. #solve: next
+drag 鱼鳍. #solve: next
 
-Thank you for playing we code and code and code, day and night, and it's not done yet. #speaker: Hello  #speakerMode: norm
+
+Thank you for playing we code and code and code, day and night, and it's not done yet. #speaker: Hello  #speakerMode: norms
 -> END

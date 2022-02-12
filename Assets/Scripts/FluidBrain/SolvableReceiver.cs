@@ -14,6 +14,7 @@ public class SolvableReceiver : MonoBehaviour
     public GameObject[] AdditionalReceivers;
     public SolvableReceiver[] ClearSound;
     public GameObject[] ClearImage;
+    public GameObject[] ClearObjects;
     public SolvableReceiver[] NextReceivers;
 
     public bool ImmediateTrigger = false;
@@ -59,15 +60,18 @@ public class SolvableReceiver : MonoBehaviour
             {
                 show();
                 TargetSolvable.DoneSolving();
-                GetComponent<Collider2D>().enabled = false;
+                collider.enabled = false;
             }
         }
     }
 
     public void show()
     {
+        UnityEngine.Debug.Log("showing receiver");
+
         ClearOtherSound();
         ClearOtherImages();
+        ClearOtherObjects();
 
         // visually show
         if (animator != null)
@@ -131,6 +135,22 @@ public class SolvableReceiver : MonoBehaviour
                 {
                     gRenderer.enabled = false;
                 }
+                Animator gAnimator = g.GetComponent<Animator>();
+                if (gAnimator != null)
+                {
+                    gAnimator.SetBool("hidden", true);
+                }
+            }
+        }
+    }
+
+    public void ClearOtherObjects()
+    {
+        if (ClearImage != null)
+        {
+            foreach (GameObject g in ClearObjects)
+            {
+                g.SetActive(false);
             }
         }
     }

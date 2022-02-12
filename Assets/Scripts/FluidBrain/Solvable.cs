@@ -11,7 +11,7 @@ public class Solvable : MonoBehaviour
     private Animator animator;
     private Vector3 mOffset;
     private bool isDone = false;
-    [SerializeField] private Solvable nextSolvable;
+    // [SerializeField] private Solvable nextSolvable;
     [SerializeField] private SolvableReceiver[] lowerSounds;
     public bool LowerSound = false;
     public SolvableManager manager;
@@ -119,24 +119,27 @@ public class Solvable : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public Solvable GetNext()
-    {
-        return nextSolvable;
-    }
+    /**
+        public Solvable GetNext()
+        {
+            return nextSolvable;
+        }
+        */
 
     public bool IsDone()
     {
         return isDone;
     }
-
-    public bool HasNext()
-    {
-        if (nextSolvable == null)
+    /**
+        public bool HasNext()
         {
-            return false;
+            if (nextSolvable == null)
+            {
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
+        */
 
     private void ChangeLowerPreviousSound(bool b)
     {
