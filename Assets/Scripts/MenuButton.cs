@@ -4,28 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MenuButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public MouseCursor cursor;
     public SettingsMenu settingsMenu;
     private Button menuButton;
     private AudioSource audio;
-    private AudioClip OpenAudio;
+    private AudioClip openAudio;
     // Start is called before the first frame update
     void Start()
     {
         menuButton = GetComponent<Button>();
         audio = GetComponent<AudioSource>();
-        OpenAudio = settingsMenu.GetOpenAudio();
+        openAudio = settingsMenu.GetOpenAudio();
+        menuButton.onClick.AddListener(PlayClickAudio);
 
     }
-
-    public void OnPointerClick(PointerEventData eventData)
+    void PlayClickAudio()
     {
-        audio.clip = OpenAudio;
+        audio.clip = openAudio;
         audio.Play();
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         cursor.SetAnimationTrigger("point");

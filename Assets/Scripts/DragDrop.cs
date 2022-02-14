@@ -14,10 +14,14 @@ public class DragDrop : MonoBehaviour
     public bool FreezeZ = false;
 
     public bool DragAboveMask = false;
+    private Vector3 snapPos;
+
     // Start is called before the first frame update
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        snapPos = transform.position;
+
 
     }
 
@@ -88,16 +92,17 @@ public class DragDrop : MonoBehaviour
     {
         if (_onDrag)
         {
-            _onDrag = false;
-            _onDrop = true;
-            // UnityEngine.Debug.Log("Drop!");
-
-            // drop
-            if (DragAboveMask)
-            {
-                MoveAboveMask(false);
-            }
+            Drop();
         }
+    }
+
+    private void Drop()
+    {
+        _onDrag = false;
+        _onDrop = true;
+        UnityEngine.Debug.Log("Drop!");
+
+
     }
 
     public bool IsOnDrop()
@@ -125,5 +130,20 @@ public class DragDrop : MonoBehaviour
         {
             sprite.sortingLayerName = "Solvable";
         }
+    }
+
+    public void Snap()
+    {
+        transform.position = snapPos;
+    }
+
+    public void SetSnapPosition(Vector3 nextPos)
+    {
+        snapPos = nextPos;
+    }
+
+    public void SnapBack()
+    {
+        transform.position = snapPos;
     }
 }

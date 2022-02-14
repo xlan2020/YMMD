@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SettingsMenu : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class SettingsMenu : MonoBehaviour
     [Header("Button & GameObjects")]
     public Button MenuButton;
     public Button MenuBackButton;
+    public Button SettingPanelButton;
+    public Button ControlPanelButton;
     public GameObject SettingMenuObject;
     public MouseCursor cursor;
     public GameObject ControlPanel;
     public GameObject SettingPanel;
+    public GameObject FirstSelectedButton;
 
     [Header("Button Audio SFX")]
     public AudioClip OpenAudio;
@@ -43,13 +47,30 @@ public class SettingsMenu : MonoBehaviour
         {
             if (_isOpen)
             {
-                BackToGame();
+                MenuBackButton.onClick.Invoke();
             }
             else
             {
-                OpenSettingMenu();
+                MenuButton.onClick.Invoke();
             }
         }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SettingPanelButton.Select();
+            SettingPanelButton.onClick.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            ControlPanelButton.Select();
+            ControlPanelButton.onClick.Invoke();
+        }
+
+        if (!EventSystem.current.alreadySelecting)
+        {
+            // EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
+        }
+
+
     }
     /**
     public void SetVolume(float volume)
@@ -94,6 +115,9 @@ public class SettingsMenu : MonoBehaviour
         // sound
         BgmMixer.SetFloat("MasterVolume", -20f);
 
+
+        EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
+
     }
 
     public void BackToGame()
@@ -111,6 +135,9 @@ public class SettingsMenu : MonoBehaviour
 
         //sound
         BgmMixer.SetFloat("MasterVolume", 0f);
+
+
+        EventSystem.current.SetSelectedGameObject(null);
 
     }
 

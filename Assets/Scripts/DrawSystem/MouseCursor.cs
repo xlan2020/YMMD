@@ -54,6 +54,7 @@ public class MouseCursor : MonoBehaviour
 
     public void SetAnimationDefault()
     {
+        animator.SetBool("grab", false);
         if (_inGameMode)
         {
             animator.SetTrigger("default");

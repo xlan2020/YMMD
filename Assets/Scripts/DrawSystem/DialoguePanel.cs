@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DialoguePanel : MonoBehaviour
+public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public MouseCursor cursor;
     // Start is called before the first frame update
@@ -17,12 +18,12 @@ public class DialoguePanel : MonoBehaviour
 
     }
 
-    void OnMouseEnter()
+    public void OnPointerEnter(PointerEventData pointerEventData)
     {
         cursor.GetComponent<Animator>().SetTrigger("dialogue");
     }
 
-    void OnMouseExit()
+    public void OnPointerExit(PointerEventData pointerEventData)
     {
         cursor.SetAnimationDefault();
     }

@@ -25,6 +25,10 @@ public class Solvable : MonoBehaviour
     [Header("Click Type Solvable")]
     public bool ClickType = false;
     [SerializeField] private SolvableReceiver TargetClickReceiver;
+    private Vector3 startPos;
+    private bool _atDestination = false;
+    private int choiceIndex = 1;
+    private bool _canMakeChoice = false;
 
     private void Awake()
     {
@@ -42,6 +46,7 @@ public class Solvable : MonoBehaviour
     void Start()
     {
         cursor = manager.GetCursor();
+        startPos = transform.position;
     }
 
     // Update is called once per frame
@@ -66,7 +71,9 @@ public class Solvable : MonoBehaviour
                 ChangeLowerPreviousSound(false);
                 UnityEngine.Debug.Log("Stop solvable audio!");
             }
+
         }
+        CheckSnapToStart();
     }
 
     public void Show()
@@ -116,6 +123,12 @@ public class Solvable : MonoBehaviour
     public void DoneSolving()
     {
         isDone = true;
+        if (_canMakeChoice)
+        {
+            manager.MakeDialogueChoice(choiceIndex);
+            _canMakeChoice = false;
+        }
+        cursor.SetAnimationDefault();
         gameObject.SetActive(false);
     }
 
@@ -154,10 +167,10 @@ public class Solvable : MonoBehaviour
 
     private void SolveSelf()
     {
-        TargetClickReceiver.show();
-        TargetClickReceiver.ClearOtherSound();
+        TargetClickReceiver.ReceiveSolve();
         DoneSolving();
     }
+
     private void OnMouseEnter()
     {
         if (ClickType)
@@ -180,7 +193,7 @@ public class Solvable : MonoBehaviour
         cursor.SetAnimationBool("grab", false);
 
         UnityEngine.Debug.Log("Click on solvable");
-        if (ClickType)
+        if (ClickType && interactive)
         {
             SolveSelf();
         }
@@ -191,4 +204,27 @@ public class Solvable : MonoBehaviour
         cursor.SetAnimationDefault();
     }
 
+    private void CheckSnapToStart()
+    {
+        // yield return new WaitForFixedUpdate();
+        if (dragDrop != null && dragDrop.IsOnDrop())
+        {
+            if (!_atDestination)
+            {
+                dragDrop.SetSnapPosition(startPos);
+                dragDrop.Snap();
+            }
+        }
+    }
+
+    public void SetAtDestination(bool b)
+    {
+        _atDestination = b;
+    }
+
+    public void SetSolveToBeChoice(int i)
+    {
+        choiceIndex = i;
+        _canMakeChoice = true;
+    }
 }

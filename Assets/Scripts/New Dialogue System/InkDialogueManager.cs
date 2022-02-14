@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+// using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -126,10 +127,12 @@ public class InkDialogueManager : MonoBehaviour
         {
             UnityEngine.Debug.Log("continue");
             ContinueStory();
+            SkipChoice();
         }
         if (Input.GetKey(KeyCode.LeftControl))
         {
             ContinueStory();
+            SkipChoice();
         }
     }
 
@@ -141,7 +144,7 @@ public class InkDialogueManager : MonoBehaviour
         canContinueToNextLine = false;
         // fast skip
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.04f);
         foreach (char letter in line.ToCharArray())
         {
             // skip the typing effect
@@ -273,6 +276,11 @@ public class InkDialogueManager : MonoBehaviour
                 break;
             case "AUTO":
                 canSkipChoice = true;
+                choiceType = "BUTTON";
+                break;
+            case "SOLVE_OR_LOOP":
+                canSkipChoice = true;
+                solvableManager.SetSolveToBeChoice(1);
                 choiceType = "BUTTON";
                 break;
             default:

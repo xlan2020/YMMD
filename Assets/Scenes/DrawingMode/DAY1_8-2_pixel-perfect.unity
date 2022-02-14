@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 93323398}
   - component: {fileID: 93323396}
   - component: {fileID: 93323399}
+  - component: {fileID: 93323401}
+  - component: {fileID: 93323400}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -390,9 +392,35 @@ MonoBehaviour:
   m_RefResolutionY: 405
   m_UpscaleRT: 0
   m_PixelSnapping: 1
-  m_CropFrameX: 0
-  m_CropFrameY: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
   m_StretchFill: 0
+--- !u!114 &93323400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93323394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522ce8019a9834b8482ef3177f924610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &93323401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 93323394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0abb36f2a137ac4f956a48cdfc50c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindowedResolutions: []
+  FullscreenResolutions: []
 --- !u!1 &102284605
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +679,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 80080a9149918422e9c6a139820e8502, type: 3}
+    m_Font: {fileID: 12800000, guid: c0be8d057eefe4c669c734d0b8b950c5, type: 3}
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
@@ -912,7 +940,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 80080a9149918422e9c6a139820e8502, type: 3}
+    m_Font: {fileID: 12800000, guid: c0be8d057eefe4c669c734d0b8b950c5, type: 3}
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
@@ -1027,7 +1055,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 8222888199321131442, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2458,7 +2486,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -7322292197446169110, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2589,7 +2617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1277678785
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2628,7 +2656,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 4086634868293176356, guid: a933fc97c8bd8416c9a71477ecc440fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3023,7 +3051,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1462681897907429523, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3350,7 +3378,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 3635629859677769515, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4149,7 +4177,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1782537565921445555, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4522,6 +4550,7 @@ GameObject:
   - component: {fileID: 1953135525}
   - component: {fileID: 1953135524}
   - component: {fileID: 1953135523}
+  - component: {fileID: 1953135526}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -4654,6 +4683,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953135521}
   m_CullTransparentMesh: 1
+--- !u!114 &1953135526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953135521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ab197ba5724440cbc793851587f7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 583783960}
 --- !u!1 &2066304073
 GameObject:
   m_ObjectHideFlags: 0
@@ -4667,7 +4709,6 @@ GameObject:
   - component: {fileID: 2066304075}
   - component: {fileID: 2066304078}
   - component: {fileID: 2066304077}
-  - component: {fileID: 2066304080}
   - component: {fileID: 2066304079}
   m_Layer: 5
   m_Name: DialoguePanel
@@ -4801,19 +4842,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 418.52368, y: 83.701836}
   m_EdgeRadius: 0
---- !u!114 &2066304080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066304073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ab197ba5724440cbc793851587f7ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursor: {fileID: 583783960}
 --- !u!1 &2095034141
 GameObject:
   m_ObjectHideFlags: 0
@@ -5444,7 +5472,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 80080a9149918422e9c6a139820e8502, type: 3}
+    m_Font: {fileID: 12800000, guid: c0be8d057eefe4c669c734d0b8b950c5, type: 3}
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
@@ -5541,7 +5569,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 80080a9149918422e9c6a139820e8502, type: 3}
+    m_Font: {fileID: 12800000, guid: c0be8d057eefe4c669c734d0b8b950c5, type: 3}
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0

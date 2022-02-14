@@ -91,4 +91,14 @@ public class SolvableManager : MonoBehaviour
         return cursor;
     }
 
+    public void SetSolveToBeChoice(int i)
+    {
+        currSolvable.SetSolveToBeChoice(i);
+    }
+
+    public void MakeDialogueChoice(int i)
+    {
+        dialogueManager.MakeChoice(i);
+    }
+
 }

@@ -21,6 +21,10 @@ public class SolvableReceiver : MonoBehaviour
 
     private bool _hidden = true;
     private Collider2D collider;
+    public bool DisableColliderAfterUse = true;
+    public bool HasSecondCollider = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,45 +56,64 @@ public class SolvableReceiver : MonoBehaviour
 
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject == TargetSolvable.gameObject)
+        {
+            other.gameObject.GetComponent<Solvable>().SetAtDestination(true);
+            if (other.GetComponent<DragDrop>().IsOnDrop() || ImmediateTrigger)
+            {
+                TargetSolvable.DoneSolving();
+                ReceiveSolve();
+            }
+        }
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject == TargetSolvable.gameObject)
         {
             if (other.GetComponent<DragDrop>().IsOnDrop() || ImmediateTrigger)
             {
-                show();
                 TargetSolvable.DoneSolving();
-                collider.enabled = false;
+                ReceiveSolve();
             }
         }
     }
 
-    public void show()
+    void OnTriggerExit2D(Collider2D other)
     {
-        UnityEngine.Debug.Log("showing receiver");
+        if (other.gameObject == TargetSolvable.gameObject)
+        {
+            other.gameObject.GetComponent<Solvable>().SetAtDestination(false);
+        }
 
+    }
+
+    public void ReceiveSolve()
+    {
+        // UnityEngine.Debug.Log("Receive Solve");
         ClearOtherSound();
         ClearOtherImages();
         ClearOtherObjects();
 
-        // visually show
-        if (animator != null)
-        {
-            animator.SetBool("hidden", false);
-        }
-        else if (spriteRenderer != null)
-        {
-            spriteRenderer.enabled = true;
-        }
-
-        // play audio
-        if (source != null)
-        {
-            source.Play();
-        }
+        Show();
+        ShowAdditionalReceivers();
 
         EnableNextReceiver();
 
+        if (collider != null && HasSecondCollider && animator != null)
+        {
+            animator.SetTrigger("secondCollider");
+        }
+        if (DisableColliderAfterUse && collider != null)
+        {
+            collider.enabled = false;
+        }
+        this.enabled = false;
+    }
+    private void ShowAdditionalReceivers()
+    {
         foreach (GameObject o in AdditionalReceivers)
         {
             o.SetActive(true);
@@ -107,6 +130,25 @@ public class SolvableReceiver : MonoBehaviour
         }
     }
 
+    private void Show()
+    {
+        // visually show
+        if (animator != null)
+        {
+            animator.SetBool("hidden", false);
+        }
+        else if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+
+        // play audio
+        if (source != null)
+        {
+            source.Play();
+        }
+
+    }
     public void ChangeLowerSound(bool b)
     {
         animator.SetBool("lowSound", b);
@@ -157,6 +199,11 @@ public class SolvableReceiver : MonoBehaviour
 
     public void EnableNextReceiver()
     {
+        if (NextReceivers == null)
+        {
+            UnityEngine.Debug.Log("doesn't have next receiver.");
+            return;
+        }
         foreach (SolvableReceiver r in NextReceivers)
         {
             Collider2D collider = r.GetComponent<Collider2D>();
@@ -166,4 +213,5 @@ public class SolvableReceiver : MonoBehaviour
             }
         }
     }
+
 }

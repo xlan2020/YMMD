@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -323,6 +323,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5318286544998975624}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: BackToGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5318286543503655790}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -380,7 +392,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 7aca811fbfb494fa9b620cb7abe486d4, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d9179a1dccc8d4a52ac40f3f772510a6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -573,7 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -607,6 +619,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5318286544998975624}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
         m_MethodName: OpenSettingMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5318286543794681761}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -664,7 +688,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 7aca811fbfb494fa9b620cb7abe486d4, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d9179a1dccc8d4a52ac40f3f772510a6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -841,10 +865,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286545142751270}
+    m_SelectOnDown: {fileID: 5318286544298101626}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -993,6 +1017,7 @@ GameObject:
   - component: {fileID: 5318286544006571843}
   - component: {fileID: 5318286544006571841}
   - component: {fileID: 5318286544006571840}
+  - component: {fileID: 7252877110010446793}
   m_Layer: 5
   m_Name: bluecolor
   m_TagString: Untagged
@@ -1016,7 +1041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.5, y: 5}
+  m_AnchoredPosition: {x: -2.5, y: 4.5}
   m_SizeDelta: {x: 367, y: 233}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5318286544006571841
@@ -1057,6 +1082,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!223 &7252877110010446793
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318286544006571842}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &5318286544032271416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,10 +1369,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286543901127390}
+    m_SelectOnDown: {fileID: 5318286544927388768}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1555,10 +1601,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286544446833328}
+    m_SelectOnDown: {fileID: 5318286545142751270}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -1799,10 +1845,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286544477459539}
+    m_SelectOnDown: {fileID: 5318286544393156418}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -2031,10 +2077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286544927388768}
+    m_SelectOnDown: {fileID: 5318286544446833328}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -2275,10 +2321,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286544298101626}
+    m_SelectOnDown: {fileID: 5318286544477459539}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -2582,11 +2628,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 5318286545342423275}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
   m_Colors:
@@ -2598,7 +2644,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 7013375925189569469, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
+    m_HighlightedSprite: {fileID: 347895110743792094, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
     m_PressedSprite: {fileID: 347895110743792094, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
     m_SelectedSprite: {fileID: 347895110743792094, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
     m_DisabledSprite: {fileID: 7013375925189569469, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
@@ -2785,10 +2831,13 @@ MonoBehaviour:
   SfxMixer: {fileID: 24100000, guid: 7aca811fbfb494fa9b620cb7abe486d4, type: 2}
   MenuButton: {fileID: 5318286543794681766}
   MenuBackButton: {fileID: 5318286543503655786}
+  SettingPanelButton: {fileID: 5318286545342423275}
+  ControlPanelButton: {fileID: 5318286544993784108}
   SettingMenuObject: {fileID: 5318286545078934245}
   cursor: {fileID: 0}
   ControlPanel: {fileID: 5318286544032271416}
   SettingPanel: {fileID: 5318286543248767133}
+  FirstSelectedButton: {fileID: 5318286544446833330}
   OpenAudio: {fileID: 8300000, guid: d9179a1dccc8d4a52ac40f3f772510a6, type: 3}
 --- !u!1 &5318286545078934245
 GameObject:
@@ -2806,7 +2855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5318286545078934240
 Transform:
   m_ObjectHideFlags: 0
@@ -2862,7 +2911,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1958126761
-  m_SortingLayer: 8
+  m_SortingLayer: 11
   m_SortingOrder: 0
   m_Sprite: {fileID: -98814619706789923, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3004,10 +3053,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286544393156418}
+    m_SelectOnDown: {fileID: 5318286543901127390}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -3337,12 +3386,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 5318286544477459539}
+    m_SelectOnDown: {fileID: 5318286544446833328}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 5318286544993784108}
   m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -3353,7 +3402,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 1605767534176645562, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
+    m_HighlightedSprite: {fileID: 1896550097961777184, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
     m_PressedSprite: {fileID: 1896550097961777184, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
     m_SelectedSprite: {fileID: 1896550097961777184, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
     m_DisabledSprite: {fileID: 1605767534176645562, guid: c9e7748cefe134a8ea255c337aa72319, type: 3}
