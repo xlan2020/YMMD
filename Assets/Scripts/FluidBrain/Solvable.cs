@@ -38,6 +38,7 @@ public class Solvable : MonoBehaviour
         dragDrop = GetComponent<DragDrop>();
         renderer = GetComponent<SpriteRenderer>();
         collider.enabled = false;
+        Hide();
         if (dragDrop != null)
         {
             dragDrop.enabled = false;
@@ -85,6 +86,18 @@ public class Solvable : MonoBehaviour
         else if (renderer != null)
         {
             renderer.enabled = true;
+        }
+    }
+
+    public void Hide()
+    {
+        if (animator != null)
+        {
+            animator.SetBool("hidden", true);
+        }
+        else if (renderer != null)
+        {
+            renderer.enabled = false;
         }
     }
     private void SendRight()

@@ -23,9 +23,11 @@ public class SolvableManager : MonoBehaviour
         solvables = new Queue<Solvable>();
         // leftSolvables = new List<Solvable>();
         // rightSolvables = new List<Solvable>();
+        int index = 0;
         foreach (Solvable s in AllSolvables)
         {
             solvables.Enqueue(s);
+            // UnityEngine.Debug.Log("Set Solvable interactive, index:  " + index);
             s.SetInteractive(false);
             /**
             if (s.InLeft())
@@ -37,10 +39,12 @@ public class SolvableManager : MonoBehaviour
                 rightSolvables.Add(s);
             }
             */
+            index++;
         }
         if (solvables.Count > 0)
         {
             currSolvable = solvables.Dequeue();
+            currSolvable.Show();
         }
         SuspendInteractiveTillCanSolve(currSolvable);
         // currSolvable.SetInteractive(true);

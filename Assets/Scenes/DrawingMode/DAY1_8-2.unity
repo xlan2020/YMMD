@@ -624,6 +624,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 453361472}
   observeeManager: {fileID: 901699925}
+  cursor: {fileID: 0}
+  progressAnimator: {fileID: 0}
 --- !u!61 &102284610
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -943,7 +945,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -450791441
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 227b93e8437a14642ae99a107a7aa861, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1067,7 +1069,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 8222888199321131442, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1097,6 +1099,7 @@ MonoBehaviour:
   choiceIndex: 1
   canSkip: 0
   description: 'Underneath his glasses there is a gleam of wisdom. '
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &444944679
 Animator:
   serializedVersion: 3
@@ -1208,11 +1211,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadGlobalsJSON: {fileID: 4900000, guid: 0e61fedd788ce9448a423d766caa447c, type: 3}
   typingSpeed: 0.02
+  BGM: {fileID: 0}
   dialoguePanel: {fileID: 2066304073}
   speakerName: {fileID: 7539380829971406303}
   dialogueText: {fileID: 6594406886968159546}
   continueIcon: {fileID: 1752978208}
   portraitAnimator: {fileID: 231758227}
+  ThoughtColor: {r: 0.57254905, g: 0.63045293, b: 1, a: 1}
+  StartWithDialogue: 1
+  StartDialogueJSON: {fileID: 0}
   choiceContainer:
   - {fileID: 1542986811}
   DrawMode: 1
@@ -1220,7 +1227,7 @@ MonoBehaviour:
   DrawMaterialManager: {fileID: 967579516}
   observeeManager: {fileID: 901699925}
   drawingSubmitter: {fileID: 102284609}
-  ThoughtColor: {r: 0.57254905, g: 0.63045293, b: 1, a: 1}
+  solvableManager: {fileID: 0}
 --- !u!1 &484875133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,6 +1590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 967579516}
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &621965862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1772,8 @@ MonoBehaviour:
   - {fileID: 1361011334}
   - {fileID: 1543131007}
   descriptionText: {fileID: 1220476087}
+  descriptionBox: {fileID: 0}
+  cursor: {fileID: 0}
 --- !u!95 &901699926
 Animator:
   serializedVersion: 3
@@ -1881,6 +1891,7 @@ MonoBehaviour:
   materials:
   - {fileID: 587942880}
   - {fileID: 1031232502}
+  cursor: {fileID: 0}
 --- !u!1 &1031232497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 967579516}
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1090610406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,7 +2173,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 819, y: 0}
   m_SizeDelta: {x: 720, y: 405}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138561712
@@ -2576,6 +2588,7 @@ MonoBehaviour:
   choiceIndex: 1
   canSkip: 1
   description: 
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &1224984053
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2614,7 +2627,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -7322292197446169110, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2784,7 +2797,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 4086634868293176356, guid: a933fc97c8bd8416c9a71477ecc440fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2895,6 +2908,7 @@ MonoBehaviour:
   choiceIndex: 1
   canSkip: 0
   description: 
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1361011335
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2978,7 +2992,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1462681897907429523, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3265,6 +3279,7 @@ MonoBehaviour:
   choiceIndex: 0
   canSkip: 0
   description: 
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &1543131008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3303,7 +3318,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 3635629859677769515, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3689,7 +3704,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1034535029
-  m_SortingLayer: 3
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 1782537565921445555, guid: 1ebfe38547fa83349b072b5f0d8dd71f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3753,6 +3768,7 @@ MonoBehaviour:
   canSkip: 0
   description: 'He smiles in a eccentric way when saying the word "woman", as if
     it meant something. '
+  StartDissolveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &1788599954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4031,6 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cdd959b3e60d94e9b69a55867485e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  observeeManager: {fileID: 0}
 --- !u!61 &1913127378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4575,6 +4592,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6280fdeb09346e99cdea90952274d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 0}
+  OpenBookAudio: {fileID: 0}
+  CloseBookAudio: {fileID: 0}
+  FlipPageAudios: []
 --- !u!61 &2095034146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4592,7 +4613,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 61, y: 80}
+    oldSize: {x: 420, y: 86}
     newSize: {x: 61, y: 80}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
