@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    public TextAsset inkJSON;
+    public TextAsset BeginningInkJSON;
+    public bool HasBeginningDialogue = true;
     //public InkDialogueManager InkDialogueManagerInstance;
 
 
@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // load the dialogue for this drawing scene
-        InkDialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+        if (HasBeginningDialogue)
+        {
+            // load the dialogue for this scene
+            InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
+        }
     }
 
     void Update()

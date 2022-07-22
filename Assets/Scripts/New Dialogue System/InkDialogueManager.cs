@@ -73,7 +73,7 @@ public class InkDialogueManager : MonoBehaviour
     private static InkDialogueManager instance;
 
     private Coroutine typingLinesCorotine;
-    private bool canContinueToNextLine;
+    private bool canContinueToNextLine = true;
     private bool finishedRequiredOpera;
 
     private DialogueVariables dialogueVariables;
@@ -117,7 +117,6 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Update()
     {
-
         if (!dialogueIsPlaying)
         {
             return;
@@ -176,7 +175,9 @@ public class InkDialogueManager : MonoBehaviour
     public void ContinueStory()
     {
 
-        // might remove this later
+        //UnityEngine.Debug.Log("continue story");
+
+        // might remove this later. This check if there're still observees uncollected
         if (observeeManager != null)
         {
             if (observeeManager.CheckFinishCollecting() == false)
@@ -186,6 +187,10 @@ public class InkDialogueManager : MonoBehaviour
             observeeManager.ClearUncollected();
         }
 
+        if (!canContinueToNextLine)
+        {
+            UnityEngine.Debug.Log("try to continue story, but canContinueToNextLine == false");
+        }
 
         if (canContinueToNextLine && currentStory.canContinue)
         {
@@ -240,7 +245,7 @@ public class InkDialogueManager : MonoBehaviour
             observeeManager.DisplayCurrObservees();
         }
 
-        if (DrawResultManager != null)
+        if (DrawResultManager != null && DrawResultManager.gameObject.activeSelf)
         {
             DrawResultManager.DisplayDrawing();
             DrawResultManager.SetCanShow(false);
@@ -334,16 +339,14 @@ public class InkDialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
 
-
         dialogueVariables.StartListening(currentStory);
+
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
         portraitAnimator.Play("default");
 
         ContinueStory();
     }
-
-
 
     private IEnumerator ExitDialogueMode()
     {
@@ -357,7 +360,7 @@ public class InkDialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
 
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
 
 
@@ -368,9 +371,13 @@ public class InkDialogueManager : MonoBehaviour
             string[] splitTag = tag.Split(':');
             if (splitTag.Length != 2)
             {
-                Debug.LogError("tag split fault, there're" + splitTag.Length + "tags.");
-
+                splitTag = tag.Split('：'); // try again with Chinese character
+                if (splitTag.Length != 2)
+                { // if still doesn't work
+                    Debug.LogError("tag split fault, there're" + splitTag.Length + "tags.");
+                }
             }
+
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
 
@@ -420,7 +427,7 @@ public class InkDialogueManager : MonoBehaviour
         switch (tagValue)
         {
             case "none":
-                break;
+                return;
             case "hold":
                 solvableManager.SetCanSolve(false);
                 break;
@@ -430,7 +437,6 @@ public class InkDialogueManager : MonoBehaviour
                 break;
             default:
                 break;
-
         }
     }
 

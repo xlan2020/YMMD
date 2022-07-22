@@ -13,6 +13,8 @@ public class BGMPlayer : MonoBehaviour
     [SerializeField] private AudioClip 柴柴;
     [SerializeField] private AudioClip 房间;
 
+    public string StartingBgm;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -20,9 +22,9 @@ public class BGMPlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-
+        ChangeBGM(StartingBgm);
     }
 
     public void ChangeBGM(string musicName)
@@ -65,7 +67,5 @@ public class BGMPlayer : MonoBehaviour
     {
         source.Play();
     }
-
-
 
 }

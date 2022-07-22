@@ -1,6 +1,6 @@
 INCLUDE ../global.ink
 
-(Log: Enters painter's apartment. ) #speaker: system #speakerMode: norm #bgm: 房间 #solve: hold
+(Log: Enters painter's apartment. ) #speaker: system #speakerMode: norm #bgm: 房间 
 ...So here I'm in this empty room. Nothing but a table and a mattress.  #speaker: Me #speakerMode: thought #choiceType: BUTTON
 It doesn't feel so good to call somewhere like this home. 
 Everything has been displaced... but this mysterious fish scale. Oh, great, now I've still got 8-2' overstocking shitty book with me. 
@@ -56,7 +56,6 @@ Here it is.
 
 
 ……#solve: next
-
 
 
 Thank you for playing we code and code and code, day and night, and it's not done yet. #speaker: Hello  #speakerMode: norms
