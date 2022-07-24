@@ -10,4 +10,10 @@ public class ThreeChannelLineUnit : MonoBehaviour
 
     public int OverrideAttemptLimit = -1;
     public float OverrideTextChangeInterval = -1f;
+
+    public float OverrideAcceleration = 0f;
+
+    public bool syncAllScreensAsLeft = false;
+
+    public string newBGM;
 }

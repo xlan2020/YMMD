@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class ThreeChannelText : MonoBehaviour
 {
-
     private bool readyToType = false;
     private Text t;
 
     private string[] currLines;
     private int currLineIndex = 0;
+    public bool doneLines = false;
     private bool holdingDown = false;
     public ThreeChannelManager manager;
+    public Animator screenAnimator;
 
     public int attemptTimeLimit = 10;
     private int attemptTime = 0;
@@ -23,7 +24,10 @@ public class ThreeChannelText : MonoBehaviour
     private bool changingNextLine = false;
 
     public float textChangeInterval = 0.2f;
-    private float textChangeTimer;
+    private float textChangeTimer = 0f;
+    private float AcceleratingInterval = 0f;
+    public float textConfirmTimeLimit = 0.8f;
+    private float textConfirmTimer = 0f;
 
     public AudioClip attemptTypingSFX;
     public AudioClip decideTypingSFX;
@@ -34,7 +38,6 @@ public class ThreeChannelText : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
-
 
     void Update()
     {
@@ -55,18 +58,37 @@ public class ThreeChannelText : MonoBehaviour
                     { // can't keep attempting if one line is just decided
                         AttemptTyping();
                     }
+
+                    screenAnimator.SetBool("typing", true);
+
+                    // handle accelerating attempting time
+                    textChangeInterval += AcceleratingInterval;
+                    if (textChangeInterval < 0)
+                    {
+                        UnityEngine.Debug.Log("incorrect accelerating input: the text change interval can't be negative!");
+                    }
+                }
+                else
+                {
+                    screenAnimator.SetBool("typing", false);
                 }
 
                 if (!Input.anyKey && holdingDown)
                 {
                     // Debug.Log("A key was released");
                     holdingDown = false;
-
-                    if (changingNextLine)
-                    {
-                        changingNextLine = false; //lift key up, then we can re-press the key and attempt typing again
-                    }
                 }
+
+            }
+        }
+
+        if (changingNextLine)
+        {
+            textConfirmTimer += Time.deltaTime;
+            if (textConfirmTimer > textConfirmTimeLimit)
+            {
+                changingNextLine = false;
+                textConfirmTimer = 0;
             }
         }
     }
@@ -75,11 +97,13 @@ public class ThreeChannelText : MonoBehaviour
     private void OnMouseEnter()
     {
         readyToType = true;
+        screenAnimator.SetBool("pointerOver", true);
     }
 
     private void OnMouseExit()
     {
         readyToType = false;
+        screenAnimator.SetBool("pointerOver", false);
     }
 
     private void TypeNextLine()
@@ -105,12 +129,16 @@ public class ThreeChannelText : MonoBehaviour
         {
             // currLineIndex = 0;
 
-            // just try this for now, once each word is seen proceed to next
-            manager.NextLineUnit();
+            // mark its lines to be done and check if everyline is done.
+            // if so, the manager will proceed to next line unit. 
+            doneLines = true;
+            manager.CheckDoneLineUnit();
+
+            screenAnimator.SetBool("isNext", false);
         }
     }
 
-    private void ChangeText(string newText)
+    public void ChangeText(string newText)
     {
         t.text = newText;
     }
@@ -165,4 +193,8 @@ public class ThreeChannelText : MonoBehaviour
         }
     }
 
+    public void SetAcceleratingInterval(float newAcceleration)
+    {
+        AcceleratingInterval = newAcceleration;
+    }
 }

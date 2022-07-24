@@ -55,7 +55,15 @@ public class BGMPlayer : MonoBehaviour
             default:
                 break;
         }
-        source.Play();
+        if (musicName == "pause" || musicName == "暂停")
+        {
+            Pause();
+        }
+        else
+        {
+            Play();
+        }
+
     }
 
     public void Pause()

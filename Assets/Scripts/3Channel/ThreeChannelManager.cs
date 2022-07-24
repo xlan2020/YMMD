@@ -14,6 +14,7 @@ public class ThreeChannelManager : MonoBehaviour
     public ThreeChannelText LeftText;
     public ThreeChannelText MidText;
     public ThreeChannelText RightText;
+    public BGMPlayer bgmPlayer;
     public string RandomText;
     private char[] randomCharArray;
 
@@ -46,7 +47,7 @@ public class ThreeChannelManager : MonoBehaviour
         }
     }
 
-    public void NextLineUnit()
+    private void NextLineUnit()
     {
         if (lineScript.Count > 0)
         {
@@ -64,10 +65,57 @@ public class ThreeChannelManager : MonoBehaviour
             MidText.SetTextChangeInterval(currLineUnit.OverrideTextChangeInterval);
             RightText.SetTextChangeInterval(currLineUnit.OverrideTextChangeInterval);
 
+            LeftText.SetAcceleratingInterval(currLineUnit.OverrideAcceleration);
+            MidText.SetAcceleratingInterval(currLineUnit.OverrideAcceleration);
+            RightText.SetAcceleratingInterval(currLineUnit.OverrideAcceleration);
+
+
+            LeftText.doneLines = true;
+            MidText.doneLines = true;
+            RightText.doneLines = true;
+
+
+            if (currLineUnit.LeftLines.Length > 0)
+            {
+                LeftText.screenAnimator.SetBool("isNext", true);
+                LeftText.doneLines = false;
+            }
+
+            if (currLineUnit.MidLines.Length > 0)
+            {
+                MidText.screenAnimator.SetBool("isNext", true);
+                MidText.doneLines = false;
+            }
+
+            if (currLineUnit.RightLines.Length > 0)
+            {
+                RightText.screenAnimator.SetBool("isNext", true);
+                RightText.doneLines = false;
+            }
+
+            if (currLineUnit.syncAllScreensAsLeft)
+            {
+                LeftText.ChangeText(currLineUnit.LeftLines[0]);
+                MidText.ChangeText(currLineUnit.LeftLines[0]);
+                RightText.ChangeText(currLineUnit.LeftLines[0]);
+            }
+
+            if (currLineUnit.newBGM != "" && currLineUnit.newBGM != null)
+            {
+                bgmPlayer.ChangeBGM(currLineUnit.newBGM);
+            }
         }
         else
         {
             UnityEngine.Debug.Log("no more line unit! This part is done. ");
+        }
+    }
+
+    public void CheckDoneLineUnit()
+    {
+        if (LeftText.doneLines && MidText.doneLines && RightText.doneLines)
+        {
+            NextLineUnit();
         }
     }
 

@@ -172,6 +172,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &73585334
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +473,108 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowedResolutions: []
   FullscreenResolutions: []
+--- !u!1 &107875624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107875625}
+  - component: {fileID: 107875627}
+  - component: {fileID: 107875626}
+  m_Layer: 0
+  m_Name: R-screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107875625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107875624}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 176, y: -7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1669357099}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &107875626
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107875624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0926379ffb5c4b94bdff72acead87b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &107875627
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107875624}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 257017095
+  m_SortingLayer: 1
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -4359550742348888898, guid: 717265625493d4ba4802fba051b48912, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 176, y: 176}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &118766360
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,6 +624,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: 0.5
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &139527921
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +869,108 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8102401938581986997, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
   m_PrefabInstance: {fileID: 8102401939034612106}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &313437167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 313437168}
+  - component: {fileID: 313437170}
+  - component: {fileID: 313437169}
+  m_Layer: 0
+  m_Name: M-screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &313437168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313437167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1669357099}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &313437169
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313437167}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0926379ffb5c4b94bdff72acead87b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!212 &313437170
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313437167}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 257017095
+  m_SortingLayer: 1
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -4359550742348888898, guid: 717265625493d4ba4802fba051b48912, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 176, y: 176}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &340227220
 GameObject:
   m_ObjectHideFlags: 0
@@ -804,12 +1014,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3906344a5c04756ac7c84dc8a78d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftLines: []
-  MidLines: []
-  RightLines:
+  LeftLines:
   - "\u62A0\u811A"
+  MidLines: []
+  RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 1
+  newBGM: 
 --- !u!1 &347875510
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +1072,9 @@ MonoBehaviour:
   - "\u5979\u5FC5\u5B9A\u4E0D\u662F\u4EBA\u7C7B"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: 0.5
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &457924651
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +1086,7 @@ GameObject:
   - component: {fileID: 457924652}
   - component: {fileID: 457924653}
   m_Layer: 0
-  m_Name: "\u7F8E\u4EBA\u9C7C"
+  m_Name: "\u7F8E\u4EBA\u9C7Cattempt"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,8 +1122,11 @@ MonoBehaviour:
   MidLines: []
   RightLines:
   - "\u7F8E\u4EBA\u9C7C"
-  OverrideAttemptLimit: 30
-  OverrideTextChangeInterval: 0.05
+  OverrideAttemptLimit: 20
+  OverrideTextChangeInterval: 1
+  OverrideAcceleration: -0.05
+  syncAllScreensAsLeft: 0
+  newBGM: "\u7D27\u5F20"
 --- !u!1 &484875133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1309,9 @@ MonoBehaviour:
   - "\u753B\u5BB6"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &513523846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1374,7 @@ Transform:
   - {fileID: 118766361}
   - {fileID: 1966367805}
   - {fileID: 457924652}
+  - {fileID: 736471677}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1170,6 +1393,7 @@ MonoBehaviour:
   LeftText: {fileID: 1193346706}
   MidText: {fileID: 1835255120}
   RightText: {fileID: 1818308963}
+  bgmPlayer: {fileID: 1041821261}
   RandomText: "\u6708\u4EAE\u6C34\u8349\u7F8E\u4EBA\u9C7C\u7231\u7EA2\u8272\u7684\u70C8\u706B\u7F6E\u6362\u547D\u8FD0\u7B49\u4EF7\u91D1\u94B1\u4EF7\u4EF7\u683C\u4E70\u5356\u75DB\u751C\u4F60\u6211\u8C1C\u9898\u6551\u865A\u7A7A"
 --- !u!1 &517469643
 GameObject:
@@ -1220,6 +1444,9 @@ MonoBehaviour:
   - "\u5C0F\u9547\u4E0A"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &523528224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1496,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &536229828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,12 +1624,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de3906344a5c04756ac7c84dc8a78d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftLines: []
-  MidLines: []
-  RightLines:
+  LeftLines:
   - "\u5979\u7684\u773C\u6CEA\u5728\u5F80\u4E0B\u6389"
+  MidLines: []
+  RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 1
+  newBGM: 
+--- !u!1 &564905284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564905285}
+  - component: {fileID: 564905286}
+  - component: {fileID: 564905287}
+  m_Layer: 0
+  m_Name: L-screen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &564905285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564905284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -176, y: -7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1669357099}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &564905286
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564905284}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 257017095
+  m_SortingLayer: 1
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -4359550742348888898, guid: 717265625493d4ba4802fba051b48912, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 176, y: 176}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &564905287
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564905284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0926379ffb5c4b94bdff72acead87b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &583783960 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 605883291736271543, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
@@ -1505,6 +1840,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &702850174
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1892,9 @@ MonoBehaviour:
   - "\u957F\u6905\u4E0A"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &723501823
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1944,63 @@ MonoBehaviour:
   - "\u4E0D\u65AD\u5730\u51FA\u73B0"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
+--- !u!1 &736471676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736471677}
+  - component: {fileID: 736471678}
+  m_Layer: 0
+  m_Name: "\u7F8E\u4EBA\u9C7C "
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736471677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736471676}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -39.072914, y: 0.9348259, z: -895.67334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 513523847}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736471678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736471676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de3906344a5c04756ac7c84dc8a78d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeftLines:
+  - "\u7F8E"
+  MidLines:
+  - "\u4EBA"
+  RightLines:
+  - "\u9C7C"
+  OverrideAttemptLimit: 0
+  OverrideTextChangeInterval: 0
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: pause
 --- !u!1 &777892516
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +2050,9 @@ MonoBehaviour:
   - "\u9EC4\u660F"
   OverrideAttemptLimit: 6
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &821427992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,12 +2064,12 @@ GameObject:
   - component: {fileID: 821427993}
   - component: {fileID: 821427994}
   m_Layer: 0
-  m_Name: "\u4E09\u5C4F\u673A\u5668UI_1"
+  m_Name: "\u4E09\u5C4F\u673A\u5668-\u9EC4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &821427993
 Transform:
   m_ObjectHideFlags: 0
@@ -1681,7 +2082,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1669357099}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &821427994
 SpriteRenderer:
@@ -1783,6 +2184,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 12
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &958915117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +2236,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 3
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &977445785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +2288,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 0
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1004857404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1930,6 +2340,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: 0.1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1013025262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,6 +2392,9 @@ MonoBehaviour:
   - "\u8737\u7F29\u7740"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1041651140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2444,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!114 &1041821261 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7032122632844085968, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}
@@ -2088,6 +2507,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 2
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1090610406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2542,7 @@ RectTransform:
   m_Children:
   - {fileID: 148765767}
   m_Father: {fileID: 1669357099}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2217,7 +2639,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1669357099}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2349,8 +2771,8 @@ MonoBehaviour:
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2404,9 +2826,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc103fae6dafe49d896a62e398c98cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doneLines: 0
   manager: {fileID: 513523848}
+  screenAnimator: {fileID: 564905287}
   attemptTimeLimit: 6
   textChangeInterval: 0.15
+  textConfirmTimeLimit: 1
   attemptTypingSFX: {fileID: 8300000, guid: 18b31146ff2bb4397a23b9344d386ef8, type: 3}
   decideTypingSFX: {fileID: 8300000, guid: a9668d234587841e5b84fb2467a10cda, type: 3}
 --- !u!95 &1193346707
@@ -2652,6 +3077,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 2
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1359350609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2701,6 +3129,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1374338788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,6 +3181,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 0
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1431411454
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,6 +3250,88 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1475611330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1475611331}
+  - component: {fileID: 1475611332}
+  m_Layer: 0
+  m_Name: "\u4E09\u5C4F\u673A\u5668UI"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1475611331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475611330}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1669357099}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1475611332
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475611330}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 257017095
+  m_SortingLayer: 1
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 757419815291607773, guid: 4fe3f259b326e4366912a4d872a1c43e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 694, y: 390}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1501096450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,6 +3381,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1525287331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,7 +3417,7 @@ RectTransform:
   - {fileID: 1835255116}
   - {fileID: 1818308959}
   m_Father: {fileID: 1669357099}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3141,10 +3660,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 564905285}
+  - {fileID: 313437168}
+  - {fileID: 107875625}
   - {fileID: 1525287332}
   - {fileID: 1138561711}
   - {fileID: 2095034142}
   - {fileID: 821427993}
+  - {fileID: 1475611331}
   - {fileID: 1090610407}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -3203,6 +3726,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1707273868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,6 +3779,9 @@ MonoBehaviour:
   - "\u5979"
   OverrideAttemptLimit: 4
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1806539540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,6 +3831,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1818308958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3368,8 +3900,8 @@ MonoBehaviour:
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3423,9 +3955,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc103fae6dafe49d896a62e398c98cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doneLines: 0
   manager: {fileID: 513523848}
+  screenAnimator: {fileID: 107875626}
   attemptTimeLimit: 6
   textChangeInterval: 0.15
+  textConfirmTimeLimit: 1
   attemptTypingSFX: {fileID: 8300000, guid: 18b31146ff2bb4397a23b9344d386ef8, type: 3}
   decideTypingSFX: {fileID: 8300000, guid: a9668d234587841e5b84fb2467a10cda, type: 3}
 --- !u!95 &1818308964
@@ -3592,6 +4127,9 @@ MonoBehaviour:
   - "\u4E0D\u89C1"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1835255115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,8 +4196,8 @@ MonoBehaviour:
     m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3713,9 +4251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc103fae6dafe49d896a62e398c98cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doneLines: 0
   manager: {fileID: 513523848}
+  screenAnimator: {fileID: 313437169}
   attemptTimeLimit: 6
   textChangeInterval: 0.15
+  textConfirmTimeLimit: 1
   attemptTypingSFX: {fileID: 8300000, guid: 18b31146ff2bb4397a23b9344d386ef8, type: 3}
   decideTypingSFX: {fileID: 8300000, guid: a9668d234587841e5b84fb2467a10cda, type: 3}
 --- !u!95 &1835255121
@@ -3959,6 +4500,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1946044846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4141,6 +4685,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: 0.5
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1981213645
 GameObject:
   m_ObjectHideFlags: 0
@@ -4191,6 +4738,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &1997280579
 GameObject:
   m_ObjectHideFlags: 0
@@ -4240,6 +4790,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 0
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &2012853157
 GameObject:
   m_ObjectHideFlags: 0
@@ -4291,6 +4844,9 @@ MonoBehaviour:
   - "\u5427\u55D2\u5427\u55D2"
   OverrideAttemptLimit: -1
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &2056245427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4340,6 +4896,9 @@ MonoBehaviour:
   RightLines: []
   OverrideAttemptLimit: 2
   OverrideTextChangeInterval: -1
+  OverrideAcceleration: 0
+  syncAllScreensAsLeft: 0
+  newBGM: 
 --- !u!1 &2095034141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,7 +4933,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1669357099}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4723,7 +5282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5318286544998975626, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5318286544998975627, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
       propertyPath: m_RootOrder
@@ -4792,7 +5351,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 98233bcd16504469595bd700cc5799e2, type: 3}
     - target: {fileID: 7032122632844085968, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}
       propertyPath: StartingBgm
-      value: "\u67F4\u67F4"
+      value: "\u9EC4\u660F"
       objectReference: {fileID: 0}
     - target: {fileID: 7032122632844085969, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}
       propertyPath: m_audioClip
