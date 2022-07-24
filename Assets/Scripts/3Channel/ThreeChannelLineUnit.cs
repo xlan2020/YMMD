@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ThreeChannelLineUnit : MonoBehaviour
 {
@@ -16,4 +17,6 @@ public class ThreeChannelLineUnit : MonoBehaviour
     public bool syncAllScreensAsLeft = false;
 
     public string newBGM;
+
+    public UnityEvent events;
 }

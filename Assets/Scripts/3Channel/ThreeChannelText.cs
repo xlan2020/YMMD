@@ -32,9 +32,13 @@ public class ThreeChannelText : MonoBehaviour
     public AudioClip attemptTypingSFX;
     public AudioClip decideTypingSFX;
     private AudioSource audioSource;
-    void Start()
+
+    void Awake()
     {
         t = GetComponent<Text>();
+    }
+    void Start()
+    {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
@@ -44,15 +48,15 @@ public class ThreeChannelText : MonoBehaviour
         if (readyToType)
         {
             textChangeTimer += Time.deltaTime;
-            if (textChangeTimer > textChangeInterval)
+            // check key input
+            if (Input.anyKey)
             {
-                textChangeTimer = 0; //reset timer
+                // Debug.Log("A key is being pressed");
+                holdingDown = true;
 
-                // check key input
-                if (Input.anyKey)
+                if (textChangeTimer > textChangeInterval)
                 {
-                    // Debug.Log("A key is being pressed");
-                    holdingDown = true;
+                    textChangeTimer = 0; //reset timer
 
                     if (!changingNextLine)
                     { // can't keep attempting if one line is just decided
@@ -62,24 +66,30 @@ public class ThreeChannelText : MonoBehaviour
                     screenAnimator.SetBool("typing", true);
 
                     // handle accelerating attempting time
-                    textChangeInterval += AcceleratingInterval;
-                    if (textChangeInterval < 0)
-                    {
-                        UnityEngine.Debug.Log("incorrect accelerating input: the text change interval can't be negative!");
-                    }
+                    UpdateTextChangeInterval();
                 }
-                else
-                {
-                    screenAnimator.SetBool("typing", false);
-                }
+            }
+            else if (holdingDown)
+            {
+                // Debug.Log("A key was released");
+                holdingDown = false;
 
-                if (!Input.anyKey && holdingDown)
-                {
-                    // Debug.Log("A key was released");
-                    holdingDown = false;
+                if (!changingNextLine)
+                { // can't keep attempting if one line is just decided
+                    AttemptTyping();
                 }
+                screenAnimator.SetBool("typing", true);
+
+                // handle accelerating attempting time
+                UpdateTextChangeInterval();
+                textChangeTimer = 0; //reset timer
 
             }
+            else
+            {
+                screenAnimator.SetBool("typing", false);
+            }
+
         }
 
         if (changingNextLine)
@@ -93,7 +103,16 @@ public class ThreeChannelText : MonoBehaviour
         }
     }
 
+    private float UpdateTextChangeInterval()
+    {
+        textChangeInterval += AcceleratingInterval;
+        if (textChangeInterval < 0)
+        {
+            UnityEngine.Debug.Log("incorrect accelerating input: the text change interval can't be negative!");
+        }
+        return textChangeInterval;
 
+    }
     private void OnMouseEnter()
     {
         readyToType = true;
@@ -143,6 +162,11 @@ public class ThreeChannelText : MonoBehaviour
         t.text = newText;
     }
 
+
+    public void ClearText()
+    {
+        ChangeText("-");
+    }
     private void AttemptTyping()
     {
         if (currLines.Length > 0)

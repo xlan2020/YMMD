@@ -53,6 +53,8 @@ public class ThreeChannelManager : MonoBehaviour
         {
             currLineUnit = lineScript.Dequeue();
 
+            currLineUnit.events.Invoke();
+
             LeftText.SetCurrLines(currLineUnit.LeftLines);
             MidText.SetCurrLines(currLineUnit.MidLines);
             RightText.SetCurrLines(currLineUnit.RightLines);
