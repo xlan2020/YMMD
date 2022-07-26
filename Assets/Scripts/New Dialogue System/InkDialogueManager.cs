@@ -20,6 +20,7 @@ public class InkDialogueManager : MonoBehaviour
 
     [Header("Sound")]
     public BGMPlayer BGM;
+    public CharacterVoice voice;
 
     [Header("Dialogue UI")]
     public GameObject dialoguePanel;
@@ -66,7 +67,6 @@ public class InkDialogueManager : MonoBehaviour
 
 
     private Story currentStory;
-
     public bool dialogueIsPlaying { get; private set; }
 
 
@@ -141,6 +141,9 @@ public class InkDialogueManager : MonoBehaviour
         hideChoices();
         continueIcon.SetActive(false);
         canContinueToNextLine = false;
+
+        voice.StartTalking(speakerName.text);
+
         // fast skip
 
         yield return new WaitForSeconds(0.04f);
@@ -170,6 +173,7 @@ public class InkDialogueManager : MonoBehaviour
             canContinueToNextLine = false;
             startSolving = false;
         }
+        voice.StopTalking();
     }
 
     public void ContinueStory()
