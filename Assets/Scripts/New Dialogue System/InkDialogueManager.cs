@@ -29,8 +29,6 @@ public class InkDialogueManager : MonoBehaviour
     public GameObject continueIcon;
     public Animator portraitAnimator;
     public UnityEngine.Color ThoughtColor;
-    public bool StartWithDialogue = true;
-    [SerializeField] private TextAsset StartDialogueJSON;
 
     [Header("Choices UI")]
     // each choice container is an instance of the choice class
@@ -100,11 +98,6 @@ public class InkDialogueManager : MonoBehaviour
 
         // I add these lines because I don't know how to do with cross scene and the project is due tomorrow
         // might delete that sometimes
-        dialoguePanel.SetActive(StartWithDialogue);
-        if (StartWithDialogue)
-        {
-            EnterDialogueMode(StartDialogueJSON);
-        }
 
         initializeChoices();
 
@@ -142,9 +135,12 @@ public class InkDialogueManager : MonoBehaviour
         continueIcon.SetActive(false);
         canContinueToNextLine = false;
 
-        voice.StartTalking(speakerName.text);
-
+        // voice.StartTalking(speakerName.text);
         // fast skip
+        string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
+        speakerName.text = splitLines[0];
+        line = splitLines[1];
+
 
         yield return new WaitForSeconds(0.04f);
         foreach (char letter in line.ToCharArray())
