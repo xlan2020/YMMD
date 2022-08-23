@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public MouseCursor cursor;
+    private bool interactive = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +21,23 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        cursor.GetComponent<Animator>().SetTrigger("dialogue");
+        if (interactive)
+        {
+            cursor.GetComponent<Animator>().SetTrigger("dialogue");
+        }
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        cursor.SetAnimationDefault();
+        if (interactive)
+        {
+            cursor.SetAnimationDefault();
+        }
+    }
+
+    public void SetInteractive(bool b)
+    {
+        interactive = b;
     }
 
 

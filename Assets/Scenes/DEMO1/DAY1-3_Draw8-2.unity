@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &8976641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8976643}
+  - component: {fileID: 8976642}
+  m_Layer: 0
+  m_Name: RandomVoice
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &8976642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178fe456e7a48ea4b9d09a3901edebba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speakers:
+  - {fileID: 11400000, guid: 959f35c82d8db8444972f066b404f19d, type: 2}
+  _curSpeaker: {fileID: 0}
+  _eMode: 0
+  _speakDurationRange: {x: 0.5, y: 8}
+  _intervalBetweenSession: {x: 2, y: 4}
+--- !u!4 &8976643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976641}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.568043, y: 0.3126449, z: 195.95694}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &73585334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3708,7 +3758,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1814537087
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -6990336260690616285, guid: c67cfd9893d8f41889fd12d7cebf5887, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3877,7 +3927,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1814537087
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -5100097648664962974, guid: c67cfd9893d8f41889fd12d7cebf5887, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4496,6 +4546,17 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &1864406116 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 959051889752172997, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+  m_PrefabInstance: {fileID: 2028632869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6280fdeb09346e99cdea90952274d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1913127373
 GameObject:
   m_ObjectHideFlags: 0
@@ -4761,7 +4822,7 @@ GameObject:
   - component: {fileID: 1953135523}
   - component: {fileID: 1953135526}
   m_Layer: 5
-  m_Name: Next
+  m_Name: DialoguePannel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4906,6 +4967,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 583783960}
+--- !u!1001 &2028632869
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.516132
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.21183199
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172994, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172996, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_Name
+      value: SketchBook
+      objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172997, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 453361472}
+    - target: {fileID: 959051890388223316, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 583783960}
+    - target: {fileID: 959051890388223325, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
 --- !u!1 &2066304073
 GameObject:
   m_ObjectHideFlags: 0
@@ -4921,7 +5051,7 @@ GameObject:
   - component: {fileID: 2066304077}
   - component: {fileID: 2066304079}
   m_Layer: 5
-  m_Name: DialoguePanel
+  m_Name: DialogueSet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5074,7 +5204,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2095034142
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5179,13 +5309,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6280fdeb09346e99cdea90952274d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursor: {fileID: 583783960}
+  notesManager: {fileID: 0}
+  icon: {fileID: 0}
   OpenBookAudio: {fileID: 8300000, guid: 83d65304f411d4ddfa388a3a4db0e384, type: 3}
   CloseBookAudio: {fileID: 8300000, guid: 936cc8e6613a64bcf91eafdcf5b4a3d0, type: 3}
   FlipPageAudios:
   - {fileID: 8300000, guid: 40a8eae21d4aa4a958a1b17c1b073c6a, type: 3}
   - {fileID: 8300000, guid: f4c240f23200d49929cf26a5844f8ee5, type: 3}
   - {fileID: 8300000, guid: c33988a046105485093db919a93b3077, type: 3}
+  cover: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!61 &2095034146
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5887,6 +6020,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: sketchBook
+      value: 
+      objectReference: {fileID: 1864406116}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: randomSpeak
+      value: 
+      objectReference: {fileID: 8976642}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: speakerName
       value: 
       objectReference: {fileID: 7539380829971406303}
@@ -5901,7 +6042,7 @@ PrefabInstance:
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: dialoguePanel
       value: 
-      objectReference: {fileID: 2066304073}
+      objectReference: {fileID: 1953135526}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: observeeManager
       value: 

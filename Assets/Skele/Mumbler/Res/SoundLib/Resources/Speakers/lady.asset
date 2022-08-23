@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70865491002c7ca41af2ce94184e94b5, type: 3}
+  m_Name: lady
+  m_EditorClassIdentifier: 
+  _pfAudioSource: {fileID: 8277798, guid: e8b460757d099ca43862e609758ae5d1, type: 3}
+  _pfNoise: {fileID: 8277798, guid: 5008b7b32e09d9d41b75b7cf5352e164, type: 3}
+  _soundDatas:
+  - _clip: {fileID: 8300000, guid: 05d171869c7a5b844bb2fa30332fb51c, type: 3}
+    _lowVolume: 0.3
+    _highVolume: 1
+    _volumeFadeInTime: 0.1
+    _volumeFadeOutTime: 0.15
+    _pitchChangeRange: {x: 0.1, y: 0.15}
+    _pitchChangeTime: 0.1
+  - _clip: {fileID: 8300000, guid: 4333f298f7d48ea469ecf4538c7d5b23, type: 3}
+    _lowVolume: 0.3
+    _highVolume: 1
+    _volumeFadeInTime: 0.1
+    _volumeFadeOutTime: 0.15
+    _pitchChangeRange: {x: 0.1, y: 0.15}
+    _pitchChangeTime: 0.1
+  - _clip: {fileID: 8300000, guid: c737f071a06f57f43b92b5bc78231113, type: 3}
+    _lowVolume: 0.3
+    _highVolume: 1
+    _volumeFadeInTime: 0.1
+    _volumeFadeOutTime: 0.15
+    _pitchChangeRange: {x: 0.1, y: 0.15}
+    _pitchChangeTime: 0.1
+  - _clip: {fileID: 8300000, guid: 5ac07854b68dbc7419962edd4d7dfe14, type: 3}
+    _lowVolume: 0.3
+    _highVolume: 1
+    _volumeFadeInTime: 0.1
+    _volumeFadeOutTime: 0.15
+    _pitchChangeRange: {x: 0.1, y: 0.15}
+    _pitchChangeTime: 0.1
+  - _clip: {fileID: 8300000, guid: 8896e51bd057bc74ba62b205cd8df2de, type: 3}
+    _lowVolume: 0.3
+    _highVolume: 1
+    _volumeFadeInTime: 0.1
+    _volumeFadeOutTime: 0.15
+    _pitchChangeRange: {x: 0.1, y: 0.15}
+    _pitchChangeTime: 0.1
+  _noiseClips: []
+  _specificAudios: []
+  _shortPauseRange: {x: 0.05, y: 0.15}
+  _longPauseRange: {x: 0.2, y: 0.3}
+  _randomPauseRange: {x: 0, y: 0.2}
+  _avgSoundGroupSize: 3
+  _chanceStartToneUp: 0.3
+  _chanceStartToneDown: 0.3
+  _chanceMidToneChange: 0.035
+  _chanceEndToneChange: 0.4
+  _doVolumeFade: 1
+  _doPitchFade: 1

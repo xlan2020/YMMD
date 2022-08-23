@@ -7,12 +7,13 @@ using Ink.Runtime;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System;
-
+using MH.Mumbler;
 public class InkDialogueManager : MonoBehaviour
 {
     // variable for the load_globals.ink JSON
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
+    [SerializeField] private TextAsset loadBookJSON;
 
     [Header("Params")]
 
@@ -23,12 +24,14 @@ public class InkDialogueManager : MonoBehaviour
     public CharacterVoice voice;
 
     [Header("Dialogue UI")]
-    public GameObject dialoguePanel;
+    public DialoguePanel dialoguePanel;
     public Text speakerName;
     public Text dialogueText;
+    public ProfileSwitcher speakerProfile;
     public GameObject continueIcon;
     public Animator portraitAnimator;
     public UnityEngine.Color ThoughtColor;
+    public RandomSpeak randomSpeak;
 
     [Header("Choices UI")]
     // each choice container is an instance of the choice class
@@ -49,12 +52,14 @@ public class InkDialogueManager : MonoBehaviour
     private bool canSkipChoice = false;
     private bool startSolving = false;
 
-    [Header("Solvable Special")]
+    [Header("Other Functions")]
     [SerializeField] private SolvableManager solvableManager;
+    [SerializeField] private SketchBook sketchBook;
 
     //tags
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
+    private const string PROFILE_TAG = "profile";
     private const string CHOICECONTAIN_TAG = "choiceBox";
     private const string SHOW_OBSERVEE_TAG = "showObservee";
     private const string CHOICE_TYPE = "choiceType";
@@ -62,6 +67,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string SPEAKER_MODE_TAG = "speakerMode";
     private const string BGM_TAG = "bgm";
     private const string SOLVE_TAG = "solve";
+    private const string UNLOCK_NOTE_TAG = "unlockNote";
 
 
     private Story currentStory;
@@ -136,6 +142,7 @@ public class InkDialogueManager : MonoBehaviour
         canContinueToNextLine = false;
 
         // voice.StartTalking(speakerName.text);
+        randomSpeak.Speak();
         // fast skip
         string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
         speakerName.text = splitLines[0];
@@ -169,7 +176,8 @@ public class InkDialogueManager : MonoBehaviour
             canContinueToNextLine = false;
             startSolving = false;
         }
-        voice.StopTalking();
+        //voice.StopTalking();
+        randomSpeak.Stop();
     }
 
     public void ContinueStory()
@@ -337,7 +345,7 @@ public class InkDialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJson.text);
         dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
+        dialoguePanel.gameObject.SetActive(true);
 
         dialogueVariables.StartListening(currentStory);
 
@@ -357,7 +365,7 @@ public class InkDialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;
-        dialoguePanel.SetActive(false);
+        dialoguePanel.gameObject.SetActive(false);
         dialogueText.text = "";
 
         //SceneManager.LoadScene(1);
@@ -414,6 +422,15 @@ public class InkDialogueManager : MonoBehaviour
                     break;
                 case SOLVE_TAG:
                     handleSolveTag(tagValue);
+                    break;
+                case UNLOCK_NOTE_TAG:
+                    if (sketchBook != null)
+                    {
+                        sketchBook.UnlockNewNote(tagValue);
+                    }
+                    break;
+                case PROFILE_TAG:
+                    speakerProfile.ChangeProfile(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
@@ -524,6 +541,20 @@ public class InkDialogueManager : MonoBehaviour
     public void SetCanContinueToNextLine(bool b)
     {
         canContinueToNextLine = b;
+    }
+
+    public void FreezeDialogue()
+    {
+        canContinueToNextLine = false;
+        dialoguePanel.SetInteractive(false);
+        //dialoguePanel.GetComponent<Collider2D>().enabled = false;
+    }
+
+    public void UnfreezeDialogue()
+    {
+        canContinueToNextLine = true;
+        dialoguePanel.SetInteractive(true);
+        //dialoguePanel.GetComponent<Collider2D>().enabled = true;
     }
 }
 
