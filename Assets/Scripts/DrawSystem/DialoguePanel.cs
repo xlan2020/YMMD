@@ -7,17 +7,6 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     public MouseCursor cursor;
     private bool interactive = true;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {

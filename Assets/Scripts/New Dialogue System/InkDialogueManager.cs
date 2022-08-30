@@ -55,6 +55,7 @@ public class InkDialogueManager : MonoBehaviour
     [Header("Other Functions")]
     [SerializeField] private SolvableManager solvableManager;
     [SerializeField] private SketchBook sketchBook;
+    public Player player;
 
     //tags
     private const string SPEAKER_TAG = "speaker";
@@ -68,6 +69,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string BGM_TAG = "bgm";
     private const string SOLVE_TAG = "solve";
     private const string UNLOCK_NOTE_TAG = "unlockNote";
+    private const string LOAD_SCENE_TAG = "loadScene";
 
 
     private Story currentStory;
@@ -142,7 +144,10 @@ public class InkDialogueManager : MonoBehaviour
         canContinueToNextLine = false;
 
         // voice.StartTalking(speakerName.text);
-        randomSpeak.Speak();
+        if (randomSpeak)
+        {
+            randomSpeak.Speak();
+        }
         // fast skip
         string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
         speakerName.text = splitLines[0];
@@ -177,7 +182,10 @@ public class InkDialogueManager : MonoBehaviour
             startSolving = false;
         }
         //voice.StopTalking();
-        randomSpeak.Stop();
+        if (randomSpeak)
+        {
+            randomSpeak.Stop();
+        }
     }
 
     public void ContinueStory()
@@ -352,6 +360,10 @@ public class InkDialogueManager : MonoBehaviour
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
         portraitAnimator.Play("default");
+        if (player)
+        {
+            player.canMove = false;
+        }
 
         ContinueStory();
     }
@@ -365,10 +377,15 @@ public class InkDialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
 
         dialogueIsPlaying = false;
-        dialoguePanel.gameObject.SetActive(false);
-        dialogueText.text = "";
+        //dialoguePanel.gameObject.SetActive(false);
+        //dialogueText.text = "";
 
         //SceneManager.LoadScene(1);
+        if (player)
+        {
+            player.canMove = true;
+        }
+
     }
 
 
@@ -431,6 +448,9 @@ public class InkDialogueManager : MonoBehaviour
                     break;
                 case PROFILE_TAG:
                     speakerProfile.ChangeProfile(tagValue);
+                    break;
+                case LOAD_SCENE_TAG:
+                    SceneManager.LoadScene(tagValue);
                     break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");

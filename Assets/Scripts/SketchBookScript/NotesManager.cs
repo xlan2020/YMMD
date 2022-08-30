@@ -12,6 +12,7 @@ public class NotesManager : MonoBehaviour
     private NotePage[] pages = new NotePage[100];
     public bool StartOfTheGame = false;
     private int currPage;
+    private int maxPage = 0;
     private string bookSavedJSON;
     public SketchBook sketchBook;
 
@@ -22,8 +23,13 @@ public class NotesManager : MonoBehaviour
             NotePage page = child.GetComponent<NotePage>();
             if (page != null)
             {
-                pages[page.PageNum()] = page;
+                int num = page.PageNum();
+                pages[num] = page;
                 notes.AddRange(page.Notes());
+                if (num > maxPage)
+                {
+                    maxPage = num;
+                }
             }
         }
         // initialize book saved data, just place it here for 
@@ -85,6 +91,11 @@ public class NotesManager : MonoBehaviour
                 n.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
         }
+    }
+
+    public int MaxPage()
+    {
+        return maxPage;
     }
 
 }

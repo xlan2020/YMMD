@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class SketchBook : MonoBehaviour
     private bool isOpen = false;
     private bool hasNew;
     private int currPage = 0;
-    public GameObject cover;
+    public GameObject assesories;
     public InkDialogueManager dialogueManager;
 
     void Awake()
@@ -22,7 +23,7 @@ public class SketchBook : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
-        cover.SetActive(false);
+        assesories.SetActive(false);
     }
 
     public void TurnToPage(int i)
@@ -50,15 +51,15 @@ public class SketchBook : MonoBehaviour
     }
     private void OpenBook()
     {
-        GetComponent<AudioSource>().clip = OpenBookAudio;
-        GetComponent<AudioSource>().Play();
+        audio.clip = OpenBookAudio;
+        audio.Play();
         if (hasNew)
         {
             ChangeUINew(false);
         }
 
         notesManager.gameObject.SetActive(true);
-        cover.SetActive(true);
+        assesories.SetActive(true);
         if (dialogueManager != null)
         {
             dialogueManager.FreezeDialogue();
@@ -70,18 +71,44 @@ public class SketchBook : MonoBehaviour
 
     private void CloseBook()
     {
-        GetComponent<AudioSource>().clip = CloseBookAudio;
-        GetComponent<AudioSource>().Play();
+        audio.clip = CloseBookAudio;
+        audio.Play();
 
         notesManager.gameObject.SetActive(false);
 
-        cover.SetActive(false);
+        assesories.SetActive(false);
         if (dialogueManager != null)
         {
             dialogueManager.UnfreezeDialogue();
         }
     }
 
+    public void FlipLeft()
+    {
+        if (currPage > 0)
+        {
+            currPage--;
+            notesManager.TurnToPage(currPage);
+            PlayFlipPageAudio();
+        }
+    }
+
+    public void FlipRight()
+    {
+        if (currPage < notesManager.MaxPage())
+        {
+            currPage++;
+            notesManager.TurnToPage(currPage);
+            PlayFlipPageAudio();
+        }
+    }
+
+    private void PlayFlipPageAudio()
+    {
+        int i = UnityEngine.Random.Range(0, FlipPageAudios.Length - 1);
+        audio.clip = FlipPageAudios[i];
+        audio.Play();
+    }
     public void UnlockNewNote(string name)
     {
         // if the note is already unlocked, then does nothing and return;

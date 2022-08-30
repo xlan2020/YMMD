@@ -13,8 +13,9 @@ INCLUDE ../../global.ink
 我：我一开始搬到这个小镇上，是为了什么来着？采风？到头来除了吃饭，也只是在公寓房间里昼夜颠倒罢了。
 我：哈哈，能把日子过成这样应该是自作自受吧。#profile: painter_自嘲
 我：……不，这种虚无腐烂的感觉，也算是一种特殊的生活体验了吧？（小画家产生了灵感！）#profile: painter_侧
-我：总觉得是很值得记下来的灵感呢。#unlockNote: 1_1_空荡荡的房间 #profile: painter_古怪
+我：总觉得是很值得记下来的灵感呢。#unlockNote: 2_1_空荡荡的房间 #profile: painter_古怪
 我：……咦，旁边这亮晶晶的是什么？奇怪……#bgm:柴柴 #profile: painter_吃惊
-我：这是……鳞片？#unlockNote: 1_2_鳞片 #profile: painter_惊呆
+我：这是……鳞片？#unlockNote: 2_2_鳞片 #profile: painter_惊呆 
+我：这是……鳞片？#loadScene:DAY1-2_Map
 
 -> END

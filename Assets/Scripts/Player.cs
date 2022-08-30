@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] UI_Inventory uiInventory;
     public bool actionFreeze;
+    public bool canMove;
     public PlayerUIManager uiManager;
     float horizontalInput;
     Inventory inventory;
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        //speed *= 0.001f;
+        //speed *= 100f;
         uiManager = GetComponent<PlayerUIManager>();
         inventory = new Inventory();
         if (uiInventory)
@@ -34,11 +35,16 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
         // freeze player when playing dialogue
-        if (InkDialogueManager.GetInstance().dialogueIsPlaying)
+        if (InkDialogueManager.GetInstance() != null && InkDialogueManager.GetInstance().dialogueIsPlaying)
         {
             actionFreeze = true;
             animator.SetBool("isWalking", false);
+            return;
         }
         else
         {
@@ -76,7 +82,7 @@ public class Player : MonoBehaviour
                 showInventory = !showInventory;
                 uiInventory.gameObject.SetActive(showInventory);
             }
-            if (enterInteractable && !InkDialogueManager.GetInstance().dialogueIsPlaying)
+            if (enterInteractable && InkDialogueManager.GetInstance() != null && !InkDialogueManager.GetInstance().dialogueIsPlaying)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -93,8 +99,10 @@ public class Player : MonoBehaviour
                         interactItem = null;
                         enterInteractable = false;
                     }
-
-                    uiManager.HideInteractPrompt();
+                    if (uiManager != null)
+                    {
+                        uiManager.HideInteractPrompt();
+                    }
 
                 }
             }
@@ -106,7 +114,7 @@ public class Player : MonoBehaviour
         ItemInfo item = collision.GetComponent<ItemInfo>();
         if (item != null)
         {
-            if (!uiManager.isInteractPromptActive())
+            if (uiManager != null && !uiManager.isInteractPromptActive())
             {
                 uiManager.ShowInteractPrompt(item.itemName);
             }
@@ -118,7 +126,10 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         enterInteractable = false;
-        uiManager.HideInteractPrompt();
+        if (uiManager != null)
+        {
+            uiManager.HideInteractPrompt();
+        }
     }
     public void SaveInventory()
     {
@@ -127,6 +138,10 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove)
+        {
+            return;
+        }
 
         if (actionFreeze)
         {
