@@ -17,6 +17,11 @@ public class NoteSegment : MonoBehaviour
         splitName = name.Split("_");
         sp = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
+        if (!unlocked)
+        {
+            sp.enabled = false;
+            collider.enabled = false;
+        }
     }
 
     public void Unlock()

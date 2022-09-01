@@ -2,17 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UI_Inventory : MonoBehaviour
 {
-    
     private Inventory inventory;
     [SerializeField] Transform itemContainer;
     [SerializeField] Transform itemSlotTemplate;
     [SerializeField] float itemSlotCellSize = 80f;
-    [SerializeField] int itemsPerLine = 4;
+    [SerializeField] int itemsPerLine = 6;
+    [SerializeField] int itemsPerPage = 24;
 
+    [SerializeField] Text currentItemName;
+    [SerializeField] Text currentItemDescription;
+    private ItemSlot[] slots;
+    private int currentSlotIndex = 0;
+    public DisplaceButton displaceButton;
+
+    void Update()
+    {
+        /**
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        { // left
+            if (currentSlotIndex > 0)
+            {
+                currentSlotIndex--;
+                RefreshSelectionUI();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+        { // right
+            if (currentSlotIndex < inventory.Count())
+            {
+                currentSlotIndex++;
+                RefreshSelectionUI();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        { // up
+            if (currentSlotIndex >= itemsPerLine)
+            {
+                currentSlotIndex -= itemsPerLine;
+                RefreshSelectionUI();
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        { // down
+            if (currentSlotIndex < inventory.Count() - itemsPerLine)
+            {
+                currentSlotIndex += itemsPerLine;
+                RefreshSelectionUI();
+            }
+        }
+        */
+    }
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -20,36 +62,110 @@ public class UI_Inventory : MonoBehaviour
         refreshInventoryItems();
     }
 
+
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
         refreshInventoryItems();
     }
     public void refreshInventoryItems()
     {
-        foreach(Transform child in itemContainer)
+
+        foreach (Transform child in itemContainer)
         {
             if (child == itemSlotTemplate) continue;
             Destroy(child.gameObject);
         }
         int x = 0;
         int y = 0;
-        foreach (Item item in inventory.GetItemList())
+
+        List<Item> itemList = inventory.GetItemList();
+        slots = new ItemSlot[itemsPerPage];
+
+        foreach (Item item in itemList)
         {
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
+
+            ItemSlot itemSlot = itemSlotRectTransform.Find("ItemSlot").GetComponent<ItemSlot>();
+            itemSlot.item = item;
+
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.spriteImage;
-            TextMeshProUGUI name = itemSlotRectTransform.Find("Name").GetComponent<TextMeshProUGUI>();
-            name.text = item.itemName;
-            TextMeshProUGUI price = itemSlotRectTransform.Find("Price").GetComponent<TextMeshProUGUI>();
-            price.text = "$"+item.price;
+
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, -y * itemSlotCellSize);
+
+            slots[x] = itemSlot;
+            itemSlot.uiIndex = x;
             x++;
-            if (x > itemsPerLine)
+
+            if (x == itemsPerLine)
             {
                 x = 0;
                 y++;
             }
         }
+        RefreshSelectionUI();
     }
+
+    public void UpdateCurrentSlot(ItemSlot slot)
+    {
+        // update slot selection ui by its index
+        currentSlotIndex = slot.uiIndex;
+        RefreshSelectionUI();
+    }
+
+    private void RefreshSelectionUI()
+    {
+        displaceButton.SetInteractive(false);
+
+        // if the list is empty, then don't bother making updates
+        if (inventory.Count() == 0)
+        {
+            currentItemName.text = "";
+            currentItemDescription.text = "";
+            currentSlotIndex = 0;
+            return;
+        }
+
+        // if the current selection has been removed, change current to the last item in array
+        if (currentSlotIndex >= inventory.Count())
+        {
+            currentSlotIndex = inventory.Count() - 1;
+        }
+
+        foreach (ItemSlot s in slots)
+        {
+            if (s)
+            {
+                s.ShowSelfSelected(false);
+            }
+        }
+        ItemSlot currentSlot = slots[currentSlotIndex];
+        if (currentSlot)
+        {
+            currentSlot.ShowSelfSelected(true);
+        }
+
+        // update item display UI
+        Item item = currentSlot.item;
+        currentItemName.text = item.itemName;
+        currentItemDescription.text = item.description;
+
+        if (item.displaceable)
+        {
+            displaceButton.SetInteractive(true);
+        }
+    }
+
+
+    public int GetCurrentSlotIndex()
+    {
+        return currentSlotIndex;
+    }
+
+    public ItemSlot GetCurrentSlot()
+    {
+        return slots[currentSlotIndex];
+    }
+
 }

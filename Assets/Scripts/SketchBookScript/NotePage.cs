@@ -7,7 +7,7 @@ public class NotePage : MonoBehaviour
     private int pageNum;
     private List<NoteSegment> notes = new List<NoteSegment>();
 
-    void Start()
+    void Awake()
     {
         foreach (Transform child in transform)
         {

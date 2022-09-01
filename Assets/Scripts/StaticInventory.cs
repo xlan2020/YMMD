@@ -9,6 +9,8 @@ public static class StaticInventory
     //private static string[] descriptionArr;
     //private static Sprite[] spriteImageArr;
     private static List<Item> itemArry;
+    private static float moneyAmount = 0;
+
     public static List<Item> ItemArry
     {
         get
@@ -19,6 +21,18 @@ public static class StaticInventory
         set
         {
             itemArry = value;
+        }
+    }
+
+    public static float MoneyAmount
+    {
+        get
+        {
+            return moneyAmount;
+        }
+        set
+        {
+            moneyAmount = value;
         }
     }
 

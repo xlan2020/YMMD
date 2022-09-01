@@ -16,6 +16,7 @@ public class SketchBook : MonoBehaviour
     private int currPage = 0;
     public GameObject assesories;
     public InkDialogueManager dialogueManager;
+    public InventoryButton inventoryButton;
 
     void Awake()
     {
@@ -42,11 +43,13 @@ public class SketchBook : MonoBehaviour
         {
             isOpen = false;
             CloseBook();
+            inventoryButton.canOpen = true;
         }
         else
         {
             isOpen = true;
             OpenBook();
+            inventoryButton.canOpen = false;
         }
     }
     private void OpenBook()

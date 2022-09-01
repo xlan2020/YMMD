@@ -19,14 +19,31 @@ public class Inventory
         onItemListChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    public void RemoveItem(Item item)
+    {
+        _itemList.Remove(item);
+        onItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void RemoveItemAtIndex(int index)
+    {
+        _itemList.RemoveAt(index);
+        onItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     public List<Item> GetItemList()
     {
         return _itemList;
     }
 
+    public int Count()
+    {
+        return _itemList.Count;
+    }
+
     public void SetItemList(List<Item> itemList)
     {
-        if (itemList!=null && itemList.Capacity > 0)
+        if (itemList != null && itemList.Capacity > 0)
         {
             _itemList = itemList;
             onItemListChanged?.Invoke(this, EventArgs.Empty);

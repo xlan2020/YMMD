@@ -7,31 +7,26 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     [SerializeField] float speed = 1f;
-    [SerializeField] UI_Inventory uiInventory;
+    // [SerializeField] UI_Inventory uiInventory;
     public bool actionFreeze;
     public bool canMove;
     public PlayerUIManager uiManager;
     float horizontalInput;
-    Inventory inventory;
     Rigidbody2D rb;
     bool showInventory = false;
     bool interactCommand;
     private bool enterInteractable;
     private ItemInfo interactItem;
-
+    public GameManager gameManager;
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //speed *= 100f;
         uiManager = GetComponent<PlayerUIManager>();
-        inventory = new Inventory();
-        if (uiInventory)
-        {
-            uiInventory.SetInventory(inventory);
-        }
+
         rb = gameObject.GetComponent<Rigidbody2D>();
-        inventory.SetItemList(StaticInventory.ItemArry);
+
     }
     private void Update()
     {
@@ -76,12 +71,6 @@ public class Player : MonoBehaviour
                 sprite.flipX = false;
             }
 
-
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                showInventory = !showInventory;
-                uiInventory.gameObject.SetActive(showInventory);
-            }
             if (enterInteractable && InkDialogueManager.GetInstance() != null && !InkDialogueManager.GetInstance().dialogueIsPlaying)
             {
                 if (Input.GetKeyDown(KeyCode.E))
@@ -95,6 +84,8 @@ public class Player : MonoBehaviour
                         {
                             interactItem.DestroySelf();
                         }
+                        gameManager.inventory.AddItem(interactItem.GetItem());
+
                         //interactItem.SetInteractable(false);// disable object after interation
                         interactItem = null;
                         enterInteractable = false;
@@ -119,8 +110,6 @@ public class Player : MonoBehaviour
                 uiManager.ShowInteractPrompt(item.itemName);
             }
             interactItem = item;
-            //inventory.AddItem(item.GetItem());
-
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -130,10 +119,6 @@ public class Player : MonoBehaviour
         {
             uiManager.HideInteractPrompt();
         }
-    }
-    public void SaveInventory()
-    {
-        StaticInventory.ItemArry = inventory.GetItemList();
     }
 
     private void FixedUpdate()
@@ -151,7 +136,5 @@ public class Player : MonoBehaviour
         {
             rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
         }
-
-
     }
 }

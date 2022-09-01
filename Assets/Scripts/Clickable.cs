@@ -8,17 +8,30 @@ public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     public UnityEvent ClickEvents;
     public MouseCursor cursor;
+    public string animationType = "point";
     private bool stay = false;
     void Update()
     {
-        if (stay && Input.GetKeyUp(KeyCode.Mouse0))
+        if (stay)
         {
-            ClickEvents.Invoke();
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                ClickEvents.Invoke();
+                if (animationType == "hand")
+                {
+                    cursor.SetAnimationBool("grab", false);
+                }
+            }
+            if (animationType == "hand" && Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                cursor.SetAnimationBool("grab", true);
+            }
+
         }
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        cursor.SetAnimationTrigger("point");
+        cursor.SetAnimationTrigger(animationType);
         stay = true;
     }
 

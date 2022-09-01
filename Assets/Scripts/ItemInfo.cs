@@ -10,6 +10,7 @@ public class ItemInfo : MonoBehaviour
     public string description;
     public Sprite spriteImage;
     public bool destroyOnInteract;
+    public bool displaceable = true;
     public InkDialogueTrigger dialogueTrigger;
 
     Item item;
@@ -17,7 +18,7 @@ public class ItemInfo : MonoBehaviour
     {
         spriteImage = gameObject.GetComponent<SpriteRenderer>().sprite;
         dialogueTrigger = GetComponent<InkDialogueTrigger>();
-        item = new Item { price = price, itemName = itemName, description = description, spriteImage = spriteImage, destroyOnInteract = destroyOnInteract };
+        item = new Item { price = price, itemName = itemName, description = description, spriteImage = spriteImage, destroyOnInteract = destroyOnInteract, displaceable = displaceable };
     }
     public Item GetItem()
     {
@@ -32,6 +33,7 @@ public class ItemInfo : MonoBehaviour
     {
         gameObject.GetComponent<BoxCollider2D>().enabled = action;
     }
+
     public void TriggerDialogue()
     {
         if (dialogueTrigger != null)

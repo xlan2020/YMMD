@@ -24,6 +24,7 @@ public class NotesManager : MonoBehaviour
             if (page != null)
             {
                 int num = page.PageNum();
+                UnityEngine.Debug.Log("adding page num to list: " + num);
                 pages[num] = page;
                 notes.AddRange(page.Notes());
                 if (num > maxPage)
@@ -43,7 +44,7 @@ public class NotesManager : MonoBehaviour
         foreach (NoteSegment note in notes)
         {
             notesDict.Add(note.name, note);
-            //UnityEngine.Debug.Log("Add to NotesManager dictionary, key as: " + note.name);
+            UnityEngine.Debug.Log("Add to NotesManager dictionary, key as: " + note.name);
         }
         currPage = sketchBook.CurrentPage();
         gameObject.SetActive(false);
