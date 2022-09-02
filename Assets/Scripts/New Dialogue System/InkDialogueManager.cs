@@ -56,6 +56,7 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private SolvableManager solvableManager;
     [SerializeField] private SketchBook sketchBook;
     public Player player;
+    public GameManager gameManager;
 
     //tags
     private const string SPEAKER_TAG = "speaker";
@@ -70,6 +71,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string SOLVE_TAG = "solve";
     private const string UNLOCK_NOTE_TAG = "unlockNote";
     private const string LOAD_SCENE_TAG = "loadScene";
+    private const string ADD_MONEY_TAG = "addMoney";
 
 
     private Story currentStory;
@@ -94,6 +96,7 @@ public class InkDialogueManager : MonoBehaviour
         // pass that variable to the DIalogueVariables constructor in the Awake method
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
 
+        initializeChoices();
     }
 
     private void Start()
@@ -106,8 +109,6 @@ public class InkDialogueManager : MonoBehaviour
 
         // I add these lines because I don't know how to do with cross scene and the project is due tomorrow
         // might delete that sometimes
-
-        initializeChoices();
 
         // initialize draw mode specials
         if (DrawMode)
@@ -246,11 +247,15 @@ public class InkDialogueManager : MonoBehaviour
             choices = choiceContainer[0].getChoices();
 
             choicesText = new Text[choices.Length];
-            int index = 0;
+            int i = 0;
             foreach (GameObject choice in choices)
             {
-                choicesText[index] = choice.GetComponentInChildren<Text>();
-                index++;
+                Text t = choice.GetComponentInChildren<Text>();
+                t.text = "对话选项" + i;
+                choicesText[i] = t;
+                int choiceIndex = i;
+                choice.GetComponent<Button>().onClick.AddListener(delegate { MakeChoice(choiceIndex); }); // attach each choice with the correct index
+                i++;
             }
         }
     }
@@ -371,7 +376,11 @@ public class InkDialogueManager : MonoBehaviour
     private IEnumerator ExitDialogueMode()
     {
 
-        UnityEngine.Debug.Log("Hide dialogue panel!");
+        if (player)
+        {
+            player.canMove = true;
+            player.CheckCollectItemAtDialogEnd();
+        }
         yield return new WaitForSeconds(.2f);
 
         dialogueVariables.StopListening(currentStory);
@@ -381,10 +390,6 @@ public class InkDialogueManager : MonoBehaviour
         //dialogueText.text = "";
 
         //SceneManager.LoadScene(1);
-        if (player)
-        {
-            player.canMove = true;
-        }
 
     }
 
@@ -452,6 +457,9 @@ public class InkDialogueManager : MonoBehaviour
                 case LOAD_SCENE_TAG:
                     SceneManager.LoadScene(tagValue);
                     break;
+                case ADD_MONEY_TAG:
+                    gameManager.AddMoney(float.Parse(tagValue));
+                    break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
                     break;
@@ -487,7 +495,6 @@ public class InkDialogueManager : MonoBehaviour
 
     private void hideChoices()
     {
-
         if (choiceContainer.Length > 0 && choices.Length > 0)
         {
             foreach (GameObject choiceButton in choices)
@@ -536,10 +543,9 @@ public class InkDialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-
         if (canContinueToNextLine)
         {
-
+            UnityEngine.Debug.Log("making choice at index: " + choiceIndex);
             currentStory.ChooseChoiceIndex(choiceIndex);
             ContinueStory();
         }

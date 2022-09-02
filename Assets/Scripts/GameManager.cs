@@ -56,4 +56,30 @@ public class GameManager : MonoBehaviour
         inventory.RemoveItemAtIndex(slot.uiIndex);
     }
 
+    public void AddItemToInventory(Item item)
+    {
+        inventory.AddItem(item);
+    }
+
+    public void AddMoney(float amount)
+    {
+        money.ChangeMoney(amount);
+    }
+
+    public void BuyItem(Item item)
+    {
+        if (money.GetMoney() - item.storePrice < 0)
+        {
+            // money not enough to buy
+            UnityEngine.Debug.Log("not enough money!");
+        }
+        else
+        {
+            // buy item
+            AddMoney(-item.storePrice);
+            AddItemToInventory(item);
+
+        }
+
+    }
 }

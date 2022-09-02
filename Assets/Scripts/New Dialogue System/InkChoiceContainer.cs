@@ -5,19 +5,25 @@ using UnityEngine;
 public class InkChoiceContainer : MonoBehaviour
 {
 
-    public GameObject[] choices;
+    private GameObject[] choices;
     public string tagName;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
-    }
+        // instantiate proper choice array
+        int choiceNum = 0;
+        foreach (Transform child in transform)
+        {
+            choiceNum++;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        choices = new GameObject[choiceNum];
+        int i = 0;
+        foreach (Transform child in transform)
+        {
+            choices[i] = child.gameObject;
+            i++;
+        }
     }
 
     public GameObject[] getChoices()

@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     private bool enterInteractable;
     private ItemInfo interactItem;
     public GameManager gameManager;
+    private bool collectItemAtDialogueEnd = false;
+    private ItemInfo tempCollectItem;
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -79,13 +81,23 @@ public class Player : MonoBehaviour
                     {
 
                         interactItem.TriggerDialogue();
+                        interactItem.TriggerEventsOnInteract();
 
                         if (interactItem.destroyOnInteract)
                         {
                             interactItem.DestroySelf();
                         }
-                        gameManager.inventory.AddItem(interactItem.GetItem());
 
+                        if (interactItem.collectOnInteract)
+                        {
+                            CollectItem(interactItem);
+                        }
+
+                        if (interactItem.collectAfterDialogue)
+                        {
+                            collectItemAtDialogueEnd = true;
+                            tempCollectItem = interactItem;
+                        }
                         //interactItem.SetInteractable(false);// disable object after interation
                         interactItem = null;
                         enterInteractable = false;
@@ -99,6 +111,23 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+
+    private void CollectItem(ItemInfo item)
+    {
+        gameManager.inventory.AddItem(item.GetItem());
+        item.DestroySelf();
+    }
+
+    public void CheckCollectItemAtDialogEnd()
+    {
+        if (collectItemAtDialogueEnd)
+        {
+            CollectItem(tempCollectItem);
+            tempCollectItem = null;
+            collectItemAtDialogueEnd = false;
+        }
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         enterInteractable = true;
@@ -108,6 +137,7 @@ public class Player : MonoBehaviour
             if (uiManager != null && !uiManager.isInteractPromptActive())
             {
                 uiManager.ShowInteractPrompt(item.itemName);
+                uiManager.SetInteractiPromptTransformAboveItem(new Vector2(item.transform.position.x, item.transform.position.y));
             }
             interactItem = item;
         }

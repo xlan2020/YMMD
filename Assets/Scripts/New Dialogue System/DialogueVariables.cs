@@ -24,7 +24,6 @@ public class DialogueVariables
         }
     }
 
-
     public void StartListening(Story story)
     {
         variablesToStory(story);
