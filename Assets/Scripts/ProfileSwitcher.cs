@@ -6,6 +6,8 @@ using UnityEngine;
 public class ProfileSwitcher : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private Dictionary<string, Sprite> spriteSources = new Dictionary<string, Sprite>();
+    
     //private string[] painterNames = { "painter", "Painter", "画家", "我", "Me", "me" };
     //private string[] eighminusNames = { "8-2", "巴简二", "Eighminus", "Eighminus Tue" };
     /**
@@ -29,10 +31,16 @@ public class ProfileSwitcher : MonoBehaviour
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Sprite[] sprites = Resources.LoadAll<Sprite>("ProfileSprites");
+        foreach (Sprite s in sprites){
+            spriteSources.Add(s.name, s);
+        }
     }
 
     public void ChangeProfile(string name)
     {
+        spriteRenderer.sprite = spriteSources[name];
+        /**
         string[] splitName = name.Split("_");
         string charaName = splitName[0];
         string expression = splitName[1];
@@ -41,5 +49,6 @@ public class ProfileSwitcher : MonoBehaviour
         UnityEngine.Debug.Log("finding sprite from directory: " + directory);
 
         spriteRenderer.sprite = Resources.Load<Sprite>(directory);
+        */
     }
 }

@@ -20,10 +20,10 @@ public class SketchBook : MonoBehaviour
 
     void Awake()
     {
+        audio = GetComponent<AudioSource>();
     }
     void Start()
     {
-        audio = GetComponent<AudioSource>();
         assesories.SetActive(false);
     }
 
@@ -117,8 +117,8 @@ public class SketchBook : MonoBehaviour
         // if the note is already unlocked, then does nothing and return;
         if (notesManager.NoteIsUnlocked(name))
         {
+            //UnityEngine.Debug.Log("The note '" + name + "' has already been unlocked! ");
             return;
-            UnityEngine.Debug.Log("The note '" + name + "' has already been unlocked! ");
         }
 
         //change UI display

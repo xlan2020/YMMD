@@ -16,7 +16,7 @@ public class NotesManager : MonoBehaviour
     private string bookSavedJSON;
     public SketchBook sketchBook;
 
-    void Start()
+    void Awake()
     {
         foreach (Transform child in transform)
         {
