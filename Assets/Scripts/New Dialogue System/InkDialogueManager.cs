@@ -126,64 +126,80 @@ public class InkDialogueManager : MonoBehaviour
     private void Update()
     {
         // fast skip: left SHIFT
-        if (Input.GetKey(KeyCode.LeftShift)){
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
             isTyping = false;
-            if (skippingLinesCorotine == null){
-                UnityEngine.Debug.Log("start fast skipping");
+            if (skippingLinesCorotine == null)
+            {
+                //UnityEngine.Debug.Log("start fast skipping");
                 skippingLinesCorotine = StartCoroutine(skippingLines());
             }
-        } else { // when fast skip is released, stop current skipping mode
-            if (skippingLinesCorotine != null){
+        }
+        else
+        { // when fast skip is released, stop current skipping mode
+            if (skippingLinesCorotine != null)
+            {
                 StopCoroutine(skippingLinesCorotine);
                 skippingLinesCorotine = null;
             }
         }
-        
+
         // skip: SPACE
         // if typing, skip typing effect; if already complete, then proceed to next linee
-        if (Input.GetKeyDown(KeyCode.Space)){
-            if (typingLinesCorotine != null && isTyping){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (typingLinesCorotine != null && isTyping)
+            {
                 // if is typing, then skip the typing effect
                 StopCoroutine(typingLinesCorotine);
                 isTyping = false;
                 dialogueText.text = currentLine;
-                UnityEngine.Debug.Log("complete current line");
-            } else 
-            { 
+                //UnityEngine.Debug.Log("complete current line");
+            }
+            else
+            {
                 // if is not typing, then continue to next line
-                UnityEngine.Debug.Log("space continue");
+                //UnityEngine.Debug.Log("space continue");
                 canContinueToNextLine = true;
                 ContinueStory();
                 SkipChoice();
                 return;
-            } 
+            }
         }
 
         // auto plays: CONTROL
-        if (Input.GetKeyDown(KeyCode.LeftControl)){
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
             // toggle auto playing
             autoMode = !autoMode;
-            if (autoMode){
+            if (autoMode)
+            {
                 autoPlayingCorotine = StartCoroutine(autoPlaying());
-            } else {
+            }
+            else
+            {
                 StopCoroutine(autoPlayingCorotine);
             }
         }
 
     }
 
-    private IEnumerator autoPlaying(){
+    private IEnumerator autoPlaying()
+    {
         UnityEngine.Debug.Log("auto playing");
-        while (currentStory.canContinue){
+        while (currentStory.canContinue)
+        {
             yield return new WaitForSeconds(autoPlayingTimeInterval);
             ContinueStory();
             SkipChoice();
         }
     }
 
-    private IEnumerator skippingLines(){
-        for (int i = 0; i < 999; i++) { // keep skipping, maximam 999 to avoid infinite loop
-            UnityEngine.Debug.Log("try to fast skip one line");
+    private IEnumerator skippingLines()
+    {
+        for (int i = 0; i < 999; i++)
+        { // keep skipping, maximam 999 to avoid infinite loop
+            //UnityEngine.Debug.Log("try to fast skip one line");
             ContinueStory();
             SkipChoice();
             yield return new WaitForSeconds(0.2f);
@@ -207,11 +223,11 @@ public class InkDialogueManager : MonoBehaviour
         string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
         speakerName.text = splitLines[0];
         line = splitLines[1];
-        
+
         currentLine = line;
 
         yield return new WaitForSeconds(0.04f);
-        
+
         // start typing effect
         foreach (char letter in line.ToCharArray())
         {
@@ -260,11 +276,12 @@ public class InkDialogueManager : MonoBehaviour
         {
             UnityEngine.Debug.Log("try to continue story, but canContinueToNextLine == false");
             return;
-        } 
+        }
 
-        if (isTyping){
+        if (isTyping)
+        {
             UnityEngine.Debug.Log("still typing, can't continue story. ");
-            return; 
+            return;
         }
 
         if (currentStory.canContinue)
@@ -316,6 +333,11 @@ public class InkDialogueManager : MonoBehaviour
                 i++;
             }
         }
+    }
+
+    public DialogueVariables GetDialogueVariables()
+    {
+        return dialogueVariables;
     }
     private void displayVisualsAfterType()
     {

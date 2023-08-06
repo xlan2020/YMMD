@@ -30,8 +30,11 @@ public class PlayerUIManager : MonoBehaviour
     }
     public void HideInteractPrompt()
     {
-        interactPrompt.text = originPrompt;
-        interactPrompt.gameObject.SetActive(false);
+        if (interactPrompt)
+        {
+            interactPrompt.text = originPrompt;
+            interactPrompt.gameObject.SetActive(false);
+        }
     }
     public bool isInteractPromptActive()
     {

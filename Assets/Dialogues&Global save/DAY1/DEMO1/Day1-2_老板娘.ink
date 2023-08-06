@@ -1,26 +1,40 @@
 INCLUDE DAY1-2_global.ink
-{mamaTalk:
-- 0: 
-    ~ mamaTalk = mamaTalk + 1
-    老板娘：哟，画家呀！今天还是老样子？#profile: mama_满意
-    我：（吃点什么好呢？）#profile：painter_高兴
-    + [排骨砂锅(￥12)]
-    我：（这里的砂锅真是一绝，加点豆芽更好……等等，好像忘记了很重要的事情。）#profile：painter_半闭眼 
-    ->no_money
-    + [羊肉串(￥8)]
-    我：（烧烤自选套餐看起来不错，不过……）#profile：painter_半闭眼
-    ->no_money
-    + [我没钱了]->no_money
-- 1: 
-    老板娘：想好吃什么了吗？#profile: mama_满意
-    
-    老板娘：去置换一两件东西吧。#profile: mama_不爽
-    ->DONE
-- 2:
-    老板娘：（眉开眼笑）好嘞！坐那椅子上等会啊，三分钟就给你送来！#profile: mama_满意
-    ->DONE
+{ mamaTalk: 
+    - 0:
+        ~ mamaTalk++
+        ->first_talk
+        
+    - else: 
+        ~ mamaTalk++
+        ->talk_again
 }
 
+===first_talk===
+    老板娘：哟，画家呀！今天还是老样子？#profile: mama_满意
+    我：（吃点什么好呢？）#profile：painter_高兴
+        + [排骨砂锅(￥12)]
+        { money < 12: 
+            我：（这里的砂锅真是一绝，加点豆芽更好……等等，我好想忘记了一件事……）#profile：painter_半闭眼 
+            ->no_money
+        - else: 
+            我：来一份排骨砂锅饭！
+            ->buy_food
+        }
+        + [羊肉串(￥8)]
+        { money < 8: 
+            我：（烧烤自选套餐看起来不错，不过……）#profile：painter_半闭眼
+            ->no_money
+        - else: 
+            我：来一盘羊肉串吧！
+            ->buy_food
+        }
+        + [我没钱了]
+        ->no_money
+
+===talk_again===
+    老板娘：想好吃什么了吗？#profile: mama_满意
+    老板娘：去置换一两件东西吧。#profile: mama_不爽
+->DONE
 ===no_money===
     我：……………… #profile：painter_侧
     我：……我没钱了……那个，可以给我一晚白面条吗，我、我很抱歉，明天卖出一幅画，我一定还上来。#profile: painter_侧流汗
@@ -39,6 +53,10 @@ INCLUDE DAY1-2_global.ink
     我：（当然，一个东西在人心目中的地位会变，价值也会变。大部分人，都是无法准确预估什么东西价值多少的。）
     我：（实在是拉不下脸向老板娘讨饭了，还是看看有什么东西可以置换吧。）
     -> DONE
+    
+===buy_food===
+    老板娘：（眉开眼笑）好嘞！坐那椅子上等会啊，三分钟就给你送来！#profile: mama_满意
+    ->DONE
     
 ===finish_displace===
 我：（这就算是完成了？是了，我现在有钱了。）

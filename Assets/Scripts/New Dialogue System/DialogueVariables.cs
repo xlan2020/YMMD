@@ -7,12 +7,12 @@ using System.IO;
 public class DialogueVariables
 {
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
-
+    private Story globalVariablesStory;
 
     public DialogueVariables(TextAsset loadGlobalsJSON)
     {
         // create the story
-        Story globalVariablesStory = new Story(loadGlobalsJSON.text);
+        globalVariablesStory = new Story(loadGlobalsJSON.text);
 
         // initialize the dictionary
         variables = new Dictionary<string, Ink.Runtime.Object>();
@@ -51,5 +51,37 @@ public class DialogueVariables
         {
             story.variablesState.SetGlobal(variable.Key, variable.Value);
         }
+    }
+
+    public static bool TrySetInkStoryVariable(Story story, string variable, object value, bool log = true)
+    {
+        if (story != null)
+        {
+            if (!story.variablesState.GlobalVariableExistsWithName(variable))
+            {
+                if (log)
+                {
+                    Debug.Log($"[Ink] Try to set variable, but variable name {variable} does not exist!");
+                }
+                return false;
+            }
+            if (log)
+            {
+                Debug.Log($"[Ink] Set variable: {variable} = {value}");
+            }
+
+            story.variablesState[variable] = value;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void SetGlobalVariable(string variableName, object value)
+    {
+        StartListening(globalVariablesStory);
+        TrySetInkStoryVariable(globalVariablesStory, variableName, value, true);
+        StopListening(globalVariablesStory);
     }
 }

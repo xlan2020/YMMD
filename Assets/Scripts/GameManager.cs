@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool HasBeginningDialogue = true;
     public Inventory inventory;
+    private DialogueVariables dialogueVariables;
     Money money;
 
     void Awake()
@@ -41,6 +42,19 @@ public class GameManager : MonoBehaviour
             // load the dialogue for this scene
             InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
         }
+        // load global ink dialogue variables
+        dialogueVariables = InkDialogueManager.GetInstance().GetDialogueVariables();
+
+        dialogueIntegrationTest();
+    }
+
+    private void dialogueIntegrationTest()
+    {
+        // UnityEngine.Debug.Log("trying to set global variable test: ");
+        // dialogueVariables.SetGlobalVariable("mamaTalk", 10);
+        // dialogueVariables.SetGlobalVariable("money", 100);
+        this.AddMoney(100f);
+
     }
 
     public void SaveInventory()
@@ -69,6 +83,7 @@ public class GameManager : MonoBehaviour
     public void AddMoney(float amount)
     {
         money.ChangeMoney(amount);
+        dialogueVariables.SetGlobalVariable("money", money.GetMoney());
     }
 
     public void BuyItem(Item item)

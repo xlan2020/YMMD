@@ -16,7 +16,6 @@ public class UI_Money : MonoBehaviour
         money.onMoneyChanged += Money_OnMoneyChanged;
     }
 
-
     private void Money_OnMoneyChanged(object sender, System.EventArgs e)
     {
         StartCoroutine(changingMoneyDisplay(money.GetMoney()));
