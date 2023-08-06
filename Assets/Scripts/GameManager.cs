@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public TextAsset BeginningInkJSON;
     public UI_Inventory uiInventory;
     public UI_Money uiMoney;
+    public DisplaceSFX displaceSFX;
 
     public bool HasBeginningDialogue = true;
     public Inventory inventory;
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
             uiMoney.SetMoney(money);
         }
         money.SetMoney(StaticInventory.MoneyAmount);
+
+        displaceSFX = Instantiate(displaceSFX);
     }
 
     void Start()
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         money.ChangeMoney(slot.item.price);
+        displaceSFX.PlayItemToMoneySound();
         uiInventory.ShowDisplaceResultWindow(slot.item);
         inventory.RemoveItemAtIndex(slot.uiIndex);
     }
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour
             // buy item
             AddMoney(-item.storePrice);
             AddItemToInventory(item);
+            displaceSFX.PlayBuyItemSound();
 
         }
 
