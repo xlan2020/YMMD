@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         // load global ink dialogue variables
         dialogueVariables = InkDialogueManager.GetInstance().GetDialogueVariables();
 
-        dialogueIntegrationTest();
+        // dialogueIntegrationTest();
     }
 
     private void dialogueIntegrationTest()
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
             UnityEngine.Debug.Log("Can't displace because slot is empty!");
             return;
         }
-        money.ChangeMoney(slot.item.price);
+        AddMoney(slot.item.price);
         displaceSFX.PlayItemToMoneySound();
         uiInventory.ShowDisplaceResultWindow(slot.item);
         inventory.RemoveItemAtIndex(slot.uiIndex);
