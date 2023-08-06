@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         money.ChangeMoney(slot.item.price);
+        uiInventory.ShowDisplaceResultWindow(slot.item);
         inventory.RemoveItemAtIndex(slot.uiIndex);
     }
 

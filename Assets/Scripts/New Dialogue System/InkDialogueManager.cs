@@ -18,6 +18,8 @@ public class InkDialogueManager : MonoBehaviour
     [Header("Params")]
 
     public float typingSpeed = 0.04f;
+    public float autoPlayingTimeInterval = 1.5f;
+    public bool autoMode = false;
 
     [Header("Sound")]
     public BGMPlayer BGM;
@@ -81,6 +83,10 @@ public class InkDialogueManager : MonoBehaviour
     private static InkDialogueManager instance;
 
     private Coroutine typingLinesCorotine;
+    private Coroutine skippingLinesCorotine;
+    private Coroutine autoPlayingCorotine;
+    private string currentLine;
+    private bool isTyping;
     private bool canContinueToNextLine = true;
     private bool finishedRequiredOpera;
 
@@ -119,30 +125,78 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (!dialogueIsPlaying)
-        {
-            return;
+        // fast skip: left SHIFT
+        if (Input.GetKey(KeyCode.LeftShift)){
+            isTyping = false;
+            if (skippingLinesCorotine == null){
+                UnityEngine.Debug.Log("start fast skipping");
+                skippingLinesCorotine = StartCoroutine(skippingLines());
+            }
+        } else { // when fast skip is released, stop current skipping mode
+            if (skippingLinesCorotine != null){
+                StopCoroutine(skippingLinesCorotine);
+                skippingLinesCorotine = null;
+            }
         }
-        // skip the typing effect
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UnityEngine.Debug.Log("continue");
-            ContinueStory();
-            SkipChoice();
+        
+        // skip: SPACE
+        // if typing, skip typing effect; if already complete, then proceed to next linee
+        if (Input.GetKeyDown(KeyCode.Space)){
+            if (typingLinesCorotine != null && isTyping){
+                // if is typing, then skip the typing effect
+                StopCoroutine(typingLinesCorotine);
+                isTyping = false;
+                dialogueText.text = currentLine;
+                UnityEngine.Debug.Log("complete current line");
+            } else 
+            { 
+                // if is not typing, then continue to next line
+                UnityEngine.Debug.Log("space continue");
+                canContinueToNextLine = true;
+                ContinueStory();
+                SkipChoice();
+                return;
+            } 
         }
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
+
+        // auto plays: CONTROL
+        if (Input.GetKeyDown(KeyCode.LeftControl)){
+            // toggle auto playing
+            autoMode = !autoMode;
+            if (autoMode){
+                autoPlayingCorotine = StartCoroutine(autoPlaying());
+            } else {
+                StopCoroutine(autoPlayingCorotine);
+            }
+        }
+
+    }
+
+    private IEnumerator autoPlaying(){
+        UnityEngine.Debug.Log("auto playing");
+        while (currentStory.canContinue){
+            yield return new WaitForSeconds(autoPlayingTimeInterval);
             ContinueStory();
             SkipChoice();
         }
     }
 
+    private IEnumerator skippingLines(){
+        for (int i = 0; i < 999; i++) { // keep skipping, maximam 999 to avoid infinite loop
+            UnityEngine.Debug.Log("try to fast skip one line");
+            ContinueStory();
+            SkipChoice();
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
     private IEnumerator typingLines(string line)
     {
+        isTyping = true;
+
         dialogueText.text = "";
         hideChoices();
         continueIcon.SetActive(false);
-        canContinueToNextLine = false;
 
         // voice.StartTalking(speakerName.text);
         if (randomSpeak)
@@ -153,21 +207,19 @@ public class InkDialogueManager : MonoBehaviour
         string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
         speakerName.text = splitLines[0];
         line = splitLines[1];
-
+        
+        currentLine = line;
 
         yield return new WaitForSeconds(0.04f);
+        
+        // start typing effect
         foreach (char letter in line.ToCharArray())
         {
-            // skip the typing effect
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl))
-            {
-                // UnityEngine.Debug.Log("skip text");
-                dialogueText.text = line;
-                break;
-            }
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        isTyping = false;   // typing is finished, line complete
         continueIcon.SetActive(true);
         handleChoiceType();
         // display observees and drawings if there is one
@@ -191,7 +243,6 @@ public class InkDialogueManager : MonoBehaviour
 
     public void ContinueStory()
     {
-
         //UnityEngine.Debug.Log("continue story");
 
         // might remove this later. This check if there're still observees uncollected
@@ -204,12 +255,19 @@ public class InkDialogueManager : MonoBehaviour
             observeeManager.ClearUncollected();
         }
 
+        // if there is a solving going on or other reason causing the next line can't continue, report and return
         if (!canContinueToNextLine)
         {
             UnityEngine.Debug.Log("try to continue story, but canContinueToNextLine == false");
+            return;
+        } 
+
+        if (isTyping){
+            UnityEngine.Debug.Log("still typing, can't continue story. ");
+            return; 
         }
 
-        if (canContinueToNextLine && currentStory.canContinue)
+        if (currentStory.canContinue)
         {
             if (typingLinesCorotine != null)
             {
@@ -218,7 +276,7 @@ public class InkDialogueManager : MonoBehaviour
             typingLinesCorotine = StartCoroutine(typingLines(currentStory.Continue()));
             handleTags(currentStory.currentTags);
         }
-        else if (!canContinueToNextLine || currentStory.currentChoices.Count > 0)
+        else if (currentStory.currentChoices.Count > 0)
         {
             return;
         }

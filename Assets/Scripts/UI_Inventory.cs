@@ -17,6 +17,13 @@ public class UI_Inventory : MonoBehaviour
     private ItemSlot[] slots;
     private int currentSlotIndex = 0;
     public DisplaceButton displaceButton;
+    public Image displacedItemImage;
+    public GameObject displaceResult;
+
+    void Start(){
+        gameObject.SetActive(false);
+        HideDisplaceResultWindow();
+    }
 
     void Update()
     {
@@ -168,4 +175,12 @@ public class UI_Inventory : MonoBehaviour
         return slots[currentSlotIndex];
     }
 
+    public void ShowDisplaceResultWindow(Item displacedItem){
+        displaceResult.gameObject.SetActive(true);
+        displacedItemImage.sprite = displacedItem.spriteImage;
+    }
+
+    public void HideDisplaceResultWindow(){
+        displaceResult.gameObject.SetActive(false);
+    }
 }
