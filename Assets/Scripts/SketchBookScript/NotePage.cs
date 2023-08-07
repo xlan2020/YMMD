@@ -9,14 +9,15 @@ public class NotePage : MonoBehaviour
 
     void Awake()
     {
+        // game object name format: Page_num
+        // example: Page_1
+        pageNum = int.Parse(gameObject.name.Split("_")[1]);
         foreach (Transform child in transform)
         {
             NoteSegment n = child.GetComponent<NoteSegment>();
             if (n != null)
             {
                 notes.Add(n);
-                //UnityEngine.Debug.Log("adding note to note page: " + n.name);
-                pageNum = n.PageNum();
             }
         }
         //UnityEngine.Debug.Log("page " + pageNum + " notes count is: " + notes.Count);

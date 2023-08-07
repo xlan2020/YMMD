@@ -7,8 +7,8 @@ using Ink.Runtime;
 
 public class NotesManager : MonoBehaviour
 {
-    public Dictionary<string, NoteSegment> notesDict = new Dictionary<string, NoteSegment>();
     public List<NoteSegment> notes = new List<NoteSegment>();
+    public Dictionary<string, NoteSegment> notesDict = new Dictionary<string, NoteSegment>();
     private NotePage[] pages = new NotePage[100];
     public bool StartOfTheGame = false;
     private int currPage;
@@ -18,6 +18,12 @@ public class NotesManager : MonoBehaviour
 
     void Awake()
     {
+
+    }
+
+    void Start()
+    {
+        // first add all notes segment to the notes list
         foreach (Transform child in transform)
         {
             NotePage page = child.GetComponent<NotePage>();
@@ -26,7 +32,9 @@ public class NotesManager : MonoBehaviour
                 int num = page.PageNum();
                 UnityEngine.Debug.Log("adding page num to list: " + num);
                 pages[num] = page;
+
                 notes.AddRange(page.Notes());
+
                 if (num > maxPage)
                 {
                     maxPage = num;
@@ -40,15 +48,16 @@ public class NotesManager : MonoBehaviour
             InitializeBookForGameStart();
         }
 
-        // Initialize Dictionary & list
+        // Initialize Dictionary
         foreach (NoteSegment note in notes)
         {
             notesDict.Add(note.name, note);
             UnityEngine.Debug.Log("Add to NotesManager dictionary, key as: " + note.name);
         }
         currPage = sketchBook.CurrentPage();
-        gameObject.SetActive(false);
+        sketchBook.CloseBook();
     }
+
     public void UnlockNote(string name)
     {
         NoteSegment n = notesDict[name];
@@ -79,18 +88,16 @@ public class NotesManager : MonoBehaviour
 
     void InitializeBookForGameStart()
     {
+        /**
         bookSavedJSON = "";
         bookSavedJSON = JsonUtility.ToJson(notes);
         File.WriteAllText(Application.dataPath + "saveFile_book.json", bookSavedJSON);
         UnityEngine.Debug.Log("Initialize Book Json: " + bookSavedJSON);
-
+*/
         foreach (NoteSegment n in notes)
         {
-            if (!n.unlocked)
-            {
-                n.gameObject.GetComponent<Collider2D>().enabled = false;
-                n.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            }
+            n.gameObject.GetComponent<Collider2D>().enabled = n.unlocked;
+            n.gameObject.GetComponent<SpriteRenderer>().enabled = n.unlocked;
         }
     }
 

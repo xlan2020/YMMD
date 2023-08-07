@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SketchBook : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class SketchBook : MonoBehaviour
     public GameObject assesories;
     public InkDialogueManager dialogueManager;
     public InventoryButton inventoryButton;
+    public Text currentPageText;
+
 
     void Awake()
     {
@@ -31,6 +34,7 @@ public class SketchBook : MonoBehaviour
     {
         currPage = i;
         notesManager.TurnToPage(currPage);
+        currentPageText.text = currPage + " / 10";  // let's assume we have 10 page maximum! 
     }
 
     public int CurrentPage()
@@ -73,7 +77,7 @@ public class SketchBook : MonoBehaviour
         UnityEngine.Debug.Log("Current page is: " + currPage);
     }
 
-    private void CloseBook()
+    public void CloseBook()
     {
         audio.clip = CloseBookAudio;
         audio.Play();
@@ -92,7 +96,7 @@ public class SketchBook : MonoBehaviour
         if (currPage > 0)
         {
             currPage--;
-            notesManager.TurnToPage(currPage);
+            TurnToPage(currPage);
             PlayFlipPageAudio();
         }
     }
@@ -102,7 +106,7 @@ public class SketchBook : MonoBehaviour
         if (currPage < notesManager.MaxPage())
         {
             currPage++;
-            notesManager.TurnToPage(currPage);
+            TurnToPage(currPage);
             PlayFlipPageAudio();
         }
     }

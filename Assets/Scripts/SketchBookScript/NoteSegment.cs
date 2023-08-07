@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoteSegment : MonoBehaviour
 {
-    //public string name; //format: 1_1_名字
+    private string name; //format: 1_1_名字
     private string[] splitName;
     public bool unlocked = false;
     // public NotesManager manager;
@@ -14,7 +14,6 @@ public class NoteSegment : MonoBehaviour
 
     void Awake()
     {
-        splitName = name.Split("_");
         sp = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
         if (!unlocked)
@@ -22,6 +21,10 @@ public class NoteSegment : MonoBehaviour
             sp.enabled = false;
             collider.enabled = false;
         }
+
+        name = gameObject.name;
+        splitName = name.Split("_");
+        //UnityEngine.Debug.Log("split name:" + splitName[0] + ", " + splitName[1] + ", " + splitName[2]);
     }
 
     public void Unlock()
