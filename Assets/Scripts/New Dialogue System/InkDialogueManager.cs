@@ -16,7 +16,6 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private TextAsset loadBookJSON;
 
     [Header("Params")]
-
     public float typingSpeed = 0.04f;
     public float autoPlayingTimeInterval = 1.5f;
     public bool autoMode = false;
@@ -57,6 +56,7 @@ public class InkDialogueManager : MonoBehaviour
     [Header("Other Functions")]
     [SerializeField] private SolvableManager solvableManager;
     [SerializeField] private SketchBook sketchBook;
+    [SerializeField] private SceneEventManager sceneEventManager;
     public Player player;
     public GameManager gameManager;
 
@@ -74,6 +74,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string UNLOCK_NOTE_TAG = "unlockNote";
     private const string LOAD_SCENE_TAG = "loadScene";
     private const string ADD_MONEY_TAG = "addMoney";
+    private const string TRIGGER_EVENT_TAG = "event";
 
 
     private Story currentStory;
@@ -155,6 +156,7 @@ public class InkDialogueManager : MonoBehaviour
                 isTyping = false;
                 dialogueText.text = currentLine;
                 //UnityEngine.Debug.Log("complete current line");
+                handleAfterLineComplete();
             }
             else
             {
@@ -162,7 +164,6 @@ public class InkDialogueManager : MonoBehaviour
                 //UnityEngine.Debug.Log("space continue");
                 canContinueToNextLine = true;
                 ContinueStory();
-                SkipChoice();
                 return;
             }
         }
@@ -201,7 +202,6 @@ public class InkDialogueManager : MonoBehaviour
         { // keep skipping, maximam 999 to avoid infinite loop
             //UnityEngine.Debug.Log("try to fast skip one line");
             ContinueStory();
-            SkipChoice();
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -219,7 +219,7 @@ public class InkDialogueManager : MonoBehaviour
         {
             randomSpeak.Speak();
         }
-        // fast skip
+
         string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
         speakerName.text = splitLines[0];
         line = splitLines[1];
@@ -236,6 +236,12 @@ public class InkDialogueManager : MonoBehaviour
         }
 
         isTyping = false;   // typing is finished, line complete
+        handleAfterLineComplete();
+
+    }
+
+    private void handleAfterLineComplete()
+    {
         continueIcon.SetActive(true);
         handleChoiceType();
         // display observees and drawings if there is one
@@ -259,6 +265,7 @@ public class InkDialogueManager : MonoBehaviour
 
     public void ContinueStory()
     {
+        SkipChoice();
         //UnityEngine.Debug.Log("continue story");
 
         // might remove this later. This check if there're still observees uncollected
@@ -367,6 +374,7 @@ public class InkDialogueManager : MonoBehaviour
                 break;
             case "OBSERVEE":
                 handleObserveeChoices();
+                canSkipChoice = false;
                 choiceType = "BUTTON";
                 break;
             case "OBSERVEE_CANSKIP":
@@ -540,6 +548,9 @@ public class InkDialogueManager : MonoBehaviour
                 case ADD_MONEY_TAG:
                     gameManager.AddMoney(float.Parse(tagValue));
                     break;
+                case TRIGGER_EVENT_TAG:
+                    sceneEventManager.TriggerEvent(tagValue);
+                    break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
                     break;
@@ -623,13 +634,12 @@ public class InkDialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-        if (canContinueToNextLine)
-        {
-            UnityEngine.Debug.Log("making choice at index: " + choiceIndex);
-            currentStory.ChooseChoiceIndex(choiceIndex);
-            ContinueStory();
-        }
+
+        UnityEngine.Debug.Log("making choice at index: " + choiceIndex);
+        currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
     }
+
 
     public void SkipChoice()
     {

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private DialogueVariables dialogueVariables;
     Money money;
 
+    public float initialMoney;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
@@ -46,6 +48,8 @@ public class GameManager : MonoBehaviour
         dialogueVariables = InkDialogueManager.GetInstance().GetDialogueVariables();
 
         // dialogueIntegrationTest();
+
+        SetMoney(initialMoney);
     }
 
     private void dialogueIntegrationTest()
@@ -85,6 +89,13 @@ public class GameManager : MonoBehaviour
         money.ChangeMoney(amount);
         dialogueVariables.SetGlobalVariable("money", money.GetMoney());
     }
+
+    public void SetMoney(float amount)
+    {
+        money.SetMoney(amount);
+        dialogueVariables.SetGlobalVariable("money", money.GetMoney());
+    }
+
 
     public void BuyItem(Item item)
     {

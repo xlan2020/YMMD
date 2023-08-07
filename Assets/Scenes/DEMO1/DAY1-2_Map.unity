@@ -965,7 +965,7 @@ MonoBehaviour:
   uiMoney: {fileID: 508895310}
   displaceSFX: {fileID: 2701967917452945970, guid: 0c80c66813ee84ff5a7fcebdf7960fb4, type: 3}
   HasBeginningDialogue: 1
-  DialogueManager: {fileID: 1073202136}
+  initialMoney: 100
 --- !u!4 &174757116
 Transform:
   m_ObjectHideFlags: 0
@@ -2241,6 +2241,54 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 5318286543794681761, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
   m_PrefabInstance: {fileID: 5176094896014429293}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &745234464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 745234465}
+  - component: {fileID: 745234466}
+  m_Layer: 0
+  m_Name: event1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &745234465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745234464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2130283028}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &745234466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745234464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2d0ba51113a41aeb36f0f9f8e3c1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: foodBought
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &750949540
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,6 +6114,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 51.87577, y: 45.62355}
   m_EdgeRadius: 0
+--- !u!1 &2130283026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130283028}
+  - component: {fileID: 2130283027}
+  m_Layer: 0
+  m_Name: SceneEventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2130283027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130283026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3c52f2f72bf4d869a06291c9889eab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2130283028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130283026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 460.0358, y: 28.059832, z: -3.9314404}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 745234465}
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5176094894953024560
 GameObject:
   m_ObjectHideFlags: 0
@@ -6706,6 +6799,10 @@ PrefabInstance:
       propertyPath: StartDialogueJSON
       value: 
       objectReference: {fileID: 4900000, guid: 68ca38fddbe394367aaba15610dfd27f, type: 3}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: sceneEventManager
+      value: 
+      objectReference: {fileID: 2130283027}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: autoPlayingTimeInterval
       value: 1.5

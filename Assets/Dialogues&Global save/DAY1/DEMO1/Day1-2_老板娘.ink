@@ -1,6 +1,7 @@
 INCLUDE DAY1-2_global.ink
-{ buy_food:
+{ foodOrdered: 
 老板娘：等会儿啊，东西马上就来！#profile: mama_正常
+-> DONE
 }
 { mamaTalk: 
     - 0:
@@ -20,7 +21,7 @@ INCLUDE DAY1-2_global.ink
             我：（这里的砂锅真是一绝，加点豆芽更好……等等，我好想忘记了一件事……）#profile：painter_半闭眼 
             ->no_money
         - else: 
-            我：来一份排骨砂锅饭！
+            我：来一份排骨砂锅饭！#addMoney: -12
             ->you_know_displace
         }
         + [羊肉串(￥8)]
@@ -28,7 +29,7 @@ INCLUDE DAY1-2_global.ink
             我：（烧烤自选套餐看起来不错，不过……）#profile：painter_半闭眼
             ->no_money
         - else: 
-            我：来一盘羊肉串吧！
+            我：来一盘羊肉串吧！#addMoney: -8
              ->you_know_displace
         }
         + [我没钱了]
@@ -46,8 +47,12 @@ INCLUDE DAY1-2_global.ink
 
 ===talk_again===
     老板娘：想好吃什么了吗？#profile: mama_正常
-    + {money > 12} [排骨砂锅(￥12] -> buy_food
-    + {money > 8} [羊肉串(￥8)]-> buy_food
+    + {money > 12} [排骨砂锅(￥12]
+    我：来一份排骨砂锅饭！#addMoney: -12
+    ->buy_food
+    + {money > 8} [羊肉串(￥8)]
+    我：来一盘羊肉串吧！#addMoney: -8
+    ->buy_food
     + [呃……]
     老板娘：去置换一两件东西吧。#profile: mama_不爽
 ->DONE
@@ -85,7 +90,8 @@ INCLUDE DAY1-2_global.ink
     -> DONE
     
 ===buy_food===
-    老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_满意
+    ~ foodOrdered = true
+    老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_满意 #event: foodBought
     ->DONE
     
 ===finish_displace===
