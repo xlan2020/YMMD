@@ -1,6 +1,6 @@
 INCLUDE DAY1-2_global.ink
 { foodOrdered: 
-老板娘：等会儿啊，东西马上就来！#profile: mama_正常
+{~老板娘：等会儿啊，东西马上就来！|老板娘：一会儿就好！|老板娘：这会儿也没人，随便坐吧！|老板娘：做着呢！}#profile: mama_正常
 -> DONE
 }
 { mamaTalk: 
@@ -38,11 +38,11 @@ INCLUDE DAY1-2_global.ink
 ===you_know_displace===
 老板娘：好嘞！#profile: mama_满意
 老板娘：这次出手很干脆啊，看来你是已经知道关于置换的事情了？#profile: mama_正常
-    + [那是当然] 
+    + [那是当然]
     我：那是当然。
     老板娘：（心照不宣）哈，我懂的。
     ->buy_food
-    + [置换？] 
+    + [置换？]
     ->explain_displace
 
 ===talk_again===
