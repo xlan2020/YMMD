@@ -22,8 +22,8 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] private Text displaceGainAmount;
 
 
-    void Start(){
-        gameObject.SetActive(false);
+    void Start()
+    {
         HideDisplaceResultWindow();
     }
 
@@ -177,19 +177,24 @@ public class UI_Inventory : MonoBehaviour
         return slots[currentSlotIndex];
     }
 
-    public void ShowDisplaceResultWindow(Item displacedItem){
+    public void ShowDisplaceResultWindow(Item displacedItem)
+    {
         displaceResult.gameObject.SetActive(true);
         displacedItemImage.sprite = displacedItem.spriteImage;
-        if (displacedItem.price >= 0){
+        if (displacedItem.price >= 0)
+        {
             // if the price is positive, than add the "+" sign to specify gain
-            displaceGainAmount.text = "+" + displacedItem.price;   
-        } else {
+            displaceGainAmount.text = "+" + displacedItem.price;
+        }
+        else
+        {
             // if less than 0, the "-" sign is already with the number
             displaceGainAmount.text = displacedItem.price.ToString();
         }
     }
 
-    public void HideDisplaceResultWindow(){
+    public void HideDisplaceResultWindow()
+    {
         displaceResult.gameObject.SetActive(false);
     }
 }

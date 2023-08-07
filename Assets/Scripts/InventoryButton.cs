@@ -11,12 +11,16 @@ public class InventoryButton : MonoBehaviour
 
     private AudioSource audio;
     public bool canOpen = true;
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
     }
 
+    void Start()
+    {
+        SetOpen(false);
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -26,29 +30,42 @@ public class InventoryButton : MonoBehaviour
     }
     public void ToggleOpen()
     {
-        if (canOpen)
+        if (!canOpen)
         {
-            showInventory = !showInventory;
-            uiInventory.gameObject.SetActive(showInventory);
-            animator.SetBool("isOpen", showInventory);
-            audio.Play();
-
-            if (showInventory)
-            {
-                uiInventory.refreshInventoryItems();
-            }
+            return;
         }
+
+        showInventory = !showInventory;
+        RefreshDisplayState();
+        audio.Play();
+
+        if (showInventory)
+        {
+            uiInventory.refreshInventoryItems();
+        }
+
     }
 
     public void SetOpen(bool b)
     {
-        if (canOpen || b == false)
+        if (!canOpen)
         {
-            showInventory = b;
-            uiInventory.gameObject.SetActive(showInventory);
-            animator.SetBool("isOpen", showInventory);
-            audio.Play();
+            return;
         }
+
+        showInventory = b;
+        RefreshDisplayState();
+        audio.Play();
     }
 
+    private void RefreshDisplayState()
+    {
+        uiInventory.gameObject.SetActive(showInventory);
+        animator.SetBool("isOpen", showInventory);
+        if (!showInventory)
+        {
+            uiInventory.displaceResult.gameObject.SetActive(false);
+        }
+    }
 }
+

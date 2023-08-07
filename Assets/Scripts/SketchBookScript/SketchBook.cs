@@ -37,6 +37,7 @@ public class SketchBook : MonoBehaviour
     {
         return currPage;
     }
+
     public void ToggleOpen()
     {
         if (isOpen)
