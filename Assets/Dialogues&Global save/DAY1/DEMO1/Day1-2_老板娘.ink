@@ -24,12 +24,12 @@ INCLUDE DAY1-2_global.ink
             我：来一份排骨砂锅饭！#addMoney: -12
             ->you_know_displace
         }
-        + [羊肉串(￥8)]
-        { money < 8: 
+        + [烧烤套餐(￥16)]
+        { money < 16: 
             我：（烧烤自选套餐看起来不错，不过……）#profile：painter_半闭眼
             ->no_money
         - else: 
-            我：来一盘羊肉串吧！#addMoney: -8
+            我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16
              ->you_know_displace
         }
         + [我没钱了]
@@ -50,8 +50,8 @@ INCLUDE DAY1-2_global.ink
     + {money > 12} [排骨砂锅(￥12]
     我：来一份排骨砂锅饭！#addMoney: -12
     ->buy_food
-    + {money > 8} [羊肉串(￥8)]
-    我：来一盘羊肉串吧！#addMoney: -8
+    + {money > 16} [烧烤套餐(￥16)]
+    我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16
     ->buy_food
     + [呃……]
     老板娘：去置换一两件东西吧。#profile: mama_不爽
@@ -91,7 +91,7 @@ INCLUDE DAY1-2_global.ink
     
 ===buy_food===
     ~ foodOrdered = true
-    老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_满意 #event: foodBought
+    老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_满意
     ->DONE
     
 ===finish_displace===

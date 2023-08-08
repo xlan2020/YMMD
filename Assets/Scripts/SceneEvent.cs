@@ -14,6 +14,6 @@ public class SceneEvent : MonoBehaviour
 
     public void TriggerEvent()
     {
-
+        unityEvent.Invoke();
     }
 }
