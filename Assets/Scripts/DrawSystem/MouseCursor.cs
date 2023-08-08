@@ -7,6 +7,7 @@ public class MouseCursor : MonoBehaviour
     private Animator animator;
     private bool _inGameMode = true;
     private bool _inFluidBrain = false;
+    public Camera positionReferenceCamera; // has to be a camera that's overlay / doesn't move
 
     void Awake()
     {
@@ -22,7 +23,7 @@ public class MouseCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 cursorPos = positionReferenceCamera.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorPos;
     }
 
