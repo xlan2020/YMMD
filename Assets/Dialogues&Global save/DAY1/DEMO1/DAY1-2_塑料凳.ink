@@ -10,12 +10,12 @@ INCLUDE DAY1-2_global.ink
 我：（以前是怎么做的呢？我也有过一部手机吗？还是说，有哪个人在我身边……）
 我：（还是看看远处吧。海上的落日，呵呵……我也是为了美景才搬到这里来的。）#profile: painter_侧
 我：……
-我：………… #event: 8-2_appearOnce
+我：………… #event: 8-2_appearOnce #bgm:pause
 我：………………嗯？#profile: painter_侧流汗
 我：（是我眼花了吗？）
-我：………………嗯？？#event: 8-2_blink #profile: painter_惊呆 #bgm:pause
+我：………………嗯？？#event: 8-2_blink #profile: painter_惊呆 #bgm:悬疑
 我：（哪里冒出来的变态……眼睛好痛……不、头也好痛……对了！）
-我：（好像想起了一件要紧事，今天是……星期三！）#profile: painter_惊恐 #bgm:悬疑
+我：（好像想起了一件要紧事，今天是……星期三！）#profile: painter_惊恐 
 我：（8月28日……星期三。我有个朋友，我们说好了，他会……他会……）
 我：（不对，现在不是想这种事情的时候……）#profile: painter_警惕
 我：（那东西要过来了！）#profile: painter_惊恐 #event: 8-2_walkCloser

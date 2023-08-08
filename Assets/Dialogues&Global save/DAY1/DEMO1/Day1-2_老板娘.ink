@@ -21,7 +21,7 @@ INCLUDE DAY1-2_global.ink
             我：（这里的砂锅真是一绝，加点豆芽更好……等等，我好想忘记了一件事……）#profile：painter_半闭眼 
             ->no_money
         - else: 
-            我：来一份排骨砂锅饭！#addMoney: -12
+            我：来一份排骨砂锅饭！#addMoney: -12 #profile：painter_高兴
             ->you_know_displace
         }
         + [烧烤套餐(￥16)]
@@ -29,7 +29,7 @@ INCLUDE DAY1-2_global.ink
             我：（烧烤自选套餐看起来不错，不过……）#profile：painter_半闭眼
             ->no_money
         - else: 
-            我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16
+            我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16 #profile：painter_高兴
              ->you_know_displace
         }
         + [我没钱了]
@@ -48,10 +48,10 @@ INCLUDE DAY1-2_global.ink
 ===talk_again===
     老板娘：想好吃什么了吗？#profile: mama_正常
     + {money > 12} [排骨砂锅(￥12]
-    我：来一份排骨砂锅饭！#addMoney: -12
+    我：来一份排骨砂锅饭！#addMoney: -12 #profile：painter_高兴
     ->buy_food
     + {money > 16} [烧烤套餐(￥16)]
-    我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16
+    我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16 #profile：painter_高兴
     ->buy_food
     + [呃……]
     老板娘：去置换一两件东西吧。#profile: mama_不爽
@@ -81,11 +81,11 @@ INCLUDE DAY1-2_global.ink
     { you_know_displace: 
         我：（哈，我真是糊涂了。该不会是连“置换”这件事情，我都不记得了吧？）
         老板娘：画家，想什么呢？#profile: mama_正常
-        我：（糟糕，又沉浸在自己的想法里了。）没什么！抱歉。
+        我：（糟糕，又沉浸在自己的想法里了。）没什么！抱歉。#profile：painter_侧
         老板娘：你这孩子！#profile:mama_满意
         -> buy_food
     }  
-    我：……………………
+    我：…………………… #profile：painter_半闭眼
     我：（实在是拉不下脸向老板娘讨饭了，还是看看有什么东西可以置换吧。）
     -> DONE
     
