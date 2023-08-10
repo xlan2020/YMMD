@@ -93,6 +93,15 @@ public class InkDialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
 
+
+
+    // rich text handling
+    bool richTextTyping = false;
+    bool skippingSyntax = false;
+    string beginningSyntax = "";
+    string closingSyntax = "";
+    string richText = "";
+    int firstRichCharIndex = 0;
     private void Awake()
     {
         if (instance != null)
@@ -228,21 +237,111 @@ public class InkDialogueManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.04f);
 
+        /**
         // start typing effect
         foreach (char letter in line.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+        */
 
+        char[] letterArray = line.ToCharArray();
+        // iniitialize rich text typing needed info
+        for (int i = 0; i < letterArray.Length; i++)
+        {
+
+            if (!richTextTyping)
+            {
+                if (letterArray[i] == '<')
+                {
+                    richTextTyping = true;
+                    firstRichCharIndex = i;
+                    bool isFirstLessThan = true;
+                    bool isSecondLessThan = false;
+                    // check text until end of the line
+                    for (int j = 0; j < letterArray.Length - i; j++)
+                    {
+                        if (isFirstLessThan && !isSecondLessThan)
+                        {
+                            skippingSyntax = true;
+                            beginningSyntax += letterArray[i + j];
+                            if (letterArray[i + j] == '>')
+                            {
+                                isFirstLessThan = false;
+                            }
+                        }
+                        else if (!isFirstLessThan && !isSecondLessThan)
+                        {
+                            if (letterArray[i + j] == '<')
+                            {
+                                closingSyntax += '<';
+                                isSecondLessThan = true;
+                            }
+                            else
+                            {
+                                richText += letterArray[i + j];
+                            }
+                        }
+                        else if (!isFirstLessThan && isSecondLessThan)
+                        {
+                            closingSyntax += letterArray[i + j];
+                            if (letterArray[i + j] == '>')
+                            {
+                                isFirstLessThan = true;
+                                isSecondLessThan = false;
+                                break; // second less than already found; 
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    dialogueText.text += letterArray[i];
+                    yield return new WaitForSeconds(typingSpeed);
+                }
+
+            }
+            else
+            {
+                UnityEngine.Debug.Log("rich text typing! first rich char is: " + letterArray[firstRichCharIndex + beginningSyntax.Length]);
+                if (skippingSyntax)
+                {    // then doing nothing
+                    if (i == firstRichCharIndex + beginningSyntax.Length - 1)
+                    {
+                        skippingSyntax = false;
+                    }
+                    if (i == firstRichCharIndex + beginningSyntax.Length + richText.Length + closingSyntax.Length - 1)
+                    {
+                        // current rich char typing ends, initialize all value
+                        richTextTyping = false;
+                        skippingSyntax = false;
+                        beginningSyntax = "";
+                        closingSyntax = "";
+                        richText = "";
+                    }
+                }
+                else
+                {
+                    if (i == firstRichCharIndex + beginningSyntax.Length + richText.Length - 1)
+                    {
+                        skippingSyntax = true;
+                    }
+                    dialogueText.text += beginningSyntax + letterArray[i] + closingSyntax;
+                    yield return new WaitForSeconds(typingSpeed);
+                }
+            }
+        }
         isTyping = false;   // typing is finished, line complete
         handleAfterLineComplete();
-
     }
 
     private void handleAfterLineComplete()
     {
-        continueIcon.SetActive(true);
+        if (currentStory.canContinue)
+        {
+            continueIcon.SetActive(true);
+        }
         handleChoiceType();
         // display observees and drawings if there is one
         displayVisualsAfterType();
