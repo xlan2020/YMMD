@@ -65,7 +65,7 @@ INCLUDE DAY1-2_global.ink
     我：（糟糕，这番话听起来真的很不要脸。我已经落魄到这种地步了吗？）#profile: painter_侧流汗
     老板娘：哦，这样啊。画家呀，你这几个月经常来，我也不是不相信你呀，给你煮碗面条也行。#profile: mama_不爽
     老板娘：不过，你身上这家伙事也不少，怎么就十几块钱也掏不出来了呢？#profile: mama_不爽
-    老板娘：白面条多难吃，你一置换，这不就有钱了吗？哎，这可怜的，我多送你个鸡蛋！#profile: mama_正常
+    老板娘：白面条多难吃，你一 <color=magenta>置换</color> ，这不就有钱了吗？哎，这可怜的，我多送你个鸡蛋！#profile: mama_正常
     我：……置换呀。#profile: painter_古怪
     我：（对了、置换……）#profile: painter_半闭眼 #unlockNote: 2_3_置换 
     -> explain_displace
