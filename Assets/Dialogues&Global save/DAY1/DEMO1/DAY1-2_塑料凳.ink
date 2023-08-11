@@ -24,7 +24,7 @@ INCLUDE DAY1-2_global.ink
 我：……哈？#profile: painter_警惕
 ？？？：果然，又认不出我了吗？#profile: 8-2_不爽
 ？？？：你的冷漠真是令我心如刀割啊。#profile: 8-2_不爽
-8-2：我是你的老朋友巴简二啊！#profile: 8-2_笑
+？？？：我是你的老朋友巴简二啊！#profile: 8-2_笑
 我：（8-2？6。）大哥，你认错人了吧？#profile: painter_侧流汗
 8-2：*一拍手*大哥！嘿，这我可爱听。你终于准备加入我的七分之一兄弟会了吗？#event: 8-2_stayDressed #profile: 8-2_笑
 我：什么……兄弟会？#profile: painter_侧

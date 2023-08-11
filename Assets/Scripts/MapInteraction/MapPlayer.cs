@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class MapPlayer : MonoBehaviour
 {
     private SpriteRenderer sprite;
     private Animator animator;
-    [SerializeField] float speed = 1f;
+    [SerializeField] float speed = 16000f;
     // [SerializeField] UI_Inventory uiInventory;
     public bool actionFreeze;
     public bool canMove;
@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     bool showInventory = false;
     bool interactCommand;
     private bool enterInteractable;
-    private ItemInfo interactItem;
     public GameManager gameManager;
     private bool collectItemAtDialogueEnd = false;
     private ItemInfo tempCollectItem;
@@ -50,7 +49,6 @@ public class Player : MonoBehaviour
 
         if (!actionFreeze)
         {
-
             horizontalInput = Input.GetAxisRaw("Horizontal");
             if (animator != null)
             {
@@ -77,35 +75,7 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (interactItem)
-                    {
 
-                        interactItem.TriggerDialogue();
-                        interactItem.TriggerEventsOnInteract();
-
-                        if (interactItem.destroyOnInteract)
-                        {
-                            interactItem.DestroySelf();
-                        }
-
-                        if (interactItem.collectOnInteract)
-                        {
-                            CollectItem(interactItem);
-                        }
-
-                        if (interactItem.collectAfterDialogue)
-                        {
-                            collectItemAtDialogueEnd = true;
-                            tempCollectItem = interactItem;
-                        }
-                        //interactItem.SetInteractable(false);// disable object after interation
-                        interactItem = null;
-                        enterInteractable = false;
-                    }
-                    if (uiManager != null)
-                    {
-                        uiManager.HideInteractPrompt();
-                    }
 
                 }
             }
@@ -113,10 +83,32 @@ public class Player : MonoBehaviour
     }
 
 
-    private void CollectItem(ItemInfo item)
+    public void InteractWithItem(InteractableItem item)
     {
-        gameManager.inventory.AddItem(item.GetItem());
-        item.DestroySelf();
+        item.TriggerDialogue();
+        item.TriggerEvents();
+
+        if (item.destroyOnInteract)
+        {
+            item.DestroySelf();
+        }
+
+        if (item.collectOnInteract)
+        {
+            CollectItem(item.GetComponent<ItemInfo>());
+            item.DestroySelf();
+        }
+
+        if (item.collectAfterDialogue)
+        {
+            collectItemAtDialogueEnd = true;
+            tempCollectItem = item.GetComponent<ItemInfo>();
+        }
+    }
+
+    private void CollectItem(ItemInfo itemInfo)
+    {
+        gameManager.inventory.AddItem(itemInfo.GetItem());
     }
 
     public void CheckCollectItemAtDialogEnd()
@@ -126,28 +118,6 @@ public class Player : MonoBehaviour
             CollectItem(tempCollectItem);
             tempCollectItem = null;
             collectItemAtDialogueEnd = false;
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        enterInteractable = true;
-        ItemInfo item = collision.GetComponent<ItemInfo>();
-        if (item != null)
-        {
-            if (uiManager != null && !uiManager.isInteractPromptActive())
-            {
-                uiManager.ShowInteractPrompt(item.itemName);
-                uiManager.SetInteractiPromptTransformAboveItem(new Vector2(item.transform.position.x, item.transform.position.y));
-            }
-            interactItem = item;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        enterInteractable = false;
-        if (uiManager != null)
-        {
-            uiManager.HideInteractPrompt();
         }
     }
 
@@ -162,6 +132,8 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        UnityEngine.Debug.Log("fixed update called, horizontal input: " + horizontalInput);
+
         if (horizontalInput > 0.01f || horizontalInput < 0.01f)
         {
             rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));

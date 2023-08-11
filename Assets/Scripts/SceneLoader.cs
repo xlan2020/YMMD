@@ -8,7 +8,6 @@ public class SceneLoader : MonoBehaviour
 {
     public float transitionTime = 1f;
     private bool loaded = false;
-    [SerializeField] Player player;
     public GameManager gameManager;
 
     void Start()

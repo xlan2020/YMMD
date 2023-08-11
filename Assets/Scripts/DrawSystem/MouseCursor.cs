@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouseCursor : MonoBehaviour
 {
+    public static MouseCursor instance { get; private set; }
     private Animator animator;
     private bool _inGameMode = true;
     private bool _inFluidBrain = false;
@@ -14,6 +15,19 @@ public class MouseCursor : MonoBehaviour
         Cursor.visible = false;
         animator = GetComponent<Animator>();
         // animator.SetBool("inGame", true);
+
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
+
     }
     void Start()
     {

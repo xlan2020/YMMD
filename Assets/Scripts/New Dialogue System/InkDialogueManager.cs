@@ -57,7 +57,7 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private SolvableManager solvableManager;
     [SerializeField] private SketchBook sketchBook;
     [SerializeField] private SceneEventManager sceneEventManager;
-    public Player player;
+    public MapPlayer player;
     public GameManager gameManager;
 
     //tags
