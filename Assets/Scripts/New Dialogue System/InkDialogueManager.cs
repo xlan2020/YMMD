@@ -57,7 +57,7 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private SolvableManager solvableManager;
     [SerializeField] private SketchBook sketchBook;
     [SerializeField] private SceneEventManager sceneEventManager;
-    public MapPlayer player;
+    [SerializeField] private MapPlayer mapPlayer;
     public GameManager gameManager;
 
     //tags
@@ -542,18 +542,19 @@ public class InkDialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJson)
     {
-        currentStory = new Story(inkJson.text);
         dialogueIsPlaying = true;
-        dialoguePanel.gameObject.SetActive(true);
 
+        currentStory = new Story(inkJson.text);
+        dialoguePanel.gameObject.SetActive(true);
         dialogueVariables.StartListening(currentStory);
 
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
         portraitAnimator.Play("default");
-        if (player)
+
+        if (mapPlayer)
         {
-            player.canMove = false;
+            mapPlayer.UpdateCanMove();
         }
 
         ContinueStory();
@@ -561,17 +562,16 @@ public class InkDialogueManager : MonoBehaviour
 
     private IEnumerator ExitDialogueMode()
     {
+        dialogueIsPlaying = false;
 
-        if (player)
+        if (mapPlayer)
         {
-            player.canMove = true;
-            player.CheckCollectItemAtDialogEnd();
+            mapPlayer.CheckCollectItemAtDialogEnd();
+            mapPlayer.UpdateCanMove();
         }
         yield return new WaitForSeconds(.2f);
 
         dialogueVariables.StopListening(currentStory);
-
-        dialogueIsPlaying = false;
         //dialoguePanel.gameObject.SetActive(false);
         //dialogueText.text = "";
 

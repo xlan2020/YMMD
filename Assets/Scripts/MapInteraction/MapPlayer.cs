@@ -4,62 +4,58 @@ using UnityEngine;
 
 public class MapPlayer : MonoBehaviour
 {
+    public static MapPlayer instance { get; private set; }
+
     private SpriteRenderer sprite;
     private Animator animator;
     [SerializeField] float speed = 16000f;
     // [SerializeField] UI_Inventory uiInventory;
-    public bool actionFreeze;
-    public bool canMove;
+    private bool canMove = true;
     public PlayerUIManager uiManager;
     float horizontalInput;
     Rigidbody2D rb;
     bool showInventory = false;
     bool interactCommand;
-    private bool enterInteractable;
     public GameManager gameManager;
     private bool collectItemAtDialogueEnd = false;
     private InteractableItem tempCollectItem;
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
+
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //speed *= 100f;
         uiManager = GetComponent<PlayerUIManager>();
 
         rb = gameObject.GetComponent<Rigidbody2D>();
+    }
 
+    void Start()
+    {
+        UpdateCanMove();
     }
     private void Update()
     {
-        if (!canMove)
-        {
-            return;
-        }
-        // freeze player when playing dialogue
-        if (InkDialogueManager.GetInstance() != null && InkDialogueManager.GetInstance().dialogueIsPlaying)
-        {
-            actionFreeze = true;
-            animator.SetBool("isWalking", false);
-            return;
-        }
-        else
-        {
-            actionFreeze = false;
-        }
+        horizontalInput = Input.GetAxisRaw("Horizontal");
 
-        if (!actionFreeze)
+        if (canMove)
         {
-            horizontalInput = Input.GetAxisRaw("Horizontal");
-            if (animator != null)
+            if (Mathf.Abs(horizontalInput) > 0.01f)
             {
-                if (Mathf.Abs(horizontalInput) > 0.01f)
-                {
-                    animator.SetBool("isWalking", true);
-                }
-                else
-                {
-                    animator.SetBool("isWalking", false);
-                }
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
             }
 
             if (horizontalInput < 0 && !sprite.flipX)
@@ -70,18 +66,19 @@ public class MapPlayer : MonoBehaviour
             {
                 sprite.flipX = false;
             }
+        }
 
-            if (enterInteractable && InkDialogueManager.GetInstance() != null && !InkDialogueManager.GetInstance().dialogueIsPlaying)
+    }
+    private void FixedUpdate()
+    {
+        if (canMove)
+        {
+            if (horizontalInput > 0.01f || horizontalInput < 0.01f)
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-
-
-                }
+                rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
             }
         }
     }
-
 
     public void InteractWithItem(InteractableItem item)
     {
@@ -122,23 +119,26 @@ public class MapPlayer : MonoBehaviour
         }
     }
 
-
-    private void FixedUpdate()
+    private void SetCanMove(bool b)
     {
+        canMove = b;
+
         if (!canMove)
         {
-            return;
+            animator.SetBool("isWalking", false);
+            rb.velocity = new Vector2(0f, 0f);
         }
+    }
 
-        if (actionFreeze)
+    public void UpdateCanMove()
+    {
+        if (InkDialogueManager.GetInstance().dialogueIsPlaying || SketchBook.instance.IsOpen() || InventoryButton.instance.ShowingInventory())
         {
-            return;
+            SetCanMove(false);
         }
-        UnityEngine.Debug.Log("fixed update called, horizontal input: " + horizontalInput);
-
-        if (horizontalInput > 0.01f || horizontalInput < 0.01f)
+        else
         {
-            rb.velocity = (new Vector2(horizontalInput * speed * Time.deltaTime, rb.velocity.y));
+            SetCanMove(true);
         }
     }
 }

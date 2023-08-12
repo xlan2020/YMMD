@@ -7,9 +7,14 @@ using UnityEngine.EventSystems;
 public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public UnityEvent ClickEvents;
-    public MouseCursor cursor;
+    private MouseCursor cursor;
     public string animationType = "point";
     private bool stay = false;
+
+    void Start()
+    {
+        cursor = MouseCursor.instance;
+    }
     void Update()
     {
         if (stay)

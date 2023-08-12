@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class InventoryButton : MonoBehaviour
 {
+    public static InventoryButton instance { get; private set; }
     //[SerializeField] private AudioClip openAudio;
     [SerializeField] UI_Inventory uiInventory;
     private bool showInventory;
     private Animator animator;
+    private MapPlayer mapPlayer;
 
     private AudioSource audio;
     public bool canOpen = true;
@@ -15,11 +17,22 @@ public class InventoryButton : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         audio = GetComponent<AudioSource>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
         SetOpen(false);
+        mapPlayer = MapPlayer.instance;
     }
     void Update()
     {
@@ -44,6 +57,11 @@ public class InventoryButton : MonoBehaviour
             uiInventory.refreshInventoryItems();
         }
 
+        if (mapPlayer)
+        {
+            mapPlayer.UpdateCanMove();
+        }
+
     }
 
     public void SetOpen(bool b)
@@ -66,6 +84,11 @@ public class InventoryButton : MonoBehaviour
         {
             uiInventory.displaceResult.gameObject.SetActive(false);
         }
+    }
+
+    public bool ShowingInventory()
+    {
+        return showInventory;
     }
 }
 

@@ -322,8 +322,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 16000
-  actionFreeze: 0
-  canMove: 0
   uiManager: {fileID: 50246643}
   gameManager: {fileID: 174757115}
 --- !u!1 &66386926
@@ -1238,7 +1236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 959051889752172996, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 959051889752172997, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
       propertyPath: dialogueManager
@@ -7983,6 +7981,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: mapPlayer
+      value: 
+      objectReference: {fileID: 50246645}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: sketchBook
       value: 
       objectReference: {fileID: 1729181051}
@@ -8882,7 +8884,6 @@ MonoBehaviour:
   ClickEvents:
     m_PersistentCalls:
       m_Calls: []
-  cursor: {fileID: 2104744972}
   animationType: hand
 --- !u!1001 &5176094896936794947
 PrefabInstance:

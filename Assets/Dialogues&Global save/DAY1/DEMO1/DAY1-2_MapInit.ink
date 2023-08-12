@@ -4,9 +4,5 @@ INCLUDE ../../global.ink
 我：（对我来说，这个重要的时刻就是黄昏吧。夜幕降临的时候，总觉得会发生什么事情，会有什么东西在黑暗中……）
 我：（……消失不见。）#profile: painter_side
 我：*咕噜噜*啊，不是想这些有的没的的时候，我已经饿得快要折叠了。#profile: painter_norm
-->task_FindHotMama
-
-==task_FindHotMama==
 我：总之得先去吃点东西。就去门口那家热麻麻吧。
-
 ->DONE

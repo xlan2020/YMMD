@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SketchBook : MonoBehaviour
 {
+    public static SketchBook instance { get; private set; }
     public NotesManager notesManager;
     public SketchBookButton icon;
     public AudioClip OpenBookAudio;
@@ -19,15 +20,27 @@ public class SketchBook : MonoBehaviour
     public InkDialogueManager dialogueManager;
     public InventoryButton inventoryButton;
     public Text currentPageText;
+    private MapPlayer mapPlayer;
 
 
     void Awake()
     {
         audio = GetComponent<AudioSource>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {
         assesories.SetActive(false);
+        mapPlayer = MapPlayer.instance;
     }
 
     public void TurnToPage(int i)
@@ -42,6 +55,10 @@ public class SketchBook : MonoBehaviour
         return currPage;
     }
 
+    public bool IsOpen()
+    {
+        return isOpen;
+    }
     public void ToggleOpen()
     {
         if (isOpen)
@@ -56,6 +73,13 @@ public class SketchBook : MonoBehaviour
             OpenBook();
             inventoryButton.canOpen = false;
         }
+
+        if (mapPlayer)
+        {
+            // UnityEngine.Debug.Log("book is toggled, update can move");
+            mapPlayer.UpdateCanMove();
+        }
+
     }
     private void OpenBook()
     {
