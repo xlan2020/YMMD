@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MapPlayer : MonoBehaviour
 {
-    public static MapPlayer instance { get; private set; }
 
     private SpriteRenderer sprite;
     private Animator animator;
@@ -19,17 +18,15 @@ public class MapPlayer : MonoBehaviour
     public GameManager gameManager;
     private bool collectItemAtDialogueEnd = false;
     private InteractableItem tempCollectItem;
+
+    public InkDialogueManager inkDialogueManager;
+    public SketchBook sketchBook;
+    public SettingsMenu settingsMenu;
+    public InventoryButton inventoryButton;
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+
 
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -132,7 +129,7 @@ public class MapPlayer : MonoBehaviour
 
     public void UpdateCanMove()
     {
-        if (InkDialogueManager.GetInstance().dialogueIsPlaying || SketchBook.instance.IsOpen() || InventoryButton.instance.ShowingInventory() || SettingsMenu.instance.IsOpen())
+        if (inkDialogueManager.dialogueIsPlaying || sketchBook.IsOpen() || inventoryButton.ShowingInventory() || SettingsMenu.instance.IsOpen())
         {
             SetCanMove(false);
         }

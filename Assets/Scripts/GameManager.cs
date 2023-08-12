@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public TextAsset BeginningInkJSON;
+    [SerializeField] TextAsset BeginningInkJSON;
     public UI_Inventory uiInventory;
     public UI_Money uiMoney;
     public DisplaceSFX displaceSFX;
@@ -44,12 +44,19 @@ public class GameManager : MonoBehaviour
             // load the dialogue for this scene
             InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
         }
+
         // load global ink dialogue variables
         dialogueVariables = InkDialogueManager.GetInstance().GetDialogueVariables();
 
         // dialogueIntegrationTest();
 
         SetMoney(initialMoney);
+
+    }
+
+    IEnumerator LateStart(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
     }
 
     private void dialogueIntegrationTest()

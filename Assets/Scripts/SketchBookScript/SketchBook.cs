@@ -20,7 +20,7 @@ public class SketchBook : MonoBehaviour
     public InkDialogueManager dialogueManager;
     public InventoryButton inventoryButton;
     public Text currentPageText;
-    private MapPlayer mapPlayer;
+    public MapPlayer mapPlayer;
 
 
     void Awake()
@@ -40,7 +40,6 @@ public class SketchBook : MonoBehaviour
     void Start()
     {
         assesories.SetActive(false);
-        mapPlayer = MapPlayer.instance;
     }
 
     public void TurnToPage(int i)

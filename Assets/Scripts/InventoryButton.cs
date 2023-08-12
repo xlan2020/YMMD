@@ -9,7 +9,7 @@ public class InventoryButton : MonoBehaviour
     [SerializeField] UI_Inventory uiInventory;
     private bool showInventory;
     private Animator animator;
-    private MapPlayer mapPlayer;
+    public MapPlayer mapPlayer;
 
     private AudioSource audio;
     public bool canOpen = true;
@@ -32,7 +32,6 @@ public class InventoryButton : MonoBehaviour
     void Start()
     {
         SetOpen(false);
-        mapPlayer = MapPlayer.instance;
     }
     void Update()
     {

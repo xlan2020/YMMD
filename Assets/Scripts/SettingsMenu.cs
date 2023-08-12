@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 public class SettingsMenu : MonoBehaviour
 {
     public static SettingsMenu instance { get; private set; }
+    public MapPlayer mapPlayer;
     [Header("Audio Setting")]
     // public AudioMixer audioMixer;
     public AudioMixer BgmMixer;
@@ -131,10 +132,12 @@ public void SetVolume(float volume)
 
         EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
 
-        if (MapPlayer.instance)
+        if (mapPlayer)
         {
-            MapPlayer.instance.UpdateCanMove();
+            mapPlayer.UpdateCanMove();
         }
+
+
 
     }
 
@@ -157,9 +160,9 @@ public void SetVolume(float volume)
 
         EventSystem.current.SetSelectedGameObject(null);
 
-        if (MapPlayer.instance)
+        if (mapPlayer)
         {
-            MapPlayer.instance.UpdateCanMove();
+            mapPlayer.UpdateCanMove();
         }
 
 

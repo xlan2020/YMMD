@@ -36,9 +36,9 @@ public class InkDialogueManager : MonoBehaviour
 
     [Header("Choices UI")]
     // each choice container is an instance of the choice class
-    public InkChoiceContainer[] choiceContainer;
+    private InkChoiceContainer[] choiceContainer;
     private Dictionary<string, GameObject[]> choicesDict;
-    private GameObject[] choices;
+    public GameObject[] choices;
     private Text[] choicesText;
 
     [Header("Drawing Interface Special")]
@@ -104,6 +104,8 @@ public class InkDialogueManager : MonoBehaviour
     int firstRichCharIndex = 0;
     private void Awake()
     {
+        initializeChoices();
+
         if (instance != null)
         {
             Debug.LogWarning("WARNING: keep only one ink dialogue manager per scene!");
@@ -111,12 +113,11 @@ public class InkDialogueManager : MonoBehaviour
         instance = this;
         // pass that variable to the DIalogueVariables constructor in the Awake method
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
-
-        initializeChoices();
     }
 
     private void Start()
     {
+
         canContinueToNextLine = true;
         finishedRequiredOpera = true;
 
@@ -415,29 +416,30 @@ public class InkDialogueManager : MonoBehaviour
 
     private void initializeChoices()
     {
-        if (choiceContainer.Length > 0)
-        {
-            // instantiate the dictionary for choices, and store choices in
-            choicesDict = new Dictionary<string, GameObject[]>();
-            foreach (InkChoiceContainer container in choiceContainer)
-            {
-                choicesDict.Add(container.getName(), container.getChoices());
-            }
-            // initialize the default choices
-            choices = choiceContainer[0].getChoices();
 
-            choicesText = new Text[choices.Length];
-            int i = 0;
-            foreach (GameObject choice in choices)
-            {
-                Text t = choice.GetComponentInChildren<Text>();
-                t.text = "对话选项" + i;
-                choicesText[i] = t;
-                int choiceIndex = i;
-                choice.GetComponent<Button>().onClick.AddListener(delegate { MakeChoice(choiceIndex); }); // attach each choice with the correct index
-                i++;
-            }
+        /**
+        // instantiate the dictionary for choices, and store choices in
+        choicesDict = new Dictionary<string, GameObject[]>();
+        foreach (InkChoiceContainer container in choiceContainer)
+        {
+            choicesDict.Add(container.getName(), container.getChoices());
         }
+        */
+        // initialize the default choices
+        // choices = choiceContainer[0].getChoices();
+
+        choicesText = new Text[choices.Length];
+        int i = 0;
+        foreach (GameObject choice in choices)
+        {
+            Text t = choice.GetComponentInChildren<Text>();
+            t.text = "对话选项" + i;
+            choicesText[i] = t;
+            int choiceIndex = i;
+            choice.GetComponent<Button>().onClick.AddListener(delegate { MakeChoice(choiceIndex); }); // attach each choice with the correct index
+            i++;
+        }
+
     }
 
     public DialogueVariables GetDialogueVariables()
@@ -542,22 +544,22 @@ public class InkDialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJson)
     {
-        dialogueIsPlaying = true;
-
         currentStory = new Story(inkJson.text);
+
+        dialogueIsPlaying = true;
         dialoguePanel.gameObject.SetActive(true);
         dialogueVariables.StartListening(currentStory);
 
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
         portraitAnimator.Play("default");
+        ContinueStory();
 
         if (mapPlayer)
         {
             mapPlayer.UpdateCanMove();
         }
 
-        ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
@@ -684,7 +686,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private void hideChoices()
     {
-        if (choiceContainer.Length > 0 && choices.Length > 0)
+        if (choices.Length > 0)
         {
             foreach (GameObject choiceButton in choices)
             {
@@ -695,31 +697,30 @@ public class InkDialogueManager : MonoBehaviour
     }
     private void displayChoices()
     {
-        if (choiceContainer.Length > 0)
+
+        List<Choice> currentChoices = currentStory.currentChoices;
+
+        if (currentChoices.Count > choices.Length)
         {
-            List<Choice> currentChoices = currentStory.currentChoices;
-
-            if (currentChoices.Count > choices.Length)
-            {
-                Debug.LogError("Choices overflow what UI can support, it's" + currentChoices.Count);
-            }
-
-            int index = 0;
-            foreach (Choice choice in currentChoices)
-            {
-                choices[index].gameObject.SetActive(true);
-                choicesText[index].text = choice.text;
-                index++;
-            }
-
-            // hide leftover choices 
-            for (int i = index; i < choices.Length; i++)
-            {
-                choices[i].gameObject.SetActive(false);
-
-            }
-            StartCoroutine(selectFirstChoice());
+            Debug.LogError("Choices overflow what UI can support, it's" + currentChoices.Count);
         }
+
+        int index = 0;
+        foreach (Choice choice in currentChoices)
+        {
+            choices[index].gameObject.SetActive(true);
+            choicesText[index].text = choice.text;
+            index++;
+        }
+
+        // hide leftover choices 
+        for (int i = index; i < choices.Length; i++)
+        {
+            choices[i].gameObject.SetActive(false);
+
+        }
+        StartCoroutine(selectFirstChoice());
+
     }
 
     private IEnumerator selectFirstChoice()

@@ -324,6 +324,10 @@ MonoBehaviour:
   speed: 16000
   uiManager: {fileID: 50246643}
   gameManager: {fileID: 174757115}
+  inkDialogueManager: {fileID: 1073202136}
+  sketchBook: {fileID: 1729181051}
+  settingsMenu: {fileID: 1468999804}
+  inventoryButton: {fileID: 5176094896843651093}
 --- !u!1 &66386926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1024,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &176173858
 GameObject:
@@ -1260,6 +1264,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 959051889752172997, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
+      propertyPath: mapPlayer
+      value: 
+      objectReference: {fileID: 50246645}
     - target: {fileID: 959051889752172997, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
       propertyPath: dialogueManager
       value: 
@@ -2365,6 +2373,11 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!1 &469746105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6163025619793187496, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+  m_PrefabInstance: {fileID: 3918898643688383950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &471937013
 GameObject:
   m_ObjectHideFlags: 3
@@ -2805,6 +2818,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519060875}
   m_CullTransparentMesh: 1
+--- !u!1 &567281101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6811342183512715757, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+  m_PrefabInstance: {fileID: 3918898643688383950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &594206401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5358,6 +5376,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1460657958}
   m_CullTransparentMesh: 1
+--- !u!114 &1468999804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5318286544998975624, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
+  m_PrefabInstance: {fileID: 5176094896014429293}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e8459cf74d3974593dfa863f21a174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1534040604
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,6 +6748,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6280fdeb09346e99cdea90952274d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1775274407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7205429425306516320, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+  m_PrefabInstance: {fileID: 3918898643688383950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1814617905
 GameObject:
   m_ObjectHideFlags: 0
@@ -8059,6 +8093,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6163025619793187497, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811342183512715756, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205429425306516321, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 7543881160108987278, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -8345,7 +8391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102401938581986997, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8102401938581986997, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: m_LocalScale.x
@@ -8480,6 +8526,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2130283027}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: choices.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: choices.Array.data[0]
+      value: 
+      objectReference: {fileID: 567281101}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: choices.Array.data[1]
+      value: 
+      objectReference: {fileID: 1775274407}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: choices.Array.data[2]
+      value: 
+      objectReference: {fileID: 469746105}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: autoPlayingTimeInterval
       value: 1.5
       objectReference: {fileID: 0}
@@ -8548,6 +8610,10 @@ PrefabInstance:
       propertyPath: cursor
       value: 
       objectReference: {fileID: 2104744972}
+    - target: {fileID: 5318286544998975624, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
+      propertyPath: mapPlayer
+      value: 
+      objectReference: {fileID: 50246645}
     - target: {fileID: 5318286544998975626, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
       propertyPath: m_Name
       value: SettingsMenu
@@ -8751,7 +8817,7 @@ PrefabInstance:
       objectReference: {fileID: 2104710817}
     - target: {fileID: 605883291736271544, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 605883291736271544, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9102,6 +9168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiInventory: {fileID: 1627679673}
+  mapPlayer: {fileID: 50246645}
   canOpen: 1
 --- !u!114 &5176094896843651094
 MonoBehaviour:

@@ -38,6 +38,6 @@ INCLUDE DAY1-2_global.ink
 我：没错，我现在一无所有。所以也画不了了，呵呵。#profile: painter_sideSweat
 8-2：真的假的？让我看看——#profile: 8-2_smile
 我：喂！你干什么！#profile: painter_angry
-我：别动我的画箱—— #profile: painter_mad
+我：别动我的东西—— #profile: painter_mad
 ->DONE
 # 要研究确定一下收集物品这里是不是真的在地图里进行，还是说已经有画画的UI了，在UI里发现要填画材的地方没有东西，然后再捡？但是这样不会又折回去了吗？总之再想想吧。
