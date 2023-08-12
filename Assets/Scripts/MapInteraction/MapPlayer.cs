@@ -132,7 +132,7 @@ public class MapPlayer : MonoBehaviour
 
     public void UpdateCanMove()
     {
-        if (InkDialogueManager.GetInstance().dialogueIsPlaying || SketchBook.instance.IsOpen() || InventoryButton.instance.ShowingInventory())
+        if (InkDialogueManager.GetInstance().dialogueIsPlaying || SketchBook.instance.IsOpen() || InventoryButton.instance.ShowingInventory() || SettingsMenu.instance.IsOpen())
         {
             SetCanMove(false);
         }

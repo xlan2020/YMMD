@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI_Inventory : MonoBehaviour
 {
     private Inventory inventory;
+    public InventoryButton inventoryButton;
     [SerializeField] Transform itemContainer;
     [SerializeField] Transform itemSlotTemplate;
     [SerializeField] float itemSlotCellSize = 80f;
@@ -68,6 +69,7 @@ public class UI_Inventory : MonoBehaviour
     {
         this.inventory = inventory;
         inventory.onItemListChanged += Inventory_OnItemListChanged;
+        inventory.onNewItemAdded += Inventory_OnNewItemAdded;
         refreshInventoryItems();
     }
 
@@ -75,6 +77,11 @@ public class UI_Inventory : MonoBehaviour
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
         refreshInventoryItems();
+    }
+
+    private void Inventory_OnNewItemAdded(object sender, System.EventArgs e)
+    {
+        inventoryButton.ShowHasNew();
     }
     public void refreshInventoryItems()
     {

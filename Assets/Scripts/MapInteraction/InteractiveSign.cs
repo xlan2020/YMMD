@@ -10,6 +10,7 @@ public class InteractiveSign : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private bool isHidden;
     private MouseCursor cursor;
     private Button button;
+    [SerializeField] private string changeCursorType = "point";
 
     void Awake()
     {
@@ -59,7 +60,7 @@ public class InteractiveSign : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (button.interactable)
         {
-            cursor.SetAnimationTrigger("point");
+            cursor.SetAnimationTrigger(changeCursorType);
         }
     }
     public void OnPointerExit(PointerEventData pointerEventData)

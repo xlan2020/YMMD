@@ -21,7 +21,7 @@ INCLUDE DAY1-2_global.ink
 我：（那东西要过来了！）#profile: painter_frightened #event: 8-2_walkCloser
 我：喂！#profile: painter_surprised
 ？？？：画~~~家~~~！#profile: 8-2_smile #bgm:戏谑
-我：……哈？#profile: painter_警惕
+我：……哈？#profile: painter_alert
 ？？？：果然，又认不出我了吗？#profile: 8-2_upset
 ？？？：你的冷漠真是令我心如刀割啊。#profile: 8-2_upset
 ？？？：我是你的老朋友巴简二啊！#profile: 8-2_smile
@@ -32,11 +32,12 @@ INCLUDE DAY1-2_global.ink
 8-2：哎呀，我知道你现在一定有很多问题。这也难免啦，没关系，过一会儿你就懂了。#profile: 8-2_smile
 8-2：画家！先来给我画幅画吧！
 我：啊？你……让我先缓缓。#profile: painter_side
-8-2：嗯嗯。一二三，四五六，七八九十缓好了吗？#profile: 8-2_smile
+8-2：嗯嗯。一二三，四五六，七八九十缓好了吗？画吧！#profile: 8-2_smile
 我：（这是在唱哪一出啊，头好痛……）我的画材都没了。#profile: painter_noComment
-8-2：没了？#profile: 8-2_norm
-我：没错，我现在一无所有。#profile: painter_side
-8-2：哎呦，没有纸笔你就不会画画了？#profile: 8-2_upset
-我：没有笔怎么画画？#profile: painter_side
+8-2：都没了？#profile: 8-2_upset
+我：没错，我现在一无所有。所以也画不了了，呵呵。#profile: painter_sideSweat
+8-2：真的假的？让我看看——#profile: 8-2_smile
+我：喂！你干什么！#profile: painter_angry
+我：别动我的画箱—— #profile: painter_mad
 ->DONE
 # 要研究确定一下收集物品这里是不是真的在地图里进行，还是说已经有画画的UI了，在UI里发现要填画材的地方没有东西，然后再捡？但是这样不会又折回去了吗？总之再想想吧。

@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public static SettingsMenu instance { get; private set; }
     [Header("Audio Setting")]
     // public AudioMixer audioMixer;
     public AudioMixer BgmMixer;
@@ -32,7 +33,15 @@ public class SettingsMenu : MonoBehaviour
 
     public void Awake()
     {
-
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -73,11 +82,16 @@ public class SettingsMenu : MonoBehaviour
 
     }
     /**
-    public void SetVolume(float volume)
-    {
+public void SetVolume(float volume)
+{
         audioMixer.SetFloat("volume", volume);
+}
+*/
+
+    public bool IsOpen()
+    {
+        return _isOpen;
     }
-    */
     public void SetFullscreen(bool isFull)
     {
         Screen.fullScreen = isFull;
@@ -115,8 +129,12 @@ public class SettingsMenu : MonoBehaviour
         // sound
         BgmMixer.SetFloat("MasterVolume", -20f);
 
-
         EventSystem.current.SetSelectedGameObject(FirstSelectedButton);
+
+        if (MapPlayer.instance)
+        {
+            MapPlayer.instance.UpdateCanMove();
+        }
 
     }
 
@@ -138,6 +156,12 @@ public class SettingsMenu : MonoBehaviour
 
 
         EventSystem.current.SetSelectedGameObject(null);
+
+        if (MapPlayer.instance)
+        {
+            MapPlayer.instance.UpdateCanMove();
+        }
+
 
     }
 

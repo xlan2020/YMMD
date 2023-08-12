@@ -6,6 +6,7 @@ using UnityEngine;
 public class Inventory
 {
     public event EventHandler onItemListChanged;
+    public event EventHandler onNewItemAdded;
     private List<Item> _itemList;
 
     public Inventory()
@@ -17,12 +18,14 @@ public class Inventory
     {
         _itemList.Add(item);
         onItemListChanged?.Invoke(this, EventArgs.Empty);
+        onNewItemAdded?.Invoke(this, EventArgs.Empty);
     }
 
     public void RemoveItem(Item item)
     {
         _itemList.Remove(item);
         onItemListChanged?.Invoke(this, EventArgs.Empty);
+
     }
 
     public void RemoveItemAtIndex(int index)

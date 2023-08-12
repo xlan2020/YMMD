@@ -61,7 +61,6 @@ public class InventoryButton : MonoBehaviour
         {
             mapPlayer.UpdateCanMove();
         }
-
     }
 
     public void SetOpen(bool b)
@@ -80,12 +79,23 @@ public class InventoryButton : MonoBehaviour
     {
         uiInventory.gameObject.SetActive(showInventory);
         animator.SetBool("isOpen", showInventory);
-        if (!showInventory)
+        if (showInventory)
+        {
+            animator.SetBool("hasNew", false);
+        }
+        else
         {
             uiInventory.displaceResult.gameObject.SetActive(false);
         }
     }
 
+    public void ShowHasNew()
+    {
+        if (!showInventory)
+        {
+            animator.SetBool("hasNew", true);
+        }
+    }
     public bool ShowingInventory()
     {
         return showInventory;
