@@ -117,7 +117,6 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Start()
     {
-
         canContinueToNextLine = true;
         finishedRequiredOpera = true;
 

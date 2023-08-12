@@ -6,13 +6,14 @@ using UnityEngine.EventSystems;
 public class SketchBookButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private Animator animator;
-    public MouseCursor cursor;
+    private MouseCursor cursor;
     public SketchBook book;
     private bool entered = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        cursor = MouseCursor.instance;
     }
 
     void Update()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NoteSegment : MonoBehaviour
 {
-    private string name; //format: 1_1_名字
+    private string name; //format: 1_1
     private string[] splitName;
     public bool unlocked = false;
     // public NotesManager manager;

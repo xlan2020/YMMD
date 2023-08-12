@@ -5,9 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public MouseCursor cursor;
+    private MouseCursor cursor;
     private bool interactive = true;
 
+    void Start()
+    {
+        cursor = MouseCursor.instance;
+    }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         if (interactive)

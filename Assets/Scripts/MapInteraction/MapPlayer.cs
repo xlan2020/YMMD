@@ -18,7 +18,7 @@ public class MapPlayer : MonoBehaviour
     private bool enterInteractable;
     public GameManager gameManager;
     private bool collectItemAtDialogueEnd = false;
-    private ItemInfo tempCollectItem;
+    private InteractableItem tempCollectItem;
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
@@ -102,7 +102,7 @@ public class MapPlayer : MonoBehaviour
         if (item.collectAfterDialogue)
         {
             collectItemAtDialogueEnd = true;
-            tempCollectItem = item.GetComponent<ItemInfo>();
+            tempCollectItem = item;
         }
     }
 
@@ -115,11 +115,13 @@ public class MapPlayer : MonoBehaviour
     {
         if (collectItemAtDialogueEnd)
         {
-            CollectItem(tempCollectItem);
-            tempCollectItem = null;
             collectItemAtDialogueEnd = false;
+            CollectItem(tempCollectItem.GetComponent<ItemInfo>());
+            tempCollectItem.DestroySelf();
+            tempCollectItem = null;
         }
     }
+
 
     private void FixedUpdate()
     {
