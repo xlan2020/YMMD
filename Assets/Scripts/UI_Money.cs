@@ -33,19 +33,19 @@ public class UI_Money : MonoBehaviour
         while (displayMoney - targetMoney < -displayChangeUnit)
         {
             displayMoney += displayChangeUnit;
-            moneyDisplay.text = displayMoney.ToString();
+            moneyDisplay.text = displayMoney.ToString("0.00");
             yield return new WaitForSeconds(0.04f);    // animation interval
         }
         while (displayMoney - targetMoney > displayChangeUnit)
         {
             displayMoney -= displayChangeUnit;
-            moneyDisplay.text = displayMoney.ToString();
+            moneyDisplay.text = displayMoney.ToString("0.00");
             yield return new WaitForSeconds(0.04f);    // animation interval
         }
         // else: 
         // -1 unit < displayMoney - targetMoney < 1 unit
         displayMoney = targetMoney;
-        moneyDisplay.text = displayMoney.ToString();
+        moneyDisplay.text = displayMoney.ToString("0.00");
 
     }
 }

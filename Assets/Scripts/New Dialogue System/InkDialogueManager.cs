@@ -30,6 +30,7 @@ public class InkDialogueManager : MonoBehaviour
     public Text dialogueText;
     public ProfileSwitcher speakerProfile;
     public GameObject continueIcon;
+    public GameObject autoIcon;
     public Animator portraitAnimator;
     public UnityEngine.Color ThoughtColor;
     public RandomSpeak randomSpeak;
@@ -58,6 +59,7 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private SketchBook sketchBook;
     [SerializeField] private SceneEventManager sceneEventManager;
     [SerializeField] private MapPlayer mapPlayer;
+    [SerializeField] private InteractableItemManager interactableItemManager;
     public GameManager gameManager;
 
     //tags
@@ -83,9 +85,9 @@ public class InkDialogueManager : MonoBehaviour
 
     private static InkDialogueManager instance;
 
-    private Coroutine typingLinesCorotine;
-    private Coroutine skippingLinesCorotine;
-    private Coroutine autoPlayingCorotine;
+    private Coroutine typingLinesCoroutine;
+    private Coroutine skippingLinesCoroutine;
+    private Coroutine autoPlayingCoroutine;
     private string currentLine;
     private bool isTyping;
     private bool canContinueToNextLine = true;
@@ -102,6 +104,7 @@ public class InkDialogueManager : MonoBehaviour
     string closingSyntax = "";
     string richText = "";
     int firstRichCharIndex = 0;
+    string indentation = "";
     private void Awake()
     {
         initializeChoices();
@@ -120,9 +123,7 @@ public class InkDialogueManager : MonoBehaviour
 
         canContinueToNextLine = true;
         finishedRequiredOpera = true;
-
         dialogueIsPlaying = false;
-
         // I add these lines because I don't know how to do with cross scene and the project is due tomorrow
         // might delete that sometimes
 
@@ -139,18 +140,18 @@ public class InkDialogueManager : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isTyping = false;
-            if (skippingLinesCorotine == null)
+            if (skippingLinesCoroutine == null)
             {
                 //UnityEngine.Debug.Log("start fast skipping");
-                skippingLinesCorotine = StartCoroutine(skippingLines());
+                skippingLinesCoroutine = StartCoroutine(skippingLines());
             }
         }
         else
         { // when fast skip is released, stop current skipping mode
-            if (skippingLinesCorotine != null)
+            if (skippingLinesCoroutine != null)
             {
-                StopCoroutine(skippingLinesCorotine);
-                skippingLinesCorotine = null;
+                StopCoroutine(skippingLinesCoroutine);
+                skippingLinesCoroutine = null;
             }
         }
 
@@ -158,12 +159,12 @@ public class InkDialogueManager : MonoBehaviour
         // if typing, skip typing effect; if already complete, then proceed to next linee
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (typingLinesCorotine != null && isTyping)
+            if (typingLinesCoroutine != null && isTyping)
             {
                 // if is typing, then skip the typing effect
-                StopCoroutine(typingLinesCorotine);
+                StopCoroutine(typingLinesCoroutine);
                 isTyping = false;
-                dialogueText.text = currentLine;
+                dialogueText.text = indentation + currentLine;
                 //UnityEngine.Debug.Log("complete current line");
                 handleAfterLineComplete();
             }
@@ -182,13 +183,14 @@ public class InkDialogueManager : MonoBehaviour
         {
             // toggle auto playing
             autoMode = !autoMode;
+            autoIcon.SetActive(autoMode);
+            if (autoPlayingCoroutine != null)
+            {
+                StopCoroutine(autoPlayingCoroutine);
+            }
             if (autoMode)
             {
-                autoPlayingCorotine = StartCoroutine(autoPlaying());
-            }
-            else
-            {
-                StopCoroutine(autoPlayingCorotine);
+                ContinueStory();
             }
         }
 
@@ -219,7 +221,7 @@ public class InkDialogueManager : MonoBehaviour
     {
         isTyping = true;
 
-        dialogueText.text = "";
+        dialogueText.text = indentation;
         hideChoices();
         continueIcon.SetActive(false);
 
@@ -360,6 +362,10 @@ public class InkDialogueManager : MonoBehaviour
         {
             randomSpeak.Stop();
         }
+        if (autoMode)
+        {
+            autoPlayingCoroutine = StartCoroutine(autoPlaying());
+        }
     }
 
     public void ContinueStory()
@@ -392,11 +398,11 @@ public class InkDialogueManager : MonoBehaviour
 
         if (currentStory.canContinue)
         {
-            if (typingLinesCorotine != null)
+            if (typingLinesCoroutine != null)
             {
-                StopCoroutine(typingLinesCorotine);
+                StopCoroutine(typingLinesCoroutine);
             }
-            typingLinesCorotine = StartCoroutine(typingLines(currentStory.Continue()));
+            typingLinesCoroutine = StartCoroutine(typingLines(currentStory.Continue()));
             handleTags(currentStory.currentTags);
         }
         else if (currentStory.currentChoices.Count > 0)
@@ -548,6 +554,8 @@ public class InkDialogueManager : MonoBehaviour
 
         dialogueIsPlaying = true;
         dialoguePanel.gameObject.SetActive(true);
+        autoIcon.SetActive(autoMode);
+
         dialogueVariables.StartListening(currentStory);
 
         //reset default Names, Portraits if no tags detected
@@ -560,6 +568,7 @@ public class InkDialogueManager : MonoBehaviour
             mapPlayer.UpdateCanMove();
         }
 
+
     }
 
     private IEnumerator ExitDialogueMode()
@@ -570,6 +579,10 @@ public class InkDialogueManager : MonoBehaviour
         {
             mapPlayer.CheckCollectItemAtDialogEnd();
             mapPlayer.UpdateCanMove();
+        }
+        if (interactableItemManager)
+        {
+            interactableItemManager.RefreshInteractableSigns();
         }
         yield return new WaitForSeconds(.2f);
 

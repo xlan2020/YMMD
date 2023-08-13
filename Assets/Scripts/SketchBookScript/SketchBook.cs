@@ -39,7 +39,9 @@ public class SketchBook : MonoBehaviour
     }
     void Start()
     {
-        assesories.SetActive(false);
+        isOpen = false;
+        notesManager.gameObject.SetActive(isOpen);
+        assesories.SetActive(isOpen);
     }
 
     public void TurnToPage(int i)

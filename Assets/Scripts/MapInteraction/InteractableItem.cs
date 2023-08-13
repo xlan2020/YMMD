@@ -60,7 +60,6 @@ public class InteractableItem : MonoBehaviour
         if (dialogueTrigger != null)
         {
             dialogueTrigger.StartDialogue();
-
         }
     }
 
@@ -68,4 +67,5 @@ public class InteractableItem : MonoBehaviour
     {
         eventsOnInteraction.Invoke();
     }
+
 }

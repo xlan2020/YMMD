@@ -9,6 +9,7 @@ public class InteractableItemManager : MonoBehaviour
     public MapPlayer player;
     public MouseCursor cursor;
     public GameObject observeModeOverlay;
+    bool observing;
 
     void Awake()
     {
@@ -39,11 +40,13 @@ public class InteractableItemManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         { // observe mode on
+            observing = true;
             ShowAllFarSigns();
             observeModeOverlay.SetActive(true);
         }
         if (Input.GetKeyUp(KeyCode.Tab))
         { // observe mode off
+            observing = false;
             HideAllFarSigns();
             observeModeOverlay.SetActive(false);
         }
@@ -52,20 +55,49 @@ public class InteractableItemManager : MonoBehaviour
     {
         foreach (InteractableItem item in interactableItems)
         {
-            if (!item.IsInteractable())
+            if (item != null)
             {
-                item.interactiveSign.showSelfFar();
+                if (!item.IsInteractable())
+                {
+                    item.interactiveSign.showSelfFar();
+                }
             }
         }
+
     }
 
     void HideAllFarSigns()
     {
         foreach (InteractableItem item in interactableItems)
         {
-            if (!item.IsInteractable())
+            if (item != null)
             {
-                item.interactiveSign.hideSelf();
+                if (!item.IsInteractable())
+                {
+                    item.interactiveSign.hideSelf();
+                }
+            }
+        }
+    }
+
+    public void RefreshInteractableSigns()
+    {
+        foreach (InteractableItem item in interactableItems)
+        {
+            if (item != null)
+            {
+                if (item.IsInteractable())
+                {
+                    item.interactiveSign.showSelfNear();
+                }
+                else if (observing)
+                {
+                    item.interactiveSign.showSelfFar();
+                }
+                else
+                {
+                    item.interactiveSign.hideSelf();
+                }
             }
         }
     }
