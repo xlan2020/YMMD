@@ -529,7 +529,7 @@ public class InkDialogueManager : MonoBehaviour
             BGM.Play();
             return;
         }
-        BGM.ChangeBGM(tagValue);
+        BGM.ChangeBGM(tagValue, 0.1f);
     }
     private void handleSpeakerMode(string tagValue)
     {

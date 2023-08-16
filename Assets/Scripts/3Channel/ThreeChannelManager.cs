@@ -106,7 +106,7 @@ public class ThreeChannelManager : MonoBehaviour
 
             if (currLineUnit.newBGM != "" && currLineUnit.newBGM != null)
             {
-                bgmPlayer.ChangeBGM(currLineUnit.newBGM);
+                bgmPlayer.ChangeBGM(currLineUnit.newBGM, 0.1f);
             }
         }
         else
