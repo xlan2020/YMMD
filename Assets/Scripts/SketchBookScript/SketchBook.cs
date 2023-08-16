@@ -25,6 +25,7 @@ public class SketchBook : MonoBehaviour
 
     void Awake()
     {
+        gameObject.SetActive(true);
         audio = GetComponent<AudioSource>();
 
         if (instance == null)

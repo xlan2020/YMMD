@@ -90,6 +90,7 @@ public class InkDialogueManager : MonoBehaviour
     private Coroutine autoPlayingCoroutine;
     private string currentLine;
     private bool isTyping;
+    private bool isFastSkipping = false;
     private bool canContinueToNextLine = true;
     private bool finishedRequiredOpera;
 
@@ -139,6 +140,7 @@ public class InkDialogueManager : MonoBehaviour
         // fast skip: left SHIFT
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            isFastSkipping = true;
             isTyping = false;
             if (skippingLinesCoroutine == null)
             {
@@ -148,6 +150,7 @@ public class InkDialogueManager : MonoBehaviour
         }
         else
         { // when fast skip is released, stop current skipping mode
+            isFastSkipping = false;
             if (skippingLinesCoroutine != null)
             {
                 StopCoroutine(skippingLinesCoroutine);
@@ -252,6 +255,11 @@ public class InkDialogueManager : MonoBehaviour
         // iniitialize rich text typing needed info
         for (int i = 0; i < letterArray.Length; i++)
         {
+            if (isFastSkipping)
+            {
+                dialogueText.text = currentLine;
+                break;
+            }
 
             if (!richTextTyping)
             {
@@ -404,6 +412,7 @@ public class InkDialogueManager : MonoBehaviour
             }
             typingLinesCoroutine = StartCoroutine(typingLines(currentStory.Continue()));
             handleTags(currentStory.currentTags);
+
         }
         else if (currentStory.currentChoices.Count > 0)
         {
