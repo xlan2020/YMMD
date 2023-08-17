@@ -16,8 +16,8 @@ INCLUDE DAY1-2_global.ink
 我：………………嗯？？#event: 8-2_blink #profile: painter_stunned #bgm:悬疑
 我：（哪里冒出来的变态……眼睛好痛……不、头也好痛……对了！）
 我：（好像想起了一件要紧事，今天是……星期三！）#profile: painter_frightened
-我：（8月28日……星期三。我有个朋友，我们说好了，他会……他会……）
-我：（不对，现在不是想这种事情的时候——）#profile: painter_alert
+我：（8月26日……星期三。我有个朋友，我们说好了，他会……他会……）
+我：（不，现在不是想这种事情的时候——）#profile: painter_alert
 我：（那东西要过来了！）#profile: painter_frightened #event: 8-2_walkCloser
 我：喂！#profile: painter_surprised
 ？？？：画~~~家~~~！#profile: 8-2_smile #bgm:戏谑

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine;
 
 public class BGMPlayer : MonoBehaviour
 {
@@ -16,17 +16,15 @@ public class BGMPlayer : MonoBehaviour
     public AudioMixer bgmMixer;
     public AudioSource bgm1;
     public AudioSource bgm2;
-    public string StartingBgm;
-    private float targetVolume = 1f;
+    private float volume = 1f;
 
-    bool isOn1 = true;
+    bool isOn1 = false;
 
     void Start()
     {
-        if (StartingBgm != "")
-        {
-            ChangeBGM(StartingBgm, 0.04f);
-        }
+        //Calling this function in MonoBehaviour.Awake will result in unexpected behavior. Use MonoBehaviour.Start instead.
+        bgmMixer.SetFloat("vol_bgm1", -80f);
+        bgmMixer.SetFloat("vol_bgm2", -80f);
     }
 
     public void ChangeBGM(string musicName, float fadeDuration)
@@ -54,18 +52,31 @@ public class BGMPlayer : MonoBehaviour
             isOn1 = false;
             bgm2.clip = GetClipByName(musicName);
             StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm1", fadeDuration, 0f));
-            StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm2", fadeDuration, targetVolume));
+            StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm2", fadeDuration, volume));
             bgm2.Play();
+
         }
         else
         { // fade out 2, make it on 1
             isOn1 = true;
             bgm1.clip = GetClipByName(musicName);
             StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm2", fadeDuration, 0f));
-            StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm1", fadeDuration, targetVolume));
+            StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm1", fadeDuration, volume));
             bgm1.Play();
         }
 
+    }
+
+    public void FadeCurrentBGM(float duration, float targetVolume)
+    {
+        if (isOn1)
+        {
+            StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm1", duration, targetVolume));
+        }
+        else
+        {
+            StartCoroutine(FadeMixerGroup.StartFade(bgmMixer, "vol_bgm2", duration, targetVolume));
+        }
     }
 
     public void Pause()
@@ -78,11 +89,6 @@ public class BGMPlayer : MonoBehaviour
     {
         bgm1.Play();
         bgm2.Play();
-    }
-
-    public void SetVolume(float volume)
-    {
-        targetVolume = Mathf.Clamp(volume, 0, 1);
     }
 
     private AudioClip GetClipByName(string musicName)

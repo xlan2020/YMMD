@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 // using TMPro;
@@ -519,17 +520,21 @@ public class InkDialogueManager : MonoBehaviour
 
     private void handleBGM(string tagValue)
     {
-        if (tagValue == "pause")
+        string[] splitTag = tagValue.Split("_");
+        if (splitTag.Length == 1)
         {
-            BGM.Pause();
-            return;
+            BGM.ChangeBGM(splitTag[0], 0.1f);
         }
-        if (tagValue == "play")
+        else if (splitTag.Length == 2)
         {
-            BGM.Play();
-            return;
+            BGM.ChangeBGM(splitTag[0], float.Parse(splitTag[1], CultureInfo.InvariantCulture));
+            // UnityEngine.Debug.Log("changing bgm " + splitTag[0] + " to fade in time " + float.Parse(splitTag[1], CultureInfo.InvariantCulture));
         }
-        BGM.ChangeBGM(tagValue, 0.1f);
+        else if (splitTag.Length == 3 && splitTag[0] == "fade")
+        {   // format: fade_duration_volume
+            BGM.FadeCurrentBGM(float.Parse(splitTag[1], CultureInfo.InvariantCulture), float.Parse(splitTag[2], CultureInfo.InvariantCulture));
+        }
+
     }
     private void handleSpeakerMode(string tagValue)
     {
