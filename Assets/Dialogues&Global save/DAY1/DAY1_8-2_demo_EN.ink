@@ -25,7 +25,7 @@ Shut up.
 (I need to know about the subject. If any observation pops up, I'll collect it for the drawing. ) #speakerMode: thought
 Huh? About me? If this could contribute to a better drawing I'd cooperate. What little secret do you want to know about? #speaker: 8-2 #portrait: 8-2_smile #speakerMode: norm
 As you like.#speaker: Me
-As I like? Or do you mean - WHO I like? I can see what you want to hear, but you are wrong, I will not waste time on women like some somebody did. #showObservee: woman 
+As I like? Or do you mean - WHO I like? I can see what you want to hear, but you are wrong, I will not waste time on women like somebody did. #showObservee: woman 
  (...Somebody? Who is he talking about? There's something underneath his smile. ) Keep going. #speaker: Me #showObservee: glasses #speakerMode: thought
 All I love is human knowledge, endless and eternal. #speaker: 8-2 #portrait: 8-2_indiff #speakerMode: norm 
 Just Kidding! Just guess, What would I do if I can't sleep? #portrait: 8-2_handsup #bgm: 戏谑

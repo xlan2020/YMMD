@@ -5,8 +5,8 @@ INCLUDE DAY1-2_global.ink
 8-2：哎呦，没<color=magenta>画材</color>你就不会画画了？#portrait: 8-2_laugh
 8-2：你<b>以前</b>可不是这样的。#portrait: 8-2_admire
 8-2：再看看箱子里的东西吧。真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
-我：咦？仔细一看还真是……有灵感了！#profile: painter_surprised
-操作：【此时点击背包里的东西，会出现新的note。不确定对话框画家是否会对东西的用途进行说明（ink print说明variable）】
+我：咦？仔细一看还真是……有了！#profile: painter_surprised
+【操作】：【此时点击背包里的东西，会出现新的note。】
 系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为纸、笔、颜料三类。
 系统：每次使用画材时会消耗1点<color=magenta>耐久</color>，<color=magenta>耐久</color>清空后物品会<color=magenta>消失</color>。
 系统：注意，耐久消耗过多时，物品的置换价值也会随之发生变化。
@@ -42,15 +42,30 @@ INCLUDE DAY1-2_global.ink
 我：呃，你年轻的时候……吗？#profile: painter_side
 8-2：…………………… #portrait: 8-2_norm3 #bgm: fade_2_0.2
 我：…………………#profile: painter_sideSweat
-我：抱歉。#portrait: 8-2_thinking2
+我：抱歉。
 8-2：*叹气*咱们慢慢来吧。#portrait: 8-2_norm2
-老板娘：您的饭好了！#profile: mama_satisfied  
+我：（……无论如何，我确实下笔太草率了。）
+我：（画画的第一步是<color=magenta>观察</color>，除了死板的比例关系，我还得把<color=magenta>对象</color>——也就是8-2——的精气神儿抓住。）
+我：（仔细观察对象吧，有什么可以<color=magenta>捕捉</color>的东西吗？）
+【操作】：【observee-8-2的脸-出现】
+系统：在画画过程中，屏幕中会时不时出现<color=magenta>观察点</color>。有效的观察会让画家产生<color=magenta>灵感</color>。
+系统：在观察点上单击<color=magenta>鼠标左键</color>，将其<color=magenta>拖放</color>到<color=magenta>构思窗口</color>内，即可捕捉灵感。
+系统：在需要的时机把灵感呈现在<color=magenta>画布</color>上，才能让画画进行下去。
+系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！
++[提交：8-2的脸]->mama_appears
+==mama_appears==
+我：（果然，我不应该用年轻这个词来形容8-2。再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）
+老板娘：给您放桌上了！#profile: mama_satisfied  
 老板娘：呦，朋友也来啦？哎呀，你是不是那个……那个谁，那个八加二大师？#bgm:戏谑_0.5
 我：（噗……大师？）#profile: painter_sour
+系统：除了视觉上的观察，声音、语言、气味都可以成为构想画面的重要信息。除了对象附近，观察点也可以出现在屏幕的任何地方。
+系统：对于普通的观察点，只有捕捉才能让画画进行下去。
+系统：但是，个别的观察点会随着对话发展而被<color=magenta>错过</color>，从而限制故事的走向。错过不一定是坏事，但这点还请留意。
+系统：关于观察点，之后不会再有提醒了。画家要记得观察和捕捉哦！
+【操作】：【需要捕捉observee才能进行下去。要改一个点，observee出现和必须捕捉是两回事】
 8-2：咳，巴简二，姐姐。#portrait: 8-2_smile2
 老板娘：对对，瞧我这记性。我爱人经常听你的课嘞！#profile: mama_satisfied
-老板娘：多亏了大师呀，他要不是辞去了那个打渔的活儿，我天天都得牵肠挂肚！
-系统：observee介绍，收集大师（p一个图）
+老板娘：多亏了大师呀，他要不是辞去了那个打渔的活儿，我天天都得揪心呐。
 老板娘：现在好啊，靠着置换也发了点小财，一天赚的比以前跑三趟还多！
 8-2：不用谢，姐姐。我这个人啊，没别的爱好，就是喜欢帮助别人。#portrait: 8-2_deepLove
 老板娘：大师的心地就是好呀……给您上点儿茶水。想要什么尽管点，您叫这个名，我就给您打六折！
@@ -60,6 +75,10 @@ INCLUDE DAY1-2_global.ink
 8-2：没办法，粉丝就是这么多，看来以后得低调点了。#bgm:日常_5 #profile: painter_side #portrait: 8-2_laugh
 8-2：……我去！一没留神，你怎么都给炫完了？#portrait: 8-2_surprised
 我：我很饿……嗝。嗯，现在饱了。#profile: painter_sideSweat
+我：（在接单的时候吃饭，可真是不专业的表现。现在开始专注在对象上吧，应该从哪开始呢？）
++[提交：大师]->profession_mathematician
+
+==profession_mathematician==
 我：你是做什么职业的啊，“大师”？#profile: painter_norm
 8-2：我是个数学家。#portrait: 8-2_smile
 我：（8-2的数学吗？）呃，你给老板娘的爱人……上数学课？#profile: painter_side
@@ -72,6 +91,7 @@ INCLUDE DAY1-2_global.ink
 我：而且你这个1和0的说法，听着更像是数字命理学之类的吧？
 8-2：嗯，嗯，你就是这么理解的吗？浅了啊，画家。#portrait: 8-2_laugh
 8-2：数字可是很重要的！看看你头顶上，那里可是有个很显眼、很重要的数字。#portrait: 8-2_smile2
+【操作】：【observee-钱出现。这个可以skip】
 我：（很显眼、很重要的数字，是……）#profile: painter_stunned
 +[{money}]
 我：头顶上的数字……{money}？
@@ -85,7 +105,7 @@ INCLUDE DAY1-2_global.ink
 ->value_number
 +[什么数字？]
 我：哪里有数字？你在逗我吗。#profile: painter_noComment 
-8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile2 
+8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile
 我：嗯？{money}，这个……这个是……#profile: painter_stunned #bgm:pause
 我：这是我所有财产的金额！#profile: painter_frightened #portrait: 8-2_laugh #bgm:戏谑_0.5
 我：等等！你怎么知道的？#profile: painter_surprised
@@ -103,15 +123,20 @@ INCLUDE DAY1-2_global.ink
 8-2：但就这么一个数，人也还是看不清楚。#portrait: 8-2_thinking
 8-2：所以呢，我的置换成功学课程也就应运而生。哈哈，你刚问我教那老爷子什么，这么说吧，我兼职做的是讲师。#portrait: 8-2_smile2
 我：（果然，不出我所料。）你是个职业骗子。#profile: painter_side #portrait: 8-2_laugh
+【操作】：【收集observee-8-2脸上的坏笑。说他是骗子的时候，他还笑了！怎么有这么厚颜无耻的人？】
 我：你居然还好意思说自己研究真理……天，你真应该向老板娘道歉。
-8-2：瞧你说得多难听，这怎么能叫骗人呢？#portrait: 8-2_norm2
+8-2：瞧你说得多难听，这怎么能叫骗人呢？#portrait: 8-2_norm
 8-2：多少人都不了解自己想要什么，能失去的是什么……换来换去，换得一场空。#portrait: 8-2_thinking
-8-2：我只是在帮助大家了解自我罢了。#portrait: 8-2_deepLove
-8-2：说到这了，画家，咱们打开天窗说亮话。我能感觉到——你身上是不是也发生过类似的事？
+8-2：我只是在帮助大家掌控自我罢了。
+8-2：说到这了，画家，咱们打开天窗说亮话。我能感觉到——你身上是不是也发生过类似的事？#portrait: 8-2_deepLove
 8-2：如果能更了解自己的话，就不会闹得一无所有，还一无所知了。
+【操作】：【收集observee-深沉的、仿佛闪烁着泪光的眼睛，仿佛能轻易看穿我内心的想法、我的过去，却还保持着一种一视同仁的怜悯】
 我：……………………#profile: painter_side
 我：（别说，今天睡醒的事我还真是想不明白，这家伙或许能知道点什么。）#profile: painter_sideSweat
 我：（我该相信他的话吗？）#profile: painter_norm
+系统：目前可以呈现的灵感有两种，必须要做出<color=magenta>选择</color>了。
+系统：选择不同的灵感会给画面带来改变，也决定了画家对绘画对象的<color=magenta>理解</color>和<color=magenta>态度</color>。未来说不定会因此发生改变！
+我：（必须要做出选择了……我该相信8-2吗？）
 +[帮我看看，大师]->teach_me
 
 +[这人有问题！]->reveal_liar
@@ -198,7 +223,7 @@ INCLUDE DAY1-2_global.ink
 我：当然不能，那又不是你的东西。
 8-2：BINGO！不是自己的东西就置换不了。#portrait: 8-2_smile2
 我：……（这不是废话吗？）
-8-2：我知道你想说什么，不过先别急。你有没有想过，置换的系统——就当它有个系统吧——是怎么判断什么东西属于你吗？#portrait: 8-2_smile
+8-2：先别急，你有没有想过，置换的系统——就当它有个系统吧——怎么判断东西是不是属于你的？#portrait: 8-2_smile
 +[法律？]
 我：法律有规定吧。
 8-2：啊哈！你想说置换的系统和咱们的立法机关有联系？噗……没想到你是这么古典派的人，哈哈…… #portrait: 8-2_laugh
@@ -263,7 +288,7 @@ INCLUDE DAY1-2_global.ink
 8-2：好问题。不过你没问出口，我也不知道我会怎么答。#portrait: 8-2_thinking #bgm:fade_3_1
 我：*笑*人各有志，咱俩这萍水相逢，也就不用知道太多了。
 8-2：萍水相逢……吗？哈哈。#portrait: 8-2_smile2
-我：你的画快画完了，之后你爱讲你的课就加油吧，跟你聊天挺有意思，但我还没到想要付费听的程度，今天我还有事……
+我：给你的画快画完了，之后你爱讲你的课就加油吧，跟你聊天挺有意思，但我还没到想要付费听的程度。今天我还有事……
 我：（……对啊！明明是有事的，怎么现在才想起来？）#bgm: fade_3_0.2
 我：（8月26日星期三，我有个老朋友要从远方过来，我们约在……热麻麻门口见面……热麻麻？那不就是这里吗……咦？）
 我：……等等，不对，你……啊？#portrait: 8-2_smile #bgm: fade_0.5_0
@@ -287,18 +312,18 @@ INCLUDE DAY1-2_global.ink
 我：那你是怎么回来的？
 8-2：这就是我们<color=magenta>七分之一兄弟会</color>的顶级机密了。#portrait: 8-2_laugh
 我：………………
-8-2：你有兴趣成为我们的预备成员吗？有兴趣的话，我就透露一点。#portrait: 8-2_smile2
-8-2：每一段时间，我们都会有一名宝贵的成员被置换走，以此换取一大笔流动资产。这就叫做出差。#portrait: 8-2_smile
-8-2：当然，既然是出差，就有回来的一天啦。#portrait: 8-2_smile2
+8-2：怎么样，你有兴趣成为我们的预备成员吗？有兴趣的话，我就透露一点儿。#portrait: 8-2_smile2
+8-2：每隔一段时间，我们都会把一名宝贵的成员置换走，以此换取一大笔流动资产。这就叫做出差。#portrait: 8-2_smile
+8-2：既然是出差，那当然就有回来的一天啦。#portrait: 8-2_laugh
 我：…………………………
-我：我……你……这怎么可能？#portrait: 8-2_laugh
+我：你……你们……这怎么可能？#portrait: 8-2_smile
 我：已经消失过的东西，怎么可能回得来？
-8-2：为什么不可能回来呢？#portrait: 8-2_smile
+8-2：为什么不可能回来呢？
 我：没人想得起来消失过的东西。难道不是这样吗？
-8-2：呵呵……#portrait: 8-2_smile2
+8-2：呵呵……#portrait: 8-2_mysterious
 我：咳，8-2，那边是什么样子的？
 8-2：如果有样子的话，就不叫虚空了。#portrait: 8-2_norm
-8-2：……再说了，我也不记得。虚空里装着的只有不存在的东西，我都不存在了，当然也就不知道了。唔，不如说，其实我根本没去过？#portrait: 8-2_thinking2
+8-2：……再说了，我也不记得。虚空里装着的只有不存在的东西，我都不存在了，当然也就不知道了。唔，不如说，其实我根本没去过？#portrait: 8-2_thinking
 我：好吧，真是很有帮助的答案。#portrait: 8-2_smile
 我：不过，你的画也画完了。
 
