@@ -580,6 +580,7 @@ public class InkDialogueManager : MonoBehaviour
         if (mapPlayer)
         {
             mapPlayer.UpdateCanMove();
+            UnityEngine.Debug.Log("updating player can move!");
         }
 
 

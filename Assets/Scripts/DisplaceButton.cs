@@ -20,7 +20,7 @@ public class DisplaceButton : MonoBehaviour
 
     private void DisplaceCurrentItem()
     {
-        gameManager.DisplaceItemAtSlot(uiInventory.GetCurrentSlot());
+        gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
     }
 
     public void SetInteractive(bool b)

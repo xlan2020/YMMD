@@ -103,7 +103,7 @@ INCLUDE DAY1-2_global.ink
 8-2：不，我只是个数学家。#portrait: 8-2_mysterious #bgm:日常_3
 ->value_number
 +[什么数字？]
-我：哪里有数字？你在逗我吗。#profile: painter_noComment 
+我：哪里有数字？别逗了。#profile: painter_noComment 
 8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile
 我：嗯？{money}，这个……这个是……#profile: painter_stunned #bgm:pause
 我：这是我所有财产的金额！#profile: painter_frightened #portrait: 8-2_laugh #bgm:戏谑_0.5
@@ -314,10 +314,10 @@ INCLUDE DAY1-2_global.ink
 我：（8月26日星期三，我有个老朋友要从远方过来，我们约在……热麻麻门口见面……热麻麻？那不就是这里吗……咦？）
 我：……等等，不对，你……啊？#portrait: 8-2_smile #bgm: fade_0.5_0
 我：我要见的那个老朋友，不会就是你吧？！#portrait: 8-2_laugh #bgm:戏谑_0.2
-我：我去，这都多少年没见了？……你的变化也<b>太</b>大了！……我都认不出来了。
+我：我去，这都多少年没见了？……你的变化也<b>太</b>大了！我都认不出来了。
 8-2：*叹气*呵呵，哪有多少年……画家，你这日子过得呀，真叫人看不下去。#portrait: 8-2_norm
 我：说起来我还真有点糊涂，跟人约了见面，结果也想不起来是谁。哎？但现在怎么就想起来了……
-我：嗐，都怪你冒出来的时候太吓人了。你……呃？等等，你从哪里冒出来的？#portrait: 8-2_smile
+我：嗐，都怪你冒出来的时候太吓人了，你……呃？等等，你从哪里冒出来的？#portrait: 8-2_smile
 我：你刚出来的时候……连衣服都没穿！你这是去哪儿了？
 8-2：我哪儿也没去。
 8-2：或者说……去了<color=magenta>那边</color>。我去了<color=magenta>虚空</color>。#portrait: 8-2_norm
@@ -325,7 +325,7 @@ INCLUDE DAY1-2_global.ink
 8-2：出差。#portrait: 8-2_laugh
 我：……啊？
 我：你的意思不会是……
-我：……你被人置换走了？
+我：……你被人置换走了？！
 8-2：嗯哼。#portrait: 8-2_smile
 我：（还真是这样……他<color=magenta>消失</color>过！）
 我：（出现和消失的过程都是<color=magenta>逐渐</color>的，所以在他刚出现的时候，我才会记不起他是谁。）

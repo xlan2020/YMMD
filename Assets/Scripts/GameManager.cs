@@ -73,17 +73,12 @@ public class GameManager : MonoBehaviour
         StaticInventory.ItemArry = inventory.GetItemList();
     }
 
-    public void DisplaceItemAtSlot(ItemSlot slot)
+    public void DisplaceItem(Item item)
     {
-        if (slot == null)
-        {
-            UnityEngine.Debug.Log("Can't displace because slot is empty!");
-            return;
-        }
-        AddMoney(slot.item.price);
+        AddMoney(item.price);
         displaceSFX.PlayItemToMoneySound();
-        uiInventory.ShowDisplaceResultWindow(slot.item);
-        inventory.RemoveItemAtIndex(slot.uiIndex);
+        uiInventory.ShowDisplaceResultWindow(item);
+        inventory.RemoveItem(item);
     }
 
     public void AddItemToInventory(Item item)

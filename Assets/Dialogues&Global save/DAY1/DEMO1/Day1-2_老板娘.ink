@@ -101,4 +101,3 @@ INCLUDE DAY1-2_global.ink
 我：（现在去找老板娘买晚饭吧。）
 ->DONE
 ->END
-

@@ -102,7 +102,10 @@ public class MapPlayer : MonoBehaviour
 
     private void CollectItem(ItemInfo itemInfo)
     {
-        gameManager.inventory.AddItem(itemInfo.GetItem());
+        for (int i = 0; i < 50; i++)
+        {
+            gameManager.AddItemToInventory(itemInfo.GetItem());
+        }
     }
 
     public void CheckCollectItemAtDialogEnd()
