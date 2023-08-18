@@ -13,6 +13,7 @@ public class ItemInfo : MonoBehaviour
     public Sprite spriteImage;
     public bool destroyOnInteract;
     public bool displaceable = true;
+    private bool isNew = true;
     Item item;
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class ItemInfo : MonoBehaviour
             spriteImage = spriteImage,
             destroyOnInteract = destroyOnInteract,
             displaceable = displaceable,
+            isNew = isNew
         };
     }
     public Item GetItem()

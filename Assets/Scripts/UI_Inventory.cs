@@ -91,6 +91,7 @@ public class UI_Inventory : MonoBehaviour
             // update UI display
             itemSlot.item = item;
             itemSlot.itemImage.sprite = item.spriteImage;
+            itemSlot.SetSlotNew(item.isNew);
 
             // add slot to the new slot list
             slots[i] = itemSlot;

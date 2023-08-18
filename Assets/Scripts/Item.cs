@@ -14,6 +14,5 @@ public class Item
     public bool displaceable;
     public bool collectAfterDialogue;
     public bool collectOnInteract;
-
-
+    public bool isNew;
 }
