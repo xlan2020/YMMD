@@ -11,6 +11,7 @@ public class ItemSlot : MonoBehaviour
     private bool selected = false;
     public Image itemImage;
     public Button selectButton;
+    public bool isNew = false;
 
     void Awake()
     {
@@ -24,11 +25,22 @@ public class ItemSlot : MonoBehaviour
         }
         ui_Inventory = UI_Inventory.instance;
         selectButton.onClick.AddListener(delegate { SelectSelf(); });
+        animator.SetBool("isNew", false);
     }
     public void ShowSelfSelected(bool b)
     {
-        GetComponent<Animator>().SetBool("Selected", b);
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
+        animator.SetBool("Selected", b);
         selected = b;
+    }
+
+    public void SetSelfNew(bool b)
+    {
+        isNew = b;
+        animator.SetBool("isNew", b);
     }
 
     public void SelectSelf()
