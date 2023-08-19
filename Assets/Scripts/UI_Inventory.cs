@@ -151,15 +151,15 @@ public class UI_Inventory : MonoBehaviour
     {
         displaceResult.gameObject.SetActive(true);
         displacedItemImage.sprite = displacedItem.spriteImage;
-        if (displacedItem.price >= 0)
+        if (displacedItem.value >= 0)
         {
-            // if the price is positive, than add the "+" sign to specify gain
-            displaceGainAmount.text = "+" + displacedItem.price;
+            // if the money value is positive, than add the "+" sign to specify gain
+            displaceGainAmount.text = "+" + displacedItem.value;
         }
         else
         {
             // if less than 0, the "-" sign is already with the number
-            displaceGainAmount.text = displacedItem.price.ToString();
+            displaceGainAmount.text = displacedItem.value.ToString();
         }
     }
 

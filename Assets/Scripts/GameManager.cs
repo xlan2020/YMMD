@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     public void DisplaceItem(Item item)
     {
-        AddMoney(item.price);
+        AddMoney(item.value);
         displaceSFX.PlayItemToMoneySound();
         uiInventory.ShowDisplaceResultWindow(item);
         inventory.RemoveItem(item);

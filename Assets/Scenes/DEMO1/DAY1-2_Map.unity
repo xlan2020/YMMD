@@ -497,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 93323394}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 498, y: 117.7, z: -10}
+  m_LocalPosition: {x: 366, y: 117.7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -531,10 +531,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
-    y: 0.84691364
-    width: 0.56666666
-    height: 0.56666666
+    x: 0.59375
+    y: 0
+    width: 0.6432099
+    height: 0.64320993
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 55
@@ -1459,10 +1459,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SketchBook
       objectReference: {fileID: 0}
-    - target: {fileID: 959051889752172996, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 959051889752172997, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
       propertyPath: mapPlayer
       value: 
@@ -1559,16 +1555,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2671177317485311882, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7926374942763386216, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1071513848}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
 --- !u!224 &196375294 stripped
@@ -1719,7 +1708,6 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   destroyOnInteract: 0
   displaceable: 1
-  isNew: 1
 --- !u!50 &210572314
 Rigidbody2D:
   serializedVersion: 4
@@ -2234,7 +2222,6 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   destroyOnInteract: 1
   displaceable: 1
-  isNew: 1
 --- !u!50 &314733367
 Rigidbody2D:
   serializedVersion: 4
@@ -2933,14 +2920,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI_Money
       objectReference: {fileID: 0}
-    - target: {fileID: 1785190504372297986, guid: a07d050f5f7ff44729450c4849f15486, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -655777290, guid: 79eb976e620d6401dbb8547297400970, type: 3}
-    - target: {fileID: 1785190505580624616, guid: a07d050f5f7ff44729450c4849f15486, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -332771507, guid: 79eb976e620d6401dbb8547297400970, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3200,7 +3179,6 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   destroyOnInteract: 0
   displaceable: 0
-  isNew: 1
 --- !u!61 &594206404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4416,7 +4394,6 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   destroyOnInteract: 0
   displaceable: 1
-  isNew: 1
 --- !u!114 &1009471647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4609,195 +4586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1071513847
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1071513848}
-  - component: {fileID: 1071513853}
-  - component: {fileID: 1071513852}
-  - component: {fileID: 1071513851}
-  - component: {fileID: 1071513850}
-  - component: {fileID: 1071513849}
-  - component: {fileID: 1071513854}
-  m_Layer: 5
-  m_Name: CloseButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1071513848
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1187644716}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 260, y: 130}
-  m_SizeDelta: {x: 32, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1071513849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!223 &1071513850
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 1
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 1317727037
-  m_SortingOrder: 2
-  m_TargetDisplay: 0
---- !u!114 &1071513851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1071513852}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1729181051}
-        m_TargetAssemblyTypeName: SketchBook, Assembly-CSharp
-        m_MethodName: ToggleOpen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1071513852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -540728816, guid: 29975c7a8d3a54bf7a525d62039a6486, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1071513853
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_CullTransparentMesh: 1
---- !u!114 &1071513854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071513847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234a3d5ac3e4749f3bf1cb5a68212816, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeTo: point
 --- !u!114 &1073202136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
@@ -4951,7 +4739,6 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   destroyOnInteract: 0
   displaceable: 0
-  isNew: 1
 --- !u!61 &1163929320
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5013,11 +4800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9905c36a56c6e4392abcc0d33ca9042c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1187644716 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7926374942763386216, guid: 5f140ed256680476d92bffb1664ea6a7, type: 3}
-  m_PrefabInstance: {fileID: 196375293}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1188647673
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,7 +5903,6 @@ MonoBehaviour:
   spriteImage: {fileID: 2109764838, guid: f3eeda27f20174714a031ab555944406, type: 3}
   destroyOnInteract: 0
   displaceable: 1
-  isNew: 1
 --- !u!61 &1591046018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7980,7 +7761,6 @@ MonoBehaviour:
   spriteImage: {fileID: 0}
   destroyOnInteract: 0
   displaceable: 0
-  isNew: 1
 --- !u!61 &2127708164
 BoxCollider2D:
   m_ObjectHideFlags: 0
