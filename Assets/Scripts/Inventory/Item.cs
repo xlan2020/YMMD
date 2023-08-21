@@ -17,6 +17,7 @@ public class Item
     public bool isNew;
     public int durability;
     public DrawType drawType;
+    public ArtMaterialScriptableObject artMaterial;
     //public int drawType; // 0 - not painting material; 1-  画布; 2 - 画笔; 3 - 颜料; 
     public string drawDescription;
     public string drawAttribute;

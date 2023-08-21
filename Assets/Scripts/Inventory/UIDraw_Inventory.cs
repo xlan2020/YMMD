@@ -24,13 +24,18 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] Text currentItemAttribute;
     [SerializeField] DrawItemObject drawItemObject;
 
-    [Header("Draw Type")]
-    [SerializeField] Sprite[] drawTypeIcons;
+    [Header("Draw Type Icon")]
+    [SerializeField] Sprite canvasTypeIcon;
+    [SerializeField] Sprite brushTypeIcon;
+    [SerializeField] Sprite paintTypeIcon;
+    [SerializeField] Sprite brushPaintTypeIcon;
+    [SerializeField] Sprite notDrawTypeIcon;
+
+    [Header("Draw Type Tab")]
     [SerializeField] DrawTypeTab canvasTab;
     [SerializeField] DrawTypeTab brushTab;
     [SerializeField] DrawTypeTab paintTab;
     [SerializeField] DrawTypeTab allTab;
-
 
 
     private int filterType = 1; // 1-canvas only; 2-brush only; 3-paint only; 4-all
@@ -99,7 +104,7 @@ public class UIDraw_Inventory : MonoBehaviour
             // update item and UI display
             itemSlot.item = item;
             itemSlot.itemName.text = item.itemName;
-            itemSlot.icon.sprite = drawTypeIcons[getDrawTypeInt(item.drawType)];
+            itemSlot.icon.sprite = GetDrawTypeIcon(item);
 
             // add slot to the new slot list
             slots[i] = itemSlot;
@@ -118,6 +123,10 @@ public class UIDraw_Inventory : MonoBehaviour
         foreach (Item item in itemList)
         {
             if (getDrawTypeInt(item.drawType) == filterType || filterType == 4)
+            {
+                displayList.Add(item);
+            }
+            if (item.artMaterial.brushWithPaint && filterType == 3)
             {
                 displayList.Add(item);
             }
@@ -180,6 +189,7 @@ public class UIDraw_Inventory : MonoBehaviour
         drawingSystem.SetDrawItem(slots[currentSlotIndex].item);
     }
 
+
     public void SetDrawTypeFilter(int type)
     {
         filterType = type;
@@ -229,5 +239,29 @@ public class UIDraw_Inventory : MonoBehaviour
             default:
                 return 0;
         }
+    }
+
+    private Sprite GetDrawTypeIcon(Item item)
+    {
+        switch (item.drawType)
+        {
+            case DrawType.canvas:
+                return canvasTypeIcon;
+            case DrawType.brush:
+                if (item.artMaterial.brushWithPaint)
+                {
+                    return brushPaintTypeIcon;
+                }
+                else
+                {
+                    return brushTypeIcon;
+                }
+                break;
+            case DrawType.paint:
+                return paintTypeIcon;
+            default:
+                break;
+        }
+        return null;
     }
 }

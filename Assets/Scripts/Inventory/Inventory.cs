@@ -69,6 +69,7 @@ public class Inventory
             durability = itemInfo.durability,
             drawType = itemInfo.drawType,
             // legacy int: 0 - not draw 1-  画布; 2 - 画笔; 3 - 颜料; 
+            artMaterial = itemInfo.artMaterial,
             drawDescription = itemInfo.drawDescription,
             drawAttribute = itemInfo.drawAttribute,
             draw_stable = itemInfo.draw_stable,

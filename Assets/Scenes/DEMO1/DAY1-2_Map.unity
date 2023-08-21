@@ -1087,6 +1087,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeginningInkJSON: {fileID: 4900000, guid: fec7605ffc2064fbcaed951523fcf747, type: 3}
+  loadInventory: {fileID: 0}
+  uiInventory: {fileID: 0}
+  uiDraw_Inventory: {fileID: 0}
   uiMoney: {fileID: 508895310}
   displaceSFX: {fileID: 2701967917452945970, guid: 0c80c66813ee84ff5a7fcebdf7960fb4, type: 3}
   HasBeginningDialogue: 1
@@ -1708,6 +1711,7 @@ MonoBehaviour:
   displaceable: 1
   destroyOnInteract: 0
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -2230,6 +2234,7 @@ MonoBehaviour:
   displaceable: 1
   destroyOnInteract: 1
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -3195,6 +3200,7 @@ MonoBehaviour:
   displaceable: 0
   destroyOnInteract: 0
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -4418,6 +4424,7 @@ MonoBehaviour:
   displaceable: 1
   destroyOnInteract: 0
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -4771,6 +4778,7 @@ MonoBehaviour:
   displaceable: 0
   destroyOnInteract: 0
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -5943,6 +5951,7 @@ MonoBehaviour:
   displaceable: 1
   destroyOnInteract: 0
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -7809,6 +7818,7 @@ MonoBehaviour:
   displaceable: 0
   destroyOnInteract: 0
   drawType: 0
+  artMaterial: {fileID: 0}
   drawDescription: 
   drawAttribute: 
   draw_stable: 0
@@ -8814,10 +8824,6 @@ PrefabInstance:
     - target: {fileID: 605883291736271546, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
       propertyPath: m_Name
       value: cursor
-      objectReference: {fileID: 0}
-    - target: {fileID: 605883291736271546, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

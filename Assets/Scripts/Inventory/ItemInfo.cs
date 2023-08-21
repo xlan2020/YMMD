@@ -25,6 +25,7 @@ public class ItemInfo : MonoBehaviour
     [Space(10)]
     [Header("Drawing Attribute")]
     public DrawType drawType = DrawType.notDraw;
+    public ArtMaterialScriptableObject artMaterial;
     [TextAreaAttribute(3, 3)] public string drawDescription;
     public string drawAttribute;
     [Range(1, 5)] public int draw_stable;
@@ -56,6 +57,7 @@ public class ItemInfo : MonoBehaviour
             durability = durability,
             //drawType = getDrawTypeInt(drawType), // 0 - not draw 1-  画布; 2 - 画笔; 3 - 颜料; 
             drawType = drawType,
+            artMaterial = artMaterial,
             drawDescription = drawDescription,
             drawAttribute = drawAttribute,
             draw_stable = draw_stable,

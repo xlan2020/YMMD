@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DrawingSystem : MonoBehaviour
 {
+    [SerializeField] ArtMaterialVisualizer artMaterialVisualizer;
     private Item canvas;
     private Item brush;
     private Item paint;
@@ -19,12 +20,15 @@ public class DrawingSystem : MonoBehaviour
                 break;
             case DrawType.canvas:
                 canvas = item;
+                artMaterialVisualizer.ApplyItemAsArtMaterial(item);
                 break;
             case DrawType.brush:
                 brush = item;
+                artMaterialVisualizer.ApplyItemAsArtMaterial(item);
                 break;
             case DrawType.paint:
                 paint = item;
+                artMaterialVisualizer.ApplyItemAsArtMaterial(item);
                 break;
             default:
                 break;

@@ -16,7 +16,7 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (interactive)
         {
-            cursor.GetComponent<Animator>().SetTrigger("dialogue");
+            cursor.SetAnimationTrigger("dialogue");
         }
     }
 
