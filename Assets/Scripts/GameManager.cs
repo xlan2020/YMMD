@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextAsset BeginningInkJSON;
+    public LoadInventory loadInventory;
     public UI_Inventory uiInventory;
+    public UIDraw_Inventory uiDraw_Inventory;
     public UI_Money uiMoney;
     public DisplaceSFX displaceSFX;
 
@@ -21,10 +23,20 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
 
         inventory = new Inventory();
-        if (uiInventory)
+
+        if (loadInventory)
+        {
+            loadInventory.SetInventory(inventory);
+        }
+        if (uiInventory != null)
         {
             uiInventory.SetInventory(inventory);
         }
+        if (uiDraw_Inventory != null)
+        {
+            uiDraw_Inventory.SetInventory(inventory);
+        }
+
         inventory.SetItemList(StaticInventory.ItemArry);
 
         money = new Money();

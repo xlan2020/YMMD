@@ -46,7 +46,7 @@ public class InkDialogueManager : MonoBehaviour
     [Header("Drawing Interface Special")]
     [SerializeField] private bool DrawMode = false;
     [SerializeField] private DrawResultManager DrawResultManager;
-    [SerializeField] private DrawMaterialManager DrawMaterialManager;
+    //[SerializeField] private DrawMaterialManager DrawMaterialManager;
     [SerializeField] private ObserveeManager observeeManager;
     [SerializeField] private SubmitDrawing drawingSubmitter;
     private List<string> currObserveeNames = new List<string>();
@@ -132,7 +132,7 @@ public class InkDialogueManager : MonoBehaviour
         // initialize draw mode specials
         if (DrawMode)
         {
-            DrawMaterialManager.SetMaterialsInteractive(false);
+            //DrawMaterialManager.SetMaterialsInteractive(false);
         }
     }
 
@@ -483,11 +483,11 @@ public class InkDialogueManager : MonoBehaviour
             case "BUTTON":
                 displayChoices();
                 break;
-            case "MATERIAL":
-                DrawMaterialManager.SetMaterialsInteractive(true);
-                drawingSubmitter.CanSubmit(true);
-                choiceType = "BUTTON";
-                break;
+            //case "MATERIAL":
+            //  DrawMaterialManager.SetMaterialsInteractive(true);
+            //drawingSubmitter.CanSubmit(true);
+            //choiceType = "BUTTON";
+            //break;
             case "OBSERVEE":
                 handleObserveeChoices();
                 canSkipChoice = false;

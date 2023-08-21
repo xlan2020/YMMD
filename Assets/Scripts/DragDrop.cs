@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DragDrop : MonoBehaviour
 {
+    public delegate void DropDelegate(DragDrop dd);
+    public DropDelegate dropCallback;
+
+
     private Vector3 mOffset;
     private SpriteRenderer sprite;
     private bool _onDrag = false;
@@ -16,19 +20,11 @@ public class DragDrop : MonoBehaviour
     public bool DragAboveMask = false;
     private Vector3 snapPos;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         snapPos = transform.position;
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     void OnMouseDown()
@@ -100,9 +96,8 @@ public class DragDrop : MonoBehaviour
     {
         _onDrag = false;
         _onDrop = true;
-        UnityEngine.Debug.Log("Drop!");
-
-
+        //UnityEngine.Debug.Log("Drop!");
+        dropCallback(this);
     }
 
     public bool IsOnDrop()
