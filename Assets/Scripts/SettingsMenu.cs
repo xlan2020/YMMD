@@ -160,7 +160,7 @@ public void SetVolume(float volume)
 
         EventSystem.current.SetSelectedGameObject(null);
 
-        if (mapPlayer)
+        if (mapPlayer != null)
         {
             mapPlayer.UpdateCanMove();
         }

@@ -96,9 +96,10 @@ public class MouseCursor : MonoBehaviour
                 prevSprite = spriteRenderer.sprite;
                 spriteRenderer.sprite = grab;
             }
-            else
+            else if (prevSprite != null)
             {
                 spriteRenderer.sprite = prevSprite;
+                prevSprite = null;
             }
         }
     }

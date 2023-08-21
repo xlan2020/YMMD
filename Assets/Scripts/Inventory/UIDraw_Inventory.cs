@@ -92,8 +92,9 @@ public class UIDraw_Inventory : MonoBehaviour
 
         List<Item> itemList = inventory.GetItemList();
         filterDisplayList(itemList);
-        slots = new DrawItemSlot[displayList.Count];
+        List<Item> appliedItems = GetTypeAppliedItems();
 
+        slots = new DrawItemSlot[displayList.Count];
         int i = 0;
         foreach (Item item in displayList)
         {
@@ -106,6 +107,14 @@ public class UIDraw_Inventory : MonoBehaviour
             itemSlot.itemName.text = item.itemName;
             itemSlot.icon.sprite = GetDrawTypeIcon(item);
 
+            // update applied item visual
+            foreach (Item applied in appliedItems)
+            {
+                if (applied == item)
+                {
+                    itemSlot.ShowSelfApplied(true);
+                }
+            }
             // add slot to the new slot list
             slots[i] = itemSlot;
             itemSlot.uiIndex = i;
@@ -263,5 +272,31 @@ public class UIDraw_Inventory : MonoBehaviour
                 break;
         }
         return null;
+    }
+
+    private List<Item> GetTypeAppliedItems()
+    {
+        List<Item> appliedItems = new List<Item>();
+        switch (filterType)
+        {
+            case 1:
+                appliedItems.Add(drawingSystem.GetCanvasItem());
+                break;
+            case 2:
+                appliedItems.Add(drawingSystem.GetBrushItem());
+                break;
+            case 3:
+                appliedItems.Add(drawingSystem.GetPaintItem());
+                break;
+            case 4:
+                appliedItems.Add(drawingSystem.GetCanvasItem());
+                appliedItems.Add(drawingSystem.GetBrushItem());
+                appliedItems.Add(drawingSystem.GetPaintItem());
+                break;
+            default:
+                break;
+
+        }
+        return appliedItems;
     }
 }

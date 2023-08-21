@@ -18,6 +18,7 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         audio = GetComponent<AudioSource>();
         openAudio = settingsMenu.GetOpenAudio();
         menuButton.onClick.AddListener(PlayClickAudio);
+        cursor = MouseCursor.instance;
 
     }
     void PlayClickAudio()
