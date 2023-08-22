@@ -7,7 +7,6 @@ public class ArtMaterialScriptableObject : ScriptableObject
     public Sprite canvasSprite;
     [Header("Brush Modules")]
     public Sprite brushSprite;
-    public bool brushWithPaint;
     [Header("Paint Modules")]
     public GameObject paintPrefab;
 }

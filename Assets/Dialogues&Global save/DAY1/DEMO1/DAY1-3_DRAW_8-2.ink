@@ -7,10 +7,11 @@ INCLUDE DAY1-2_global.ink
 8-2：再看看箱子里的东西吧。真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
 我：咦？仔细一看还真是……有了！#profile: painter_surprised
 【操作】：【此时点击背包里的东西，会出现新的note。】
-系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为纸、笔、颜料三类。
+系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为画布、笔刷、颜料三类。
+系统：个别特殊的物品则不可用来画画。
 系统：每次使用画材时会消耗1点<color=magenta>耐久</color>，<color=magenta>耐久</color>清空后物品会<color=magenta>消失</color>。
+系统：部分笔刷自带颜料——比如铅笔，使用时会消耗2点耐久。
 系统：注意，耐久消耗过多时，物品的置换价值也会随之发生变化。
-系统：个别特殊的物品则不可作为画材使用。
 我：（我有主意了。不过在此之前，还有重要的事情需要确认……）#profile: painter_side
 我：呃，你刚才说的给钱，算数吗？#profile: painter_sideSweat
 8-2：当然，咱俩谁跟谁啊！行，你要还不信的话……#portrait: 8-2_laugh
@@ -22,6 +23,7 @@ INCLUDE DAY1-2_global.ink
 我：（全世界的甲方都一样不擅长描述需求，猜度他们的心思也是工作很重要的一部分。）#profile: painter_eyeClosed
 我：（有意思、亲手、大吃一惊……就按这个需求选择画材吧。）#profile: painter_happy 
 +[我明白了]
+我：（有意思、亲手、大吃一惊……就按这个需求选择画材吧。）#drawingSystem: selectMaterial
 ->select_material_and_draw
 +[什么意思？]
 我：（他什么意思啊？我得冷静想想。“有意思、大吃一惊”就是非常规，看来实验性的材料会比较适合他。）#profile: painter_side

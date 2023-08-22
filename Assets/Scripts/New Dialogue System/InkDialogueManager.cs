@@ -44,6 +44,7 @@ public class InkDialogueManager : MonoBehaviour
     private Text[] choicesText;
 
     [Header("Drawing Interface Special")]
+    [SerializeField] private DrawingSystem drawingSystem;
     [SerializeField] private bool DrawMode = false;
     [SerializeField] private DrawResultManager DrawResultManager;
     //[SerializeField] private DrawMaterialManager DrawMaterialManager;
@@ -73,11 +74,13 @@ public class InkDialogueManager : MonoBehaviour
     private const string DRAW_RESULT = "hidden";
     private const string SPEAKER_MODE_TAG = "speakerMode";
     private const string BGM_TAG = "bgm";
+    private const string SFX_TAG = "sfx";
     private const string SOLVE_TAG = "solve";
     private const string UNLOCK_NOTE_TAG = "unlockNote";
     private const string LOAD_SCENE_TAG = "loadScene";
     private const string ADD_MONEY_TAG = "addMoney";
     private const string TRIGGER_EVENT_TAG = "event";
+    private const string DRAWING_SYSTEM_TAG = "drawingSystem";
 
 
     private Story currentStory;
@@ -176,7 +179,6 @@ public class InkDialogueManager : MonoBehaviour
             {
                 // if is not typing, then continue to next line
                 //UnityEngine.Debug.Log("space continue");
-                canContinueToNextLine = true;
                 ContinueStory();
                 return;
             }
@@ -357,11 +359,7 @@ public class InkDialogueManager : MonoBehaviour
         // display observees and drawings if there is one
         displayVisualsAfterType();
 
-        if (!startSolving)
-        {
-            canContinueToNextLine = true;
-        }
-        else
+        if (startSolving)
         {
             canContinueToNextLine = false;
             startSolving = false;
@@ -679,6 +677,9 @@ public class InkDialogueManager : MonoBehaviour
                 case TRIGGER_EVENT_TAG:
                     sceneEventManager.TriggerEvent(tagValue);
                     break;
+                case DRAWING_SYSTEM_TAG:
+                    handleDrawingSystemTag(tagValue);
+                    break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
                     break;
@@ -686,6 +687,19 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+    private void handleDrawingSystemTag(string tagValue)
+    {
+        switch (tagValue)
+        {
+            case "selectMaterial":
+                drawingSystem.StartMaterialSelection();
+                canContinueToNextLine = false;
+                break;
+            default:
+                UnityEngine.Debug.LogWarning("try to handle drawing system tag but tag '" + tagValue + "' doesn't exist!");
+                break;
+        }
+    }
     private void handleSolveTag(string tagValue)
     {
         switch (tagValue)

@@ -38,10 +38,11 @@ public class ItemScriptableObject : ScriptableObject
 }
 public enum DrawType
 {
-    notDraw,
-    canvas,
-    brush,
-    paint,
+    notDraw = 0,
+    canvas = 1,
+    brush = 2,
+    paint = 3,
+    brushPaint = 4,
 }
 
 

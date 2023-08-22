@@ -2,18 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+public enum FilterType
+{
+    canvas = 1,
+    brush = 2,
+    paint = 3,
+    all = 5,
+}
 public class UIDraw_Inventory : MonoBehaviour
 {
 
     public static UIDraw_Inventory instance { get; private set; }
+    public GameObject UIObject;
     [SerializeField] private DrawingSystem drawingSystem;
 
     private Inventory inventory;
     private List<Item> displayList = new List<Item>();
     private DrawItemSlot[] slots;
     private int currentSlotIndex;
-    private DrawItemSlot appliedItemSlot;
+    private List<DrawItemSlot> appliedItemSlots;
 
     [Header("Scroll View")]
     [SerializeField] Transform itemContainer;
@@ -22,7 +29,13 @@ public class UIDraw_Inventory : MonoBehaviour
     [Header("Current Item")]
     [SerializeField] Text currentItemDescription;
     [SerializeField] Text currentItemAttribute;
+    [SerializeField] Text currentItemDurability;
     [SerializeField] DrawItemObject drawItemObject;
+    [SerializeField] Button applyButton;
+    [SerializeField] Text applyButtonText;
+    [SerializeField] string applyText;
+    [SerializeField] string appliedText;
+
 
     [Header("Draw Type Icon")]
     [SerializeField] Sprite canvasTypeIcon;
@@ -38,7 +51,7 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] DrawTypeTab allTab;
 
 
-    private int filterType = 1; // 1-canvas only; 2-brush only; 3-paint only; 4-all
+    private FilterType filterType;
 
     void Awake()
     {
@@ -55,7 +68,23 @@ public class UIDraw_Inventory : MonoBehaviour
 
     void Start()
     {
-        SetDrawTypeFilter(1);
+        SetDrawTypeFilter(FilterType.canvas);
+        initializeTabButton();
+    }
+
+    public void ShowSelf(bool b)
+    {
+        UIObject.SetActive(b);
+    }
+    private void initializeTabButton()
+    {
+        //UnityEngine.Debug.Log("ui inventory initialize button onclick action");
+        canvasTab.GetComponent<Button>().onClick.AddListener(delegate { SetDrawTypeFilter(FilterType.canvas); });
+        brushTab.GetComponent<Button>().onClick.AddListener(delegate { SetDrawTypeFilter(FilterType.brush); });
+        paintTab.GetComponent<Button>().onClick.AddListener(delegate { SetDrawTypeFilter(FilterType.paint); });
+        allTab.GetComponent<Button>().onClick.AddListener(delegate { SetDrawTypeFilter(FilterType.all); });
+
+        applyButton.onClick.AddListener(delegate { ApplyCurrentItem(); });
     }
     public void SetInventory(Inventory inventory)
     {
@@ -131,17 +160,23 @@ public class UIDraw_Inventory : MonoBehaviour
         displayList.Clear();
         foreach (Item item in itemList)
         {
-            if (getDrawTypeInt(item.drawType) == filterType || filterType == 4)
+            if ((int)item.drawType == (int)filterType || filterType == FilterType.all)
             {
                 displayList.Add(item);
             }
-            if (item.artMaterial.brushWithPaint && filterType == 3)
+            if (item.drawType == DrawType.brushPaint)
             {
-                displayList.Add(item);
+                if (filterType == FilterType.brush || filterType == FilterType.paint)
+                {
+                    displayList.Add(item);
+                }
+
             }
         }
         return displayList;
     }
+
+
     private void refreshSelectionUI()
     {
         // if the list is empty, then don't bother making updates
@@ -149,6 +184,8 @@ public class UIDraw_Inventory : MonoBehaviour
         {
             drawItemObject.SetItem(null);
             currentItemDescription.text = "";
+            currentItemAttribute.text = "";
+            currentItemDurability.text = "";
             return;
         }
 
@@ -171,6 +208,17 @@ public class UIDraw_Inventory : MonoBehaviour
 
             // update item display UI
             currentItemDescription.text = currentSlot.item.drawDescription;
+            currentItemAttribute.text = currentSlot.item.drawAttribute;
+            currentItemDurability.text = "耐久：" + currentSlot.item.durability;
+            if (currentSlot.item.durability == 1)
+            {
+                currentItemDurability.color = Color.red;
+            }
+            else
+            {
+                currentItemDurability.color = Color.green;
+            }
+            SetApplyButtonAlreadyApplied(drawingSystem.GetItemByDrawType(currentSlot.item.drawType) == currentSlot.item);
             drawItemObject.SetItem(currentSlot.item);
         }
     }
@@ -184,46 +232,36 @@ public class UIDraw_Inventory : MonoBehaviour
 
     public void ApplyCurrentItem()
     {
-        // un-apply the previous slot if any
-        if (appliedItemSlot != null)
-        {
-            appliedItemSlot.ShowSelfApplied(false);
-        }
-
-        // apply new slot
-        appliedItemSlot = slots[currentSlotIndex];
-        appliedItemSlot.ShowSelfApplied(true);
-
-        // logically apply the item to drawing system
+        UnityEngine.Debug.Log("ui inventory apply current item");
         drawingSystem.SetDrawItem(slots[currentSlotIndex].item);
+        refreshInventoryItems();
     }
 
-
-    public void SetDrawTypeFilter(int type)
+    public void SetDrawTypeFilter(FilterType type)
     {
         filterType = type;
-        if (type == 1)
+        if (type == FilterType.canvas)
         {
             canvasTab.SetSelfSelected(true);
             brushTab.SetSelfSelected(false);
             paintTab.SetSelfSelected(false);
             allTab.SetSelfSelected(false);
         }
-        else if (type == 2)
+        else if (type == FilterType.brush)
         {
             canvasTab.SetSelfSelected(false);
             brushTab.SetSelfSelected(true);
             paintTab.SetSelfSelected(false);
             allTab.SetSelfSelected(false);
         }
-        else if (type == 3)
+        else if (type == FilterType.paint)
         {
             canvasTab.SetSelfSelected(false);
             brushTab.SetSelfSelected(false);
             paintTab.SetSelfSelected(true);
             allTab.SetSelfSelected(false);
         }
-        else if (type == 4)
+        else if (type == FilterType.all)
         {
             canvasTab.SetSelfSelected(false);
             brushTab.SetSelfSelected(false);
@@ -233,22 +271,7 @@ public class UIDraw_Inventory : MonoBehaviour
         refreshInventoryItems();
     }
 
-    private int getDrawTypeInt(DrawType name)
-    {
-        switch (name)
-        {
-            case DrawType.notDraw:
-                return 0;
-            case DrawType.canvas:
-                return 1;
-            case DrawType.brush:
-                return 2;
-            case DrawType.paint:
-                return 3;
-            default:
-                return 0;
-        }
-    }
+
 
     private Sprite GetDrawTypeIcon(Item item)
     {
@@ -257,17 +280,11 @@ public class UIDraw_Inventory : MonoBehaviour
             case DrawType.canvas:
                 return canvasTypeIcon;
             case DrawType.brush:
-                if (item.artMaterial.brushWithPaint)
-                {
-                    return brushPaintTypeIcon;
-                }
-                else
-                {
-                    return brushTypeIcon;
-                }
-                break;
+                return brushTypeIcon;
             case DrawType.paint:
                 return paintTypeIcon;
+            case DrawType.brushPaint:
+                return brushPaintTypeIcon;
             default:
                 break;
         }
@@ -279,16 +296,16 @@ public class UIDraw_Inventory : MonoBehaviour
         List<Item> appliedItems = new List<Item>();
         switch (filterType)
         {
-            case 1:
+            case FilterType.canvas:
                 appliedItems.Add(drawingSystem.GetCanvasItem());
                 break;
-            case 2:
+            case FilterType.brush:
                 appliedItems.Add(drawingSystem.GetBrushItem());
                 break;
-            case 3:
+            case FilterType.paint:
                 appliedItems.Add(drawingSystem.GetPaintItem());
                 break;
-            case 4:
+            case FilterType.all:
                 appliedItems.Add(drawingSystem.GetCanvasItem());
                 appliedItems.Add(drawingSystem.GetBrushItem());
                 appliedItems.Add(drawingSystem.GetPaintItem());
@@ -298,5 +315,19 @@ public class UIDraw_Inventory : MonoBehaviour
 
         }
         return appliedItems;
+    }
+
+    private void SetApplyButtonAlreadyApplied(bool applied)
+    {
+        if (applied)
+        {
+            applyButton.interactable = false;
+            applyButtonText.text = appliedText;
+        }
+        else
+        {
+            applyButton.interactable = true;
+            applyButtonText.text = applyText;
+        }
     }
 }
