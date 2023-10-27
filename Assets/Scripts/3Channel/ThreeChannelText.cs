@@ -14,6 +14,7 @@ public class ThreeChannelText : MonoBehaviour
     public bool doneLines = false;
     private bool holdingDown = false;
     public ThreeChannelManager manager;
+    public ThreeChannelManagerEN managerEN;
     public Animator screenAnimator;
 
     public int attemptTimeLimit = 10;
@@ -151,7 +152,15 @@ public class ThreeChannelText : MonoBehaviour
             // mark its lines to be done and check if everyline is done.
             // if so, the manager will proceed to next line unit. 
             doneLines = true;
-            manager.CheckDoneLineUnit();
+            if (manager != null)
+            {
+                manager.CheckDoneLineUnit();
+            }
+            else if (managerEN != null)
+            {
+                managerEN.CheckDoneLineUnit();
+            }
+
 
             screenAnimator.SetBool("isNext", false);
         }
@@ -180,7 +189,15 @@ public class ThreeChannelText : MonoBehaviour
 
             if (attemptTime < attemptTimeLimit)
             {
-                string randLine = manager.GenerateRandomString(currLines[currLineIndex].Length);
+                string randLine = "";
+                if (manager != null)
+                {
+                    randLine = manager.GenerateRandomString(currLines[currLineIndex].Length);
+                }
+                else if (managerEN != null)
+                {
+                    randLine = managerEN.GenerateRandomString(currLines[currLineIndex].Length);
+                }
                 audioSource.clip = attemptTypingSFX;
                 audioSource.Play();
                 ChangeText(randLine);

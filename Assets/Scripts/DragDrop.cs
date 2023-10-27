@@ -97,7 +97,12 @@ public class DragDrop : MonoBehaviour
         _onDrag = false;
         _onDrop = true;
         //UnityEngine.Debug.Log("Drop!");
-        dropCallback(this);
+        if (dropCallback != null)
+        {
+            dropCallback(this);
+        }
+
+
     }
 
     public bool IsOnDrop()

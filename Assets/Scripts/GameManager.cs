@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     Money money;
 
     public float initialMoney;
+    //public Camera positionReferenceCamera;
 
     void Awake()
     {
@@ -46,7 +47,10 @@ public class GameManager : MonoBehaviour
         }
         money.SetMoney(StaticInventory.MoneyAmount);
 
-        displaceSFX = Instantiate(displaceSFX);
+        if (displaceSFX)
+        {
+            displaceSFX = Instantiate(displaceSFX);
+        }
     }
 
     void Start()
@@ -58,11 +62,17 @@ public class GameManager : MonoBehaviour
         }
 
         // load global ink dialogue variables
-        dialogueVariables = InkDialogueManager.GetInstance().GetDialogueVariables();
+        InkDialogueManager manager = InkDialogueManager.GetInstance();
+        if (manager)
+        {
+            manager.GetDialogueVariables();
+        }
 
         // dialogueIntegrationTest();
 
         SetMoney(initialMoney);
+
+        //MouseCursor.instance.positionReferenceCamera = positionReferenceCamera;
 
     }
 
@@ -93,25 +103,32 @@ public class GameManager : MonoBehaviour
         inventory.RemoveItem(item);
     }
 
-    public void AddItemToInventory(Item item)
+
+    public void AddItemToInventory(ItemScriptableObject item)
     {
-        inventory.AddItem(item);
+        inventory.AddItemFromScriptableObject(item);
     }
 
     public void AddMoney(float amount)
     {
         money.ChangeMoney(amount);
-        dialogueVariables.SetGlobalVariable("money", money.GetMoney());
+        if (dialogueVariables != null)
+        {
+            dialogueVariables.SetGlobalVariable("money", money.GetMoney());
+        }
     }
 
     public void SetMoney(float amount)
     {
         money.SetMoney(amount);
-        dialogueVariables.SetGlobalVariable("money", money.GetMoney());
+        if (dialogueVariables != null)
+        {
+            dialogueVariables.SetGlobalVariable("money", money.GetMoney());
+        }
     }
 
 
-    public void BuyItem(Item item)
+    public void BuyItem(ItemScriptableObject item)
     {
         if (money.GetMoney() - item.storePrice < 0)
         {

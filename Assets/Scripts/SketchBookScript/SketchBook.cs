@@ -41,8 +41,8 @@ public class SketchBook : MonoBehaviour
     void Start()
     {
         isOpen = false;
-        notesManager.gameObject.SetActive(isOpen);
-        assesories.SetActive(isOpen);
+        //notesManager.gameObject.SetActive(isOpen);
+        //assesories.SetActive(isOpen);
     }
 
     public void TurnToPage(int i)
@@ -67,13 +67,16 @@ public class SketchBook : MonoBehaviour
         {
             isOpen = false;
             CloseBook();
-            inventoryButton.canOpen = true;
+            if (inventoryButton != null)
+            {
+                inventoryButton.canOpen = true;
+            }
         }
         else
         {
             isOpen = true;
             OpenBook();
-            inventoryButton.canOpen = false;
+            if (inventoryButton != null) inventoryButton.canOpen = false;
         }
 
         if (mapPlayer)

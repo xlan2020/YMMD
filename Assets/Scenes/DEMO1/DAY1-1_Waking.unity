@@ -1828,7 +1828,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeginningInkJSON: {fileID: 4900000, guid: a90ad1da5ec324c3dbc8dfb172de0ead, type: 3}
+  loadInventory: {fileID: 0}
   uiInventory: {fileID: 0}
+  uiDraw_Inventory: {fileID: 0}
   uiMoney: {fileID: 0}
   displaceSFX: {fileID: 2701967917452945970, guid: 0c80c66813ee84ff5a7fcebdf7960fb4, type: 3}
   HasBeginningDialogue: 1
@@ -1989,7 +1991,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 7887189
-  m_SortingLayer: 18
+  m_SortingLayer: 19
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -5282,6 +5284,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5176094895713228995, guid: 7b165d6feec4c485c9a5111401aa1a64, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176094895713228995, guid: 7b165d6feec4c485c9a5111401aa1a64, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176094895713228997, guid: 7b165d6feec4c485c9a5111401aa1a64, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1564787467, guid: fc77bf715440345d1bcd2a82229ccad9, type: 3}
     - target: {fileID: 5176094896549412154, guid: 7b165d6feec4c485c9a5111401aa1a64, type: 3}
       propertyPath: m_BlockingMask.m_Bits
       value: 51

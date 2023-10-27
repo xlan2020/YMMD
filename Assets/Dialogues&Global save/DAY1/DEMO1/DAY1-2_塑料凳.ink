@@ -31,16 +31,14 @@ INCLUDE DAY1-2_global.ink
 我：（等等！他是什么时候把衣服穿上的？）#profile: painter_sideSweat
 8-2：哎呀，我知道你现在一定有很多问题。这也难免啦，没关系，过一会儿你就懂了。#profile: 8-2_smile
 8-2：画家！先来给我画幅画吧！
+我：你……让我先缓缓。（他也叫我画家？）#profile: painter_side
+8-2：嗯嗯。一二三，四五六，七八九十缓好了吗？画吧！#profile: 8-2_smile
 8-2：老规矩，我会付你钱的！
 我：（嗯？这个倒是不错，现在正好缺钱。）#profile: painter_happy
 我：（不！这家伙怎么看都很可疑吧！）#painter: painter_alert
-我：你……让我先缓缓。#profile: painter_side
-8-2：嗯嗯。一二三，四五六，七八九十缓好了吗？画吧！#profile: 8-2_smile
-我：（这是在唱哪一出啊，头好痛……）我的画材都没了。#profile: painter_noComment
-8-2：都没了？#profile: 8-2_upset
-我：没错，我现在一无所有。所以也画不了了，呵呵。#profile: painter_sideSweat
-8-2：真的假的？让我看看——#profile: 8-2_smile
-我：喂！你干什么！#profile: painter_angry
-我：别动我的东西—— #profile: painter_mad
+8-2：这是定金。#addMoney: 100 #profile: 8-2_smile
+我：（我去！骗子怎么可能先给我钱？）#profile: painter_stunned
+我：尊贵的先生，请问您想要什么样的画呢？#profile: painter_happy
+我：让我先把画箱打开——
+我：让我先把画箱打开—— #loadScene:DAY1-3_Draw8-2
 ->DONE
-# 要研究确定一下收集物品这里是不是真的在地图里进行，还是说已经有画画的UI了，在UI里发现要填画材的地方没有东西，然后再捡？但是这样不会又折回去了吗？总之再想想吧。

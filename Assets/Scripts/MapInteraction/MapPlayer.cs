@@ -89,7 +89,7 @@ public class MapPlayer : MonoBehaviour
 
         if (item.collectOnInteract)
         {
-            CollectItem(item.GetComponent<ItemInfo>());
+            CollectItem(item.itemScriptableObject);
             item.DestroySelf();
         }
 
@@ -100,9 +100,16 @@ public class MapPlayer : MonoBehaviour
         }
     }
 
-    private void CollectItem(ItemInfo itemInfo)
+    private void CollectItem(ItemScriptableObject itemScriptableObject)
     {
-        gameManager.AddItemToInventory(itemInfo.GetItem());
+        if (itemScriptableObject != null)
+        {
+            gameManager.AddItemToInventory(itemScriptableObject);
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("try to collect item, but ItemScriptableObject is null!");
+        }
     }
 
     public void CheckCollectItemAtDialogEnd()
@@ -110,7 +117,7 @@ public class MapPlayer : MonoBehaviour
         if (collectItemAtDialogueEnd)
         {
             collectItemAtDialogueEnd = false;
-            CollectItem(tempCollectItem.GetComponent<ItemInfo>());
+            CollectItem(tempCollectItem.itemScriptableObject);
             tempCollectItem.DestroySelf();
             tempCollectItem = null;
         }

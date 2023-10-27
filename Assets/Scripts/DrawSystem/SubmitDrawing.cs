@@ -21,8 +21,12 @@ public class SubmitDrawing : MonoBehaviour
             if (g.CompareTag("Observee"))
             {
                 canSubmit = false;
-                Observee ob = g.GetComponent<Observee>();
-                dialogueManager.MakeChoice(ob.choiceIndex);
+
+                // let drawing system know which one is submitted
+                Observee obsv = g.GetComponent<Observee>();
+                drawingSystem.SubmitToDrawing(obsv);
+
+                // visual change
                 observeeManager.DissolveCollected();
                 cursor.SetAnimationTrigger("default");
             }

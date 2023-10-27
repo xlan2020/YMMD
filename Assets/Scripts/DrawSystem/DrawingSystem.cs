@@ -17,6 +17,7 @@ public class DrawingSystem : MonoBehaviour
     void Start()
     {
         uIDraw_Inventory.ShowSelf(false);
+        uIDraw_Inventory.ShowApplyButton(false);
         startDrawingVisualizer.ShowSelf(false);
     }
 
@@ -90,10 +91,19 @@ public class DrawingSystem : MonoBehaviour
                 return false;
         }
     }
+
+    public void ShowMaterialSelectionWindow()
+    {
+        uIDraw_Inventory.ShowSelf(true);
+        uIDraw_Inventory.SetDrawTypeFilter(FilterType.all);
+        artMaterialVisualizer.InitializeMaterialSelection();
+
+    }
     public void StartMaterialSelection()
     {
         uIDraw_Inventory.ShowSelf(true);
         artMaterialVisualizer.InitializeMaterialSelection();
+        uIDraw_Inventory.ShowApplyButton(true);
         startDrawingVisualizer.ShowSelf(true);
     }
     public void StartDrawing()
@@ -126,6 +136,12 @@ public class DrawingSystem : MonoBehaviour
             default:
                 return null;
         }
+    }
+
+    public void SubmitToDrawing(Observee obsv)
+    {
+        // make choice in dialogue
+        dialogueManager.MakeChoice(obsv.choiceIndex);
     }
 
     public Item GetCanvasItem()

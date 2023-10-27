@@ -39,7 +39,7 @@ public class MouseCursor : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         brush = cursorSprites.brush;
         dialogue = cursorSprites.dialogue;
@@ -53,6 +53,10 @@ public class MouseCursor : MonoBehaviour
 
     void Update()
     {
+        if (positionReferenceCamera == null)
+        {
+            positionReferenceCamera = GameObject.Find("UICameraOverlay").GetComponent<Camera>();
+        }
         Vector2 cursorPos = positionReferenceCamera.ScreenToWorldPoint(Input.mousePosition);
         transform.position = cursorPos;
     }

@@ -13,7 +13,7 @@ public class ItemScriptableObject : ScriptableObject
     public float value;
     public float storePrice;
     public bool displaceable = true;
-    private bool isNew = true;
+    public bool isNew = true;
 
     [Space(10)]
     [Header("Map Interaction")]

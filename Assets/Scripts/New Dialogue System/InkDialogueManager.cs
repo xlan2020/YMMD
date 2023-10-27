@@ -33,6 +33,7 @@ public class InkDialogueManager : MonoBehaviour
     public GameObject continueIcon;
     public GameObject autoIcon;
     public Animator portraitAnimator;
+    public NameStyleScriptableObject nameStyle;
     public UnityEngine.Color ThoughtColor;
     public RandomSpeak randomSpeak;
 
@@ -99,7 +100,7 @@ public class InkDialogueManager : MonoBehaviour
     private bool finishedRequiredOpera;
 
     private DialogueVariables dialogueVariables;
-
+    private Dictionary<string, UnityEngine.Color> nameColorDict = new Dictionary<string, UnityEngine.Color>();
 
 
     // rich text handling
@@ -121,6 +122,7 @@ public class InkDialogueManager : MonoBehaviour
         instance = this;
         // pass that variable to the DIalogueVariables constructor in the Awake method
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+        CreateNameColorDict();
     }
 
     private void Start()
@@ -202,6 +204,13 @@ public class InkDialogueManager : MonoBehaviour
 
     }
 
+    private void CreateNameColorDict()
+    {
+        foreach (NameColor nameColor in nameStyle.nameColors)
+        {
+            nameColorDict.Add(nameColor.name, nameColor.color);
+        }
+    }
     private IEnumerator autoPlaying()
     {
         UnityEngine.Debug.Log("auto playing");
@@ -239,6 +248,10 @@ public class InkDialogueManager : MonoBehaviour
 
         string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
         speakerName.text = splitLines[0];
+        if (nameColorDict.ContainsKey(splitLines[0]))
+        {
+            speakerName.color = nameColorDict[splitLines[0]];
+        }
         line = splitLines[1];
 
         currentLine = line;
@@ -317,7 +330,7 @@ public class InkDialogueManager : MonoBehaviour
             }
             else
             {
-                UnityEngine.Debug.Log("rich text typing! first rich char is: " + letterArray[firstRichCharIndex + beginningSyntax.Length]);
+                //UnityEngine.Debug.Log("rich text typing! first rich char is: " + letterArray[firstRichCharIndex + beginningSyntax.Length]);
                 if (skippingSyntax)
                 {    // then doing nothing
                     if (i == firstRichCharIndex + beginningSyntax.Length - 1)
@@ -691,6 +704,9 @@ public class InkDialogueManager : MonoBehaviour
     {
         switch (tagValue)
         {
+            case "showMaterialWindow":
+                drawingSystem.ShowMaterialSelectionWindow();
+                break;
             case "selectMaterial":
                 drawingSystem.StartMaterialSelection();
                 canContinueToNextLine = false;

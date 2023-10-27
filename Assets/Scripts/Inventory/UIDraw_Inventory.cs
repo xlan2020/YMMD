@@ -51,7 +51,7 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] DrawTypeTab allTab;
 
 
-    private FilterType filterType;
+    private FilterType filterType = FilterType.all;
 
     void Awake()
     {
@@ -75,6 +75,11 @@ public class UIDraw_Inventory : MonoBehaviour
     public void ShowSelf(bool b)
     {
         UIObject.SetActive(b);
+    }
+
+    public void ShowApplyButton(bool b)
+    {
+        applyButton.gameObject.SetActive(b);
     }
     private void initializeTabButton()
     {

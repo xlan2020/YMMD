@@ -6,14 +6,18 @@ using UnityEngine.Events;
 
 public class InteractableItem : MonoBehaviour
 {
+    [Header("Interaction")]
     public InteractiveSign interactiveSign;
+    public InkDialogueTrigger dialogueTrigger;
     public UnityEvent eventsOnInteraction;
-    private bool isInteractable;
+
+    [Header("Item")]
+    public ItemScriptableObject itemScriptableObject;
     public bool collectAfterDialogue = false;
     public bool collectOnInteract = false;
     public bool destroyOnInteract = false;
-    public InkDialogueTrigger dialogueTrigger;
 
+    private bool isInteractable;
 
     void Awake()
     {
@@ -38,11 +42,6 @@ public class InteractableItem : MonoBehaviour
             interactiveSign.hideSelf();
             isInteractable = false;
         }
-    }
-
-    public ItemInfo GetitemInfo()
-    {
-        return gameObject.GetComponent<ItemInfo>();
     }
 
     public bool IsInteractable()

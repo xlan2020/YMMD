@@ -1,74 +1,64 @@
 INCLUDE ../../global.ink
 INCLUDE DAY1-2_global.ink
-8-2：啊哈！别说，还真是一穷二白。让我别动你东西，你也得有东西让我可动啊？#bgm:日常 #profile: painter_mad #portrait: 8-2_smile2
-我：（画箱还是被他打开了……）这下您满意了吧？能让我一个人安静会儿吗？#profile: painter_side
-8-2：哎呦，没<color=magenta>画材</color>你就不会画画了？#portrait: 8-2_laugh
+我：………………#profile: painter_side #portrait: 8-2_norm
+8-2：………………#portrait: 8-2_raiseEyebrow #profile: none
+我：…………不好意思，我的画材……都没了。#profile: painter_sideSweat
+我：所以可能画不了画了，呵呵……
+8-2：还真是一穷二白啊，画家，你可真能给我惊喜。#bgm:日常 #profile: painter_mad #portrait: 8-2_laugh #profile: none
+8-2：不过，没<color=magenta>画材</color>你就不会画画了？#portrait: 8-2_smile
 8-2：你<b>以前</b>可不是这样的。#portrait: 8-2_admire
-8-2：再看看箱子里的东西吧。真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
-我：咦？仔细一看还真是……有了！#profile: painter_surprised
-【操作】：【此时点击背包里的东西，会出现新的note。】
-系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为画布、笔刷、颜料三类。
+8-2：我是不挑的。不如先看看你身边吧，真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
+我：（咦？仔细一看，这些东西……有办法了！）#profile: painter_surprised #drawingSystem: showMaterialWindow
+系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为画布、笔刷、颜料三类。#profile: none
 系统：个别特殊的物品则不可用来画画。
 系统：每次使用画材时会消耗1点<color=magenta>耐久</color>，<color=magenta>耐久</color>清空后物品会<color=magenta>消失</color>。
-系统：部分笔刷自带颜料——比如铅笔，使用时会消耗2点耐久。
+系统：部分笔刷自带颜料，使用时会消耗2点耐久。
 系统：注意，耐久消耗过多时，物品的置换价值也会随之发生变化。
-我：（我有主意了。不过在此之前，还有重要的事情需要确认……）#profile: painter_side
-我：呃，你刚才说的给钱，算数吗？#profile: painter_sideSweat
-8-2：当然，咱俩谁跟谁啊！行，你要还不信的话……#portrait: 8-2_laugh
-8-2：这是定金。#addMoney: 100 #profile: painter_stunned #portrait: 8-2_mysterious
-我：（我去！骗子怎么可能先给我钱？）尊贵的先生，请问您想要什么样的画呢？#profile: painter_happy
-系统：不同的画材会对画面产生不同的效果，有稳定、生机、实验和昂贵四种属性。
+我：（这些东西拿来涂鸦是够的，不过如果是接稿的话……）就用这些给你画……真的没问题吗？#profile: painter_side 
+8-2：当然。我只想要一些不无聊的画，随你发挥吧，来让我大吃一惊。#portrait:8-2_laugh #profile: none
+系统：不同的画材会对画面产生不同的效果，有稳定、有机、实验和优质四种属性。
 系统：根据金主的喜好，使用不同属性的画材会影响当次画画委托的收益。试着投其所好吧！
-8-2：我想要一些有意思的画。嗯，都行吧，你亲手画的东西总是能让我大吃一惊。#portrait: 8-2_thinking
-我：（全世界的甲方都一样不擅长描述需求，猜度他们的心思也是工作很重要的一部分。）#profile: painter_eyeClosed
-我：（有意思、亲手、大吃一惊……就按这个需求选择画材吧。）#profile: painter_happy 
-+[我明白了]
-我：（有意思、亲手、大吃一惊……就按这个需求选择画材吧。）#drawingSystem: selectMaterial
-->select_material_and_draw
-+[什么意思？]
-我：（他什么意思啊？我得冷静想想。“有意思、大吃一惊”就是非常规，看来实验性的材料会比较适合他。）#profile: painter_side
-我：（他要我“亲手”，看来就不能利用有自动性的动物和机械作画了，生机性对他来说并不重要。）
-我：（那么，就选择一些<color=magenta>实验性</color>，但是<color=magenta>没有生机性</color>的画材吧。）#profile: painter_happy
+系统：现在可以选择画材了。
+我：（如果<color=magenta>大吃一惊</color>也算需求的话，不如用一些<color=magenta>实验性</color>的画材？当然，选择权还是在我，毕竟没什么比铅笔更顺手了。）#profile: painter_side #drawingSystem: selectMaterial
 ->select_material_and_draw
 
 ==select_material_and_draw==
-操作：【要求还写在对话框里，此时玩家选择画材并且确认。确认后背包栏消失。】
 我：（现在拥有的材料还是太有限了，先凑合着用吧，反正对方是8-2。）#profile: painter_norm #portrait: 8-2_norm2
 我：（……嗯？我刚刚在想什么？怪怪的。还是先决定画什么吧。）#profile: painter_side
 我：肖像画，对吧？#profile: painter_norm
 8-2：老规矩，当然可以。#portrait: 8-2_smile2
 8-2：……#portrait: 8-2_cold
-8-2：……等等，你对着我量什么呢？不会就要画速写了吧？#portrait: 8-2_raiseEyebrow
+8-2：……等等，你拿着笔比划什么呢？不会就要画速写了吧？#portrait: 8-2_raiseEyebrow
 8-2：停停停！你得把对我最深刻的理解体现出来。“画画，是对事物的准确描述！”#profile: painter_eyeClosed
 8-2：我要的可不是眼前的我，而是更本质的我，之前的我，<b>真正</b>的我。#profile: painter_noComment #portrait: 8-2_deepLove
 我：呃，你年轻的时候……吗？#profile: painter_side
 8-2：…………………… #portrait: 8-2_norm3 #bgm: fade_2_0.2
 我：…………………#profile: painter_sideSweat
 我：抱歉。
-8-2：*叹气*咱们慢慢来吧。#portrait: 8-2_norm2
+8-2：*叹气*咱们慢慢来吧。#portrait: 8-2_smile2
 我：（……无论如何，我确实下笔太草率了。）
 我：（画画的第一步是<color=magenta>观察</color>，除了死板的比例关系，我还得把<color=magenta>对象</color>——也就是8-2——的精气神儿抓住。）
 我：（仔细观察对象吧，有什么可以<color=magenta>捕捉</color>的东西吗？）
 【操作】：【observee-8-2的脸-出现】
 系统：在画画过程中，屏幕中会时不时出现可以捕捉的<color=magenta>观察点</color>。
-系统：在观察点上单击<color=magenta>鼠标左键</color>，将其<color=magenta>拖放</color>到<color=magenta>构想窗口</color>内，观察点会自动转变为<color=magenta>灵感</color>。
-系统：未来，画家可能会持有多种灵感。选择呈现合适的灵感，会改变画画的结果，也决定了画家对绘画对象的态度，故事因此发生改变。
+系统：在观察点上单击<color=magenta>鼠标左键</color>，将其<color=magenta>拖放</color>到<color=magenta>构想窗口</color>内，观察点会自动转变为<color=magenta>灵感</color>。#showObservee: face
+系统：未来，画家可能会持有多种灵感。选择呈现合适的灵感，会改变画画的结果，也决定了画家对绘画对象的态度，故事因此发生改变。#portrait: 8-2_norm2
 系统：在需要的时机把灵感呈现在<color=magenta>画布</color>上，才能让画画进行下去。
-系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！
-+[提交：8-2的脸]->mama_appears
+系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！#choiceType: OBSERVEE
++[ ]->mama_appears
 ==mama_appears==
-我：（果然，我不应该用年轻这个词来形容8-2。再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）
+我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）
 老板娘：给您放桌上了！#profile: mama_satisfied  
 老板娘：呦，朋友也来啦？哎呀，你是不是那个……那个谁，那个八加二大师？#bgm:戏谑_0.5
-我：（噗……大师？）#profile: painter_sour
+8-2：咳，巴简二，姐姐。#portrait: 8-2_smile2
+我：（噗……8+2大师……）#profile: painter_sour
 系统：除了视觉上的观察，声音、语言、气味都可以成为构想画面的重要信息。除了对象附近，观察点也可以出现在屏幕的任何地方。
 系统：对于普通的观察点，只有捕捉才能让画画进行下去。
+老板娘：对对，瞧我这记性。我爱人经常听大师您的课嘞！#profile: mama_satisfied
+【操作】：【需要捕捉observee才能进行下去。要改一个点，observee出现和必须捕捉是两回事】
 系统：但是，个别的观察点会随着对话发展而被<color=magenta>错过</color>，从而限制故事的走向。错过不一定是坏事，但这点还请留意。
 系统：关于观察点，之后不会再有提醒了。画家要记得观察和捕捉哦！
-【操作】：【需要捕捉observee才能进行下去。要改一个点，observee出现和必须捕捉是两回事】
-8-2：咳，巴简二，姐姐。#portrait: 8-2_smile2
-老板娘：对对，瞧我这记性。我爱人经常听你的课嘞！#profile: mama_satisfied
-老板娘：多亏了大师呀，他要不是辞去了那个打渔的活儿，我天天都得揪心呐。
+老板娘：多亏了大师呀！他要不是辞去了那个打渔的活儿，我天天都得揪心呐。
 老板娘：现在好啊，靠着置换也发了点小财，一天赚的比以前跑三趟还多！
 8-2：不用谢，姐姐。我这个人啊，没别的爱好，就是喜欢帮助别人。#portrait: 8-2_deepLove
 老板娘：大师的心地就是好呀……给您上点儿茶水。想要什么尽管点，您叫这个名，我就给您打六折！
@@ -273,8 +263,8 @@ INCLUDE DAY1-2_global.ink
 8-2：没错，自己。虽然，随着时间推移，也有人会丢失“自己”这样东西。
 8-2：现在，你应该能理解我说的，第二个重要的隐形数字——
 8-2：——<color=magenta>拥有度</color>。如果用在人身上，就是你对Ta的了解乘以Ta对你的信任，所达到的一个值。#portrait: 8-2_smile
-8-2：100%的了解和100%的信任叠加，那数值就是完美的1。当然，可能都不需要达到1，有个90分就够置换咯！#portrait: 8-2_smile2
-【操作】：observee-90分 他怎么知道这些数值的？……难道说，他拥有很多人？灵感是邪恶的8-2一双大手操纵一堆人的样子
+8-2：100%的了解和100%的信任相乘，那数值就是完美的1——100分！当然，都不需要太完美，有个90分就够置换咯！#portrait: 8-2_smile2
+【操作】：observee-90分  他怎么知道这些数值的？……难道说，他拥有很多人？灵感是邪恶的8-2一双大手操纵一堆人的样子
 8-2：很遗憾，画家，我能看得见，你对我的信任已经接近0了，所以不用担心了！我拥有不了你，也害不了你。#portrait: 8-2_laugh
 我：你知道这番话听起来有多……多……邪恶吗？
 8-2：坏了，你觉得我是个糟蛋！#portrait: 8-2_unhappy

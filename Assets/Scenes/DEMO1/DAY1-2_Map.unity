@@ -158,7 +158,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &50246639
 CapsuleCollider2D:
@@ -890,7 +890,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &139770301
 GameObject:
@@ -1087,8 +1087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeginningInkJSON: {fileID: 4900000, guid: fec7605ffc2064fbcaed951523fcf747, type: 3}
-  loadInventory: {fileID: 0}
-  uiInventory: {fileID: 0}
+  loadInventory: {fileID: 1895103245}
+  uiInventory: {fileID: 1627679673}
   uiDraw_Inventory: {fileID: 0}
   uiMoney: {fileID: 508895310}
   displaceSFX: {fileID: 2701967917452945970, guid: 0c80c66813ee84ff5a7fcebdf7960fb4, type: 3}
@@ -3155,7 +3155,6 @@ GameObject:
   - component: {fileID: 594206406}
   - component: {fileID: 594206405}
   - component: {fileID: 594206404}
-  - component: {fileID: 594206403}
   - component: {fileID: 594206408}
   m_Layer: 0
   m_Name: "\u5851\u6599\u51F3"
@@ -3180,34 +3179,6 @@ Transform:
   m_Father: {fileID: 1404974796}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &594206403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594206401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5591b5134224dd8bd27e3cee9ef764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "\u5851\u6599\u51F3"
-  spriteImage: {fileID: 0}
-  description: "\u968F\u5904\u53EF\u89C1\u7684\u5851\u6599\u51F3\u5B50"
-  value: 0
-  storePrice: 0
-  displaceable: 0
-  destroyOnInteract: 0
-  drawType: 0
-  artMaterial: {fileID: 0}
-  drawDescription: 
-  drawAttribute: 
-  draw_stable: 0
-  draw_experimental: 0
-  draw_organic: 0
-  draw_premiere: 0
-  durability: 0
 --- !u!61 &594206404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3358,13 +3329,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactiveSign: {fileID: 1549152211}
+  dialogueTrigger: {fileID: 594206405}
   eventsOnInteraction:
     m_PersistentCalls:
       m_Calls: []
+  itemScriptableObject: {fileID: 0}
   collectAfterDialogue: 0
   collectOnInteract: 0
   destroyOnInteract: 0
-  dialogueTrigger: {fileID: 594206405}
 --- !u!1 &619290165
 GameObject:
   m_ObjectHideFlags: 0
@@ -4274,6 +4246,11 @@ MonoBehaviour:
           m_StringArgument: walkCloser
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!212 &1002142538 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9183695078849104692, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+  m_PrefabInstance: {fileID: 3918898643688383950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1009471640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4287,7 +4264,6 @@ GameObject:
   - component: {fileID: 1009471643}
   - component: {fileID: 1009471648}
   - component: {fileID: 1009471644}
-  - component: {fileID: 1009471646}
   - component: {fileID: 1009471647}
   m_Layer: 0
   m_Name: "\u8001\u677F\u5A18"
@@ -4404,34 +4380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkJSON: {fileID: 4900000, guid: 5342193f378dc41f7bdf37c285e951eb, type: 3}
---- !u!114 &1009471646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1009471640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5591b5134224dd8bd27e3cee9ef764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "\u8001\u677F\u5A18"
-  spriteImage: {fileID: 0}
-  description: "\u70ED\u9EBB\u9EBB\u7684\u8001\u677F\u5A18"
-  value: 0
-  storePrice: 0
-  displaceable: 1
-  destroyOnInteract: 0
-  drawType: 0
-  artMaterial: {fileID: 0}
-  drawDescription: 
-  drawAttribute: 
-  draw_stable: 0
-  draw_experimental: 0
-  draw_organic: 0
-  draw_premiere: 0
-  durability: 0
 --- !u!114 &1009471647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4445,13 +4393,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactiveSign: {fileID: 231618279}
+  dialogueTrigger: {fileID: 1009471644}
   eventsOnInteraction:
     m_PersistentCalls:
       m_Calls: []
+  itemScriptableObject: {fileID: 0}
   collectAfterDialogue: 0
   collectOnInteract: 0
   destroyOnInteract: 0
-  dialogueTrigger: {fileID: 1009471644}
 --- !u!61 &1009471648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4682,7 +4631,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1163929317}
   - component: {fileID: 1163929318}
-  - component: {fileID: 1163929319}
   - component: {fileID: 1163929320}
   m_Layer: 0
   m_Name: "\u5173\u505C\u516C\u544A"
@@ -4758,34 +4706,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &1163929319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1163929316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5591b5134224dd8bd27e3cee9ef764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "\u6441'E'\u4E92\u52A8"
-  spriteImage: {fileID: 0}
-  description: 
-  value: 0
-  storePrice: 0
-  displaceable: 0
-  destroyOnInteract: 0
-  drawType: 0
-  artMaterial: {fileID: 0}
-  drawDescription: 
-  drawAttribute: 
-  draw_stable: 0
-  draw_experimental: 0
-  draw_organic: 0
-  draw_premiere: 0
-  durability: 0
 --- !u!61 &1163929320
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5259,7 +5179,7 @@ Transform:
   - {fileID: 238984151}
   - {fileID: 176173859}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1319734318
 GameObject:
@@ -5852,7 +5772,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1591046015}
   - component: {fileID: 1591046016}
-  - component: {fileID: 1591046017}
   - component: {fileID: 1591046018}
   - component: {fileID: 1591046019}
   - component: {fileID: 1591046020}
@@ -5931,34 +5850,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1591046017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591046014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5591b5134224dd8bd27e3cee9ef764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "\u5C0F\u4E4C\u9F9F"
-  spriteImage: {fileID: 2109764838, guid: f3eeda27f20174714a031ab555944406, type: 3}
-  description: "\u4E0D\u77E5\u4ECE\u54EA\u91CC\u722C\u51FA\u6765\u7684\u5C0F\u4E4C\u9F9F\uFF0C\u5927\u7EA6\u6CA1\u4EBA\u8981\u4E86\u3002\u5E26\u56DE\u5BB6\u5F53\u5BA0\u7269\u4E5F\u4E0D\u9519\u3002"
-  value: 0
-  storePrice: 0
-  displaceable: 1
-  destroyOnInteract: 0
-  drawType: 0
-  artMaterial: {fileID: 0}
-  drawDescription: 
-  drawAttribute: 
-  draw_stable: 0
-  draw_experimental: 0
-  draw_organic: 0
-  draw_premiere: 0
-  durability: 0
 --- !u!61 &1591046018
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6030,13 +5921,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactiveSign: {fileID: 510208106}
+  dialogueTrigger: {fileID: 1591046019}
   eventsOnInteraction:
     m_PersistentCalls:
       m_Calls: []
+  itemScriptableObject: {fileID: 11400000, guid: e1570d80c9a374ed8adf62b2c7df8452, type: 2}
   collectAfterDialogue: 1
   collectOnInteract: 0
   destroyOnInteract: 0
-  dialogueTrigger: {fileID: 1591046019}
 --- !u!1 &1591431441
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,6 +6949,52 @@ Canvas:
   m_SortingLayerID: 1034535029
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!1 &1895103244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1895103246}
+  - component: {fileID: 1895103245}
+  m_Layer: 0
+  m_Name: LoadInventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1895103245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895103244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab6644b6fb8c46308b0e5cb0049c18c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryLoadList:
+  - {fileID: 11400000, guid: 278cf940a44254d00b585c94cd0cb0fb, type: 2}
+--- !u!4 &1895103246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895103244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1899083676
 GameObject:
   m_ObjectHideFlags: 0
@@ -7581,7 +7519,7 @@ MonoBehaviour:
   m_AssetsPPU: 1
   m_RefResolutionX: 720
   m_RefResolutionY: 405
-  m_CropFrame: 0
+  m_CropFrame: 4
   m_GridSnapping: 1
   m_FilterMode: 1
   m_UpscaleRT: 0
@@ -7720,7 +7658,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2127708161}
   - component: {fileID: 2127708162}
-  - component: {fileID: 2127708163}
   - component: {fileID: 2127708164}
   - component: {fileID: 2127708165}
   m_Layer: 0
@@ -7798,34 +7735,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2127708163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127708160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5591b5134224dd8bd27e3cee9ef764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemName: "\u70ED\u9EBB\u9EBB\u83DC\u5355"
-  spriteImage: {fileID: 0}
-  description: 
-  value: 0
-  storePrice: 0
-  displaceable: 0
-  destroyOnInteract: 0
-  drawType: 0
-  artMaterial: {fileID: 0}
-  drawDescription: 
-  drawAttribute: 
-  draw_stable: 0
-  draw_experimental: 0
-  draw_organic: 0
-  draw_premiere: 0
-  durability: 0
 --- !u!61 &2127708164
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7884,6 +7793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactiveSign: {fileID: 1961155484}
+  dialogueTrigger: {fileID: 0}
   eventsOnInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -7899,10 +7809,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  itemScriptableObject: {fileID: 0}
   collectAfterDialogue: 0
-  collectOnInteract: 1
+  collectOnInteract: 0
   destroyOnInteract: 0
-  dialogueTrigger: {fileID: 0}
 --- !u!1 &2130283026
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,6 +7869,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5176094895047507904}
     m_Modifications:
+    - target: {fileID: 527274573081365539, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
+      propertyPath: profileFrame
+      value: 
+      objectReference: {fileID: 1002142538}
     - target: {fileID: 2274298641650530809, guid: 6a23df886c33d4af2893451da96539c9, type: 3}
       propertyPath: m_Name
       value: DialoguePanel
@@ -8098,7 +8012,7 @@ RectTransform:
   - {fileID: 1188647674}
   - {fileID: 196375294}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8345,7 +8259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102401938581986997, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8102401938581986997, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: m_LocalScale.x
@@ -8431,6 +8345,10 @@ PrefabInstance:
       propertyPath: mapPlayer
       value: 
       objectReference: {fileID: 50246645}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: nameStyle
+      value: 
+      objectReference: {fileID: 11400000, guid: b06e09fb0c134421b93027373c6d3f5b, type: 2}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: sketchBook
       value: 
@@ -8779,7 +8697,7 @@ PrefabInstance:
       objectReference: {fileID: 2104710817}
     - target: {fileID: 605883291736271544, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 605883291736271544, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
       propertyPath: m_LocalPosition.x

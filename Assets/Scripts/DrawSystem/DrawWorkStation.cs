@@ -6,16 +6,7 @@ public class DrawWorkStation : MonoBehaviour
 {
     public ObserveeManager observeeManager;
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void OnTriggerStay2D(Collider2D other)
     {
