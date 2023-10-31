@@ -8,6 +8,7 @@ public class DrawingSystem : MonoBehaviour
     [SerializeField] UIDraw_Inventory uIDraw_Inventory;
     [SerializeField] ArtMaterialVisualizer artMaterialVisualizer;
     [SerializeField] StartDrawingVisualizer startDrawingVisualizer;
+    [SerializeField] DrawResultVisualizer drawResultVisualizer;
     private Item canvas;
     private Item brush;
     private Item paint;
@@ -19,6 +20,7 @@ public class DrawingSystem : MonoBehaviour
         uIDraw_Inventory.ShowSelf(false);
         uIDraw_Inventory.ShowApplyButton(false);
         startDrawingVisualizer.ShowSelf(false);
+        drawResultVisualizer.ShowSelf(false);
     }
 
     public void SetDrawItem(Item item)
@@ -142,6 +144,16 @@ public class DrawingSystem : MonoBehaviour
     {
         // make choice in dialogue
         dialogueManager.MakeChoice(obsv.choiceIndex);
+    }
+
+    public void ShowDrawResult()
+    {
+        drawResultVisualizer.ShowSelf(true);
+
+        // set material icons
+        drawResultVisualizer.mat1.sprite = canvas.spriteImage;
+        drawResultVisualizer.mat2.sprite = brush.spriteImage;
+        drawResultVisualizer.mat3.sprite = paint.spriteImage;
     }
 
     public Item GetCanvasItem()

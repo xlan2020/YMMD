@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Observee : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Observee : MonoBehaviour
     private bool canMove = true;
     private bool hasAppeared = false;
     private Animator animator;
+    public UnityEvent eventsOnDisplay;
     [SerializeField] private Color StartDissolveColor;
 
     void Awake()
@@ -39,6 +41,7 @@ public class Observee : MonoBehaviour
     public void show()
     {
         gameObject.SetActive(true);
+        eventsOnDisplay.Invoke();
     }
 
     public void appearOnWorkStation()

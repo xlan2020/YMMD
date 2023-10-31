@@ -11,7 +11,12 @@ public class SubmitDrawing : MonoBehaviour
     [SerializeField] private bool canSubmit = false;
     public MouseCursor cursor;
     public Animator progressAnimator;
+    private Animator animator;
 
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         GameObject g = other.gameObject;
@@ -20,7 +25,7 @@ public class SubmitDrawing : MonoBehaviour
         {
             if (g.CompareTag("Observee"))
             {
-                canSubmit = false;
+                SetCanSubmit(false);
 
                 // let drawing system know which one is submitted
                 Observee obsv = g.GetComponent<Observee>();
@@ -81,8 +86,10 @@ public class SubmitDrawing : MonoBehaviour
     }
 
 
-    public void CanSubmit(bool b)
+    public void SetCanSubmit(bool b)
     {
         canSubmit = b;
+        animator.SetBool("ready", b);
     }
+
 }

@@ -4,7 +4,7 @@ INCLUDE DAY1-2_global.ink
 8-2：………………#portrait: 8-2_raiseEyebrow #profile: none
 我：…………不好意思，我的画材……都没了。#profile: painter_sideSweat
 我：所以可能画不了画了，呵呵……
-8-2：还真是一穷二白啊，画家，你可真能给我惊喜。#bgm:日常 #profile: painter_mad #portrait: 8-2_laugh #profile: none
+8-2：还真是一穷二白啊，画家，你可真能给我惊喜。#bgm:日常 #portrait: 8-2_laugh #profile: none
 8-2：不过，没<color=magenta>画材</color>你就不会画画了？#portrait: 8-2_smile
 8-2：你<b>以前</b>可不是这样的。#portrait: 8-2_admire
 8-2：我是不挑的。不如先看看你身边吧，真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
@@ -25,7 +25,7 @@ INCLUDE DAY1-2_global.ink
 ==select_material_and_draw==
 我：（现在拥有的材料还是太有限了，先凑合着用吧，反正对方是8-2。）#profile: painter_norm #portrait: 8-2_norm2
 我：（……嗯？我刚刚在想什么？怪怪的。还是先决定画什么吧。）#profile: painter_side
-我：肖像画，对吧？#profile: painter_norm
+我：肖像画，对吧？#profile: painter_norm  #drawingSystem: showDrawResult
 8-2：老规矩，当然可以。#portrait: 8-2_smile2
 8-2：……#portrait: 8-2_cold
 8-2：……等等，你拿着笔比划什么呢？不会就要画速写了吧？#portrait: 8-2_raiseEyebrow
@@ -39,7 +39,6 @@ INCLUDE DAY1-2_global.ink
 我：（……无论如何，我确实下笔太草率了。）
 我：（画画的第一步是<color=magenta>观察</color>，除了死板的比例关系，我还得把<color=magenta>对象</color>——也就是8-2——的精气神儿抓住。）
 我：（仔细观察对象吧，有什么可以<color=magenta>捕捉</color>的东西吗？）
-【操作】：【observee-8-2的脸-出现】
 系统：在画画过程中，屏幕中会时不时出现可以捕捉的<color=magenta>观察点</color>。
 系统：在观察点上单击<color=magenta>鼠标左键</color>，将其<color=magenta>拖放</color>到<color=magenta>构想窗口</color>内，观察点会自动转变为<color=magenta>灵感</color>。#showObservee: face
 系统：未来，画家可能会持有多种灵感。选择呈现合适的灵感，会改变画画的结果，也决定了画家对绘画对象的态度，故事因此发生改变。#portrait: 8-2_norm2
@@ -54,8 +53,7 @@ INCLUDE DAY1-2_global.ink
 我：（噗……8+2大师……）#profile: painter_sour
 系统：除了视觉上的观察，声音、语言、气味都可以成为构想画面的重要信息。除了对象附近，观察点也可以出现在屏幕的任何地方。
 系统：对于普通的观察点，只有捕捉才能让画画进行下去。
-老板娘：对对，瞧我这记性。我爱人经常听大师您的课嘞！#profile: mama_satisfied
-【操作】：【需要捕捉observee才能进行下去。要改一个点，observee出现和必须捕捉是两回事】
+老板娘：对对，瞧我这记性。我爱人经常听大师您的课嘞！#profile: mama_satisfied #showObservee: dashi
 系统：但是，个别的观察点会随着对话发展而被<color=magenta>错过</color>，从而限制故事的走向。错过不一定是坏事，但这点还请留意。
 系统：关于观察点，之后不会再有提醒了。画家要记得观察和捕捉哦！
 老板娘：多亏了大师呀！他要不是辞去了那个打渔的活儿，我天天都得揪心呐。
@@ -68,8 +66,8 @@ INCLUDE DAY1-2_global.ink
 8-2：没办法，粉丝就是这么多，看来以后得低调点了。#bgm:日常_5 #profile: painter_side #portrait: 8-2_laugh
 8-2：……我去！一没留神，你怎么都给炫完了？#portrait: 8-2_surprised
 我：我很饿……嗝。嗯，现在饱了。#profile: painter_sideSweat
-我：（在接单的时候吃饭，可真是不专业的表现。现在开始专注在对象上吧，应该从哪开始呢？）
-+[提交：大师]->profession_mathematician
+我：（在接单的时候吃饭，可真是不专业的表现。现在开始专注在对象上吧，应该从哪开始呢？）#choiceType: OBSERVEE
++[ ]->profession_mathematician
 
 ==profession_mathematician==
 我：你是做什么职业的啊，“大师”？#profile: painter_norm
@@ -84,8 +82,8 @@ INCLUDE DAY1-2_global.ink
 8-2：嗯，嗯，你就是这么理解的吗？浅了啊，画家。#portrait: 8-2_laugh
 8-2：数字可是很重要的！看看你头顶上，那里可是有个很显眼、很重要的数字。#portrait: 8-2_smile2
 【操作】：【observee-钱出现。这个可以skip】
-我：（很显眼、很重要的数字，是……）#profile: painter_stunned
-+[{money}]
+我：（很显眼、很重要的数字，是……）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
++[ ]
 我：头顶上的数字……{money}？
 我：等等！你怎么能看到我头顶上……这个是我的、我所有财产的金额！#bgm:戏谑_0.5 #profile: painter_frightened #portrait: 8-2_smile
 8-2：哦~原来你的所有财产是这个数字啊。#portrait: 8-2_laugh
@@ -95,7 +93,7 @@ INCLUDE DAY1-2_global.ink
 我：你这个骗子！#profile: painter_mad 
 8-2：不，我只是个数学家。#portrait: 8-2_mysterious #bgm:日常_3
 ->value_number
-+[什么数字？]
++[ ] 
 我：哪里有数字？别逗了。#profile: painter_noComment 
 8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile
 我：嗯？{money}，这个……这个是……#profile: painter_stunned #bgm:pause
@@ -114,21 +112,21 @@ INCLUDE DAY1-2_global.ink
 8-2：——所谓<color=magenta>心理价值</color>。把那玩意置换掉了，你钱包里也就会多出这个数。
 8-2：但就这么一个数，人也还是看不清楚。#portrait: 8-2_thinking
 8-2：所以呢，我的置换成功学课程也就应运而生。哈哈，你刚问我教那老爷子什么，这么说吧，我兼职做的是讲师。#portrait: 8-2_smile2
-我：（果然，不出我所料。）……你是个兼职骗子。#profile: painter_side #portrait: 8-2_laugh
+我：（果然，不出我所料。）……你是个兼职骗子。#profile: painter_side #portrait: 8-2_laugh #showObservee: evilSmile
 【操作】：【收集observee-8-2脸上的坏笑。说他是骗子的时候，他还笑了！怎么有这么厚颜无耻的人？】
 我：你居然还好意思说自己研究真理……天，你真应该向老板娘道歉。
 8-2：瞧你说得多难听，这怎么能叫骗人呢？#portrait: 8-2_norm
 8-2：多少人都不了解自己想要什么，能失去的是什么……换来换去，换得一场空。#portrait: 8-2_thinking
 8-2：我只是在帮助大家掌控自我罢了。
 8-2：说到这了，画家，咱们打开天窗说亮话。我能感觉到——你身上是不是也发生过类似的事？#portrait: 8-2_deepLove
-8-2：如果能更了解自己的话，就不会闹得一无所有，还一无所知了。
+8-2：如果能更了解自己的话，就不会闹得一无所有，还一无所知了。#showObservee: deepLove
 【操作】：【收集observee-深沉的、仿佛闪烁着泪光的眼睛，仿佛能轻易看穿我内心的想法、我的过去，却还保持着一种一视同仁的悲悯！】
 我：……………………#profile: painter_side
 我：（别说，今天睡醒的事我还真是想不明白，这家伙或许能知道点什么。）#profile: painter_sideSweat
 我：（我该相信他的话吗？）#profile: painter_norm
 系统：目前可以呈现的灵感有两种，必须要做出<color=magenta>选择</color>了。
 系统：选择不同的灵感会给画面带来改变，也决定了画家对绘画对象的<color=magenta>理解</color>和<color=magenta>态度</color>。未来说不定会因此发生改变！
-我：（必须要做出选择了……我该相信8-2吗？）
+我：（必须要做出选择了……我该相信8-2吗？）#choiceType: OBSERVEE
 +[帮我看看，大师]->teach_me
 
 +[这人有问题！]->reveal_liar
@@ -148,8 +146,8 @@ INCLUDE DAY1-2_global.ink
 8-2：呦！这纹路，我瞧着有点眼熟啊。#portrait: 8-2_thinking
 我：真的吗？！#profile: painter_surprised
 8-2：哎呀，我这眼神不太好。你能让我凑近点看看吗？#portrait: 8-2_chuckle
-我：（也是，他戴着个大眼镜，估计是近视吧？）#profile: painter_norm
-+[观察眼镜]
+我：（也是，他戴着个大<color=magenta>眼镜</color>，估计是近视吧？）#profile: painter_norm #showObservee: glasses #choiceType: OBSERVEE_CANSKIP
++[ ]
 我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned
 我：（这根本就是一副装饰用的平光镜吧？）#profile: painter_noComment
 我：（仔细一看，这家伙的小眼睛闪着精光呢！哪里是眼神不好的样子？）#profile: painter_norm
@@ -256,15 +254,13 @@ INCLUDE DAY1-2_global.ink
 8-2：——<b>信任</b>。让ta百分之一百地相信你，相信到觉得自己已经是你的东西。#portrait: 8-2_smile
 我：怎么可能……
 8-2：怎么不可能？家人、爱人、师生……“拥有”并不是多么罕见的事。#portrait: 8-2_smile2
-8-2：“我是你的”——这句话听着挺浪漫、挺耳熟吧？
-【操作】：observee-我是你的 8-2会对别人说这句话吗？好难想象啊，恐怕不会吧。灵感是8-2深情款款地说我是你的的样子
+8-2：“我是你的”——这句话听着挺浪漫、挺耳熟吧？#showObservee:imYours
 8-2：更不用说，大多数人出生的时候就拥有一样东西——
 我：……自己。
 8-2：没错，自己。虽然，随着时间推移，也有人会丢失“自己”这样东西。
 8-2：现在，你应该能理解我说的，第二个重要的隐形数字——
 8-2：——<color=magenta>拥有度</color>。如果用在人身上，就是你对Ta的了解乘以Ta对你的信任，所达到的一个值。#portrait: 8-2_smile
-8-2：100%的了解和100%的信任相乘，那数值就是完美的1——100分！当然，都不需要太完美，有个90分就够置换咯！#portrait: 8-2_smile2
-【操作】：observee-90分  他怎么知道这些数值的？……难道说，他拥有很多人？灵感是邪恶的8-2一双大手操纵一堆人的样子
+8-2：100%的了解和100%的信任相乘，那数值就是完美的1——100分！当然，都不需要太完美，有个90分就够置换咯！#portrait: 8-2_smile2 #showObservee: formula
 8-2：很遗憾，画家，我能看得见，你对我的信任已经接近0了，所以不用担心了！我拥有不了你，也害不了你。#portrait: 8-2_laugh
 我：你知道这番话听起来有多……多……邪恶吗？
 8-2：坏了，你觉得我是个糟蛋！#portrait: 8-2_unhappy
@@ -273,8 +269,7 @@ INCLUDE DAY1-2_global.ink
 8-2：那就是生死有命富贵在天喽？#portrait: 8-2_raiseEyebrow
 我：……你已经问过我太多问题了，我只想问你一个问题。
 8-2：好紧张哦，问、问、问、问、问吧。#portrait: 8-2_smile2
-我：（关于8-2的肖像应该是什么样子，我已经有了大概的答案。只剩下，我想问的问题是……）
-【鹅】：特别是这里，感觉投递选项的时候应该有办法预览问的问题是啥，也许hover到画画board的时候对话框/细节框会出现具体的问题？
+我：（关于8-2的肖像应该是什么样子，我已经有了大概的答案。只剩下，我想问的问题是……）#choiceType: OBSERVEE
 +[你置换过活人吗？]
 我：<b>你置换过活人吗？</b> 
 8-2：瞧你问的！这还用说？我当然……#portrait: 8-2_laugh
@@ -348,5 +343,6 @@ INCLUDE DAY1-2_global.ink
 8-2：……再说了，我也不记得。虚空里装着的只有不存在的东西，我都不存在了，当然也就不知道了。唔，不如说，其实我根本没去过？#portrait: 8-2_thinking
 我：好吧，真是很有帮助的答案。#portrait: 8-2_smile
 我：不过，你的画也画完了。
+系统：作画完成了。#drawingSystem: showDrawResult #profile: none
 
 ->DONE

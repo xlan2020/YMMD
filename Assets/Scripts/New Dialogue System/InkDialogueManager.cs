@@ -711,6 +711,9 @@ public class InkDialogueManager : MonoBehaviour
                 drawingSystem.StartMaterialSelection();
                 canContinueToNextLine = false;
                 break;
+            case "showDrawResult":
+                drawingSystem.ShowDrawResult();
+                break;
             default:
                 UnityEngine.Debug.LogWarning("try to handle drawing system tag but tag '" + tagValue + "' doesn't exist!");
                 break;
@@ -736,7 +739,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private void handleObserveeChoices()
     {
-        drawingSubmitter.CanSubmit(true);
+        drawingSubmitter.SetCanSubmit(true);
 
     }
 
@@ -806,7 +809,9 @@ public class InkDialogueManager : MonoBehaviour
             MakeChoice(0);
             if (DrawMode)
             {
-                drawingSubmitter.CanSubmit(false);
+                drawingSubmitter.SetCanSubmit(false);
+                // delete uselss observee
+                observeeManager.DissolveCollected();
             }
         }
     }

@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         InkDialogueManager manager = InkDialogueManager.GetInstance();
         if (manager)
         {
-            manager.GetDialogueVariables();
+            dialogueVariables = manager.GetDialogueVariables();
         }
 
         // dialogueIntegrationTest();
@@ -112,19 +112,15 @@ public class GameManager : MonoBehaviour
     public void AddMoney(float amount)
     {
         money.ChangeMoney(amount);
-        if (dialogueVariables != null)
-        {
-            dialogueVariables.SetGlobalVariable("money", money.GetMoney());
-        }
+
+        dialogueVariables.SetGlobalVariable("money", money.GetMoney());
     }
 
     public void SetMoney(float amount)
     {
         money.SetMoney(amount);
-        if (dialogueVariables != null)
-        {
-            dialogueVariables.SetGlobalVariable("money", money.GetMoney());
-        }
+
+        dialogueVariables.SetGlobalVariable("money", money.GetMoney());
     }
 
 
