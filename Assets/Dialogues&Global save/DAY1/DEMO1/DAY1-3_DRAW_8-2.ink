@@ -25,7 +25,7 @@ INCLUDE DAY1-2_global.ink
 ==select_material_and_draw==
 我：（现在拥有的材料还是太有限了，先凑合着用吧，反正对方是8-2。）#profile: painter_norm #portrait: 8-2_norm2
 我：（……嗯？我刚刚在想什么？怪怪的。还是先决定画什么吧。）#profile: painter_side
-我：肖像画，对吧？#profile: painter_norm  #drawingSystem: showDrawResult
+我：肖像画，对吧？#profile: painter_norm 
 8-2：老规矩，当然可以。#portrait: 8-2_smile2
 8-2：……#portrait: 8-2_cold
 8-2：……等等，你拿着笔比划什么呢？不会就要画速写了吧？#portrait: 8-2_raiseEyebrow
@@ -300,7 +300,7 @@ INCLUDE DAY1-2_global.ink
 我：给你的画快画完了，之后你爱讲你的课就加油吧，跟你聊天挺有意思，但我还没到想要付费听的程度。今天我还有事……
 我：（……对啊！明明是有事的，怎么现在才想起来？）#bgm: fade_3_0.2
 我：（8月26日星期三，我有个老朋友要从远方过来，我们约在……热麻麻门口见面……热麻麻？那不就是这里吗……咦？）
-我：……等等，不对，你……啊？#portrait: 8-2_smile #bgm: fade_0.5_0
+我：……等等，不对，你……啊？#portrait: 8-2_smile 
 我：我要见的那个老朋友，不会就是你吧？！#portrait: 8-2_laugh #bgm:戏谑_0.2
 我：我去，这都多少年没见了？……你的变化也<b>太</b>大了！我都认不出来了。
 8-2：*叹气*呵呵，哪有多少年……画家，你这日子过得呀，真叫人看不下去。#portrait: 8-2_norm
@@ -343,6 +343,6 @@ INCLUDE DAY1-2_global.ink
 8-2：……再说了，我也不记得。虚空里装着的只有不存在的东西，我都不存在了，当然也就不知道了。唔，不如说，其实我根本没去过？#portrait: 8-2_thinking
 我：好吧，真是很有帮助的答案。#portrait: 8-2_smile
 我：不过，你的画也画完了。
-系统：作画完成了。#drawingSystem: showDrawResult #profile: none
+系统：作画完成了。#drawingSystem: showDrawResult #profile: none #bgm: fade_0.5_0
 
 ->DONE

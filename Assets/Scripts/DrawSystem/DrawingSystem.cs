@@ -158,25 +158,34 @@ public class DrawingSystem : MonoBehaviour
         // decide result
         ResultDrawingScriptableObject resDraw = CalculateResultDrawing();
 
+        // set window active
         drawResultVisualizer.ShowSelf(true);
-
-        // set material icons
-        drawResultVisualizer.mat1.sprite = canvas.spriteImage;
-        drawResultVisualizer.mat2.sprite = brush.spriteImage;
-        drawResultVisualizer.mat3.sprite = paint.spriteImage;
-
-        // calculate material score
-        CalculateAndDisplayMatScore();
-
-
-        // update theme score logically, calculate rest of the score and gain
-
 
         // update res draw info
         drawResultVisualizer.DisplayResultDrawingInfo(resDraw);
 
         // update res draw visuals
          drawResultVisualizer.DisplayResultDrawingVisuals(resDraw);
+
+        // set material icons
+        drawResultVisualizer.mat1.sprite = canvas.spriteImage;
+        drawResultVisualizer.mat2.sprite = brush.spriteImage;
+        drawResultVisualizer.mat3.sprite = paint.spriteImage;
+
+        // theme score is alreay displayed as part of the draw res info
+        // calculate total score: total_score = mat_score + theme_score
+        float total_score = CalculateAndDisplayMatScore()+resDraw.themeScore;
+        drawResultVisualizer.DisplayTotalScore(total_score);
+
+        // multiply reputation - part of the player stats
+        // put 1 here for now
+        float reputation = 1f;
+
+        // calculate gain
+        drawResultVisualizer.SetTargetGain(total_score*reputation);
+        // visualizer will add to actual money to GM once the graphic display is done
+        
+
 
     }
 
@@ -224,10 +233,11 @@ public class DrawingSystem : MonoBehaviour
         drawResultVisualizer.DisplayMatStabilityMultiplier(stability_mul);
 
         // calculate material result score
-        float mat_score = sum * stability_mul;
+        float mat_score = sum * stability_mul; 
         drawResultVisualizer.DisplayMatResult(mat_score);
 
         return mat_score;
+
     }
 
     private float CalculateStabilityMultiplier(int sum){

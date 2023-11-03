@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DrawResultVisualizer : MonoBehaviour
 {
+    public GameManager gm;
     [Header("Result Drawing Info")]
     public Text title;
     public Text subject;
@@ -27,6 +28,7 @@ public class DrawResultVisualizer : MonoBehaviour
     public Text all_sum;
     public Text reputation;
     public Text gain;
+    public AudioSource gainAudio;
 
     [Header("Multiplier Color")]
     public Color goodColor = Color.green;
@@ -35,12 +37,25 @@ public class DrawResultVisualizer : MonoBehaviour
 
     [Header("Reactions")]
     public SpriteRenderer clientProfile;
-    public Text clientName;
-    public Text clientReaction;
-    public Text painterReaction;
+    //public Text clientName;
+    public TextTyper clientReaction;
+    public TextTyper painterReaction;
     
     [Header("Result Drawing Visual")]
     public Image resultDrawingDisplay;
+
+    [Header("AudioClip")]
+    public AudioClip scoreUpAudio;
+    public AudioClip scoreInPlaceAudio;
+    public AudioClip textAppearLongAudio;
+    public AudioClip textAppearShortAudio;
+    private AudioSource auido;
+
+    // logic
+    private float displayGain;
+    private float targetGain;
+    private float displayChangeUnit = 5f;
+
 
     public void ShowSelf(bool b)
     {
@@ -106,13 +121,83 @@ public class DrawResultVisualizer : MonoBehaviour
 
         // reactions
         clientProfile.sprite=resDraw.clientProfile;
-        this.clientName.text = resDraw.subject;
+        //this.clientName.text = resDraw.subject;
         clientReaction.text = resDraw.clientReaction;
-        painterReaction.text = resDraw.painterReaction;
+        painterReaction.text=resDraw.painterReaction;
     }
 
     public void DisplayResultDrawingVisuals(ResultDrawingScriptableObject resDraw){
         resultDrawingDisplay.sprite=resDraw.image;
+    }
+
+    public void DisplayTotalScore(float num){
+        all_sum.text=""+num;
+    }
+
+    public void SetTargetGain(float gainAmount){
+        this.targetGain=gainAmount;
+    }
+    public void DisplayGain(){
+        StartCoroutine(changingGainDisplay(this.targetGain));
+    }
+
+    private IEnumerator changingGainDisplay(float targetGain)
+    {
+        // take consideration of the case if Gain is not an integer
+        // the display animation increase / decrease Gain by 1 unit
+        // if the the difference between the target and current display is less than 1 unit
+        // increasing and decreasing might never meet the target
+        // so we are calculating the difference but not only increasing and decreasing
+        // difference is absolute, so actually <-1 unit or >1 unit
+        gainAudio.loop=true;
+        gainAudio.Play();
+        while (displayGain - targetGain < -displayChangeUnit)
+        {
+            displayGain += displayChangeUnit;
+            gain.text = "+￥"+ displayGain.ToString("0.00");
+            yield return new WaitForSeconds(0.04f);    // animation interval
+        }
+        while (displayGain - targetGain > displayChangeUnit)
+        {
+            displayGain -= displayChangeUnit;
+            gain.text = "+￥"+displayGain.ToString("0.00");
+            yield return new WaitForSeconds(0.04f);    // animation interval
+        }
+        // else: 
+        // -1 unit < displayGain - targetGain < 1 unit
+        displayGain = targetGain;
+        gain.text = "+￥"+displayGain.ToString("0.00");
+        gm.AddMoney(targetGain);
+        gainAudio.Stop();
+    }
+
+    public void TypeClientReaction(){
+        clientReaction.StartTyping();
+    }
+
+    public void TypePainterReaction(){
+        painterReaction.StartTyping();
+    }
+
+    public void PlayAudio(string name){
+        GetComponent<AudioSource>().loop=false;
+        switch(name){
+            case "scoreUp":
+            GetComponent<AudioSource>().clip=scoreUpAudio;
+            break;
+            case "scoreInPlace":
+            GetComponent<AudioSource>().clip=scoreInPlaceAudio;
+            break;
+            case "textAppearLong":
+            GetComponent<AudioSource>().clip=textAppearLongAudio;
+            break;
+            case "textAppearShort":
+            GetComponent<AudioSource>().clip=textAppearShortAudio;
+            break;
+            default:
+            return;
+        }
+        GetComponent<AudioSource>().Play();
     }
 
 }
