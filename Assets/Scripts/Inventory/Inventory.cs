@@ -75,7 +75,7 @@ public class Inventory
             draw_stable = itemInfo.draw_stable,
             draw_experimental = itemInfo.draw_experimental,
             draw_organic = itemInfo.draw_organic,
-            draw_premiere = itemInfo.draw_premiere
+            draw_premium = itemInfo.draw_premium
         };
         AddItem(item);
         return item;

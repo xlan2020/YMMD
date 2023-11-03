@@ -24,5 +24,5 @@ public class Item
     public int draw_stable;
     public int draw_experimental;
     public int draw_organic;
-    public int draw_premiere;
+    public int draw_premium;
 }

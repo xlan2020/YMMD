@@ -46,7 +46,7 @@ INCLUDE DAY1-2_global.ink
 系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！#choiceType: OBSERVEE
 +[ ]->mama_appears
 ==mama_appears==
-我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）
+我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）#drawingSystem: addBinaryVal_10
 老板娘：给您放桌上了！#profile: mama_satisfied  
 老板娘：呦，朋友也来啦？哎呀，你是不是那个……那个谁，那个八加二大师？#bgm:戏谑_0.5
 8-2：咳，巴简二，姐姐。#portrait: 8-2_smile2
@@ -70,7 +70,7 @@ INCLUDE DAY1-2_global.ink
 +[ ]->profession_mathematician
 
 ==profession_mathematician==
-我：你是做什么职业的啊，“大师”？#profile: painter_norm
+我：你是做什么职业的啊，“大师”？#profile: painter_norm #drawingSystem: addBinaryVal_20
 8-2：我是个数学家。#portrait: 8-2_smile
 我：（8-2的数学吗？）呃，你给老板娘的爱人……上数学课？#profile: painter_side
 8-2：哦，那个是另外的兼职。数学是一门很基础的学科，数字是构成这个世界的基本单位。 #portrait: 8-2_norm2
@@ -85,7 +85,7 @@ INCLUDE DAY1-2_global.ink
 我：（很显眼、很重要的数字，是……）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
 +[ ]
 我：头顶上的数字……{money}？
-我：等等！你怎么能看到我头顶上……这个是我的、我所有财产的金额！#bgm:戏谑_0.5 #profile: painter_frightened #portrait: 8-2_smile
+我：等等！你怎么能看到我头顶上……这个是我的、我所有财产的金额！#bgm:戏谑_0.5 #profile: painter_frightened #portrait: 8-2_smile #drawingSystem: addBinaryVal_30
 8-2：哦~原来你的所有财产是这个数字啊。#portrait: 8-2_laugh
 我：……哎？#profile: painter_side 
 8-2：这可是你告诉我的呀~画家~#profile: painter_sideSweat 
@@ -132,7 +132,7 @@ INCLUDE DAY1-2_global.ink
 +[这人有问题！]->reveal_liar
 
 ==teach_me==
-我：哈，别说，就今天，我身上也发生了一件怪事。要不，您给我出出主意？#profile: painter_sour
+我：哈，别说，就今天，我身上也发生了一件怪事。要不，您给我出出主意？#profile: painter_sour #drawingSystem: addBinaryVal_50
 8-2：嗯嗯，好啊，什么怪事？#portrait: 8-2_chuckle
 我：（……嗯？他刚才是不是笑了一下？……眼花了吧。）#portrait: 8-2_norm2
 我：我今天一觉醒来，就发现屋子和钱包都空了，我的东西一件也不剩，什么也想不起来。#profile: painter_eyeClosed
@@ -148,7 +148,7 @@ INCLUDE DAY1-2_global.ink
 8-2：哎呀，我这眼神不太好。你能让我凑近点看看吗？#portrait: 8-2_chuckle
 我：（也是，他戴着个大<color=magenta>眼镜</color>，估计是近视吧？）#profile: painter_norm #showObservee: glasses #choiceType: OBSERVEE_CANSKIP
 +[ ]
-我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned
+我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned #drawingSystem: addBinaryVal_-20
 我：（这根本就是一副装饰用的平光镜吧？）#profile: painter_noComment
 我：（仔细一看，这家伙的小眼睛闪着精光呢！哪里是眼神不好的样子？）#profile: painter_norm
 我：（这么重要的东西，不能轻易交给他。我自己能研究出来。）
@@ -158,7 +158,7 @@ INCLUDE DAY1-2_global.ink
 我：（这个怪人，真是搞不明白了……）你在嘟囔什么？#profile: painter_side
 ->owning_value
 +[递给他]
-我：（这么小的东西，离得太远也看不清楚。我太需要知道这是什么了。）#profile: painter_norm 
+我：（这么小的东西，离得太远也看不清楚。我太需要知道这是什么了。）#profile: painter_norm #drawingSystem: addBinaryVal_20
 我：喏，您给看看，能认出这是什么吗？*递出鳞片*#profile: painter_side
 8-2：*接过鳞片*嗯、嗯，我看看啊…… #portrait: 8-2_norm
 8-2：…………#portrait: 8-2_serious
@@ -175,11 +175,11 @@ INCLUDE DAY1-2_global.ink
 8-2：…………#profile: painter_angry #portrait: 8-2_norm2 #bgm:日常_5
 8-2：*自言自语*难不成我真的很讨人嫌？好吧，这下要从0.5跌到0.2了，不，甚至更低……#portrait: 8-2_thinking2 
 8-2：不对不对，0.15？#portrait: 8-2_raiseEyebrowLookAway
-我：（这个混蛋，绝对不值得信任……）你在嘟囔什么？#profile: painter_side
+我：（这个混蛋，绝对不值得信任……）你在嘟囔什么？#profile: painter_side #drawingSystem: addBinaryVal_-40
 ->owning_value
 
 ==reveal_liar==
-我：所以呢，你打算向我卖课吗？#profile: painter_side #bgm:fade_0.2_0.5
+我：所以呢，你打算向我卖课吗？#profile: painter_side #bgm:fade_0.2_0.5 #drawingSystem: addBinaryVal_-30
 我：先是装作认识我的样子，然后给我点小钱博取我的信任，还让我画画，哈，我就知道没什么人想要我的画的，又是用的这么廉价的画材。#portrait: 8-2_norm2 #bgm:悬疑_1
 我：然后，你利用老板娘给自己立了个“大师”的人设，让我主动问你，免得一上来就推销让人怀疑……天，老板娘不会是你的托儿吧？
 我：然后你东拉西扯，故意拿“数学家”和“画家”类比，跟我套近乎。
@@ -273,7 +273,7 @@ INCLUDE DAY1-2_global.ink
 +[你置换过活人吗？]
 我：<b>你置换过活人吗？</b> 
 8-2：瞧你问的！这还用说？我当然……#portrait: 8-2_laugh
-8-2：……<b>置换过</b>。#portrait: 8-2_cold #bgm:pause #bgm:fade_0.1_0
+8-2：……<b>置换过</b>。#portrait: 8-2_cold #bgm:pause #bgm:fade_0.1_0 #drawingSystem: addBinaryVal_-20
 我：……
 8-2：不问我理由吗？#portrait: 8-2_smile #bgm:play #bgm:fade_1_0.15
 8-2：也不好奇是我的什么人？
@@ -289,7 +289,7 @@ INCLUDE DAY1-2_global.ink
 我：你在这里侃侃而谈，还开课传授什么掌控自己、操纵别人的秘诀……高高在上的。
 我：不过，被拥有的人是什么感觉，你也能理解吗？
 8-2：瞧你问的！我成什么人了？我当然…… #portrait: 8-2_laugh
-8-2：……理解。有很多人都拥有我，随时随地可以置换我。#bgm:pause #bgm:fade_0.1_0 #portrait: 8-2_admire
+8-2：……理解。有很多人都拥有我，随时随地可以置换我。#bgm:pause #bgm:fade_0.1_0 #portrait: 8-2_admire #drawingSystem: addBinaryVal_30
 8-2：被拥有是危险的，但也是幸福的。没被他人拥有的家伙……嗯，那句话怎么说的来着？……只能度过相对失败的人生！#bgm:play #bgm:fade_1_0.2 #portrait: 8-2_norm2
 8-2：…………怎么？被我的言论感动到了？哈哈！这句说得真好，我得记下来下次上课讲…… #bgm:fade_4_1 #portrait: 8-2_smile
 我：大可不必。……而且这也不是你的原创吧。
@@ -322,7 +322,7 @@ INCLUDE DAY1-2_global.ink
 我：………………
 8-2：怎么样，你有兴趣成为我们的预备成员吗？#portrait: 8-2_smile2
 +[我有兴趣！]
-我：听起来有点儿意思。你们都做什么？
+我：听起来有点儿意思。你们都做什么？#drawingSystem: addBinaryVal_10
 ->disclose_secret
 +[算了吧]
 我：呃………………#profile: painter_sideSweat

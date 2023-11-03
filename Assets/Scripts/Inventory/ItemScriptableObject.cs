@@ -25,10 +25,10 @@ public class ItemScriptableObject : ScriptableObject
     public ArtMaterialScriptableObject artMaterial;
     [TextAreaAttribute(3, 3)] public string drawDescription;
     public string drawAttribute;
-    [Range(1, 5)] public int draw_stable;
-    [Range(1, 5)] public int draw_experimental;
-    [Range(1, 5)] public int draw_organic;
-    [Range(1, 5)] public int draw_premiere;
+    [Range(1, 5)] public int draw_stable = 1;
+    [Range(1, 5)] public int draw_experimental = 1;
+    [Range(1, 5)] public int draw_organic = 1;
+    [Range(1, 5)] public int draw_premium = 1;
     public int durability;
 
     public bool IsNew()

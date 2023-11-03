@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class DrawingSystem : MonoBehaviour
 {
+    [Header("UI Objects")]
     [SerializeField] InkDialogueManager dialogueManager;
     [SerializeField] UIDraw_Inventory uIDraw_Inventory;
     [SerializeField] ArtMaterialVisualizer artMaterialVisualizer;
     [SerializeField] StartDrawingVisualizer startDrawingVisualizer;
     [SerializeField] DrawResultVisualizer drawResultVisualizer;
+    
+    [Header("Client and Game")]
+    public ClientSpecialScriptableObject clientSpecial;
+    // threshold: 0-100 rate how ____ something is; for the case of 8-2, that's the trust
+
     private Item canvas;
     private Item brush;
     private Item paint;
 
-    public Sprite[] drawingResults;
+    private int binaryVal=0;
+
 
     void Start()
     {
@@ -148,12 +155,39 @@ public class DrawingSystem : MonoBehaviour
 
     public void ShowDrawResult()
     {
+        // decide result
+        ResultDrawingScriptableObject resDraw = CalculateResultDrawing();
+
         drawResultVisualizer.ShowSelf(true);
 
         // set material icons
         drawResultVisualizer.mat1.sprite = canvas.spriteImage;
         drawResultVisualizer.mat2.sprite = brush.spriteImage;
         drawResultVisualizer.mat3.sprite = paint.spriteImage;
+
+        // calculate material score
+        CalculateAndDisplayMatScore();
+
+
+        // update theme score logically, calculate rest of the score and gain
+
+
+        // update res draw info
+        drawResultVisualizer.DisplayResultDrawingInfo(resDraw);
+
+        // update res draw visuals
+         drawResultVisualizer.DisplayResultDrawingVisuals(resDraw);
+
+    }
+
+    private ResultDrawingScriptableObject CalculateResultDrawing(){
+        if( binaryVal < clientSpecial.resultStandard[1]){
+            return clientSpecial.resultDrawings[0];
+        }else if (binaryVal < clientSpecial.resultStandard[2]){
+            return clientSpecial.resultDrawings[1];
+        }else {
+            return clientSpecial.resultDrawings[2];
+        }
     }
 
     public Item GetCanvasItem()
@@ -167,5 +201,85 @@ public class DrawingSystem : MonoBehaviour
     public Item GetPaintItem()
     {
         return paint;
+    }
+
+    private float CalculateAndDisplayMatScore(){
+        int expr_raw=canvas.draw_experimental+brush.draw_experimental+paint.draw_experimental;
+        int orgn_raw=canvas.draw_organic+brush.draw_organic+paint.draw_organic;
+        int prem_raw=canvas.draw_premium+brush.draw_premium+paint.draw_premium;
+        drawResultVisualizer.DisplayMatVals(expr_raw, orgn_raw, prem_raw);
+        UnityEngine.Debug.Log("prem 3 vals: "+ canvas.draw_premium+"," + brush.draw_premium+","+paint.draw_premium);
+        UnityEngine.Debug.Log("prem_raw: "+ prem_raw);
+
+        int expr_mul=TranslateToMultiplier(clientSpecial.experimental_attitude);
+        int orgn_mul=TranslateToMultiplier(clientSpecial.organic_attitude);
+        int prem_mul=TranslateToMultiplier(clientSpecial.premium_attitude);
+        drawResultVisualizer.DisplayMatPrefMultiplier(expr_mul,orgn_mul,prem_mul);
+
+        int sum = expr_raw*expr_mul+orgn_raw*orgn_mul+prem_raw*prem_mul;
+        drawResultVisualizer.DisplayMatSum(sum);
+
+        // calculate stability
+        float stability_mul=CalculateStabilityMultiplier(canvas.draw_stable+brush.draw_stable+paint.draw_stable);
+        drawResultVisualizer.DisplayMatStabilityMultiplier(stability_mul);
+
+        // calculate material result score
+        float mat_score = sum * stability_mul;
+        drawResultVisualizer.DisplayMatResult(mat_score);
+
+        return mat_score;
+    }
+
+    private float CalculateStabilityMultiplier(int sum){
+        if(sum>= DrawSystemConstant.STABILITY_GOOD_LIMIT){
+            return 2f;
+        }else if (sum >= DrawSystemConstant.STABILITY_NORM_LIMIT){
+            return 1f;
+        }else {
+            return 0.5f;
+        }
+    }
+
+    private int TranslateToMultiplier(PreferenceAttitude attd){
+        if (attd == PreferenceAttitude.preferred){
+            return 3;
+        }else if (attd == PreferenceAttitude.disliked){
+            return -1;
+        }
+        return 1;
+    }
+
+    private void addBinaryVal(int num){
+        binaryVal+=num;
+        UnityEngine.Debug.Log("binary val changed! now is: " + binaryVal);
+    }
+
+    public int GetBinaryVal(){
+        return binaryVal;
+    }
+    
+    public void HandleInkDialogueTagValue(string tagValue){
+
+        string[] splitTag = tagValue.Split("_");
+
+        switch (splitTag[0])
+        {
+            case "showMaterialWindow":
+                ShowMaterialSelectionWindow();
+                break;
+            case "selectMaterial":
+                StartMaterialSelection();
+                dialogueManager.SetCanContinueToNextLine(false);
+                break;
+            case "showDrawResult":
+                ShowDrawResult();
+                break;
+            case "addBinaryVal":
+                addBinaryVal(int.Parse(splitTag[1]));
+                break;
+            default:
+                UnityEngine.Debug.LogWarning("try to handle drawing system tag but tag '" + tagValue + "' doesn't exist!");
+                break;
+        }
     }
 }

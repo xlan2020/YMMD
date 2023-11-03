@@ -31,7 +31,7 @@ public class ItemInfo : MonoBehaviour
     [Range(1, 5)] public int draw_stable;
     [Range(1, 5)] public int draw_experimental;
     [Range(1, 5)] public int draw_organic;
-    [Range(1, 5)] public int draw_premiere;
+    [Range(1, 5)] public int draw_premium;
     public int durability;
 
     Item item;
@@ -63,7 +63,7 @@ public class ItemInfo : MonoBehaviour
             draw_stable = draw_stable,
             draw_experimental = draw_experimental,
             draw_organic = draw_organic,
-            draw_premiere = draw_premiere
+            draw_premium = draw_premium
         };
     }
     public Item GetItem()

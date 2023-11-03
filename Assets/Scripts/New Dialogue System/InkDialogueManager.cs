@@ -702,23 +702,9 @@ public class InkDialogueManager : MonoBehaviour
 
     private void handleDrawingSystemTag(string tagValue)
     {
-        switch (tagValue)
-        {
-            case "showMaterialWindow":
-                drawingSystem.ShowMaterialSelectionWindow();
-                break;
-            case "selectMaterial":
-                drawingSystem.StartMaterialSelection();
-                canContinueToNextLine = false;
-                break;
-            case "showDrawResult":
-                drawingSystem.ShowDrawResult();
-                break;
-            default:
-                UnityEngine.Debug.LogWarning("try to handle drawing system tag but tag '" + tagValue + "' doesn't exist!");
-                break;
-        }
+        drawingSystem.HandleInkDialogueTagValue(tagValue);
     }
+    
     private void handleSolveTag(string tagValue)
     {
         switch (tagValue)
