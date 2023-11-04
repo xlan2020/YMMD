@@ -10,6 +10,7 @@ public class DisplaceButton : MonoBehaviour
     public GameManager gameManager;
     private Button button;
     private bool interactive;
+    [SerializeField] Animator displaceEffect;
 
     void Start()
     {
@@ -23,6 +24,14 @@ public class DisplaceButton : MonoBehaviour
         gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
     }
 
+    private void turnOnDisplaceEffect(){
+        displaceEffect.SetBool("displacing", true);
+    }
+
+    private void turnOffDisplaceEffect(){
+        displaceEffect.SetBool("displacing", false);
+    }
+    
     public void SetInteractive(bool b)
     {
         interactive = b;

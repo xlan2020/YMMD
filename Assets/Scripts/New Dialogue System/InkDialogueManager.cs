@@ -89,6 +89,8 @@ public class InkDialogueManager : MonoBehaviour
 
 
     private static InkDialogueManager instance;
+    
+    private AudioSource audioSource;
 
     private Coroutine typingLinesCoroutine;
     private Coroutine skippingLinesCoroutine;
@@ -101,6 +103,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
     private Dictionary<string, UnityEngine.Color> nameColorDict = new Dictionary<string, UnityEngine.Color>();
+    private Dictionary<string, AudioClip> nameVoiceDict=new Dictionary<string, AudioClip>();
 
 
     // rich text handling
@@ -122,7 +125,11 @@ public class InkDialogueManager : MonoBehaviour
         instance = this;
         // pass that variable to the DIalogueVariables constructor in the Awake method
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
-        CreateNameColorDict();
+        CreateNameStyleDict();
+
+        audioSource=gameObject.GetComponent<AudioSource>();
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
     }
 
     private void Start()
@@ -204,13 +211,15 @@ public class InkDialogueManager : MonoBehaviour
 
     }
 
-    private void CreateNameColorDict()
+    private void CreateNameStyleDict()
     {
         foreach (NameColor nameColor in nameStyle.nameColors)
         {
             nameColorDict.Add(nameColor.name, nameColor.color);
+            nameVoiceDict.Add(nameColor.name, nameColor.voiceBlip);
         }
     }
+
     private IEnumerator autoPlaying()
     {
         UnityEngine.Debug.Log("auto playing");
@@ -250,6 +259,7 @@ public class InkDialogueManager : MonoBehaviour
         if (nameColorDict.ContainsKey(splitLines[0]))
         {
             speakerName.color = nameColorDict[splitLines[0]];
+            audioSource.clip = nameVoiceDict[splitLines[0]];
         }
         line = splitLines[1];
 
@@ -323,6 +333,7 @@ public class InkDialogueManager : MonoBehaviour
                 else
                 {
                     dialogueText.text += letterArray[i];
+                    audioSource.Play();
                     yield return new WaitForSeconds(typingSpeed);
                 }
 
@@ -353,6 +364,7 @@ public class InkDialogueManager : MonoBehaviour
                         skippingSyntax = true;
                     }
                     dialogueText.text += beginningSyntax + letterArray[i] + closingSyntax;
+                    audioSource.Play();
                     yield return new WaitForSeconds(typingSpeed);
                 }
             }
@@ -587,7 +599,9 @@ public class InkDialogueManager : MonoBehaviour
 
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
-        portraitAnimator.Play("default");
+        if (portraitAnimator!=null){
+            portraitAnimator.Play("default");
+        }
         ContinueStory();
 
         if (mapPlayer)

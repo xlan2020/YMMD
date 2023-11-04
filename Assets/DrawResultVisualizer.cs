@@ -54,7 +54,7 @@ public class DrawResultVisualizer : MonoBehaviour
     // logic
     private float displayGain;
     private float targetGain;
-    private float displayChangeUnit = 5f;
+    private float displayChangeUnit = 1f;
 
 
     public void ShowSelf(bool b)

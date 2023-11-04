@@ -14,7 +14,7 @@ INCLUDE ../../global.ink
 我：哈哈，能把日子过成这样应该是自作自受吧。#profile: painter_selfMock
 我：……不，这种虚无腐烂的感觉，也算是一种特殊的生活体验了吧？（小画家产生了灵感！）#profile: painter_side
 我：总觉得是很值得记下来的灵感呢。#unlockNote: 2_1 #profile: painter_sour
-我：……咦，旁边这亮晶晶的是什么？奇怪……#bgm:柴柴 #profile: painter_surprised
+我：……咦，旁边这亮晶晶的是什么？奇怪……#bgm:柴柴 #profile: painter_surprised #event: findScale
 我：这是……鳞片？#unlockNote: 2_2 #profile: painter_stunned
 我：………………鳞片？#loadScene:DAY1-2_Map
 
