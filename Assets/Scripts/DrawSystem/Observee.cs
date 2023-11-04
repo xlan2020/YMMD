@@ -10,7 +10,9 @@ public class Observee : MonoBehaviour
     public string tagName;
     public int choiceIndex;
     public bool canSkip = false;
-    public string description;
+    public bool canDissolve = true;
+    [TextArea()]public string description;
+    public string submitSpeak;
     private bool isCollected = false;
     private bool canGrab = true;
     private bool canMove = true;
@@ -44,10 +46,6 @@ public class Observee : MonoBehaviour
         eventsOnDisplay.Invoke();
     }
 
-    public void appearOnWorkStation()
-    {
-
-    }
 
     public bool IsCollected()
     {

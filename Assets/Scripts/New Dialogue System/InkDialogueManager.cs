@@ -218,7 +218,6 @@ public class InkDialogueManager : MonoBehaviour
         {
             yield return new WaitForSeconds(autoPlayingTimeInterval);
             ContinueStory();
-            SkipChoice();
         }
     }
 
@@ -390,17 +389,13 @@ public class InkDialogueManager : MonoBehaviour
 
     public void ContinueStory()
     {
-        SkipChoice();
-        //UnityEngine.Debug.Log("continue story");
+        TrySkipChoice();
 
-        // might remove this later. This check if there're still observees uncollected
-        if (observeeManager != null)
+        //UnityEngine.Debug.Log("InkDialogueManager: continue story is called. ");
+        if (isTyping)
         {
-            if (observeeManager.CheckFinishCollecting() == false)
-            {
-                return;
-            }
-            observeeManager.ClearUncollected();
+            UnityEngine.Debug.Log("still typing, can't continue story. 这时候任何操作都不算数。");
+            return;
         }
 
         // if there is a solving going on or other reason causing the next line can't continue, report and return
@@ -410,14 +405,19 @@ public class InkDialogueManager : MonoBehaviour
             return;
         }
 
-        if (isTyping)
-        {
-            UnityEngine.Debug.Log("still typing, can't continue story. ");
-            return;
-        }
-
         if (currentStory.canContinue)
         {
+
+            // might remove this later. This check if there're still observees uncollected
+            if (observeeManager != null)
+            {
+                if (observeeManager.CheckFinishCollecting() == false)
+                {
+                    return;
+                }
+                observeeManager.ClearUncollected();
+            }
+
             if (typingLinesCoroutine != null)
             {
                 StopCoroutine(typingLinesCoroutine);
@@ -500,21 +500,23 @@ public class InkDialogueManager : MonoBehaviour
             //choiceType = "BUTTON";
             //break;
             case "OBSERVEE":
-                handleObserveeChoices();
+                drawingSystem.HandleObserveeChoices();
                 canSkipChoice = false;
                 choiceType = "BUTTON";
                 break;
             case "OBSERVEE_CANSKIP":
-                handleObserveeChoices();
+                drawingSystem.HandleObserveeChoices();
                 canSkipChoice = true;
                 choiceType = "BUTTON";
                 break;
+            /**
             case "DRAW_RESULT":
                 canSkipChoice = true;
                 DrawResultManager.SetCanShow(true);
                 DrawResultManager.SetDrawingResultIndex(drawResultIndex);
                 choiceType = "BUTTON";
                 break;
+            */
             case "AUTO":
                 canSkipChoice = true;
                 choiceType = "BUTTON";
@@ -723,12 +725,6 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
-    private void handleObserveeChoices()
-    {
-        drawingSubmitter.SetCanSubmit(true);
-
-    }
-
 
 
     private void hideChoices()
@@ -780,19 +776,27 @@ public class InkDialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
-
         UnityEngine.Debug.Log("making choice at index: " + choiceIndex);
+        
+        // in case this is a 'CANSKIP' choice
+        // when a choice is already made
+        // then won't be skipping to the default [0] choice again
+        canSkipChoice=false; 
+
         currentStory.ChooseChoiceIndex(choiceIndex);
+
         ContinueStory();
     }
 
 
-    public void SkipChoice()
+    public void TrySkipChoice()
     {
         if (canSkipChoice)
         {
+            // the following actually skips choice
             canSkipChoice = false;
-            MakeChoice(0);
+            canContinueToNextLine=true;
+            currentStory.ChooseChoiceIndex(0);
             if (DrawMode)
             {
                 drawingSubmitter.SetCanSubmit(false);

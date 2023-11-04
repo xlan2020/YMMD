@@ -44,7 +44,7 @@ INCLUDE DAY1-2_global.ink
 系统：未来，画家可能会持有多种灵感。选择呈现合适的灵感，会改变画画的结果，也决定了画家对绘画对象的态度，故事因此发生改变。#portrait: 8-2_norm2
 系统：在需要的时机把灵感呈现在<color=magenta>画布</color>上，才能让画画进行下去。
 系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！#choiceType: OBSERVEE
-+[ ]->mama_appears
++[提交]->mama_appears
 ==mama_appears==
 我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）#drawingSystem: addBinaryVal_10
 老板娘：给您放桌上了！#profile: mama_satisfied  
@@ -67,7 +67,7 @@ INCLUDE DAY1-2_global.ink
 8-2：……我去！一没留神，你怎么都给炫完了？#portrait: 8-2_surprised
 我：我很饿……嗝。嗯，现在饱了。#profile: painter_sideSweat
 我：（在接单的时候吃饭，可真是不专业的表现。现在开始专注在对象上吧，应该从哪开始呢？）#choiceType: OBSERVEE
-+[ ]->profession_mathematician
++[提交：大师]->profession_mathematician
 
 ==profession_mathematician==
 我：你是做什么职业的啊，“大师”？#profile: painter_norm #drawingSystem: addBinaryVal_20
@@ -81,9 +81,22 @@ INCLUDE DAY1-2_global.ink
 我：而且你这个1和0的说法，听着更像是数字命理学之类的吧？
 8-2：嗯，嗯，你就是这么理解的吗？浅了啊，画家。#portrait: 8-2_laugh
 8-2：数字可是很重要的！看看你头顶上，那里可是有个很显眼、很重要的数字。#portrait: 8-2_smile2
-【操作】：【observee-钱出现。这个可以skip】
 我：（很显眼、很重要的数字，是……）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
-+[ ]
++[ ]->where_is_number
++[ ]->found_number
+
+==where_is_number==
+我：哪里有数字？别逗了。#profile: painter_noComment 
+8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile
+我：嗯？{money}，这个……这个是……#profile: painter_stunned #bgm:pause
+我：这是我所有财产的金额！#profile: painter_frightened #portrait: 8-2_laugh #bgm:戏谑_0.5
+我：等等！你怎么知道的？#profile: painter_surprised
+8-2：我说过，我是个数学家。#portrait: 8-2_mysterious
+我：你这人还真有点邪门儿。#profile: painter_happy
+我：（不过，多半是刚才翻包的时候瞧见的吧。现在的骗术可真是防不胜防。）#profile: painter_norm #bgm:日常_3 
+->value_number
+
+==found_number==
 我：头顶上的数字……{money}？
 我：等等！你怎么能看到我头顶上……这个是我的、我所有财产的金额！#bgm:戏谑_0.5 #profile: painter_frightened #portrait: 8-2_smile #drawingSystem: addBinaryVal_30
 8-2：哦~原来你的所有财产是这个数字啊。#portrait: 8-2_laugh
@@ -92,16 +105,6 @@ INCLUDE DAY1-2_global.ink
 我：……………………
 我：你这个骗子！#profile: painter_mad 
 8-2：不，我只是个数学家。#portrait: 8-2_mysterious #bgm:日常_3
-->value_number
-+[ ] 
-我：哪里有数字？别逗了。#profile: painter_noComment 
-8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile
-我：嗯？{money}，这个……这个是……#profile: painter_stunned #bgm:pause
-我：这是我所有财产的金额！#profile: painter_frightened #portrait: 8-2_laugh #bgm:戏谑_0.5
-我：等等！你怎么知道的？#profile: painter_surprised
-8-2：我说过，我是个数学家。#portrait: 8-2_mysterious
-我：你这人还真有点邪门儿。#profile: painter_happy
-我：（不过，多半是刚才翻包的时候瞧见的吧。现在的骗术可真是防不胜防。）#profile: painter_norm #bgm:日常_3
 ->value_number
 
 ==value_number==
@@ -112,15 +115,14 @@ INCLUDE DAY1-2_global.ink
 8-2：——所谓<color=magenta>心理价值</color>。把那玩意置换掉了，你钱包里也就会多出这个数。
 8-2：但就这么一个数，人也还是看不清楚。#portrait: 8-2_thinking
 8-2：所以呢，我的置换成功学课程也就应运而生。哈哈，你刚问我教那老爷子什么，这么说吧，我兼职做的是讲师。#portrait: 8-2_smile2
-我：（果然，不出我所料。）……你是个兼职骗子。#profile: painter_side #portrait: 8-2_laugh #showObservee: evilSmile
-【操作】：【收集observee-8-2脸上的坏笑。说他是骗子的时候，他还笑了！怎么有这么厚颜无耻的人？】
+我：（果然，不出我所料。）……你是个兼职骗子。#profile: painter_side #portrait: 8-2_laugh 
+我：（说他是骗子的时候，他还笑了！怎么有这么厚颜无耻的人？）#showObservee: evilSmile
 我：你居然还好意思说自己研究真理……天，你真应该向老板娘道歉。
 8-2：瞧你说得多难听，这怎么能叫骗人呢？#portrait: 8-2_norm
 8-2：多少人都不了解自己想要什么，能失去的是什么……换来换去，换得一场空。#portrait: 8-2_thinking
 8-2：我只是在帮助大家掌控自我罢了。
 8-2：说到这了，画家，咱们打开天窗说亮话。我能感觉到——你身上是不是也发生过类似的事？#portrait: 8-2_deepLove
 8-2：如果能更了解自己的话，就不会闹得一无所有，还一无所知了。#showObservee: deepLove
-【操作】：【收集observee-深沉的、仿佛闪烁着泪光的眼睛，仿佛能轻易看穿我内心的想法、我的过去，却还保持着一种一视同仁的悲悯！】
 我：……………………#profile: painter_side
 我：（别说，今天睡醒的事我还真是想不明白，这家伙或许能知道点什么。）#profile: painter_sideSweat
 我：（我该相信他的话吗？）#profile: painter_norm
@@ -147,16 +149,6 @@ INCLUDE DAY1-2_global.ink
 我：真的吗？！#profile: painter_surprised
 8-2：哎呀，我这眼神不太好。你能让我凑近点看看吗？#portrait: 8-2_chuckle
 我：（也是，他戴着个大<color=magenta>眼镜</color>，估计是近视吧？）#profile: painter_norm #showObservee: glasses #choiceType: OBSERVEE_CANSKIP
-+[ ]
-我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned #drawingSystem: addBinaryVal_-20
-我：（这根本就是一副装饰用的平光镜吧？）#profile: painter_noComment
-我：（仔细一看，这家伙的小眼睛闪着精光呢！哪里是眼神不好的样子？）#profile: painter_norm
-我：（这么重要的东西，不能轻易交给他。我自己能研究出来。）
-8-2：怎么，不打算给我吗？#portrait: 8-2_norm2
-8-2：好吧、好吧。我就知道画家还不相信我，哎呀，看来数值很难涨啊。#portrait: 8-2_thinking
-8-2：现在应该是0.3吗？还是0.2呢？不，应该没有那么低，0.25吧……#portrait: 8-2_thinking2
-我：（这个怪人，真是搞不明白了……）你在嘟囔什么？#profile: painter_side
-->owning_value
 +[递给他]
 我：（这么小的东西，离得太远也看不清楚。我太需要知道这是什么了。）#profile: painter_norm #drawingSystem: addBinaryVal_20
 我：喏，您给看看，能认出这是什么吗？*递出鳞片*#profile: painter_side
@@ -176,6 +168,16 @@ INCLUDE DAY1-2_global.ink
 8-2：*自言自语*难不成我真的很讨人嫌？好吧，这下要从0.5跌到0.2了，不，甚至更低……#portrait: 8-2_thinking2 
 8-2：不对不对，0.15？#portrait: 8-2_raiseEyebrowLookAway
 我：（这个混蛋，绝对不值得信任……）你在嘟囔什么？#profile: painter_side #drawingSystem: addBinaryVal_-40
+->owning_value
++[观察眼镜]
+我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned #drawingSystem: addBinaryVal_-20
+我：（这根本就是一副装饰用的平光镜吧？）#profile: painter_noComment
+我：（仔细一看，这家伙的小眼睛闪着精光呢！哪里是眼神不好的样子？）#profile: painter_norm
+我：（这么重要的东西，不能轻易交给他。我自己能研究出来。）
+8-2：怎么，不打算给我吗？#portrait: 8-2_norm2
+8-2：好吧、好吧。我就知道画家还不相信我，哎呀，看来数值很难涨啊。#portrait: 8-2_thinking
+8-2：现在应该是0.3吗？还是0.2呢？不，应该没有那么低，0.25吧……#portrait: 8-2_thinking2
+我：（这个怪人，真是搞不明白了……）你在嘟囔什么？#profile: painter_side
 ->owning_value
 
 ==reveal_liar==

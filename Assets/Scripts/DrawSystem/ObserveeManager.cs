@@ -13,6 +13,9 @@ public class ObserveeManager : MonoBehaviour
 
     private Animator descriptionAnimator;
     public MouseCursor cursor;
+    [Header("Observee Speak Text")]
+    public Animator speakTextAnimator;
+    public Text speakTextBox;
 
     private Dictionary<string, Observee> observeeDict;
 
@@ -70,18 +73,57 @@ public class ObserveeManager : MonoBehaviour
         observeeDict[name].SetHasAppeared(true);
     }
 
-    public void DissolveCollected()
-    {
-        DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
-        dissolveEffect.StartDissolve(2f);
-        List<GameObject> objects = new List<GameObject>();
+    /**
+    When it's ready to submit drawing, this adds the Drag/Drop callbacks to observee in order to display speak text. 
+    */
+    public void UpdateCollectedObserveeWhenCanSubmit(){
         foreach (Observee o in currCollected)
         {
-            objects.Add(o.gameObject);
+            // add show text to drag callback
+            o.GetComponent<DragDrop>().dragCallback += delegate{ShowObserveeSpeakText(o.submitSpeak);};
+
+            // add hide text to drop callback
+            o.GetComponent<DragDrop>().dropCallback += delegate{HideObserveeSpeakText();};
+        }
+    }
+
+    public void ShowObserveeSpeakText(string text){
+        speakTextBox.text=text;
+        speakTextAnimator.SetBool("show", true);
+    }
+
+    public void HideObserveeSpeakText(){
+        speakTextAnimator.SetBool("show", false);
+    }
+
+    public void DissolveCollected()
+    {
+        UnityEngine.Debug.Log("dissolve collected observee");
+        List<GameObject> dissolveObjects = new List<GameObject>();
+        List<GameObject> directDestroyObjects = new List<GameObject>();
+        foreach (Observee o in currCollected)
+        {
+            if (o.canDissolve){
+                dissolveObjects.Add(o.gameObject);
+            } else {
+                directDestroyObjects.Add(o.gameObject);
+            }
             o.SetCanGrab(false);
         }
-        dissolveEffect.SetDestroyObjects(objects);
+        // clear list for manager to know
         currCollected.Clear();
+
+        // handle cases that can't be dissolved
+        foreach(GameObject o in directDestroyObjects){
+            GameObject.Destroy(o);
+        }
+        
+        // dissolve if you can
+        if (dissolveObjects.Count > 0){
+            DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
+            dissolveEffect.StartDissolve(2f);
+            dissolveEffect.SetDestroyObjects(dissolveObjects);
+        }
     }
 
 
@@ -142,4 +184,6 @@ public class ObserveeManager : MonoBehaviour
     {
         cursor.SetAnimationBool(name, b);
     }
+
+
 }

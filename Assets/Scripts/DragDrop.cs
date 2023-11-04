@@ -5,7 +5,9 @@ using UnityEngine;
 public class DragDrop : MonoBehaviour
 {
     public delegate void DropDelegate(DragDrop dd);
+    public delegate void DragDelegate(DragDrop dd);
     public DropDelegate dropCallback;
+    public DragDelegate dragCallback;
 
 
     private Vector3 mOffset;
@@ -32,7 +34,15 @@ public class DragDrop : MonoBehaviour
         // start dragging
         _onDrag = true;
         _onDrop = false;
+
         // UnityEngine.Debug.Log("Drag!");
+
+        // drag callback
+        if (dragCallback != null)
+        {
+            dragCallback(this);
+        }
+
         mOffset = gameObject.transform.position - GetMouseAsWorldPoint();
 
         if (DragAboveMask)

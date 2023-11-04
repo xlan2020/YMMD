@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrawingSystem : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class DrawingSystem : MonoBehaviour
     [SerializeField] ArtMaterialVisualizer artMaterialVisualizer;
     [SerializeField] StartDrawingVisualizer startDrawingVisualizer;
     [SerializeField] DrawResultVisualizer drawResultVisualizer;
+    [SerializeField] SubmitDrawing drawingSubmitter;
+    [SerializeField] ObserveeManager observeeManager;
+    [SerializeField] Scrollbar binaryValDisplay;
     
     [Header("Client and Game")]
     public ClientSpecialScriptableObject clientSpecial;
@@ -28,6 +32,7 @@ public class DrawingSystem : MonoBehaviour
         uIDraw_Inventory.ShowApplyButton(false);
         startDrawingVisualizer.ShowSelf(false);
         drawResultVisualizer.ShowSelf(false);
+        binaryValDisplay.value=binaryVal*0.01f;
     }
 
     public void SetDrawItem(Item item)
@@ -147,6 +152,11 @@ public class DrawingSystem : MonoBehaviour
         }
     }
 
+    public void HandleObserveeChoices(){
+        drawingSubmitter.SetCanSubmit(true);
+        observeeManager.UpdateCollectedObserveeWhenCanSubmit();
+    }
+    
     public void SubmitToDrawing(Observee obsv)
     {
         // make choice in dialogue
@@ -262,6 +272,8 @@ public class DrawingSystem : MonoBehaviour
     private void addBinaryVal(int num){
         binaryVal+=num;
         UnityEngine.Debug.Log("binary val changed! now is: " + binaryVal);
+        binaryValDisplay.value=binaryVal*0.01f;
+        UnityEngine.Debug.Log("binary val display value is: " + binaryValDisplay.value);
     }
 
     public int GetBinaryVal(){

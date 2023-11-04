@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
         }
         if (uiDraw_Inventory != null)
         {
+            uiDraw_Inventory.gameObject.SetActive(true);
             uiDraw_Inventory.SetInventory(inventory);
         }
 

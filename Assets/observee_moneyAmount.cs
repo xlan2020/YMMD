@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class observee_moneyAmount : MonoBehaviour
 {
-    public GameObject moneyText;
+    public Text realMoneyText;
+    public Text observeeMoneyText;
     public void DuplicateMoneyText()
     {
-        GameObject obj = Instantiate(moneyText, this.gameObject.transform);
-        obj.GetComponent<Text>().color = Color.yellow;
+        observeeMoneyText.text=realMoneyText.text;
     }
 }

@@ -19,9 +19,13 @@ public class SubmitDrawing : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
+        if (!canSubmit){
+            return;
+        }
+        
         GameObject g = other.gameObject;
         // Debug.Log("something stays in the submitted drawing");
-        if (canSubmit && g.GetComponent<DragDrop>().IsOnDrop())
+        if (g.GetComponent<DragDrop>().IsOnDrop())
         {
             if (g.CompareTag("Observee"))
             {
@@ -31,8 +35,10 @@ public class SubmitDrawing : MonoBehaviour
                 Observee obsv = g.GetComponent<Observee>();
                 drawingSystem.SubmitToDrawing(obsv);
 
-                // visual change
+                // remove observee
                 observeeManager.DissolveCollected();
+
+                // visual change
                 cursor.SetAnimationTrigger("default");
             }
             /**
@@ -48,7 +54,7 @@ public class SubmitDrawing : MonoBehaviour
                 cursor.SetAnimationTrigger("default");
             }
             */
-
+            /**
             if (g.CompareTag("DrawItem"))
             {
                 DrawItemObject drawItem = g.GetComponent<DrawItemObject>();
@@ -66,6 +72,7 @@ public class SubmitDrawing : MonoBehaviour
 
                 // check if all material is selected and ready
             }
+            */
         }
     }
 
