@@ -346,5 +346,4 @@ INCLUDE DAY1-2_global.ink
 我：好吧，真是很有帮助的答案。#portrait: 8-2_smile
 我：不过，你的画也画完了。
 系统：作画完成了。#drawingSystem: showDrawResult #profile: none #bgm: fade_0.5_0
-
 ->DONE

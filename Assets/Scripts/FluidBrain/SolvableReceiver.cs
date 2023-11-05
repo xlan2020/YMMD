@@ -161,7 +161,9 @@ public class SolvableReceiver : MonoBehaviour
         {
             foreach (SolvableReceiver s in ClearSound)
             {
-                s.GetComponent<AudioSource>().Stop();
+                if (s!=null){
+                    s.GetComponent<AudioSource>().Stop();
+                }
             }
         }
     }

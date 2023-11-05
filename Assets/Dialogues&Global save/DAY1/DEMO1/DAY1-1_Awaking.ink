@@ -17,5 +17,4 @@ INCLUDE ../../global.ink
 我：……咦，旁边这亮晶晶的是什么？奇怪……#bgm:柴柴 #profile: painter_surprised #event: findScale
 我：这是……鳞片？#unlockNote: 2_2 #profile: painter_stunned
 我：………………鳞片？#loadScene:DAY1-2_Map
-
 -> END
