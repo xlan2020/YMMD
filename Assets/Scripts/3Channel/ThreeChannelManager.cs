@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class ThreeChannelManager : MonoBehaviour
 {
@@ -22,6 +21,9 @@ public class ThreeChannelManager : MonoBehaviour
     private Queue<ThreeChannelLineUnit> lineScript;
     private ThreeChannelLineUnit currLineUnit;
     public Animator ThreeScreensAnimator;
+
+    public LoadingScene loadingScene;
+    public string nextSceneName;
 
 
     void Awake()
@@ -114,7 +116,7 @@ public class ThreeChannelManager : MonoBehaviour
             UnityEngine.Debug.Log("no more line unit! This part is done. ");
             ThreeScreensAnimator.SetTrigger("end");
             GetComponent<GlitchController>().SetAuto(false);
-            SceneManager.LoadScene(1);
+            loadingScene.LoadScene(nextSceneName);
         }
     }
 

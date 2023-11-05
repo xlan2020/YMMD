@@ -6,7 +6,6 @@ using UnityEngine.UI;
 // using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using System;
 using MH.Mumbler;
 public class InkDialogueManager : MonoBehaviour
@@ -15,6 +14,10 @@ public class InkDialogueManager : MonoBehaviour
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
     [SerializeField] private TextAsset loadBookJSON;
+   
+    [Header("Game Essentials")]
+    public GameManager gameManager; 
+    [SerializeField] LoadingScene loadingScene;
 
     [Header("Params")]
     public float typingSpeed = 0.04f;
@@ -63,7 +66,6 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] private SceneEventManager sceneEventManager;
     [SerializeField] private MapPlayer mapPlayer;
     [SerializeField] private InteractableItemManager interactableItemManager;
-    public GameManager gameManager;
 
     //tags
     private const string SPEAKER_TAG = "speaker";
@@ -632,8 +634,6 @@ public class InkDialogueManager : MonoBehaviour
         //dialoguePanel.gameObject.SetActive(false);
         //dialogueText.text = "";
 
-        //SceneManager.LoadScene(1);
-
     }
 
 
@@ -698,7 +698,7 @@ public class InkDialogueManager : MonoBehaviour
                     speakerProfile.ChangeProfile(tagValue);
                     break;
                 case LOAD_SCENE_TAG:
-                    SceneManager.LoadScene(tagValue);
+                    loadingScene.LoadScene(tagValue);
                     break;
                 case ADD_MONEY_TAG:
                     gameManager.AddMoney(float.Parse(tagValue));

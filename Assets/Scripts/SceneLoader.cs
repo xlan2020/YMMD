@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/**
+legacy
+*/
 public class SceneLoader : MonoBehaviour
 {
     public float transitionTime = 1f;

@@ -1,4 +1,3 @@
-INCLUDE ../../global.ink
 INCLUDE DAY1-2_global.ink
 我：………………#profile: painter_side #portrait: 8-2_norm
 8-2：………………#portrait: 8-2_raiseEyebrow #profile: none
@@ -80,8 +79,8 @@ INCLUDE DAY1-2_global.ink
 我：（哈？这比我每天探究艺术的真谛还要离谱呢。）……所以，是自封的。#profile: painter_norm
 我：而且你这个1和0的说法，听着更像是数字命理学之类的吧？
 8-2：嗯，嗯，你就是这么理解的吗？浅了啊，画家。#portrait: 8-2_laugh
-8-2：数字可是很重要的！看看你头顶上，那里可是有个很显眼、很重要的数字。#portrait: 8-2_smile2
-我：（很显眼、很重要的数字，是……）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
+8-2：数字可是很重要的！看看你头顶上，对，就在正中间，那里可是有个很显眼、很重要的数字。#portrait: 8-2_smile2
+我：（很显眼、很重要的数字……嗯？“头顶”上难道是指……）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
 +[ ]->where_is_number
 +[ ]->found_number
 
@@ -185,7 +184,7 @@ INCLUDE DAY1-2_global.ink
 我：先是装作认识我的样子，然后给我点小钱博取我的信任，还让我画画，哈，我就知道没什么人想要我的画的，又是用的这么廉价的画材。#portrait: 8-2_norm2 #bgm:悬疑_1
 我：然后，你利用老板娘给自己立了个“大师”的人设，让我主动问你，免得一上来就推销让人怀疑……天，老板娘不会是你的托儿吧？
 我：然后你东拉西扯，故意拿“数学家”和“画家”类比，跟我套近乎。
-我：早在你动我包的时候就瞄到我有多少钱了，偷偷记住了这个数，过了很久冷不丁说出来，显得自己很神通。
+我：早在我打开包找画材的时候就瞄到我有多少钱了，偷偷记住了这个数，过了很久冷不丁说出来，显得自己很神通。
 我：然后就该卖课了吧？如果我说我没钱买课，你是不是该推荐个熟人给我放贷了？#portrait: 8-2_norm
 我：行，现在的骗术是挺厉害的，我算是服了。不过大哥，下次还是别做这行了，迟早报应！#profile: painter_angry
 8-2：真是不错的推理。虽然从最开始就错了，不过画家，你的智慧又长进了。#portrait: 8-2_smile2 
@@ -234,7 +233,7 @@ INCLUDE DAY1-2_global.ink
 我：指纹？……呃，我知道这听起来怪怪的，但就像侦探探案一样，总有办法辨别这东西跟谁比较久。
 8-2：嗯、嗯，你想说的，是不是<color=magenta>痕迹</color>这个词？#portrait: 8-2_smile2
 我：痕迹……对、痕迹！
-8-2：*自言自语*痕迹学家就快要到这个镇上了吧？这个词在置换里是一个很重要的概念，很接近了……不过，这还不是我的答案。#portrait: 8-2_thinking2
+8-2：*自言自语*痕迹学家就快要回到这个镇上了吧？这个词在置换里是一个很重要的概念，很接近了……不过，这还不是我的答案。#portrait: 8-2_thinking2
 ->owning_continue
 
 ==owning_continue==

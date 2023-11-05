@@ -1,4 +1,4 @@
-INCLUDE ../../global.ink
+INCLUDE DAY1-2_global.ink
 我：...So here I'm in this empty room. Nothing but a table and a mattress. #bgm: 房间 
 我：It doesn't feel so good to call somewhere like this home. 
 我：Everything has been displaced... but this mysterious fish scale. Oh, great, now I've still got 8-2' overstocking shitty book with me. 
