@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BGMPlayer : MonoBehaviour
 {
+    // format: fade_duration_volume
     [SerializeField] private AudioClip 日常;
     [SerializeField] private AudioClip 黄昏;
     [SerializeField] private AudioClip 戏谑;

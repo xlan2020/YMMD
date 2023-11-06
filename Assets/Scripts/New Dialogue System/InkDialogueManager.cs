@@ -83,6 +83,7 @@ public class InkDialogueManager : MonoBehaviour
     private const string ADD_MONEY_TAG = "addMoney";
     private const string TRIGGER_EVENT_TAG = "event";
     private const string DRAWING_SYSTEM_TAG = "drawingSystem";
+    private const string TYPING_SPEED_TAG = "typingSpeed";
 
 
     private Story currentStory;
@@ -690,6 +691,14 @@ public class InkDialogueManager : MonoBehaviour
                 case DRAWING_SYSTEM_TAG:
                     handleDrawingSystemTag(tagValue);
                     break;
+                case TYPING_SPEED_TAG:
+                    if (tagValue == "default"){
+                        // this might change, after this becomes a const
+                        typingSpeed = 0.02f;
+                    }else{
+                        typingSpeed=float.Parse(tagValue);
+                    }
+                    break;
                 default:
                     Debug.LogWarning("Unexpected tag from InkJSON");
                     break;
@@ -713,6 +722,9 @@ public class InkDialogueManager : MonoBehaviour
                 break;
             case "next":
                 canContinueToNextLine=false;
+                solvableManager.SetCanSolve(true);
+                break;
+            case "nextCanContinue":
                 solvableManager.SetCanSolve(true);
                 break;
             default:

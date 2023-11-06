@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /**
 The content in the receiver will not be hidden anymore if a solvable enters. 
@@ -15,6 +16,7 @@ public class SolvableReceiver : MonoBehaviour
     public SolvableReceiver[] ClearSound;
     public GameObject[] ClearImage;
     public GameObject[] ClearObjects;
+    public UnityEvent events;
     public SolvableReceiver[] NextReceivers;
 
     public bool ImmediateTrigger = false;
@@ -25,16 +27,20 @@ public class SolvableReceiver : MonoBehaviour
     public bool HasSecondCollider = false;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Awake(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
+        animator = gameObject.GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
+    }
+
+    void Start()
+    {
         if (collider != null)
         {
             collider.enabled = false;
         }
-        animator = gameObject.GetComponent<Animator>();
+
         if (animator == null)
         {
             if (spriteRenderer != null)
@@ -46,7 +52,6 @@ public class SolvableReceiver : MonoBehaviour
         {
             animator.SetBool("hidden", true);
         }
-        source = GetComponent<AudioSource>();
 
     }
 
@@ -90,6 +95,7 @@ public class SolvableReceiver : MonoBehaviour
         ClearOtherSound();
         ClearOtherImages();
         ClearOtherObjects();
+        events.Invoke();
 
         Show();
         ShowAdditionalReceivers();
@@ -195,6 +201,7 @@ public class SolvableReceiver : MonoBehaviour
 
     public void EnableNextReceiver()
     {
+        UnityEngine.Debug.Log("try to enable next receiver");
         if (NextReceivers == null)
         {
             UnityEngine.Debug.Log("doesn't have next receiver.");

@@ -1,4 +1,5 @@
 INCLUDE DAY1-2_global.ink
+VAR drinkTime = 0
 我：（哎，真是家徒四壁啊，晚上回到这种地方，果然还是开心不起来。）
  #bgm: 房间 
 我：（太空了。总觉得少了点什么，而且不止是家具这么简单。但是少了点什么呢？）
@@ -40,22 +41,69 @@ INCLUDE DAY1-2_global.ink
 鱼？：这样还不够吗？我都变成鱼肉了呀！你把我的麟刮掉，但是还不准备<color=purple>吃</color>我吗？
 鱼？：不是吧，你的钱不够买一条鱼吗？那就买一片麟吧。
 鱼鳞？：每天泡水，美容养生，强身健体，补肾壮阳，药效要到30天后才会失效哦！
-鱼鳞？：三十天的时间，够你攒够<color=purple>下一次</color>的钱了吧？
--> buy_me
+鱼鳞？：三十天的时间，够你攒够<color=purple>下一次</color>的钱了吧？#solve: nextCanContinue
+-> buy_me_scale
 
-===buy_me===
-鱼鳞：买我。
+===buy_me_scale===
+鱼鳞：买我。#choiceType: AUTO
++[无操作] -> buy_me_fish
++[真的买了] -> bought 
+
+==buy_me_fish===
 鱼：买我。 #choiceType: AUTO
-+[无操作] -> buy_me 
++[无操作] -> buy_me_scale
 +[真的买了] -> bought 
 
 ===bought===
-我：我，我买……啊，咦？
-：【左边的鱼变成传单。】
-我：该死的，头怎么这么晕。原来是传单啊……喉咙好痛。
-我：水……喝点，再……冷静一点。
-我：这白开水怎么没味啊？（不是）
+我：我、我买……啊？#bgm: fade_5_0 #addMoney: -30
+我：鳞片，鳞片还在手上。我的钱……少了。我、我买了什么东西？
+我：我跟谁买的？鱼呢？哈哈……真是疯了。我的房间里怎么会跑进来一条鱼向我推销自己？
+我：我刚才干什么了？
++[画了个美女] 
+->something_wrong
++[做了一场梦]
+->something_wrong
++[喝了怪东西]
+->something_wrong
 
+==something_wrong==
+我：等等，好像有哪里不对……是多了什么？ #solve: next
+我：房间里本来没有这杯水的。
+我：这是……<color=magenta>置换</color>！我刚才置换了。#bgm: 紧张 #bgm: fade_2_1
+我：一杯水。哈哈……我、我用刚赚来的钱，就买了这么一杯水？
+我：我该做什么，把它供起来，把它喝了？喉咙好痛、头好晕……但是——
+我：我好像知道自己为什么需要这杯水了。
+画家：我们应该再亲密一点。
+画家：我对你的感受还不够深刻。
+画家：只凭浅薄的视觉，怎么可能创作出好的画作？
+画家：聆听、触摸、轻嗅、品尝……
+画家：新鲜的鱼生尝起来像舌头一样。
+画家：但这对我来说太昂贵了。
+画家：尝一尝<color=purple>鳞片的味道</color>…… #bgm: fade_4_0 #solve: next
+我：……就当是见到你了。 #bgm: 柴柴 #bgm: fade_2_1
+->scale_in_water
+
+==scale_in_water==
+ ：……
+ ：………………
+ ：鳞片水泡好了。#choiceType: BUTTON
++ [喝一口] ->water_lessen
+
+
+==water_lessen==
+ ：鳞片水少了一点。 #event: drinkWater
+ { drinkTime: 
+    - 6:
+        ->done_drinking
+    - else: 
+        ~ drinkTime++
+        +[喝一口]
+        ->water_lessen
+}
+
+==done_drinking==
+ ：杯子空了。
+我：我的对象是一条美人鱼。#typingSpeed: 0.5
 ->DONE
 
 （鼠标被迫移动打开背包）
