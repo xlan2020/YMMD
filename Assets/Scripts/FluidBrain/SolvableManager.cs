@@ -52,7 +52,6 @@ public class SolvableManager : MonoBehaviour
         cursor.SetInFluidBrain(true);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // update next solvable

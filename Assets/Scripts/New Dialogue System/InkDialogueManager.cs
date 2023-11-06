@@ -58,7 +58,6 @@ public class InkDialogueManager : MonoBehaviour
     private string choiceType = "BUTTON";
     private int drawResultIndex;
     private bool canSkipChoice = false;
-    private bool startSolving = false;
 
     [Header("Other Functions")]
     [SerializeField] private SolvableManager solvableManager;
@@ -237,6 +236,7 @@ public class InkDialogueManager : MonoBehaviour
         for (int i = 0; i < 999; i++)
         { // keep skipping, maximam 999 to avoid infinite loop
             //UnityEngine.Debug.Log("try to fast skip one line");
+            handleAfterLineComplete();
             ContinueStory();
             yield return new WaitForSeconds(0.2f);
         }
@@ -384,12 +384,6 @@ public class InkDialogueManager : MonoBehaviour
         handleChoiceType();
         // display observees and drawings if there is one
         displayVisualsAfterType();
-
-        if (startSolving)
-        {
-            canContinueToNextLine = false;
-            startSolving = false;
-        }
         //voice.StopTalking();
         if (randomSpeak)
         {
@@ -523,21 +517,8 @@ public class InkDialogueManager : MonoBehaviour
                 canSkipChoice = true;
                 choiceType = "BUTTON";
                 break;
-            /**
-            case "DRAW_RESULT":
-                canSkipChoice = true;
-                DrawResultManager.SetCanShow(true);
-                DrawResultManager.SetDrawingResultIndex(drawResultIndex);
-                choiceType = "BUTTON";
-                break;
-            */
             case "AUTO":
                 canSkipChoice = true;
-                choiceType = "BUTTON";
-                break;
-            case "SOLVE_OR_LOOP":
-                canSkipChoice = true;
-                solvableManager.SetSolveToBeChoice(1);
                 choiceType = "BUTTON";
                 break;
             default:
@@ -731,8 +712,8 @@ public class InkDialogueManager : MonoBehaviour
                 solvableManager.SetCanSolve(false);
                 break;
             case "next":
+                canContinueToNextLine=false;
                 solvableManager.SetCanSolve(true);
-                startSolving = true;
                 break;
             default:
                 break;

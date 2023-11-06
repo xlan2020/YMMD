@@ -1,47 +1,61 @@
 INCLUDE DAY1-2_global.ink
-我：...So here I'm in this empty room. Nothing but a table and a mattress. #bgm: 房间 
-我：It doesn't feel so good to call somewhere like this home. 
-我：Everything has been displaced... but this mysterious fish scale. Oh, great, now I've still got 8-2' overstocking shitty book with me. 
-我：So empty. As if something has been missing. It's not just the furniture but something more... complex and import. But what could that be? 
-我：Maybe-maybe 8-2 doesn't trick me this time. If a portrait of accuracy could be sufficient to displace something for money, then could I...
-我：...displace something back from the void, through another portrait of accuracy? 
-我：Maybe I can figure it out. Maybe I could recall what had happened on me. 
-我：Then I could escape from this hollow. 
-我：I'm a painter. The only way to figure out the truth is to - DRAW what has been missing! 
-我：So this is my subject. No matter how I see it it's nothing but a plain fish scale. How would it feels to have it in hand?  #bgm: 柴柴 #solve: next
-我：...strong, and...wet. How can it be? It has left the water for this long and it's still...
-我：I'm sure it's something important. I'd take a closer look. #solve: next
-我：...Wait, what was that glow? #solve: next
-我：I see... water. Water coming out from somewhere, traces damping my skin that almost tickles me. Itchy...! 
-我：So itchy that I want to scratch. I want to hold something firmly. This fish scale in my hand - #solve: next 
-我：Feel it - #solve: next 
-我：Ouch! That's sharper than I've... Where is it... Wait, what is that? #solve: next
-我：Where did my scale dropped... My precious...  #solve: next
-我：Here it is. 
-我：但是手脏了，好腥，是因为那一点血吗？总之擦掉吧。  #solve: next
-？？？：我已经准备好了呀，画家！
+我：（哎，真是家徒四壁啊，晚上回到这种地方，果然还是开心不起来。）
+ #bgm: 房间 
+我：（太空了。总觉得少了点什么，而且不止是家具这么简单。但是少了点什么呢？）
+我：（我是画家。我排解空虚、探究自我的唯一办法就是——）
++[画画！]
+->I_should_draw
++[不如多睡会儿]
+我：（梦里什么都有吧？）
+我：（……不对！我是画家，我排解空虚、探究自我的唯一办法就是——）
+->I_should_draw
++[喝点小饮料]
+我：（……喝一口饮料，大概还是能让自己稍稍平静下来吧。）
+ ：咕咚。
+我：（……不对！我是画家，我排解空虚、探究自我的唯一办法就是——）
+->I_should_draw
+
+==I_should_draw==
+我：画画！把缺失的一切再次创造出来。
+我：这就是我的对象——无论怎么看，都只是一枚鱼鳞。不过，摸起来是什么感觉呢？  #bgm: 柴柴 #solve: next
+我：坚硬的、潮湿的，这怎么可能？它已经离开水很久却还是这么湿润……
+我：我确定它是很重要的东西，我得凑近瞧瞧。#solve: next
+我：……等等，那闪光是什么？我要把它<color=green>捕捉</color>到画里。#solve: next
+我：我看到了……水。到处都是水。水迹濡湿我的皮肤，几乎把我挠痒了。好痒！
+我：太痒了，我对水过敏吗？我得挠挠、我得抓住一个更坚硬、更锐利的东西……抓住鱼鳞。 #solve: next 
+我：挠挠我自己—— #solve: next 
+我：啊！好痛，这比我想象的更尖利……我的鱼鳞呢？等等，那是什么……鱼？#solve: next
+我：我的鱼鳞掉到哪里去了？我的宝物，快快回到我的手上……#solve: next
+我：呵呵，在这儿呢。
+我：但是手脏了，好腥，是因为那一点血吗？总之擦掉吧。#solve: next 
+？？？：我已经准备好了呀，画家！#event: paintBlood
 我：什么？谁在说话? 
 鱼？：快<color=green>把</color><color=purple>我</color><color=green>剥</color><color=purple>掉</color>吧。快呀~ #solve: next 
 我：什么……？刚才那是—— 
-鱼鳞？：看到了吗？那么多一样的东西，哪个才是我？ #solve: next 
+鱼鳞？：看得到吗？那么多、那么多，货架上和我一模一样的东西无穷无尽——哪个才是我呀？ #solve: next 
 鱼鳞？：我对于画家来说，是特殊的吗？
 鱼？：要把我带回家吗？
-鱼？：一斤20元，不贵吧? #solve: next
-鱼？：咦，不打算吗。可是我都变成鱼肉了呀。你把我的麟刮掉，但是还不准备吃我吗？
+鱼？：一斤20元，不贵吧? 
+鱼？：是害怕我吗？这也正常，鱼总是会跳来跳去的。那就<color=purple>把我的鳍也摘掉</color>吧，这样我就游不动了。#solve: next
+鱼？：这样还不够吗？我都变成鱼肉了呀！你把我的麟刮掉，但是还不准备<color=purple>吃</color>我吗？
 鱼？：不是吧，你的钱不够买一条鱼吗？那就买一片麟吧。
 鱼鳞？：每天泡水，美容养生，强身健体，补肾壮阳，药效要到30天后才会失效哦！
-鱼鳞？：三十天的时间，够你攒够下一次的钱了吧 
+鱼鳞？：三十天的时间，够你攒够<color=purple>下一次</color>的钱了吧？
 -> buy_me
 
 ===buy_me===
 鱼鳞：买我。
-鱼：买我。 #choiceType: SOLVE_OR_LOOP
-+[ ] 
--> buy_me 
-+[ ] 
--> bought 
+鱼：买我。 #choiceType: AUTO
++[无操作] -> buy_me 
++[真的买了] -> bought 
 
 ===bought===
+我：我，我买……啊，咦？
+：【左边的鱼变成传单。】
+我：该死的，头怎么这么晕。原来是传单啊……喉咙好痛。
+我：水……喝点，再……冷静一点。
+我：这白开水怎么没味啊？（不是）
+
 ->DONE
 
 （鼠标被迫移动打开背包）
