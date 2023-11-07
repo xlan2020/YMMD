@@ -9,6 +9,7 @@ public struct NameColor
     public UnityEngine.Color color;
     public AudioClip voiceBlip;
 }
+
 [CreateAssetMenu(fileName = "NameStyleObject", menuName = "ScriptableObjects/nameStyle")]
 public class NameStyleScriptableObject : ScriptableObject
 {
