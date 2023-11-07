@@ -522,6 +522,9 @@ public class InkDialogueManager : MonoBehaviour
                 canSkipChoice = true;
                 choiceType = "BUTTON";
                 break;
+            case "PAUSE": 
+                choiceType = "BUTTON";
+                break;
             default:
                 break;
         }

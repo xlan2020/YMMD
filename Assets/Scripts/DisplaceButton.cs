@@ -11,6 +11,8 @@ public class DisplaceButton : MonoBehaviour
     private Button button;
     private bool interactive;
     [SerializeField] Animator displaceEffect;
+    [SerializeField] bool displaceOutFromDrawing = false;
+    [SerializeField] DisplaceFromDrawing displaceFromDrawing;
 
     void Start()
     {
@@ -21,7 +23,11 @@ public class DisplaceButton : MonoBehaviour
 
     private void DisplaceCurrentItem()
     {
-        gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
+        if(!displaceOutFromDrawing){
+            gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
+        }else{
+            displaceItemOutFromDrawing(); 
+        }
     }
 
     private void turnOnDisplaceEffect(){
@@ -39,5 +45,9 @@ public class DisplaceButton : MonoBehaviour
         {
             button.interactable = b;
         }
+    }
+
+    private void displaceItemOutFromDrawing(){
+        displaceFromDrawing.DisplaceWithCurrentInput();
     }
 }

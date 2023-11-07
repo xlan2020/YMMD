@@ -1,0 +1,13 @@
+INCLUDE DAY1-2_global.ink
+ ：画作完成了。#bgm: 房间 #profile: hide
+ 系统：这是画家近些天第一次完成自己的<color=magenta>创作</color>。
+ 系统：和给顾客的稿件不同，创作并不会带来金钱上的收益，却有机会成为对事物的<color=magenta>准确描绘</color>。
+ 系统：依据准确描绘的画作，画家可以凭空想象出世界上<color=magenta>不存在</color>的东西。
+ 系统：在这种情况下，只要有<color=magenta>等价的金钱</color>作为筹码，就可以把画作里的东西<color=magenta>置换</color>出来！
+ 系统：当然，置换并不会每一次都带给你想要的。金钱的限制、作画的偏差……这一切，都让置换的结果存在不确定性。
+ 系统：这是一场博弈和冒险。这么想来，是不是还挺浪漫的？
+ 系统：那么，现在就请画家试试看吧。
+我：虽然还完全不明白，但我直觉它是对我很重要的东西——一条美人鱼。……美人鱼？这个世界上存在这种东西吗？#profile: painter_side
+我：没什么好说的，我想要它。
+ ：#profile: hide #choiceType: PAUSE #event: showInput
+->DONE
