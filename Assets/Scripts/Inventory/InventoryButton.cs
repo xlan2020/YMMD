@@ -81,10 +81,11 @@ public class InventoryButton : MonoBehaviour
         if (showInventory)
         {
             animator.SetBool("hasNew", false);
+            uiInventory.HideDisplaceResultWindow();
         }
         else
         {
-            uiInventory.displaceResult.gameObject.SetActive(false);
+            uiInventory.HideDisplaceResultWindow();
         }
     }
 

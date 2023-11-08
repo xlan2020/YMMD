@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class UI_Inventory : MonoBehaviour
 {
     public static UI_Inventory instance { get; private set; }
@@ -21,9 +22,10 @@ public class UI_Inventory : MonoBehaviour
     [SerializeField] Text currentItemDescription;
 
     public DisplaceButton displaceButton;
-    public Image displacedItemImage;
-    public GameObject displaceResult;
-    [SerializeField] private Text displaceGainAmount;
+
+    public UI_DisplaceSuccess displaceSuccess;
+
+
 
     void Awake()
     {
@@ -39,7 +41,7 @@ public class UI_Inventory : MonoBehaviour
     }
     void Start()
     {
-        HideDisplaceResultWindow();
+        displaceSuccess.HideResultWindow();
     }
 
     public void SetInventory(Inventory inventory)
@@ -147,26 +149,21 @@ public class UI_Inventory : MonoBehaviour
         refreshSelectionUI();
     }
 
-    public void ShowDisplaceResultWindow(Item displacedItem)
+    public void ShowResultWindow_itemToMoney(Item displacedItem)
     {
-        displaceResult.gameObject.SetActive(true);
-        displacedItemImage.sprite = displacedItem.spriteImage;
-        if (displacedItem.value >= 0)
-        {
-            // if the money value is positive, than add the "+" sign to specify gain
-            displaceGainAmount.text = "+" + displacedItem.value;
-        }
-        else
-        {
-            // if less than 0, the "-" sign is already with the number
-            displaceGainAmount.text = displacedItem.value.ToString();
-        }
+        displaceSuccess.ShowResultWindow_itemToMoney(displacedItem);
+    }
+
+    public void ShowResultWindow_moneyToItem(Item item)
+    {
+        displaceSuccess.ShowResultWindow_moneyToItem(item);
     }
 
     public void HideDisplaceResultWindow()
     {
-        displaceResult.gameObject.SetActive(false);
+        displaceSuccess.HideResultWindow();
     }
+
 
 }
 

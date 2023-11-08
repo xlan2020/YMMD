@@ -26,14 +26,14 @@ public class DisplaceFromDrawing : MonoBehaviour
         }
 
         ItemScriptableObject item = getTargetItemWith(inputAmount);
+        
         if (item == null){
             UnityEngine.Debug.Log("money is not enough or target is empty!");
             // UI hint that money is not enough
         }
         else {
             // actually displacing
-            gameManager.AddMoney(-inputAmount);
-            gameManager.AddItemToInventory(item);
+            gameManager.DisplaceItemFromDrawing(inputAmount, item);
             drawingDisplay.SetActive(false);
         }
         

@@ -6,6 +6,7 @@ public class DisplaceSFX : MonoBehaviour
 {
     [SerializeField] private AudioClip itemToMoneySound;
     [SerializeField] private AudioClip buyItemSound;
+    [SerializeField] private AudioClip moneyToItemSound;
     private AudioSource source; 
 
     void Awake(){
@@ -21,6 +22,11 @@ public class DisplaceSFX : MonoBehaviour
 
     public void PlayBuyItemSound(){
         source.clip = buyItemSound;
+        source.Play();
+    }
+
+    public void PlayMoneyToItemSound(){
+        source.clip = moneyToItemSound;
         source.Play();
     }
 }

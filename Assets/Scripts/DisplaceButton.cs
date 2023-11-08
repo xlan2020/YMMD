@@ -26,7 +26,7 @@ public class DisplaceButton : MonoBehaviour
         if(!displaceOutFromDrawing){
             gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
         }else{
-            displaceItemOutFromDrawing(); 
+            displaceFromDrawing.DisplaceWithCurrentInput();
         }
     }
 
@@ -45,9 +45,5 @@ public class DisplaceButton : MonoBehaviour
         {
             button.interactable = b;
         }
-    }
-
-    private void displaceItemOutFromDrawing(){
-        displaceFromDrawing.DisplaceWithCurrentInput();
     }
 }
