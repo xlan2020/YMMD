@@ -107,16 +107,16 @@ public class GameManager : MonoBehaviour
     public void DisplaceItemFromDrawing(float moneyIn, ItemScriptableObject itemOut){
         
         AddMoney(-moneyIn);
-        Item item = AddItemToInventory(itemOut);
+        Item item = inventory.AddItemFromScriptableObject(itemOut);
         item.value = moneyIn; // modify the value of the item to the user input one
         uiInventory.ShowResultWindow_moneyToItem(item);
 
         displaceSFX.PlayMoneyToItemSound();
     }
 
-    public Item AddItemToInventory(ItemScriptableObject item)
+    public void AddItemToInventory(ItemScriptableObject item)
     {
-        return inventory.AddItemFromScriptableObject(item);
+        inventory.AddItemFromScriptableObject(item);
 
     }
 

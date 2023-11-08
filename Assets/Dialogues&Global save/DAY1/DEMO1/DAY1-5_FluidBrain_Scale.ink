@@ -33,7 +33,7 @@ VAR drinkTime = 0
 我：什么？谁在说话? #profile: painter_side
 鱼？：快<color=green>把</color><color=purple>我</color><color=green>剥</color><color=purple>掉</color>吧。快呀~ #solve: next #profile: hide
 我：什么……？刚才那是—— #profile: painter_frightened
-鱼鳞？：看得到吗？那么多、那么多，货架上和我一模一样的东西无穷无尽——哪个才是我呀？ #solve: next #profile: hide
+鱼鳞？：看得到吗？那么多、那么多，货架上和我一模一样的东西无穷无尽——哪个才是我呀？#solve: next #profile: hide
 鱼鳞？：我对于画家来说，是特殊的吗？
 鱼？：要把我带回家吗？
 鱼？：一斤20元，不贵吧? 
