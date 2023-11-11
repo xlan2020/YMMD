@@ -382,7 +382,6 @@ public class InkDialogueManager : MonoBehaviour
         {
             continueIcon.SetActive(true);
         }
-        handleChoiceType();
         // display observees and drawings if there is one
         displayVisualsAfterType();
         //voice.StopTalking();

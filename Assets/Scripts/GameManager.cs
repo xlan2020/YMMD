@@ -132,7 +132,13 @@ public class GameManager : MonoBehaviour
     {
         money.SetMoney(amount);
 
-        dialogueVariables.SetGlobalVariable("money", amount);
+        if (dialogueVariables!=null){
+            dialogueVariables.SetGlobalVariable("money", amount);
+        }
+    }
+
+    public float GetMoney(){
+        return money.GetMoney();
     }
 
 

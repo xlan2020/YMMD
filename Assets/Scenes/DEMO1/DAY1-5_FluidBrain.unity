@@ -1361,6 +1361,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 1
   TargetClickReceiver: {fileID: 740474388}
+  showAfterLast: 1
 --- !u!95 &259316979
 Animator:
   serializedVersion: 5
@@ -1697,6 +1698,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!212 &296493481
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2145,6 +2147,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!1 &315053960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,6 +2949,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!1 &338386192
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3426,7 @@ Transform:
   - {fileID: 432861197}
   - {fileID: 384056551}
   - {fileID: 1000446070}
+  - {fileID: 1308181597}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4281,6 +4286,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 1
   TargetClickReceiver: {fileID: 429572592}
+  showAfterLast: 1
 --- !u!1 &494426071
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,6 +4394,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!50 &494426075
 Rigidbody2D:
   serializedVersion: 4
@@ -5053,6 +5060,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!114 &631926746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5605,6 +5613,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 0
 --- !u!1 &647816486
 GameObject:
   m_ObjectHideFlags: 0
@@ -6712,9 +6721,9 @@ MonoBehaviour:
   unityEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 429572592}
-        m_TargetAssemblyTypeName: SolvableReceiver, Assembly-CSharp
-        m_MethodName: ReceiveSolve
+      - m_Target: {fileID: 463011130}
+        m_TargetAssemblyTypeName: Solvable, Assembly-CSharp
+        m_MethodName: SolveSelf
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6722,7 +6731,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &1002768884
 GameObject:
@@ -7176,7 +7185,7 @@ SpriteRenderer:
   m_SortingLayerID: 257017095
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b555e593e10240868324f9afebcec80, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7e99c398f92d4d22b18954765f63484, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7871,10 +7880,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.50937504
     y: 0
-    width: 1
-    height: 1
+    width: 0.44629633
+    height: 0.44629627
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -8418,6 +8427,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1169062825}
+--- !u!1 &1308181596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1308181597}
+  - component: {fileID: 1308181598}
+  m_Layer: 0
+  m_Name: largeScale
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1308181597
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308181596}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 396347443}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1308181598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308181596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2d0ba51113a41aeb36f0f9f8e3c1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: largeScale
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1929287213}
+        m_TargetAssemblyTypeName: Solvable, Assembly-CSharp
+        m_MethodName: SolveSelf
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1311049716
 GameObject:
   m_ObjectHideFlags: 0
@@ -8722,6 +8791,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!1 &1335506658
 GameObject:
   m_ObjectHideFlags: 0
@@ -9423,6 +9493,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!1 &1500075333
 GameObject:
   m_ObjectHideFlags: 0
@@ -9749,6 +9820,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 1
   TargetClickReceiver: {fileID: 1029487801}
+  showAfterLast: 1
 --- !u!1 &1535687073
 GameObject:
   m_ObjectHideFlags: 0
@@ -10256,10 +10328,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.50937504
     y: 0
-    width: 1
-    height: 1
+    width: 0.44629633
+    height: 0.44629627
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 55
@@ -10648,6 +10720,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 0
   TargetClickReceiver: {fileID: 0}
+  showAfterLast: 1
 --- !u!4 &1724043348
 Transform:
   m_ObjectHideFlags: 0
@@ -11060,6 +11133,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 1
   TargetClickReceiver: {fileID: 1973378339}
+  showAfterLast: 1
 --- !u!61 &1793073374
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11831,6 +11905,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 1
   TargetClickReceiver: {fileID: 136431406}
+  showAfterLast: 1
 --- !u!1 &1929287208
 GameObject:
   m_ObjectHideFlags: 0
@@ -11993,6 +12068,7 @@ MonoBehaviour:
   manager: {fileID: 1026944700}
   ClickType: 1
   TargetClickReceiver: {fileID: 647085044}
+  showAfterLast: 1
 --- !u!1 &1973378337
 GameObject:
   m_ObjectHideFlags: 0

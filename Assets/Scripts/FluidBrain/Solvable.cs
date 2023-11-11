@@ -29,6 +29,7 @@ public class Solvable : MonoBehaviour
     private bool _atDestination = false;
     private int choiceIndex = 1;
     private bool _canMakeChoice = false;
+    public bool showAfterLast = true;
 
     private void Awake()
     {
@@ -178,7 +179,7 @@ public class Solvable : MonoBehaviour
         }
     }
 
-    private void SolveSelf()
+    public void SolveSelf()
     {
         TargetClickReceiver.ReceiveSolve();
         DoneSolving();

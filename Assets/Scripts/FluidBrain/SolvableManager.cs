@@ -59,7 +59,9 @@ public class SolvableManager : MonoBehaviour
         {
             _canSolve = false;
             currSolvable = solvables.Dequeue();
-            currSolvable.Show();
+            if (currSolvable.showAfterLast){
+                currSolvable.Show();
+            }
             dialogueManager.SetCanContinueToNextLine(true);
             dialogueManager.ContinueStory();
             SuspendInteractiveTillCanSolve(currSolvable);

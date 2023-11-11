@@ -27,6 +27,7 @@ public class DisplaceButton : MonoBehaviour
             gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
         }else{
             displaceFromDrawing.DisplaceWithCurrentInput();
+            displaceFromDrawing.displaceSuccessProceedDialogue();
         }
     }
 

@@ -14,6 +14,8 @@ public class BGMPlayer : MonoBehaviour
     [SerializeField] private AudioClip 柴柴;
     [SerializeField] private AudioClip 房间;
 
+    public string beginningBGM;
+
     public AudioMixer bgmMixer;
     public AudioSource bgm1;
     public AudioSource bgm2;
@@ -26,6 +28,10 @@ public class BGMPlayer : MonoBehaviour
         //Calling this function in MonoBehaviour.Awake will result in unexpected behavior. Use MonoBehaviour.Start instead.
         bgmMixer.SetFloat("vol_bgm1", -80f);
         bgmMixer.SetFloat("vol_bgm2", -80f);
+
+        if (beginningBGM!=""){
+            ChangeBGM(beginningBGM, 1);
+        }
     }
 
     public void ChangeBGM(string musicName, float fadeDuration)

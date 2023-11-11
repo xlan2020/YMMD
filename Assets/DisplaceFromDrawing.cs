@@ -9,7 +9,7 @@ public class DisplaceFromDrawing : MonoBehaviour
     public AccurateDepictionScriptableObject drawing;
     public GameManager gameManager;
     public GameObject drawingDisplay;
-
+    public InkDialogueManager dialogueManager;
     
 
     public void DisplaceWithCurrentInput(){
@@ -17,18 +17,29 @@ public class DisplaceFromDrawing : MonoBehaviour
     }
 
     private void displaceWithInput(string input){
-        float inputAmount = float.Parse(input);
+
+        if (!float.TryParse(input, out float inputAmount)){
+            // input not a number
+            this.handleInputNotNum();
+            return;
+        }
 
         if (inputAmount <= 0){
             UnityEngine.Debug.Log("You must input a positive number of money!");
             // UI hint that money is not enough
+            this.handleInputIsZero();
             return;
         }
 
         ItemScriptableObject item = getTargetItemWith(inputAmount);
         
+        if (inputAmount > gameManager.GetMoney()){
+            this.handleMoneyNotEnough();
+            return;
+        }
+
         if (item == null){
-            UnityEngine.Debug.Log("money is not enough or target is empty!");
+            UnityEngine.Debug.Log("money is not enough for item or target is empty!");
             // UI hint that money is not enough
         }
         else {
@@ -63,5 +74,25 @@ public class DisplaceFromDrawing : MonoBehaviour
 
         return matchItem;
     }
+
+    private void handleMoneyNotEnough(){
+        dialogueManager.MakeChoice(1);
+    }
+
+    private void handleInputIsZero(){
+        dialogueManager.MakeChoice(2);
+    }
+
+    public void handleInputNotNum(){
+        dialogueManager.MakeChoice(3);
+    }
+
+    public void displaceSuccessProceedDialogue(){
+        UnityEngine.Debug.Log("displace success! continue dialogue");
+        dialogueManager.MakeChoice(0);
+        dialogueManager.ContinueStory();
+    }
+
+
 
 }

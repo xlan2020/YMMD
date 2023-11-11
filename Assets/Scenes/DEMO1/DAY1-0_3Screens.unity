@@ -1115,6 +1115,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1785190504142321972, guid: a07d050f5f7ff44729450c4849f15486, type: 3}
   m_PrefabInstance: {fileID: 464644675}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &464644677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 508895310, guid: a07d050f5f7ff44729450c4849f15486, type: 3}
+  m_PrefabInstance: {fileID: 464644675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6242f4423da0490eb47ce55ec0074ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &484875133
 GameObject:
   m_ObjectHideFlags: 0
@@ -4499,7 +4510,7 @@ MonoBehaviour:
   loadInventory: {fileID: 0}
   uiInventory: {fileID: 0}
   uiDraw_Inventory: {fileID: 0}
-  uiMoney: {fileID: 0}
+  uiMoney: {fileID: 464644677}
   displaceSFX: {fileID: 0}
   HasBeginningDialogue: 0
   initialMoney: 0
@@ -6864,6 +6875,10 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 98233bcd16504469595bd700cc5799e2, type: 3}
     - target: {fileID: 7032122632844085968, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}
       propertyPath: StartingBgm
+      value: "\u9EC4\u660F"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7032122632844085968, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}
+      propertyPath: beginningBGM
       value: "\u9EC4\u660F"
       objectReference: {fileID: 0}
     - target: {fileID: 7032122632844085969, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}

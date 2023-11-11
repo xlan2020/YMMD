@@ -22,19 +22,20 @@ VAR drinkTime = 0
 我：坚硬的、潮湿的，这怎么可能？它已经离开水很久却还是这么湿润……
 我：我确定它是很重要的东西，我得凑近瞧瞧。#solve: next
 我：……等等，那闪光是什么？我要把它<color=green>捕捉</color>到画里。#solve: next #profile: painter_alert
-我：我看到了……水。到处都是水。水迹濡湿我的皮肤，几乎把我挠痒了。好痒！#profile: painter_stunned
-我：太痒了，我对水过敏吗？我得挠挠、我得抓住一个更坚硬、更锐利的东西……抓住鱼鳞。 #solve: next 
-我：太痒了—— #solve: next 
-我：啊！好痛，这比我想象的更尖利……我的鱼鳞呢？等等，那是什么……鱼？#solve: next #profile: painter_concerned
-我：我的鱼鳞掉到哪里去了？我的宝物，快快回到我的手上……#solve: next #profile: painter_frightened
+我：我看到了……水。到处都是水。水迹濡湿我的皮肤，几乎把我挠痒了。好痒！我难道对水过敏吗？#profile: painter_stunned
+我：用手挠还不够，我得抓住一个更坚硬、更锐利的东西……
+我：……鳞片。#event: largeScale
+我：太痒了！我得<color=purple>挠挠</color>—— #solve: next 
+我：啊！疼！这比我想象的更尖利……我的鳞片呢？等等，那是什么……鱼？#solve: next #profile: painter_concerned
+我：鳞片掉到哪里去了？我的宝儿，快回到我手上……#solve: next #profile: painter_frightened
 我：呵呵，在这儿呢。#profile: painter_happy
 我：但是手脏了，好腥，是因为那一点血吗？总之擦掉吧。#solve: next #profile: painter_norm
 ？？？：我已经准备好了呀，画家！#event: paintBlood #profile: hide
 我：什么？谁在说话? #profile: painter_side
 鱼？：快<color=green>把</color><color=purple>我</color><color=green>剥</color><color=purple>掉</color>吧。快呀~ #solve: next #profile: hide
 我：什么……？刚才那是—— #profile: painter_frightened
-鱼鳞？：看得到吗？那么多、那么多，货架上和我一模一样的东西无穷无尽——哪个才是我呀？#solve: next #profile: hide
-鱼鳞？：我对于画家来说，是特殊的吗？
+鱼鳞？：看得到吗？那么多、那么多，货架上和我一模一样的东西无穷无尽——哪个才是我呀？#profile: hide
+鱼鳞？：我对于画家来说，是特殊的吗？#event: zoomInTexture
 鱼？：要把我带回家吗？
 鱼？：一斤20元，不贵吧? 
 鱼？：是害怕我吗？这也正常，鱼总是会跳来跳去的。那就<color=purple>把我的鳍也摘掉</color>吧，这样我就游不动了。#solve: next
@@ -77,10 +78,11 @@ VAR drinkTime = 0
 我：一杯水。哈哈……我、我用刚赚来的钱，就买了这么一杯水？#profile: painter_concerned
 我：我该做什么，把它供起来，把它喝了？喉咙好痛、头好晕……但是——#profile: painter_selfMock
 我：我好像知道自己为什么需要这杯水了。#profile: painter_eyeClosed
+# 很羞耻，但是也可以利用；我们应该更亲密一点/我对你的感受还不够深刻
 “模特”：画家，休息休息，我该喝水啦！#profile: hide
-“画家”：我们应该再亲密一点。
-“画家”：我对你的感受还不够深刻。
-“画家”：只凭浅薄的视觉，怎么可能创作出好的画作？
+ ：“画家”沉浸在自己的思绪里。
+“画家”：这幅画的感觉不对……不够亲密、不够深刻。
+“画家”：只凭肤浅的视觉，怎么可能创作出好的画作？
 “画家”：聆听、触摸、轻嗅、品尝……
 “画家”：新鲜的鱼生尝起来像舌头一样。
 “画家”：但这对我来说太昂贵了。
@@ -108,7 +110,7 @@ VAR drinkTime = 0
 
 ==done_drinking==
  ：杯子空了。#bgm: fade_4_0
-我：我的模特 #typingSpeed: 1 #profile: side
+我：我的模特 #typingSpeed: 1 #profile: painter_depressed
 我：我的对象
 我：她是  一个  美 人 鱼 。
 系统：下一个scene。#loadScene: DAY1-6_DisplaceDrawing
