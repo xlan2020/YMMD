@@ -378,6 +378,8 @@ public class InkDialogueManager : MonoBehaviour
 
     private void handleAfterLineComplete()
     {
+        handleChoiceType();
+
         if (currentStory.canContinue)
         {
             continueIcon.SetActive(true);
@@ -393,6 +395,8 @@ public class InkDialogueManager : MonoBehaviour
         {
             autoPlayingCoroutine = StartCoroutine(autoPlaying());
         }
+
+        dialoguePanel.SetInteractive(canContinueToNextLine);
     }
 
     public void ContinueStory()
@@ -431,6 +435,7 @@ public class InkDialogueManager : MonoBehaviour
                 StopCoroutine(typingLinesCoroutine);
             }
             typingLinesCoroutine = StartCoroutine(typingLines(currentStory.Continue()));
+            dialoguePanel.SetInteractive(true);
             handleTags(currentStory.currentTags);
 
         }
@@ -510,19 +515,15 @@ public class InkDialogueManager : MonoBehaviour
             case "OBSERVEE":
                 drawingSystem.HandleObserveeChoices();
                 canSkipChoice = false;
-                choiceType = "BUTTON";
                 break;
             case "OBSERVEE_CANSKIP":
                 drawingSystem.HandleObserveeChoices();
                 canSkipChoice = true;
-                choiceType = "BUTTON";
                 break;
             case "AUTO":
                 canSkipChoice = true;
-                choiceType = "BUTTON";
                 break;
             case "PAUSE": 
-                choiceType = "BUTTON";
                 break;
             default:
                 break;

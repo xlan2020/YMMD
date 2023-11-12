@@ -1,29 +1,38 @@
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Scene Start Setup")]
     [SerializeField] TextAsset BeginningInkJSON;
     public LoadInventory loadInventory;
+    public float initialMoney;
+    
+    [Header("UI Element")]
     public UI_Inventory uiInventory;
     public UIDraw_Inventory uiDraw_Inventory;
     public UI_Money uiMoney;
     public DisplaceSFX displaceSFX;
 
+    [Header("Game Element")]
+
     public bool HasBeginningDialogue = true;
     public Inventory inventory;
     private DialogueVariables dialogueVariables;
     Money money;
+    public AllItemScriptableObject allItem;
 
-    public float initialMoney;
     //public Camera positionReferenceCamera;
 
     void Awake()
     {
         Application.targetFrameRate = 60;
 
-        inventory = new Inventory();
+        inventory = new Inventory() {
+            cashItem = allItem.arrayById[0]
+        };
 
         if (loadInventory)
         {
@@ -52,10 +61,17 @@ public class GameManager : MonoBehaviour
         {
             displaceSFX = Instantiate(displaceSFX);
         }
+
+        SaveSystem.Init();
+
     }
 
     void Start()
     {
+        SetMoney(initialMoney);
+        Load(1);
+
+
         if (HasBeginningDialogue)
         {
             // load the dialogue for this scene
@@ -69,12 +85,6 @@ public class GameManager : MonoBehaviour
             dialogueVariables = manager.GetDialogueVariables();
         }
 
-        // dialogueIntegrationTest();
-
-        SetMoney(initialMoney);
-
-        //MouseCursor.instance.positionReferenceCamera = positionReferenceCamera;
-
     }
 
     IEnumerator LateStart(float waitTime)
@@ -82,6 +92,51 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
     }
 
+    public void Save(){
+
+        // clean up data to be saved
+        float currMoney = money.GetMoney();
+        int[] itemIdArray = inventory.GetItemIdSaveArray();
+        bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
+
+        // serialize to SaveObject json string
+        SaveObject saveObject = new SaveObject
+        {
+            moneyAmount = currMoney,
+            itemIdArray = itemIdArray,
+            noteUnlockedState = noteUnlockedState
+        };
+        string json = JsonUtility.ToJson(saveObject);
+
+        // write the save file
+        SaveSystem.Save(json);
+
+
+    }
+
+    private void Load(int saveFileId){
+        string saveString = SaveSystem.Load(saveFileId);
+        if (saveString != null){
+
+            // convert save data to SaveObject
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+
+            // ****load the game according to the save
+            // money
+            this.SetMoney(saveObject.moneyAmount);
+            // inventory
+            inventory.LoadItemListFromIdArray(saveObject.itemIdArray, allItem.arrayById);
+            // notes in sketchbook
+            SketchbookData.LoadNotesUnlockedStates(saveObject.noteUnlockedState);
+
+
+        }else {
+            UnityEngine.Debug.Log("no save data file");
+        }
+    }
+
+
+    /**
     private void dialogueIntegrationTest()
     {
         // UnityEngine.Debug.Log("trying to set global variable test: ");
@@ -90,11 +145,14 @@ public class GameManager : MonoBehaviour
         this.AddMoney(100f);
 
     }
+    */
 
+    /** LEGACY
     public void SaveInventory()
     {
         StaticInventory.ItemArry = inventory.GetItemList();
     }
+    */
 
     public void DisplaceItem(Item item)
     {
@@ -125,6 +183,8 @@ public class GameManager : MonoBehaviour
         float currAmount = money.GetMoney()+amount;
         money.SetMoney(currAmount);
 
+        updateCashItem();
+
         dialogueVariables.SetGlobalVariable("money", currAmount);
     }
 
@@ -132,8 +192,22 @@ public class GameManager : MonoBehaviour
     {
         money.SetMoney(amount);
 
+        updateCashItem();
+
         if (dialogueVariables!=null){
             dialogueVariables.SetGlobalVariable("money", amount);
+        }
+    }
+
+    private void updateCashItem(){
+        /**
+        CASH item always stay at index 0 at the inventory!!
+        */
+        if (money.GetMoney() <= 0){
+            // remove cash item
+            inventory.TryRemoveCashItem();
+        }else{
+            inventory.TryAddCashItem();
         }
     }
 
@@ -157,6 +231,23 @@ public class GameManager : MonoBehaviour
             displaceSFX.PlayBuyItemSound();
 
         }
+
+    }
+
+    private class SaveObject {
+        public float moneyAmount;   // money
+        public int[] itemIdArray;   // owned item list, no changed states
+        public bool[] noteUnlockedState; // notebook unlock state
+
+        // ink dialogue story progress if any
+        // ink dialogue variables
+
+        // current scene
+
+        // if in map, player position
+        // if in map, map object collected state
+        // if in draw, binary val
+        // if in fluid brain, solvable进度别保存了太麻烦了
 
     }
 }

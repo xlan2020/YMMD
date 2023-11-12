@@ -45,7 +45,7 @@ INCLUDE DAY1-2_global.ink
 系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！#choiceType: OBSERVEE
 +[提交]->mama_appears
 ==mama_appears==
-我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）#drawingSystem: addBinaryVal_10
+我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）#drawingSystem: addBinaryVal_10 #choiceType: BUTTON
 老板娘：给您放桌上了！#profile: mama_satisfied  
 老板娘：呦，朋友也来啦？哎呀，你是不是那个……那个谁，那个八加二大师？#bgm:戏谑_0.5
 8-2：咳，巴简二，姐姐。#portrait: 8-2_smile2
@@ -69,7 +69,7 @@ INCLUDE DAY1-2_global.ink
 +[提交：大师]->profession_mathematician
 
 ==profession_mathematician==
-我：你是做什么职业的啊，“大师”？#profile: painter_norm #drawingSystem: addBinaryVal_20
+我：你是做什么职业的啊，“大师”？#profile: painter_norm #drawingSystem: addBinaryVal_20 #choiceType: BUTTON
 8-2：我是个数学家。#portrait: 8-2_smile
 我：（8-2的数学吗？）呃，你给老板娘的爱人……上数学课？#profile: painter_side
 8-2：哦，那个是另外的兼职。数学是一门很基础的学科，数字是构成这个世界的基本单位。 #portrait: 8-2_norm2
@@ -85,7 +85,7 @@ INCLUDE DAY1-2_global.ink
 +[ ]->found_number
 
 ==where_is_number==
-我：哪里有数字？别逗了。#profile: painter_noComment 
+我：哪里有数字？别逗了。#profile: painter_noComment #choiceType: BUTTON
 8-2：哎呀，不就是{money}吗！你自己看不到？#portrait: 8-2_smile
 我：嗯？{money}，这个……这个是……#profile: painter_stunned #bgm:pause
 我：这是我所有财产的金额！#profile: painter_frightened #portrait: 8-2_laugh #bgm:戏谑_0.5
@@ -96,7 +96,7 @@ INCLUDE DAY1-2_global.ink
 ->value_number
 
 ==found_number==
-我：头顶上的数字……{money}？
+我：头顶上的数字……{money}？#choiceType: BUTTON
 我：等等！你怎么能看到我头顶上……这个是我的、我所有财产的金额！#bgm:戏谑_0.5 #profile: painter_frightened #portrait: 8-2_smile #drawingSystem: addBinaryVal_30
 8-2：哦~原来你的所有财产是这个数字啊。#portrait: 8-2_laugh
 我：……哎？#profile: painter_side 
@@ -107,7 +107,7 @@ INCLUDE DAY1-2_global.ink
 ->value_number
 
 ==value_number==
-我：呵呵，这也算数学吗？#profile: painter_side
+我：呵呵，这也算数学吗？#profile: painter_side 
 8-2：这当然算数学了。本来，人的生活中有很多有意义的数字，不过现在最重要的，就只剩下这个数—— #portrait: 8-2_norm2
 8-2：——代表<color=magenta>价值</color>的数。#portrait: 8-2_norm3
 8-2：每个人头上都顶着这个数，每件东西上也都悬着这个数。当然，我说的可不是商店里的标价，而是那个虚虚乎乎的，每个人都知道，但每个人看到的都不一样的——#portrait: 8-2_smile
@@ -133,7 +133,7 @@ INCLUDE DAY1-2_global.ink
 +[这人有问题！]->reveal_liar
 
 ==teach_me==
-我：哈，别说，就今天，我身上也发生了一件怪事。要不，您给我出出主意？#profile: painter_sour #drawingSystem: addBinaryVal_50
+我：哈，别说，就今天，我身上也发生了一件怪事。要不，您给我出出主意？#profile: painter_sour #drawingSystem: addBinaryVal_50 #choiceType: BUTTON
 8-2：嗯嗯，好啊，什么怪事？#portrait: 8-2_chuckle
 我：（……嗯？他刚才是不是笑了一下？……眼花了吧。）#portrait: 8-2_norm2
 我：我今天一觉醒来，就发现屋子和钱包都空了，我的东西一件也不剩，什么也想不起来。#profile: painter_eyeClosed
@@ -149,7 +149,7 @@ INCLUDE DAY1-2_global.ink
 8-2：哎呀，我这眼神不太好。你能让我凑近点看看吗？#portrait: 8-2_chuckle
 我：（也是，他戴着个大<color=magenta>眼镜</color>，估计是近视吧？）#profile: painter_norm #showObservee: glasses #choiceType: OBSERVEE_CANSKIP
 +[递给他]
-我：（这么小的东西，离得太远也看不清楚。我太需要知道这是什么了。）#profile: painter_norm #drawingSystem: addBinaryVal_20
+我：（这么小的东西，离得太远也看不清楚。我太需要知道这是什么了。）#profile: painter_norm #drawingSystem: addBinaryVal_20 #choiceType: BUTTON
 我：喏，您给看看，能认出这是什么吗？*递出鳞片*#profile: painter_side
 8-2：*接过鳞片*嗯、嗯，我看看啊…… #portrait: 8-2_norm
 8-2：…………#portrait: 8-2_serious
@@ -169,7 +169,7 @@ INCLUDE DAY1-2_global.ink
 我：（这个混蛋，绝对不值得信任……）你在嘟囔什么？#profile: painter_side #drawingSystem: addBinaryVal_-40
 ->owning_value
 +[观察眼镜]
-我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned #drawingSystem: addBinaryVal_-20
+我：（……不对！仔细一看，这副眼镜的镜框也太粗了，而且藏在后面的五官一点缩小都没有。）#profile: painter_stunned #drawingSystem: addBinaryVal_-20 #choiceType: BUTTON
 我：（这根本就是一副装饰用的平光镜吧？）#profile: painter_noComment
 我：（仔细一看，这家伙的小眼睛闪着精光呢！哪里是眼神不好的样子？）#profile: painter_norm
 我：（这么重要的东西，不能轻易交给他。我自己能研究出来。）
@@ -180,7 +180,7 @@ INCLUDE DAY1-2_global.ink
 ->owning_value
 
 ==reveal_liar==
-我：所以呢，你打算向我卖课吗？#profile: painter_side #bgm:fade_0.2_0.5 #drawingSystem: addBinaryVal_-30
+我：所以呢，你打算向我卖课吗？#profile: painter_side #bgm:fade_0.2_0.5 #drawingSystem: addBinaryVal_-30 #choiceType: BUTTON
 我：先是装作认识我的样子，然后给我点小钱博取我的信任，还让我画画，哈，我就知道没什么人想要我的画的，又是用的这么廉价的画材。#portrait: 8-2_norm2 #bgm:悬疑_1
 我：然后，你利用老板娘给自己立了个“大师”的人设，让我主动问你，免得一上来就推销让人怀疑……天，老板娘不会是你的托儿吧？
 我：然后你东拉西扯，故意拿“数学家”和“画家”类比，跟我套近乎。
@@ -272,7 +272,7 @@ INCLUDE DAY1-2_global.ink
 8-2：好紧张哦，问、问、问、问、问吧。#portrait: 8-2_smile2
 我：（关于8-2的肖像应该是什么样子，我已经有了大概的答案。只剩下，我想问的问题是……）#choiceType: OBSERVEE
 +[你置换过活人吗？]
-我：<b>你置换过活人吗？</b> 
+我：<b>你置换过活人吗？</b> #choiceType: BUTTON
 8-2：瞧你问的！这还用说？我当然……#portrait: 8-2_laugh
 8-2：……<b>置换过</b>。#portrait: 8-2_cold #bgm:pause #bgm:fade_0.1_0 #drawingSystem: addBinaryVal_-20
 我：……
@@ -284,7 +284,7 @@ INCLUDE DAY1-2_global.ink
 8-2：萍水相逢……吗？哈哈。#portrait: 8-2_smile2
 ->almost_done
 +[有其他人拥有你吗？]
-我：有其他人拥有你吗？
+我：有其他人拥有你吗？#choiceType: BUTTON
 8-2：…………#portrait: 8-2_norm2
 8-2：为什么这么问？#portrait: 8-2_smile
 我：你在这里侃侃而谈，还开课传授什么掌控自己、操纵别人的秘诀……高高在上的。

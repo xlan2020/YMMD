@@ -7,6 +7,11 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     private MouseCursor cursor;
     private bool interactive = true;
+    private Animator animator;
+
+    void Awake(){
+        animator = GetComponent<Animator>();
+    }
 
     void Start()
     {
@@ -31,6 +36,9 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void SetInteractive(bool b)
     {
         interactive = b;
+        if (animator != null){
+            animator.SetBool("canContinue", b);
+        }
     }
 
 

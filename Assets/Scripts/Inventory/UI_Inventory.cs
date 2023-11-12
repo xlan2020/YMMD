@@ -25,6 +25,10 @@ public class UI_Inventory : MonoBehaviour
 
     public UI_DisplaceSuccess displaceSuccess;
 
+    // customize displace button
+    private bool hasCustomButton = false;
+    private int customButtonItemId;
+
 
 
     void Awake()
@@ -131,14 +135,27 @@ public class UI_Inventory : MonoBehaviour
         }
 
         ItemSlot currentSlot = slots[currentSlotIndex];
-        if (currentSlot)
+
+        if (currentSlot != null)
         {
             currentSlot.ShowSelfSelected(true);
 
             // update item display UI
             currentItemName.text = currentSlot.item.itemName;
             currentItemDescription.text = currentSlot.item.description;
-            displaceButton.SetInteractive(currentSlot.item.displaceable);
+
+            // check and update displaceButton
+            if (!displaceButton.HasCustomAction()){
+                displaceButton.SetInteractive(currentSlot.item.displaceable);
+            } else {
+                if (currentSlot.item.id == customButtonItemId)
+                {
+                    displaceButton.ActivateButtonTypeCustom();
+                } else {
+                    displaceButton.SetButtonTypeCurrentItem();
+                    displaceButton.SetInteractive(currentSlot.item.displaceable);
+                }
+            }
         }
     }
 
@@ -164,7 +181,10 @@ public class UI_Inventory : MonoBehaviour
         displaceSuccess.HideResultWindow();
     }
 
-
+    // let ui_inventory know custom item identifier
+    public void SetCustomButtonState(int itemId){
+        customButtonItemId = itemId;
+    }
 }
 
 /**

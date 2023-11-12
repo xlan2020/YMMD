@@ -24,15 +24,15 @@ INCLUDE DAY1-2_global.ink
 ->DONE
 
 ==not_enough_as_input==
-我：呃，虽然想多投入点，但我并没有那么多钱。#profile: painter_sideSweat #event: hideInput
+我：呃，虽然想多投入点，但我并没有那么多钱。#profile: painter_sideSweat #event: hideInput #choiceType: BUTTON
 ->displace_input
 
 ==input_is_zero==
-系统：你在想什么呢！舍不得本钱可什么都得不到哦。#profile: hide #event: hideInput
+系统：你在想什么呢！舍不得本钱可什么都得不到哦。#profile: hide #event: hideInput #choiceType: BUTTON
 ->displace_input
 
 ==input_not_number==
-系统：金额需要输入数字哦！#profile: hide #event: hideInput
+系统：金额需要输入数字哦！#choiceType: BUTTON #profile: hide #event: hideInput
 ->displace_input
 
 ==displace_success==

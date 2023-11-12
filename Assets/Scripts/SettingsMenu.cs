@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 
 public class SettingsMenu : MonoBehaviour
 {
+    public GameManager gameManager;
     public static SettingsMenu instance { get; private set; }
     public MapPlayer mapPlayer;
     [Header("Audio Setting")]
@@ -110,6 +111,10 @@ public void SetVolume(float volume)
         }
     }
 
+    public void SaveGame(){
+        gameManager.Save();
+    }
+    
     public void QuitGame()
     {
         Application.Quit();

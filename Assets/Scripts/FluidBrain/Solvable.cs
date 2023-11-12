@@ -181,7 +181,9 @@ public class Solvable : MonoBehaviour
 
     public void SolveSelf()
     {
-        TargetClickReceiver.ReceiveSolve();
+        if (TargetClickReceiver !=null){
+            TargetClickReceiver.ReceiveSolve();
+        }
         DoneSolving();
     }
 

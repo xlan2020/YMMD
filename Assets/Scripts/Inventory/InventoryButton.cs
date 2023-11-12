@@ -7,6 +7,7 @@ public class InventoryButton : MonoBehaviour
     public static InventoryButton instance { get; private set; }
     //[SerializeField] private AudioClip openAudio;
     [SerializeField] UI_Inventory uiInventory;
+    [SerializeField] DisplaceButton displaceButton;
     private bool showInventory;
     private Animator animator;
     public MapPlayer mapPlayer;
@@ -77,6 +78,7 @@ public class InventoryButton : MonoBehaviour
     private void RefreshDisplayState()
     {
         uiInventory.gameObject.SetActive(showInventory);
+        displaceButton.ShowButton(showInventory);
         animator.SetBool("isOpen", showInventory);
         if (showInventory)
         {

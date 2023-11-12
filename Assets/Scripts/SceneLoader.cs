@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 /**
 legacy
-*/
 public class SceneLoader : MonoBehaviour
 {
     public float transitionTime = 1f;
@@ -32,3 +31,4 @@ public class SceneLoader : MonoBehaviour
         loaded = true;
     }
 }
+*/

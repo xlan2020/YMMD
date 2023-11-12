@@ -1848,7 +1848,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5318286544446833329}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5318286544998975624}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5318286544446833295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,7 +2803,7 @@ Transform:
   - {fileID: 5318286543794681769}
   - {fileID: 5318286543503655697}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5318286544998975624
 MonoBehaviour:
@@ -2805,6 +2817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e8459cf74d3974593dfa863f21a174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   mapPlayer: {fileID: 0}
   BgmMixer: {fileID: 24100000, guid: eba563f1fae39456f8b610ddd7365b48, type: 2}
   SfxMixer: {fileID: 24100000, guid: 7aca811fbfb494fa9b620cb7abe486d4, type: 2}

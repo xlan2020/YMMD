@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Item
 {
+    public int id;
     public float value;
     public float storePrice;
     public string itemName;
@@ -12,6 +13,7 @@ public class Item
     public Sprite spriteImage;
     public bool destroyOnInteract;
     public bool displaceable;
+    public int customDisplaceEventIndex;
     public bool collectAfterDialogue;
     public bool collectOnInteract;
     public bool isNew;
@@ -25,4 +27,5 @@ public class Item
     public int draw_experimental;
     public int draw_organic;
     public int draw_premium;
+
 }

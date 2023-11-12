@@ -1,32 +1,33 @@
 INCLUDE DAY1-2_global.ink
 VAR drinkTime = 0
-我：（哎，真是家徒四壁啊，晚上回到这种地方，果然还是开心不起来。）#profile: painter_eyeClosed
+我：哎，真是家徒四壁啊，晚上回到这种地方，果然还是开心不起来。#profile: painter_eyeClosed
  #bgm: 房间 
-我：（太空了。总觉得少了点什么，而且不止是家具这么简单。但是少了点什么呢？）#profile: painter_mournful
-我：（我是画家。我排解空虚、探究自我的唯一办法就是——）#profile: painter_alert
+我：太空了。总觉得少了点什么，而且不止是家具这么简单。但是少了点什么呢？#profile: painter_mournful
+我：我是画家。我排解空虚、探究自我的唯一办法就是——#profile: painter_alert #choiceType: BUTTON
 +[画画！]
 ->I_should_draw
 +[不如多睡会儿]
-我：（梦里什么都有吧？）#profile: painter_sour
-我：（……不对！我是画家，我排解空虚、探究自我的唯一办法就是——）#profile: painter_alert
+我：梦里什么都有吧？#profile: painter_sour
+我：……不对！我是画家，我排解空虚、探究自我的唯一办法就是—— #profile: painter_alert
 ->I_should_draw
 +[喝点小饮料]
-我：（……喝一口饮料，大概还是能让自己稍稍平静下来吧。）#profile: painter_sour
+我：……喝一口饮料，大概还是能让自己稍稍平静下来吧。#profile: painter_sour
  ：咕咚。
-我：（……不对！我是画家，我排解空虚、探究自我的唯一办法就是——）#profile: painter_alert
+我：……不对！我是画家，我排解空虚、探究自我的唯一办法就是—— #profile: painter_alert
 ->I_should_draw
 
 ==I_should_draw==
 我：画画！把缺失的一切再次创造出来。
-我：这就是我的对象——无论怎么看，都只是一枚鱼鳞。不过，摸起来是什么感觉呢？  #bgm: 柴柴 #solve: next #profile: painter_side
+我：这就是我的对象——无论怎么看，都只是一枚<color=green>鱼鳞</color>。不过，<color=green>摸</color>起来是什么感觉呢？  #bgm: 柴柴 #solve: next #profile: painter_side
 我：坚硬的、潮湿的，这怎么可能？它已经离开水很久却还是这么湿润……
-我：我确定它是很重要的东西，我得凑近瞧瞧。#solve: next
-我：……等等，那闪光是什么？我要把它<color=green>捕捉</color>到画里。#solve: next #profile: painter_alert
+我：我确定它是很重要的东西。明明是小小的一个……
+我：我得再凑近点瞧瞧。#event: closer 
+我：等等，那闪光是什么？我要把它<color=green>捕捉</color>到画里。 #solve: next #profile: painter_alert
 我：我看到了……水。到处都是水。水迹濡湿我的皮肤，几乎把我挠痒了。好痒！我难道对水过敏吗？#profile: painter_stunned
 我：用手挠还不够，我得抓住一个更坚硬、更锐利的东西……
 我：……鳞片。#event: largeScale
 我：太痒了！我得<color=purple>挠挠</color>—— #solve: next 
-我：啊！疼！这比我想象的更尖利……我的鳞片呢？等等，那是什么……鱼？#solve: next #profile: painter_concerned
+我：啊！疼！这比我想象的更尖利……我的鳞片呢？等等，那是什么……<color=green>鱼</color>？#solve: next #profile: painter_concerned
 我：鳞片掉到哪里去了？我的宝儿，快回到我手上……#solve: next #profile: painter_frightened
 我：呵呵，在这儿呢。#profile: painter_happy
 我：但是手脏了，好腥，是因为那一点血吗？总之擦掉吧。#solve: next #profile: painter_norm
@@ -42,7 +43,7 @@ VAR drinkTime = 0
 鱼？：这样还不够吗？我都变成鱼肉了呀！你把我的麟刮掉，但是还不准备<color=purple>吃</color>我吗？
 鱼？：不是吧，你的钱不够买一条鱼吗？那就买一片麟吧。
 鱼鳞？：每天泡水，美容养生，强身健体，补肾壮阳，药效要到30天后才会失效哦！
-鱼鳞？：三十天的时间，够你攒够<color=purple>下一次</color>的钱了吧？#solve: nextCanContinue
+鱼鳞？：三十天的时间，够你攒够<color=purple>下一次</color>的钱了吧？#solve: nextCanContinue #event: customizeButton
 -> buy_me_scale
 
 ===buy_me_scale===
@@ -56,10 +57,10 @@ VAR drinkTime = 0
 +[真的买了] -> bought 
 
 ===bought===
-我：我、我买……啊？#bgm: fade_5_0 #addMoney: -30 #profile: painter_stunned
+我：我、我买……啊？#bgm: fade_5_0 #addMoney: -30 #profile: painter_stunned #choiceType: BUTTON
 我：鳞片、鳞片还在手上。我的钱……少了。我买了什么东西？跟谁买的？鱼呢？#profile: painter_surprised
 我：哈……真是疯了。我的房间里怎么会跑进来一条鱼向我推销自己？#profile: painter_sideSweat
-我：我刚才干什么了？#profile: painter_side
+我：我刚才干什么了？#profile: painter_side #choiceType: BUTTON
 +[摸了鱼] ->mo_yu
 +[做了梦] ->dream
 
