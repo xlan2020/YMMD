@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4876784728641496670}
   - component: {fileID: 4679118065654865769}
   - component: {fileID: 8257442262889457936}
+  - component: {fileID: 7516307459099539909}
   m_Layer: 5
   m_Name: InfoBar
   m_TagString: Untagged
@@ -34,7 +35,7 @@ RectTransform:
   m_Children:
   - {fileID: 2110121770571211746}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -123,6 +124,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7516307459099539909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130195234172274692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b210061669944278eafb92e9d018c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoText: {fileID: 7613415506719880113}
 --- !u!1 &5107912130455857335
 GameObject:
   m_ObjectHideFlags: 0

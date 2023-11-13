@@ -1,4 +1,4 @@
-INCLUDE ../global.ink
+
 
 （首先决定一下要使用的画材……不过由于我的家当已经全无，目前并没什么选择。）#speaker: 我 #portrait: 8-2_idle #choiceBox: material 
     +[ ]

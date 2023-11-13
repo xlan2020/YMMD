@@ -1,4 +1,4 @@
-INCLUDE DAY1-2_global.ink
+INCLUDE global.ink
 { not foodOrdered: 
 {~我：（先找老板娘点单再坐下吧。）|我：（随处可见的塑料凳，半新不旧的。）}#profile: painter_norm
 ->DONE

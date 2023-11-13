@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b63f6da1365408f8e297c650b07e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadGlobalsJSON: {fileID: 4900000, guid: 15818755d61704e6ab4ab7e2a3d2362d, type: 3}
-  loadBookJSON: {fileID: 4900000, guid: 8cf1b4ac3788942859d6905ffc5dcb32, type: 3}
+  loadGlobalsJSON: {fileID: 4900000, guid: 2c9afd3de06a443dc857f44523618f1e, type: 3}
+  gameManager: {fileID: 0}
+  loadingScene: {fileID: 0}
   typingSpeed: 0.02
   autoPlayingTimeInterval: 1.5
   autoMode: 0
@@ -76,7 +77,6 @@ MonoBehaviour:
   sceneEventManager: {fileID: 0}
   mapPlayer: {fileID: 0}
   interactableItemManager: {fileID: 0}
-  gameManager: {fileID: 0}
 --- !u!82 &127996389927340302
 AudioSource:
   m_ObjectHideFlags: 0

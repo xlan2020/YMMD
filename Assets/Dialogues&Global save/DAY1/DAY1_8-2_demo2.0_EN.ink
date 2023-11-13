@@ -1,4 +1,3 @@
-INCLUDE ../global.ink
 
  (Log: Enter the drawing interface from DAY1_Map_1) #bgm: 日常 
 Seriously? You carry this enormous drawing case and it's just entirely empty?  #speaker: 8-2 #portrait: 8-2_frown #speakerMode: norm

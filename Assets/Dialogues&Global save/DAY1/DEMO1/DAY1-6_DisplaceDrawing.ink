@@ -1,4 +1,4 @@
-INCLUDE DAY1-2_global.ink
+INCLUDE global.ink
  ：画作完成了。#bgm: 房间 #profile: hide
 系统：这是画家近些天第一次完成自己的<color=magenta>创作</color>。
 系统：和给顾客的稿件不同，创作并不会带来金钱上的收益，却有机会成为对事物的<color=magenta>准确描绘</color>。

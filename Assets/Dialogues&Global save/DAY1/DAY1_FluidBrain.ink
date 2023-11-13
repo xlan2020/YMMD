@@ -1,4 +1,4 @@
-INCLUDE ../global.ink
+
 
 (Log: Enters painter's apartment. ) #speaker: system #speakerMode: norm #bgm: 房间 
 ...So here I'm in this empty room. Nothing but a table and a mattress.  #speaker: Me #speakerMode: thought #choiceType: BUTTON

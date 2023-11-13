@@ -1,4 +1,4 @@
-INCLUDE DAY1-2_global.ink
+INCLUDE global.ink
 VAR drinkTime = 0
 我：哎，真是家徒四壁啊，晚上回到这种地方，果然还是开心不起来。#profile: painter_eyeClosed
  #bgm: 房间 
@@ -114,7 +114,7 @@ VAR drinkTime = 0
 我：我的模特 #typingSpeed: 1 #profile: painter_depressed
 我：我的对象
 我：她是  一个  美 人 鱼 。
-系统：下一个scene。#loadScene: DAY1-6_DisplaceDrawing
+系统：下一个scene。#loadScene: DAY1-6_DFD
 ->DONE
 
  

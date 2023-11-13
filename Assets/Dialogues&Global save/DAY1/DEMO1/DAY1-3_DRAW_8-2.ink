@@ -1,4 +1,4 @@
-INCLUDE DAY1-2_global.ink
+INCLUDE global.ink
 我：………………#profile: painter_side #portrait: 8-2_norm
 8-2：………………#portrait: 8-2_raiseEyebrow #profile: none
 我：…………不好意思，我的画材……都没了。#profile: painter_sideSweat

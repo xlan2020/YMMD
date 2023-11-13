@@ -13,7 +13,6 @@ public class InkDialogueManager : MonoBehaviour
     // variable for the load_globals.ink JSON
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
-    [SerializeField] private TextAsset loadBookJSON;
    
     [Header("Game Essentials")]
     public GameManager gameManager; 
@@ -87,6 +86,7 @@ public class InkDialogueManager : MonoBehaviour
 
 
     private Story currentStory;
+    private string currentStoryJson;
     public bool dialogueIsPlaying { get; private set; }
 
 
@@ -376,6 +376,9 @@ public class InkDialogueManager : MonoBehaviour
         handleAfterLineComplete();
     }
 
+    public string GetCurrentStoryJson(){
+        return currentStoryJson;
+    }
     private void handleAfterLineComplete()
     {
         handleChoiceType();
@@ -574,9 +577,10 @@ public class InkDialogueManager : MonoBehaviour
         return variableValue;
     }
 
-    public void EnterDialogueMode(TextAsset inkJson)
-    {
-        currentStory = new Story(inkJson.text);
+    public void EnterDialogueModeFromJsonText(string json){
+
+        currentStory = new Story(json);
+        currentStoryJson = json;
 
         dialogueIsPlaying = true;
         dialoguePanel.gameObject.SetActive(true);
@@ -597,7 +601,10 @@ public class InkDialogueManager : MonoBehaviour
             UnityEngine.Debug.Log("updating player can move!");
         }
 
-
+    }
+    public void EnterDialogueMode(TextAsset inkJson)
+    {
+        EnterDialogueModeFromJsonText(inkJson.text);
     }
 
     private IEnumerator ExitDialogueMode()
@@ -833,6 +840,45 @@ public class InkDialogueManager : MonoBehaviour
         canContinueToNextLine = true;
         dialoguePanel.SetInteractive(true);
         //dialoguePanel.GetComponent<Collider2D>().enabled = true;
+    }
+
+    public string GetCurrentStoryJsonState(){
+        if (currentStory != null){
+            string saveString = currentStory.state.ToJson();
+            return saveString;
+        } else {
+            return null;
+        }
+    }
+
+    public void LoadStorySave(string storyInkJson, string storyState){
+        if (storyState == null || storyInkJson == null){
+            UnityEngine.Debug.LogWarning("Cannot Load story because story state or story is invalid!");
+        } else {
+            currentStory = new Story(storyInkJson);
+            currentStoryJson = storyInkJson;
+
+            dialogueIsPlaying = true;
+            dialoguePanel.gameObject.SetActive(true);
+            autoIcon.SetActive(autoMode);
+
+            dialogueVariables.StartListening(currentStory);
+
+            //reset default Names, Portraits if no tags detected
+            speakerName.text = "???";
+            if (portraitAnimator!=null){
+                portraitAnimator.Play("default");
+            }
+            if (mapPlayer)
+            {
+                mapPlayer.UpdateCanMove();
+                UnityEngine.Debug.Log("updating player can move!");
+            }
+            currentStory.state.LoadJson(storyState);
+            typingLinesCoroutine = StartCoroutine(typingLines(currentStory.currentText));
+            dialoguePanel.SetInteractive(true);
+            handleTags(currentStory.currentTags);
+        }
     }
 }
 

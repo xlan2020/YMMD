@@ -15,6 +15,8 @@ public class SketchBook : MonoBehaviour
     [Header("UI Elements")]
     public SketchBookButton icon;
     public GameObject assesories;
+    public GameObject flipLeftButton;
+    public GameObject flipRightButton;
     public GameObject noteDisplay;
     public SpriteRenderer[] notesContainer; // should only have 4
     public Text currentPageText;
@@ -40,6 +42,7 @@ public class SketchBook : MonoBehaviour
         gameObject.SetActive(true);
         audio = GetComponent<AudioSource>();
 
+        /**
         if (instance == null)
         {
             instance = this;
@@ -49,6 +52,7 @@ public class SketchBook : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+        */
 
             // create book data structure
             BookNote[,] bookNotes2DArray = new BookNote[maxPage, 4];
@@ -57,6 +61,11 @@ public class SketchBook : MonoBehaviour
 
                         Sprite s = null;
                         bool exist = false;
+                        bool unlocked = false;
+                        if (i == 0 || i == 1){
+                            // first two pages initially unlocked
+                            unlocked = true;
+                        }
 
                         if (sketchBookSprites.pages.Length > i && sketchBookSprites.pages[i].notes.Length > j){
                             s = sketchBookSprites.pages[i].notes[j];
@@ -65,7 +74,7 @@ public class SketchBook : MonoBehaviour
 
                         bookNotes2DArray[i,j] = new BookNote {
                             sprite = s,
-                            unlocked = false,
+                            unlocked = unlocked,
                             exist = exist
                         };
                         UnityEngine.Debug.Log("create note at: " + i + ", " + j);
@@ -88,6 +97,16 @@ public class SketchBook : MonoBehaviour
         // notesManager.TurnToPage(currPage);
         DisplayPageUnlockedNotes(page);
         currentPageText.text = currPage + " / 10";  // let's assume we have 10 page maximum! 
+        if (page == 0){
+            flipLeftButton.SetActive(false);
+        } else{
+            flipLeftButton.SetActive(true);
+        }
+        if (page == maxPage-1){
+            flipRightButton.SetActive(false);
+        }else {
+            flipRightButton.SetActive(true);
+        }
     }
 
     private void DisplayPageUnlockedNotes(int page){
@@ -183,7 +202,7 @@ public class SketchBook : MonoBehaviour
             currPage--;
             TurnToPage(currPage);
             PlayFlipPageAudio();
-        }
+        } 
     }
 
     public void FlipRight()

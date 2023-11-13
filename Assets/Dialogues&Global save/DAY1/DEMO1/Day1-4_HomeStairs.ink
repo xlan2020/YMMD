@@ -1,4 +1,4 @@
-INCLUDE DAY1-2_global.ink
+INCLUDE global.ink
  ：要回家了吗？#profile: hide
 +[再转转]->not_yet
 +[回家吧]->go_back_home

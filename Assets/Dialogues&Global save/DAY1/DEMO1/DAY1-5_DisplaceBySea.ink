@@ -1,4 +1,4 @@
-INCLUDE DAY1-2_global.ink
+INCLUDE global.ink
 大海：~~~ ~~~ ~~~ #profile: hide
  ：看着夜晚的大海，画家生出一种空洞无措的感觉。#profile: hide
  ：渴望着拥有更多东西，所以——
