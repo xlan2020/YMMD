@@ -2581,13 +2581,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2356332737001181752, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1552837374}
+    - target: {fileID: 2356332737001181752, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
       propertyPath: loadingScreen
       value: 
-      objectReference: {fileID: 3929394750138112830}
+      objectReference: {fileID: 0}
     - target: {fileID: 2356332737001181752, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
       propertyPath: loadProgressDisplay
       value: 
-      objectReference: {fileID: 3929394750138112829}
+      objectReference: {fileID: 1552837376}
     - target: {fileID: 6424618973496838826, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
       propertyPath: infoBar
       value: 
@@ -2618,6 +2622,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb03bc94f66336a42998123a76887983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1552837375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2356332737001181752, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
+  m_PrefabInstance: {fileID: 1552837373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1ef5ce76b36040109a5b03e86b0cd13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1552837376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 795626078996581787, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
+  m_PrefabInstance: {fileID: 1552837373}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1627679673 stripped
@@ -3596,22 +3622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b210061669944278eafb92e9d018c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3929394750138112829 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4323745674024431629, guid: f8e1277990b274c91be48d2aa6e5443d, type: 3}
-  m_PrefabInstance: {fileID: 3929394750138112824}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &3929394750138112830 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6861878705724503186, guid: f8e1277990b274c91be48d2aa6e5443d, type: 3}
-  m_PrefabInstance: {fileID: 3929394750138112824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4846526272092921598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3825,6 +3835,10 @@ PrefabInstance:
       propertyPath: dialogueText
       value: 
       objectReference: {fileID: 1352498364}
+    - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
+      propertyPath: loadingScene
+      value: 
+      objectReference: {fileID: 1552837375}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: dialoguePanel
       value: 

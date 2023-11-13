@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
     public LoadInventory loadInventory;
     public LoadingScene sceneLoader;
     public float initialMoney;
-    
+
     [Header("UI Element")]
     public UI_Inventory uiInventory;
     public UIDraw_Inventory uiDraw_Inventory;
     public UI_Money uiMoney;
     public InfoBar infoBar;
 
-    [Header ("Assets")]
+    [Header("Assets")]
     public DisplaceSFX displaceSFX;
     public AllItemScriptableObject allItem;
     public SceneInfoScriptableObject allSceneInfo;
@@ -87,7 +87,8 @@ public class GameManager : MonoBehaviour
     {
         SetMoney(initialMoney);
 
-        Load(1);
+        //Load(1);
+        LoadAutoSave();
     }
 
 
@@ -96,7 +97,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
     }
 
-    public void Save(){
+    public void Save() {
 
         // clean up data to be saved
         float currMoney = money.GetMoney();
@@ -124,31 +125,83 @@ public class GameManager : MonoBehaviour
 
         // write the save file
         SaveSystem.Save(json);
+    }
 
+    public void AutoSave(string nextSceneId) {
+        float currMoney = money.GetMoney();
+        int[] itemIdArray = inventory.GetItemIdSaveArray();
+        bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
+        string sceneId = nextSceneId; // this is different!
+        string dialogueVariablesState = "";
+        if (InkDialogueManager.GetInstance() != null){
+            dialogueVariablesState = InkDialogueManager.GetInstance().GetDialogueVariables().GetGlobalVariablesJsonState();
+        }
+        // no need to save dialogue state, but need to save variables
 
+        // serialize to SaveObject json string
+        SaveObject saveObject = new SaveObject
+        {
+            moneyAmount = currMoney,
+            itemIdArray = itemIdArray,
+            noteUnlockedState = noteUnlockedState,
+            sceneId = sceneId,
+            loadSceneFromStart = true, // for auto save, load from scene start has to be true
+            dialogueVariablesState = dialogueVariablesState,
+        };
+        string json = JsonUtility.ToJson(saveObject);
+
+        // write the save file
+        SaveSystem.AutoSave(json);
+    }
+
+    public void LoadAutoSave() {
+        string saveString = SaveSystem.Load(0);
+
+        if (saveString == null || saveString == ""){
+            UnityEngine.Debug.Log("no auto save!");
+            if (HasBeginningDialogue)
+            {
+                // load the dialogue for this scene
+                InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
+            }
+            return;
+        } else {
+            UnityEngine.Debug.Log("loading auto save...");
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+            LoadFromSaveObject(saveObject);
+            if (saveObject.sceneId != sceneLoader.GetActiveSceneId()){
+                sceneLoader.LoadScene(saveObject.sceneId);
+            }
+        }
     }
 
     private void Load(int saveFileId){
         string saveString = SaveSystem.Load(saveFileId);
+        if (saveFileId == 0){
+            LoadAutoSave(); // USE THE LOAD auto save function instead, this is slightly different in the way of loading
+        }
         if (saveString == null || saveString == "")
         {
             UnityEngine.Debug.Log("no save data file");
             if (HasBeginningDialogue)
             {
                 // load the dialogue for this scene
-                dialogueManager.EnterDialogueMode(BeginningInkJSON);
+                InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
             }
             return;
         }
         // convert save data to SaveObject
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
-
-        // ****load the game according to the save***
-
-        // load scene first
+        // for normal load, not auto save load load scene first
         if (saveObject.sceneId != sceneLoader.GetActiveSceneId()){
             sceneLoader.LoadScene(saveObject.sceneId);
         }
+        LoadFromSaveObject(saveObject);
+    }
+
+    private void LoadFromSaveObject(SaveObject saveObject){
+        // ****load the game according to the save***
+
         // initialize scene info according to scene
         SceneInfo sceneInfo = sceneDict[saveObject.sceneId];
         switch(language){
@@ -206,7 +259,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
     public void DisplaceItem(Item item)
     {
         AddMoney(item.value);

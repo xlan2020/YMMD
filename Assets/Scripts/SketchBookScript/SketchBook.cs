@@ -77,7 +77,7 @@ public class SketchBook : MonoBehaviour
                             unlocked = unlocked,
                             exist = exist
                         };
-                        UnityEngine.Debug.Log("create note at: " + i + ", " + j);
+                        //UnityEngine.Debug.Log("create note at: " + i + ", " + j);
                 }
             }
             SketchbookData.bookNotes2DArray = bookNotes2DArray;

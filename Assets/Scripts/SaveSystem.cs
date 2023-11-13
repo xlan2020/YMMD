@@ -17,19 +17,22 @@ public static class SaveSystem
     }
 
     public static void AutoSave(string saveString) {
-        File.WriteAllText(SAVE_FOLDER + "save_0.txt", saveString);
+        SaveAtSlot(saveString, 0);
     }
 
-    public static string LoadAutoSave() {
-        if (File.Exists(SAVE_FOLDER + "save_0.txt")) { // safe check
-            // deserialize saved data and return
-            string saveString = File.ReadAllText(SAVE_FOLDER + "save_auto.txt");
-            return saveString;
-        } else {
-            return null;
+    public static void DeleteAutoSave(){
+        if (File.Exists(SAVE_FOLDER + "save_0.txt")){
+            UnityEngine.Debug.Log("deleting auto save!");
+            File.Delete(SAVE_FOLDER + "save_0.txt");
         }
     }
 
+    public static bool HasAutoSave(){
+        if (File.Exists(SAVE_FOLDER + "save_0.txt")){
+            return true;
+        }
+        return false;
+    }
     public static void SaveAtSlot(string saveString, int slotIndex) {
         // slotIndex 0 -> AutoSave
         if (slotIndex > 10 || slotIndex < 0){
@@ -39,6 +42,7 @@ public static class SaveSystem
         File.WriteAllText(SAVE_FOLDER + "save_" + slotIndex + ".txt", saveString);
     }
 
+    // legacy save, as many as you can
     public static void Save(string saveString){
         int saveNumber = 1;
         while (File.Exists(SAVE_FOLDER + "save_" + saveNumber + ".txt")) {

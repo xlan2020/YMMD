@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6238623582720645748
 Transform:
   m_ObjectHideFlags: 0
@@ -82,7 +82,7 @@ Transform:
   - {fileID: 6307131397331129582}
   - {fileID: 6238623582720645748}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8394794330358113783
 MonoBehaviour:
@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadProgressDisplay: {fileID: 6861670952917400148}
+  transitionTimeAddition: 2
+  animationTrigger: DipToBlack
+  gameManager: {fileID: 0}
 --- !u!95 &6425951117896206954
 Animator:
   serializedVersion: 5
