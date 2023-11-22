@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameLanguage language = GameLanguage.CH;
 
     [Header("Scene Start Setup")]
     public bool HasBeginningDialogue = true;
@@ -33,15 +33,18 @@ public class GameManager : MonoBehaviour
     private InkDialogueManager dialogueManager;
     Money money;
 
+    public event EventHandler onItemDisplaced;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
 
-        inventory = new Inventory() {
+        inventory = new Inventory()
+        {
             cashItem = allItem.arrayById[0]
         };
 
-        if (loadInventory)
+        if (loadInventory != null)
         {
             loadInventory.SetInventory(inventory);
         }
@@ -78,17 +81,15 @@ public class GameManager : MonoBehaviour
             dialogueVariables = dialogueManager.GetDialogueVariables();
         }
 
-
         SaveSystem.Init();
 
     }
 
     void Start()
     {
-        SetMoney(initialMoney);
-
-        //Load(1);
-        LoadAutoSave();
+        //SetMoney(initialMoney);
+        Load(GameEssential.currentSave);
+        sceneLoader.FadeOutLoadingScreen();
     }
 
 
@@ -97,17 +98,26 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
     }
 
-    public void Save() {
+    public void Save()
+    {
 
         // clean up data to be saved
         float currMoney = money.GetMoney();
         int[] itemIdArray = inventory.GetItemIdSaveArray();
         bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
+        int currPage = SketchbookData.currPage;
         string sceneId = sceneLoader.GetActiveSceneId();
         bool loadSceneFromStart = true;
-        string dialogueVariablesState = dialogueVariables.GetGlobalVariablesJsonState();
-        string currentDialogueJson = dialogueManager.GetCurrentStoryJson();
-        string currentDialogueState = dialogueManager.GetCurrentStoryJsonState();
+        string dialogueVariablesState = "";
+        string currentDialogueJson = "";
+        string currentDialogueState = "";
+        if (InkDialogueManager.GetInstance() != null)
+        {
+            dialogueManager = InkDialogueManager.GetInstance();
+            dialogueVariablesState = dialogueManager.GetDialogueVariables().GetGlobalVariablesJsonState();
+            currentDialogueJson = dialogueManager.GetCurrentStoryJson();
+            currentDialogueState = dialogueManager.GetCurrentStoryJsonState();
+        }
 
         // serialize to SaveObject json string
         SaveObject saveObject = new SaveObject
@@ -115,6 +125,7 @@ public class GameManager : MonoBehaviour
             moneyAmount = currMoney,
             itemIdArray = itemIdArray,
             noteUnlockedState = noteUnlockedState,
+            currPage = currPage,
             sceneId = sceneId,
             loadSceneFromStart = loadSceneFromStart,
             dialogueVariablesState = dialogueVariablesState,
@@ -127,13 +138,16 @@ public class GameManager : MonoBehaviour
         SaveSystem.Save(json);
     }
 
-    public void AutoSave(string nextSceneId) {
+    public void AutoSave(string nextSceneId)
+    {
         float currMoney = money.GetMoney();
         int[] itemIdArray = inventory.GetItemIdSaveArray();
         bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
+        int currPage = SketchbookData.currPage;
         string sceneId = nextSceneId; // this is different!
         string dialogueVariablesState = "";
-        if (InkDialogueManager.GetInstance() != null){
+        if (InkDialogueManager.GetInstance() != null)
+        {
             dialogueVariablesState = InkDialogueManager.GetInstance().GetDialogueVariables().GetGlobalVariablesJsonState();
         }
         // no need to save dialogue state, but need to save variables
@@ -144,6 +158,7 @@ public class GameManager : MonoBehaviour
             moneyAmount = currMoney,
             itemIdArray = itemIdArray,
             noteUnlockedState = noteUnlockedState,
+            currPage = currPage,
             sceneId = sceneId,
             loadSceneFromStart = true, // for auto save, load from scene start has to be true
             dialogueVariablesState = dialogueVariablesState,
@@ -154,57 +169,65 @@ public class GameManager : MonoBehaviour
         SaveSystem.AutoSave(json);
     }
 
-    public void LoadAutoSave() {
+    private void LoadAutoSave()
+    {
         string saveString = SaveSystem.Load(0);
 
-        if (saveString == null || saveString == ""){
+        if (saveString == null || saveString == "")
+        {
             UnityEngine.Debug.Log("no auto save!");
-            if (HasBeginningDialogue)
+            if (HasBeginningDialogue && InkDialogueManager.GetInstance() != null)
             {
                 // load the dialogue for this scene
                 InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
+
             }
             return;
-        } else {
+        }
+        else
+        {
             UnityEngine.Debug.Log("loading auto save...");
             SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
             LoadFromSaveObject(saveObject);
-            if (saveObject.sceneId != sceneLoader.GetActiveSceneId()){
-                sceneLoader.LoadScene(saveObject.sceneId);
-            }
         }
     }
 
-    private void Load(int saveFileId){
-        string saveString = SaveSystem.Load(saveFileId);
-        if (saveFileId == 0){
-            LoadAutoSave(); // USE THE LOAD auto save function instead, this is slightly different in the way of loading
-        }
-        if (saveString == null || saveString == "")
+    private void Load(int saveFileId)
+    {
+        if (saveFileId == -1)
         {
-            UnityEngine.Debug.Log("no save data file");
-            if (HasBeginningDialogue)
-            {
-                // load the dialogue for this scene
-                InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
-            }
+            // do not load any save, restart the scene
+            // only use this when restarting the game
             return;
         }
+
+        if (saveFileId == 0)
+        {
+            LoadAutoSave(); // USE THE LOAD auto save function instead, this is slightly different in the way of loading
+            return;
+        }
+
+        string saveString = SaveSystem.Load(saveFileId);
+
+        if (saveString == null || saveString == "")
+        {
+            UnityEngine.Debug.LogWarning("no matching save data file");
+        }
+
         // convert save data to SaveObject
         SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
-        // for normal load, not auto save load load scene first
-        if (saveObject.sceneId != sceneLoader.GetActiveSceneId()){
-            sceneLoader.LoadScene(saveObject.sceneId);
-        }
         LoadFromSaveObject(saveObject);
+
     }
 
-    private void LoadFromSaveObject(SaveObject saveObject){
+    private void LoadFromSaveObject(SaveObject saveObject)
+    {
         // ****load the game according to the save***
 
         // initialize scene info according to scene
         SceneInfo sceneInfo = sceneDict[saveObject.sceneId];
-        switch(language){
+        switch (GameEssential.language)
+        {
             case GameLanguage.CH:
                 infoBar.SetInfoText(sceneInfo.sceneDescription_CH);
                 break;
@@ -214,24 +237,24 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+
         // money
         this.SetMoney(saveObject.moneyAmount);
         // inventory
         inventory.LoadItemListFromIdArray(saveObject.itemIdArray, allItem.arrayById);
+
         // notes in sketchbook
         SketchbookData.LoadNotesUnlockedStates(saveObject.noteUnlockedState);
+        SketchbookData.currPage = saveObject.currPage;
 
-        if (saveObject.loadSceneFromStart)
+        if (saveObject.dialogueVariablesState != null && saveObject.dialogueVariablesState != "" && InkDialogueManager.GetInstance() != null)
         {
-            if (HasBeginningDialogue)
-            {
-                // load the dialogue for this scene
-                InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
-            }
-        } else {
             // dialogue variables
-            dialogueVariables.LoadGlobalVariablesSave(saveObject.dialogueVariablesState);
+            InkDialogueManager.GetInstance().GetDialogueVariables().LoadGlobalVariablesSave(saveObject.dialogueVariablesState);
+        }
 
+        if (!saveObject.loadSceneFromStart)
+        {
             switch (sceneInfo.sceneType)
             {
                 case SceneType.ThreeScreen:
@@ -258,6 +281,18 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+        if (saveObject.sceneId != sceneLoader.GetActiveSceneId())
+        {
+            sceneLoader.LoadScene(saveObject.sceneId, transition: false);
+        }
+
+        // enter the beginning dialogue only if the save object wanna load scene from start
+        if (saveObject.loadSceneFromStart && HasBeginningDialogue && InkDialogueManager.GetInstance() != null)
+        {
+            // load the dialogue for this scene
+            InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
+
+        }
     }
     public void DisplaceItem(Item item)
     {
@@ -265,16 +300,21 @@ public class GameManager : MonoBehaviour
         displaceSFX.PlayItemToMoneySound();
         uiInventory.ShowResultWindow_itemToMoney(item);
         inventory.RemoveItem(item);
+
+        onItemDisplaced?.Invoke(this, EventArgs.Empty);
     }
 
-    public void DisplaceItemFromDrawing(float moneyIn, ItemScriptableObject itemOut){
-        
+    public void DisplaceItemFromDrawing(float moneyIn, ItemScriptableObject itemOut)
+    {
+
         AddMoney(-moneyIn);
         Item item = inventory.AddItemFromScriptableObject(itemOut);
         item.value = moneyIn; // modify the value of the item to the user input one
         uiInventory.ShowResultWindow_moneyToItem(item);
 
         displaceSFX.PlayMoneyToItemSound();
+
+        onItemDisplaced?.Invoke(this, EventArgs.Empty);
     }
 
     public void AddItemToInventory(ItemScriptableObject item)
@@ -285,12 +325,15 @@ public class GameManager : MonoBehaviour
 
     public void AddMoney(float amount)
     {
-        float currAmount = money.GetMoney()+amount;
+        float currAmount = money.GetMoney() + amount;
         money.SetMoney(currAmount);
 
         updateCashItem();
 
-        dialogueVariables.SetGlobalVariable("money", currAmount);
+        if (dialogueVariables != null)
+        {
+            dialogueVariables.SetGlobalVariable("money", currAmount);
+        }
     }
 
     public void SetMoney(float amount)
@@ -299,24 +342,30 @@ public class GameManager : MonoBehaviour
 
         updateCashItem();
 
-        if (dialogueVariables!=null){
+        if (dialogueVariables != null)
+        {
             dialogueVariables.SetGlobalVariable("money", amount);
         }
     }
 
-    private void updateCashItem(){
+    private void updateCashItem()
+    {
         /**
         CASH item always stay at index 0 at the inventory!!
         */
-        if (money.GetMoney() <= 0){
+        if (money.GetMoney() <= 0)
+        {
             // remove cash item
             inventory.TryRemoveCashItem();
-        }else{
+        }
+        else
+        {
             inventory.TryAddCashItem();
         }
     }
 
-    public float GetMoney(){
+    public float GetMoney()
+    {
         return money.GetMoney();
     }
 
@@ -339,11 +388,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private class SaveObject {
+    private class SaveObject
+    {
         // UNIVERSAL
         public float moneyAmount;   // money
         public int[] itemIdArray;   // owned item list, no changed states
         public bool[] noteUnlockedState; // notebook unlock state
+        public int currPage;
         public string sceneId;  // current scene
         public bool loadSceneFromStart;
 
@@ -351,7 +402,7 @@ public class GameManager : MonoBehaviour
         public string dialogueVariablesState;    // ink dialogue variables
         // ink dialogue story progress if any
         public string currentDialogueJson;
-        public string currentDialogueState; 
+        public string currentDialogueState;
 
         // SCENE SPECIFIC
         public int drawBinaryVal;
@@ -370,7 +421,8 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private class GlobalSaveObject {
+    private class GlobalSaveObject
+    {
         // note unlocked state;
         // item gallery
     }
@@ -378,16 +430,16 @@ public class GameManager : MonoBehaviour
 
 
 
-        /**
-    private void dialogueIntegrationTest()
-    {
-        // UnityEngine.Debug.Log("trying to set global variable test: ");
-        // dialogueVariables.SetGlobalVariable("mamaTalk", 10);
-        // dialogueVariables.SetGlobalVariable("money", 100);
-        this.AddMoney(100f);
+    /**
+private void dialogueIntegrationTest()
+{
+    // UnityEngine.Debug.Log("trying to set global variable test: ");
+    // dialogueVariables.SetGlobalVariable("mamaTalk", 10);
+    // dialogueVariables.SetGlobalVariable("money", 100);
+    this.AddMoney(100f);
 
-    }
-    */
+}
+*/
 
     /** LEGACY
     public void SaveInventory()
@@ -395,9 +447,4 @@ public class GameManager : MonoBehaviour
         StaticInventory.ItemArry = inventory.GetItemList();
     }
     */
-}
-
-public enum GameLanguage {
-    CH,
-    EN
 }

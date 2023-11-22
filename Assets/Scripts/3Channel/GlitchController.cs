@@ -14,9 +14,12 @@ public class GlitchController : MonoBehaviour
     private float currInterval;
     private AudioSource source;
     public bool auto = true;
-    void Start()
+    void Awake()
     {
         source = GetComponent<AudioSource>();
+    }
+    void Start()
+    {
         GenerateRandomGlitchInterval();
     }
 

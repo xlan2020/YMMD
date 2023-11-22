@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class ThreeChannelText : MonoBehaviour
 {
@@ -33,6 +34,12 @@ public class ThreeChannelText : MonoBehaviour
     public AudioClip attemptTypingSFX;
     public AudioClip decideTypingSFX;
     private AudioSource audioSource;
+
+    // POST EFFECT Volume
+    private bool changingPostFX = false;
+    private Volume postFXVolume;
+    private float targetVolumeWeight;
+    private float volumeWeightIncrement;
 
     void Awake()
     {
@@ -185,6 +192,10 @@ public class ThreeChannelText : MonoBehaviour
             {
                 attempting = true;
                 animator.SetBool("attempting", true);
+                if (changingPostFX)
+                {
+                    volumeWeightIncrement = (targetVolumeWeight - postFXVolume.weight) / attemptTimeLimit;
+                }
             }
 
             if (attemptTime < attemptTimeLimit)
@@ -202,12 +213,25 @@ public class ThreeChannelText : MonoBehaviour
                 audioSource.Play();
                 ChangeText(randLine);
                 attemptTime++;
+
+                if (changingPostFX)
+                {
+                    postFXVolume.weight += volumeWeightIncrement;
+                }
             }
             else
             { //already reach the point to generate a right line
                 attempting = false;
                 attemptTime = 0; // reset attempting time
                 animator.SetBool("attempting", false); // reset animator
+
+                if (changingPostFX)
+                {
+                    // end changing post FX volume
+                    changingPostFX = false;
+                    postFXVolume.weight = targetVolumeWeight;
+                }
+
                 TypeNextLine();
             }
         }
@@ -237,5 +261,16 @@ public class ThreeChannelText : MonoBehaviour
     public void SetAcceleratingInterval(float newAcceleration)
     {
         AcceleratingInterval = newAcceleration;
+    }
+
+    public void MatchVolumeWeightToCurrentTyping(float targetWeight)
+    {
+        changingPostFX = true;
+        targetVolumeWeight = targetWeight;
+    }
+
+    public void SetPostFXVolume(Volume volume)
+    {
+        postFXVolume = volume;
     }
 }

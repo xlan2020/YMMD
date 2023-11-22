@@ -61,7 +61,7 @@ INCLUDE global.ink
 老板娘：怎么会没钱了呢？#profile: mama_norm
 我：说实话，我也不太清楚。我一觉醒来，家里就什么都没有了，钱包也是空的。#profile: painter_depressed
 我：（糟糕，这番话听起来真的很不要脸。我已经落魄到这种地步了吗？）#profile: painter_sideSweat
-老板娘：哦，这样啊。画家呀，你这几个月经常来，我也不是不相信你呀，给你煮碗面条也行。#profile: mama_upset
+老板娘：哦，这样啊。画家呀，你这几个月经常来，我也不是不相信你呀，给你煮碗面条也行。#profile: mama_upset 
 老板娘：不过，你身上这家伙事也不少，怎么就十几块钱也掏不出来了呢？#profile: mama_upset
 老板娘：白面条多难吃，你一<color=magenta> 置换 </color>，这不就有钱了吗？哎，这可怜的，我多送你个鸡蛋！#profile: mama_norm
 我：……置换呀。#profile: painter_sour
@@ -75,8 +75,8 @@ INCLUDE global.ink
 老板娘：置换完再来下单吧。
 我：（置换的规则是——对我来说越重要的东西，价值就越高。）#profile: painter_norm
 我：（当然，一个东西在人心目中的地位会变，价值也会变。大部分人，都是无法准确预估什么东西价值多少的。）
-我：（被置换走的物品，会从这个世界上“消失”，不留下任何痕迹。）
-我：（它存在过的记忆也一样会被抹去……我们一直都过着这样浑浑噩噩的日子。）#unlockNote: 3_1
+我：（不知从什么时候起，置换就成了一种人人都会的魔法，无论何时，无论何处都可以进行。）
+我：（然而，作为一种快速来钱的手段，置换有着最令我厌恶的<color=magenta>代价</color>……<color=gray>消失</color>。）
 }
 { you_know_displace: 
 我：（哈，我真是糊涂了。该不会是连“置换”这件事情，我都不记得了吧？）
@@ -85,13 +85,13 @@ INCLUDE global.ink
 老板娘：你这孩子！#profile:mama_satisfied
 -> buy_food
 }  
-我：…………………… #profile：painter_eyeClosed
-我：（实在是拉不下脸向老板娘讨饭了，还是看看有什么东西可以置换吧。）
+我：…………………… #profile：painter_eyeClosed #unlockNote: 2_4
+我：（实在是拉不下脸向老板娘讨饭了，还是看看有什么东西可以置换吧。）#event: showDisplace
 -> DONE
     
 ===buy_food===
 ~ foodOrdered = true
-老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_satisfied
+老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_satisfied #event: mama_back
 ->DONE
     
 ===finish_displace===

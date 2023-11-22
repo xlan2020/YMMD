@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
-// using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 using System;
@@ -13,9 +12,9 @@ public class InkDialogueManager : MonoBehaviour
     // variable for the load_globals.ink JSON
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
-   
+
     [Header("Game Essentials")]
-    public GameManager gameManager; 
+    public GameManager gameManager;
     [SerializeField] LoadingScene loadingScene;
 
     [Header("Params")]
@@ -91,7 +90,7 @@ public class InkDialogueManager : MonoBehaviour
 
 
     private static InkDialogueManager instance;
-    
+
     private AudioSource audioSource;
 
     private Coroutine typingLinesCoroutine;
@@ -105,7 +104,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private DialogueVariables dialogueVariables;
     private Dictionary<string, UnityEngine.Color> nameColorDict = new Dictionary<string, UnityEngine.Color>();
-    private Dictionary<string, AudioClip> nameVoiceDict=new Dictionary<string, AudioClip>();
+    private Dictionary<string, AudioClip> nameVoiceDict = new Dictionary<string, AudioClip>();
 
 
     // rich text handling
@@ -116,6 +115,10 @@ public class InkDialogueManager : MonoBehaviour
     string richText = "";
     int firstRichCharIndex = 0;
     string indentation = "";
+
+
+    public event EventHandler onDialogueEnded;
+
     private void Awake()
     {
         initializeChoices();
@@ -129,7 +132,7 @@ public class InkDialogueManager : MonoBehaviour
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
         CreateNameStyleDict();
 
-        audioSource=gameObject.GetComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.playOnAwake = false;
         audioSource.loop = false;
     }
@@ -376,7 +379,8 @@ public class InkDialogueManager : MonoBehaviour
         handleAfterLineComplete();
     }
 
-    public string GetCurrentStoryJson(){
+    public string GetCurrentStoryJson()
+    {
         return currentStoryJson;
     }
     private void handleAfterLineComplete()
@@ -526,7 +530,7 @@ public class InkDialogueManager : MonoBehaviour
             case "AUTO":
                 canSkipChoice = true;
                 break;
-            case "PAUSE": 
+            case "PAUSE":
                 break;
             default:
                 break;
@@ -577,7 +581,8 @@ public class InkDialogueManager : MonoBehaviour
         return variableValue;
     }
 
-    public void EnterDialogueModeFromJsonText(string json){
+    public void EnterDialogueModeFromJsonText(string json)
+    {
 
         currentStory = new Story(json);
         currentStoryJson = json;
@@ -590,7 +595,8 @@ public class InkDialogueManager : MonoBehaviour
 
         //reset default Names, Portraits if no tags detected
         speakerName.text = "???";
-        if (portraitAnimator!=null){
+        if (portraitAnimator != null)
+        {
             portraitAnimator.Play("default");
         }
         ContinueStory();
@@ -625,6 +631,8 @@ public class InkDialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
         //dialoguePanel.gameObject.SetActive(false);
         //dialogueText.text = "";
+
+        onDialogueEnded?.Invoke(this, EventArgs.Empty);
 
     }
 
@@ -702,11 +710,14 @@ public class InkDialogueManager : MonoBehaviour
                     handleDrawingSystemTag(tagValue);
                     break;
                 case TYPING_SPEED_TAG:
-                    if (tagValue == "default"){
+                    if (tagValue == "default")
+                    {
                         // this might change, after this becomes a const
                         typingSpeed = 0.02f;
-                    }else{
-                        typingSpeed=float.Parse(tagValue);
+                    }
+                    else
+                    {
+                        typingSpeed = float.Parse(tagValue);
                     }
                     break;
                 default:
@@ -720,7 +731,7 @@ public class InkDialogueManager : MonoBehaviour
     {
         drawingSystem.HandleInkDialogueTagValue(tagValue);
     }
-    
+
     private void handleSolveTag(string tagValue)
     {
         switch (tagValue)
@@ -731,7 +742,7 @@ public class InkDialogueManager : MonoBehaviour
                 solvableManager.SetCanSolve(false);
                 break;
             case "next":
-                canContinueToNextLine=false;
+                canContinueToNextLine = false;
                 solvableManager.SetCanSolve(true);
                 break;
             case "nextCanContinue":
@@ -794,11 +805,11 @@ public class InkDialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         UnityEngine.Debug.Log("making choice at index: " + choiceIndex);
-        
+
         // in case this is a 'CANSKIP' choice
         // when a choice is already made
         // then won't be skipping to the default [0] choice again
-        canSkipChoice=false; 
+        canSkipChoice = false;
 
         currentStory.ChooseChoiceIndex(choiceIndex);
 
@@ -812,7 +823,7 @@ public class InkDialogueManager : MonoBehaviour
         {
             // the following actually skips choice
             canSkipChoice = false;
-            canContinueToNextLine=true;
+            canContinueToNextLine = true;
             currentStory.ChooseChoiceIndex(0);
             if (DrawMode)
             {
@@ -842,19 +853,27 @@ public class InkDialogueManager : MonoBehaviour
         //dialoguePanel.GetComponent<Collider2D>().enabled = true;
     }
 
-    public string GetCurrentStoryJsonState(){
-        if (currentStory != null){
+    public string GetCurrentStoryJsonState()
+    {
+        if (currentStory != null)
+        {
             string saveString = currentStory.state.ToJson();
             return saveString;
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
 
-    public void LoadStorySave(string storyInkJson, string storyState){
-        if (storyState == null || storyInkJson == null){
+    public void LoadStorySave(string storyInkJson, string storyState)
+    {
+        if (storyState == null || storyInkJson == null)
+        {
             UnityEngine.Debug.LogWarning("Cannot Load story because story state or story is invalid!");
-        } else {
+        }
+        else
+        {
             currentStory = new Story(storyInkJson);
             currentStoryJson = storyInkJson;
 
@@ -866,7 +885,8 @@ public class InkDialogueManager : MonoBehaviour
 
             //reset default Names, Portraits if no tags detected
             speakerName.text = "???";
-            if (portraitAnimator!=null){
+            if (portraitAnimator != null)
+            {
                 portraitAnimator.Play("default");
             }
             if (mapPlayer)

@@ -9,13 +9,27 @@ public class TitleScreenUI : MonoBehaviour
     public Text restartButtonText;
     public Button continueButton;
 
-    void Start(){
-        if (SaveSystem.HasAutoSave()){
+    void Start()
+    {
+        if (SaveSystem.HasAutoSave())
+        {
             continueButton.gameObject.SetActive(true);
             restartButtonText.text = "重新开始";
-        }else {
+        }
+        else
+        {
             continueButton.gameObject.SetActive(false);
             restartButtonText.text = "开始游戏";
         }
+    }
+
+    public void SetRestartGameSave()
+    {
+        GameEssential.currentSave = -1;
+    }
+
+    public void SetResumeGameSave()
+    {
+        GameEssential.currentSave = 0;
     }
 }

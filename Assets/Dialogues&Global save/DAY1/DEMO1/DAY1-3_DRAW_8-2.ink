@@ -309,7 +309,7 @@ INCLUDE global.ink
 我：嗐，都怪你冒出来的时候太吓人了，你……呃？等等，你从哪里冒出来的？#portrait: 8-2_smile
 我：你刚出来的时候……连衣服都没穿！你这是去哪儿了？
 8-2：我哪儿也没去。
-8-2：或者说……去了<color=magenta>那边</color>。我去了<color=magenta>虚空</color>。#portrait: 8-2_norm
+8-2：或者说……去了<color=magenta>那边</color>。我去了<color=magenta>虚空</color>。#portrait: 8-2_norm #unlockNote: 3_3
 我：你……你，你去那边干嘛？
 8-2：出差。#portrait: 8-2_laugh
 我：……啊？
@@ -342,7 +342,10 @@ INCLUDE global.ink
 我：咳，8-2，那边是什么样子的？
 8-2：如果有样子的话，就不叫虚空了。#portrait: 8-2_norm
 8-2：……再说了，我也不记得。虚空里装着的只有不存在的东西，我都不存在了，当然也就不知道了。唔，不如说，其实我根本没去过？#portrait: 8-2_thinking
-我：好吧，真是很有帮助的答案。#portrait: 8-2_smile
-我：不过，你的画也画完了。
-系统：作画完成了。#drawingSystem: showDrawResult #profile: none #bgm: fade_0.5_0
+我：好吧，真是很有帮助的答案。#portrait: 8-2_smile 
+我：（不过，虚空的存在……或者说“不存在”，还真是不可思议，明明什么都没有，却又像是拥有一切——取之不尽、用之不竭。）
+我：（但总觉得哪里还是有点漏洞……）#unlockNote: 3_4
+我：（先不管这个了。8-2的“肖像”，倒是已经画完了。）
++[递给8-2]
+ ：#drawingSystem: showDrawResult #profile: none #bgm: fade_0.5_0
 ->DONE

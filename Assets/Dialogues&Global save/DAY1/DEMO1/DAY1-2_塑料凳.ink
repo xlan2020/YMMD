@@ -40,5 +40,5 @@ INCLUDE global.ink
 我：（我去！骗子怎么可能先给我钱？）#profile: painter_stunned
 我：尊贵的先生，请问您想要什么样的画呢？#profile: painter_happy
 我：让我先把画箱打开——
-我：让我先把画箱打开—— #loadScene:DAY1-3_Draw8-2
+我：啊！不对…… #loadScene:DAY1-3_Draw8-2
 ->DONE

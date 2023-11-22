@@ -8,19 +8,24 @@ public class SceneInfoScriptableObject : ScriptableObject
     public SceneInfo[] allScenes;
     private Dictionary<string, SceneInfo> sceneDict;
 
-    void Awake(){
+    void Awake()
+    {
         sceneDict = new Dictionary<string, SceneInfo>();
-        foreach (SceneInfo sceneInfo in allScenes){
+        foreach (SceneInfo sceneInfo in allScenes)
+        {
             sceneDict.Add(sceneInfo.sceneId, sceneInfo);
         }
     }
 
-    public Dictionary<string, SceneInfo> GetSceneInfoDict(){
-        if (sceneDict == null){
+    public Dictionary<string, SceneInfo> GetSceneInfoDict()
+    {
+        if (sceneDict == null)
+        {
             sceneDict = new Dictionary<string, SceneInfo>();
-            foreach (SceneInfo sceneInfo in allScenes){
+            foreach (SceneInfo sceneInfo in allScenes)
+            {
                 sceneDict.Add(sceneInfo.sceneId, sceneInfo);
-             }
+            }
         }
         return sceneDict;
     }
@@ -36,11 +41,12 @@ public struct SceneInfo
     public string sceneDescription_EN;
 }
 
-public enum SceneType{
-    ThreeScreen, 
-    Waking, 
+public enum SceneType
+{
+    ThreeScreen,
+    Waking,
     Map,
-    Draw, 
-    FluidBrain, 
+    Draw,
+    FluidBrain,
     DFD
 }

@@ -14,6 +14,8 @@ public class InventoryButton : MonoBehaviour
 
     private AudioSource audio;
     public bool canOpen = true;
+
+    private bool hidingDisplaceButton = false;
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -78,7 +80,14 @@ public class InventoryButton : MonoBehaviour
     private void RefreshDisplayState()
     {
         uiInventory.gameObject.SetActive(showInventory);
-        displaceButton.ShowButton(showInventory);
+        if (hidingDisplaceButton)
+        {
+            displaceButton.ShowButton(false);
+        }
+        else
+        {
+            displaceButton.ShowButton(showInventory);
+        }
         animator.SetBool("isOpen", showInventory);
         if (showInventory)
         {
@@ -101,6 +110,11 @@ public class InventoryButton : MonoBehaviour
     public bool ShowingInventory()
     {
         return showInventory;
+    }
+
+    public void HidingDisplaceButton(bool b)
+    {
+        hidingDisplaceButton = b;
     }
 }
 

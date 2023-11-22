@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public enum DisplaceButtonType{
+public enum DisplaceButtonType
+{
     CurrentItem,
-    FromDrawing, 
+    FromDrawing,
     Custom
 }
 public class DisplaceButton : MonoBehaviour
@@ -29,12 +30,15 @@ public class DisplaceButton : MonoBehaviour
         button.interactable = interactive;
     }
 
-    public void ShowButton(bool b){
+    public void ShowButton(bool b)
+    {
         button.gameObject.SetActive(b);
     }
-    public void ExecuteDisplaceAction(){
-        switch(buttonType){
-            case DisplaceButtonType.CurrentItem: 
+    public void ExecuteDisplaceAction()
+    {
+        switch (buttonType)
+        {
+            case DisplaceButtonType.CurrentItem:
                 gameManager.DisplaceItem(uiInventory.GetCurrentSlot().item);
                 break;
             case DisplaceButtonType.FromDrawing:
@@ -58,13 +62,15 @@ public class DisplaceButton : MonoBehaviour
         }
     }
 
-    public void SetButtonTypeCurrentItem(){
+    public void SetButtonTypeCurrentItem()
+    {
         buttonType = DisplaceButtonType.CurrentItem;
         buttonText.text = "置换!";
         animator.SetBool("Blink", false);
     }
 
-    public void ActivateButtonTypeCustom(){
+    public void ActivateButtonTypeCustom()
+    {
         UnityEngine.Debug.Log("button custom mode activated!");
         buttonType = DisplaceButtonType.Custom;
         buttonText.text = customButtonText;
@@ -72,7 +78,8 @@ public class DisplaceButton : MonoBehaviour
         animator.SetBool("Blink", true);
     }
 
-    public void StoreButtonCustomAction(UnityEvent newEvent, string uiText){
+    public void StoreButtonCustomAction(UnityEvent newEvent, string uiText)
+    {
         UnityEngine.Debug.Log("button custom action is stored! potential to have custom action.");
         hasCustomAction = true;
         customEvent = newEvent;
@@ -80,12 +87,14 @@ public class DisplaceButton : MonoBehaviour
         customButtonText = uiText;
     }
 
-    public void RemoveCustomAction(){
+    public void RemoveCustomAction()
+    {
         hasCustomAction = false;
         customEvent = null;
     }
 
-    public bool HasCustomAction(){
+    public bool HasCustomAction()
+    {
         return hasCustomAction;
     }
 }

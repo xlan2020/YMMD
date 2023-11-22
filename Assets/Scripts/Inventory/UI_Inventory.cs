@@ -30,7 +30,6 @@ public class UI_Inventory : MonoBehaviour
     private int customButtonItemId;
 
 
-
     void Awake()
     {
         if (instance == null)
@@ -145,13 +144,18 @@ public class UI_Inventory : MonoBehaviour
             currentItemDescription.text = currentSlot.item.description;
 
             // check and update displaceButton
-            if (!displaceButton.HasCustomAction()){
+            if (!displaceButton.HasCustomAction())
+            {
                 displaceButton.SetInteractive(currentSlot.item.displaceable);
-            } else {
+            }
+            else
+            {
                 if (currentSlot.item.id == customButtonItemId)
                 {
                     displaceButton.ActivateButtonTypeCustom();
-                } else {
+                }
+                else
+                {
                     displaceButton.SetButtonTypeCurrentItem();
                     displaceButton.SetInteractive(currentSlot.item.displaceable);
                 }
@@ -182,7 +186,8 @@ public class UI_Inventory : MonoBehaviour
     }
 
     // let ui_inventory know custom item identifier
-    public void SetCustomButtonState(int itemId){
+    public void SetCustomButtonState(int itemId)
+    {
         customButtonItemId = itemId;
     }
 }

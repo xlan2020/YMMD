@@ -79,7 +79,6 @@ VAR drinkTime = 0
 我：一杯水。哈哈……我、我用刚赚来的钱，就买了这么一杯水？#profile: painter_concerned
 我：我该做什么，把它供起来，把它喝了？喉咙好痛、头好晕……但是——#profile: painter_selfMock
 我：我好像知道自己为什么需要这杯水了。#profile: painter_eyeClosed
-# 很羞耻，但是也可以利用；我们应该更亲密一点/我对你的感受还不够深刻
 “模特”：画家，休息休息，我该喝水啦！#profile: hide
  ：“画家”沉浸在自己的思绪里。
 “画家”：这幅画的感觉不对……不够亲密、不够深刻。

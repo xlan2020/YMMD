@@ -144,4 +144,7 @@ public class ThreeChannelManager : MonoBehaviour
         }
         return word;
     }
+
+
+
 }

@@ -10,14 +10,12 @@ public class SceneEventManager : MonoBehaviour
     void Awake()
     {
         eventsDict = new Dictionary<string, SceneEvent>();
-    }
-    void Start()
-    {
         foreach (Transform child in transform)
         {
             eventsDict.Add(child.gameObject.GetComponent<SceneEvent>().name, child.gameObject.GetComponent<SceneEvent>());
         }
     }
+
 
     public void TriggerEvent(string eventName)
     {

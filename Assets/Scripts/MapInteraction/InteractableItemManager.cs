@@ -11,8 +11,18 @@ public class InteractableItemManager : MonoBehaviour
     public GameObject observeModeOverlay;
     bool observing;
 
+    private InteractableItem currentItem;
+
+    private static InteractableItemManager instance;
     void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogWarning("WARNING: keep only one ink dialogue manager per scene!");
+        }
+        instance = this;
+
+
         foreach (Transform child in transform)
         {
             if (child.GetComponent<InteractableItem>())
@@ -25,10 +35,13 @@ public class InteractableItemManager : MonoBehaviour
         {
             // add interactive function to each interactive sign from script, no need to do it through inspector
             // whenever the interaction starts, show interactive sign as if it's faraway and non-interatable
-            item.interactiveSign.gameObject.GetComponent<Button>().onClick.AddListener(delegate { player.InteractWithItem(item); item.interactiveSign.showSelfFar(); });
+            item.interactiveSign.gameObject.GetComponent<Button>().onClick.AddListener(delegate { player.InteractWithItem(item); item.interactiveSign.showSelfFar(); currentItem = item; });
             item.interactiveSign.SetCursor(cursor);
         }
+
+        InkDialogueManager.GetInstance().onDialogueEnded += onDialogueEnded_ReactivateCurrentSign;
     }
+
 
     void Start()
     {
@@ -100,5 +113,25 @@ public class InteractableItemManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ReactivateCurrentSign()
+    {
+        if (currentItem == null)
+        {
+            UnityEngine.Debug.LogWarning("there isn't a currently interactable item that is tracked!");
+            return;
+        }
+        currentItem.interactiveSign.showSelfNear();
+        currentItem = null;
+    }
+
+    private void onDialogueEnded_ReactivateCurrentSign(object sender, System.EventArgs e)
+    {
+        ReactivateCurrentSign();
+    }
+    public static InteractableItemManager GetInstance()
+    {
+        return instance;
     }
 }

@@ -42,11 +42,13 @@ public class Inventory
         return _itemList;
     }
 
-    public int[] GetItemIdSaveArray(){
+    public int[] GetItemIdSaveArray()
+    {
 
         int[] saveArray = new int[_itemList.Count];
 
-        for(int i = 0; i< _itemList.Count; i++){
+        for (int i = 0; i < _itemList.Count; i++)
+        {
             saveArray[i] = _itemList[i].id;
         }
 
@@ -67,11 +69,13 @@ public class Inventory
         }
     }
 
-    public void LoadItemListFromIdArray(int[] idArray, ItemScriptableObject[] allItemArray){
+    public void LoadItemListFromIdArray(int[] idArray, ItemScriptableObject[] allItemArray)
+    {
         _itemList = new List<Item>();
-        for (int i = 0; i < idArray.Length; i++){
+        for (int i = 0; i < idArray.Length; i++)
+        {
             int id = idArray[i];
-            
+
             Item item = createItemFromScriptableObject(allItemArray[id]);
             item.isNew = false;
             // 目前版本的问题：item的价值、耐久……等等已经变化了，但是存的还是初始的这个item array，新的item变化没有保存
@@ -88,7 +92,8 @@ public class Inventory
         return item;
     }
 
-    private Item createItemFromScriptableObject(ItemScriptableObject itemInfo){
+    private Item createItemFromScriptableObject(ItemScriptableObject itemInfo)
+    {
         Item item = new Item
         {
             id = itemInfo.id,
@@ -114,8 +119,10 @@ public class Inventory
         };
         return item;
     }
-    public void TryAddCashItem(){
-        if(!hasCashItem){
+    public void TryAddCashItem()
+    {
+        if (!hasCashItem)
+        {
             hasCashItem = true;
             Item cash = createItemFromScriptableObject(cashItem);
             // insert at first, since cash is different from other item
@@ -125,8 +132,10 @@ public class Inventory
         }
     }
 
-    public void TryRemoveCashItem(){
-        if (hasCashItem){
+    public void TryRemoveCashItem()
+    {
+        if (hasCashItem)
+        {
             hasCashItem = false;
             RemoveItemAtIndex(0);
         }

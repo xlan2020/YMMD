@@ -43,7 +43,7 @@ public class SettingsMenu : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -111,10 +111,11 @@ public void SetVolume(float volume)
         }
     }
 
-    public void SaveGame(){
+    public void SaveGame()
+    {
         gameManager.Save();
     }
-    
+
     public void QuitGame()
     {
         Application.Quit();

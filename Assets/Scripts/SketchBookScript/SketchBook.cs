@@ -9,8 +9,8 @@ public class SketchBook : MonoBehaviour
     public static SketchBook instance { get; private set; }
     // public NotesManager notesManager;
     [Header("SketchBook Content")]
-    public SketchBookSpritesScriptableObject sketchBookSprites;
-    private int maxPage = 11;
+    //public SketchBookSpritesScriptableObject sketchBookSprites;
+    //private int maxPage = 11;
 
     [Header("UI Elements")]
     public SketchBookButton icon;
@@ -34,55 +34,12 @@ public class SketchBook : MonoBehaviour
 
     private bool isOpen = false;
     private bool hasNew;
-    private int currPage = 0;
 
 
     void Awake()
     {
         gameObject.SetActive(true);
         audio = GetComponent<AudioSource>();
-
-        /**
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
-        */
-
-            // create book data structure
-            BookNote[,] bookNotes2DArray = new BookNote[maxPage, 4];
-            for (int i = 0; i < maxPage; i++){
-                for (int j = 0; j < 4; j++) {
-
-                        Sprite s = null;
-                        bool exist = false;
-                        bool unlocked = false;
-                        if (i == 0 || i == 1){
-                            // first two pages initially unlocked
-                            unlocked = true;
-                        }
-
-                        if (sketchBookSprites.pages.Length > i && sketchBookSprites.pages[i].notes.Length > j){
-                            s = sketchBookSprites.pages[i].notes[j];
-                            exist = true;
-                        }
-
-                        bookNotes2DArray[i,j] = new BookNote {
-                            sprite = s,
-                            unlocked = unlocked,
-                            exist = exist
-                        };
-                        //UnityEngine.Debug.Log("create note at: " + i + ", " + j);
-                }
-            }
-            SketchbookData.bookNotes2DArray = bookNotes2DArray;
-            SketchbookData.maxPage = maxPage;
-
     }
     void Start()
     {
@@ -93,41 +50,53 @@ public class SketchBook : MonoBehaviour
 
     public void TurnToPage(int page)
     {
-        currPage = page;
-        // notesManager.TurnToPage(currPage);
+        SketchbookData.currPage = page;
+
         DisplayPageUnlockedNotes(page);
-        currentPageText.text = currPage + " / 10";  // let's assume we have 10 page maximum! 
-        if (page == 0){
+        currentPageText.text = SketchbookData.currPage + " / 10";  // let's assume we have 10 page maximum! 
+        if (page == 0)
+        {
             flipLeftButton.SetActive(false);
-        } else{
+        }
+        else
+        {
             flipLeftButton.SetActive(true);
         }
-        if (page == maxPage-1){
+        if (page == SketchbookData.maxPage - 1)
+        {
             flipRightButton.SetActive(false);
-        }else {
+        }
+        else
+        {
             flipRightButton.SetActive(true);
         }
     }
 
-    private void DisplayPageUnlockedNotes(int page){
-        if (SketchbookData.bookNotes2DArray == null){
+    private void DisplayPageUnlockedNotes(int page)
+    {
+        if (SketchbookData.bookNotes2DArray == null)
+        {
             return;
         }
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++)
+        {
             BookNote n = SketchbookData.bookNotes2DArray[page, i];
-                if (n.unlocked){
-                    // if the note is unlocked, display it
-                    notesContainer[i].sprite = n.sprite;
-                } else {
-                    // if the note is not unlocked, don't display anything
-                    notesContainer[i].sprite = null;
-                }
+            if (n.unlocked)
+            {
+                // if the note is unlocked, display it
+                notesContainer[i].sprite = n.sprite;
+            }
+            else
+            {
+                // if the note is not unlocked, don't display anything
+                notesContainer[i].sprite = null;
+            }
         }
     }
 
     public int CurrentPage()
     {
-        return currPage;
+        return SketchbookData.currPage;
     }
 
     public bool IsOpen()
@@ -176,8 +145,8 @@ public class SketchBook : MonoBehaviour
             dialogueManager.FreezeDialogue();
         }
 
-        TurnToPage(currPage);
-        UnityEngine.Debug.Log("Current page is: " + currPage);
+        TurnToPage(SketchbookData.currPage);
+        UnityEngine.Debug.Log("Current page is: " + SketchbookData.currPage);
     }
 
     public void CloseBook()
@@ -197,20 +166,20 @@ public class SketchBook : MonoBehaviour
 
     public void FlipLeft()
     {
-        if (currPage > 0)
+        if (SketchbookData.currPage > 0)
         {
-            currPage--;
-            TurnToPage(currPage);
+            SketchbookData.currPage--;
+            TurnToPage(SketchbookData.currPage);
             PlayFlipPageAudio();
-        } 
+        }
     }
 
     public void FlipRight()
     {
-        if (currPage < maxPage)
+        if (SketchbookData.currPage < SketchbookData.maxPage)
         {
-            currPage++;
-            TurnToPage(currPage);
+            SketchbookData.currPage++;
+            TurnToPage(SketchbookData.currPage);
             PlayFlipPageAudio();
         }
     }
@@ -232,13 +201,15 @@ public class SketchBook : MonoBehaviour
             return;
         }
         */
-        
+
         // interpret input
         int page = int.Parse(name.Split("_")[0]);
-        int index = int.Parse(name.Split("_")[1])-1;
+        int index = int.Parse(name.Split("_")[1]) - 1;
+        UnityEngine.Debug.Log("attempting to unlock new note at page :" + page + ", index: " + index);
 
         // if the note is already unlocked, then does nothing and return;
-        if (SketchbookData.bookNotes2DArray[page, index].unlocked){
+        if (SketchbookData.bookNotes2DArray[page, index].unlocked)
+        {
             UnityEngine.Debug.Log("The note '" + name + "' has already been unlocked! ");
             return;
         }
@@ -261,7 +232,8 @@ public class SketchBook : MonoBehaviour
 
 }
 
-public struct BookNote {
+public struct BookNote
+{
     public Sprite sprite;
     public bool unlocked;
     public bool exist;
