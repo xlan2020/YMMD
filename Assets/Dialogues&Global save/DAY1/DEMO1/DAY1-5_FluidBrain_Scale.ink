@@ -113,7 +113,7 @@ VAR drinkTime = 0
 我：我的模特 #typingSpeed: 1 #profile: painter_depressed
 我：我的对象
 我：她是  一个  美 人 鱼 。
-系统：下一个scene。#loadScene: DAY1-6_DFD
+我：我的 美人鱼…… #typingSpeed: 0.5 #loadScene: DAY1-6_DFD
 ->DONE
 
  

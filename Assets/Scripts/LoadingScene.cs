@@ -13,6 +13,7 @@ public class LoadingScene : MonoBehaviour
     public string animationTrigger = "DipToBlack";
     public GameManager gameManager;
     public bool beginWithoutLoadingScreen = false;
+    private bool isLoading = false;
 
 
     void Awake()
@@ -30,6 +31,12 @@ public class LoadingScene : MonoBehaviour
     }
     public void LoadScene(string sceneName, bool autoSave = true, bool deleteAutoSave = false, bool transition = true)
     {
+        if (isLoading)
+        {
+            UnityEngine.Debug.Log("scene is already loading in progress! new scene won't be loaded");
+            return;
+        }
+        isLoading = true;
         if (sceneName == "0_NoContent")
         {
             StartCoroutine(LoadSceneAsync(sceneName, autoSave: false, deleteAutoSave: false, transition));
@@ -39,6 +46,7 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadSceneAsync(string sceneName, bool autoSave = true, bool deleteAutoSave = false, bool transition = true)
     {
+        BGMPlayer.GetInstance().FadeCurrentBGM(2f, 0f);
         UnityEngine.Debug.Log("loading scene process start");
         if (transition)
         {

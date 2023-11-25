@@ -7,12 +7,15 @@ public class LoadInventory : MonoBehaviour
     private Inventory inventory;
     public ItemScriptableObject[] inventoryLoadList;
 
-    void Start()
+    public void AppendListToInventory(Inventory inventory)
     {
-        //AddChildrenToInventory();
-
+        this.inventory = inventory;
+        foreach (ItemScriptableObject itemInfo in inventoryLoadList)
+        {
+            inventory.AddItemFromScriptableObject(itemInfo);
+        }
     }
-
+    /**
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -21,6 +24,7 @@ public class LoadInventory : MonoBehaviour
             inventory.AddItemFromScriptableObject(itemInfo);
         }
     }
+    */
     /**
         private void AddChildrenToInventory()
         {

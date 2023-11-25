@@ -7,7 +7,7 @@ INCLUDE global.ink
 8-2：不过，没<color=magenta>画材</color>你就不会画画了？#portrait: 8-2_smile
 8-2：你<b>以前</b>可不是这样的。#portrait: 8-2_admire
 8-2：我是不挑的。不如先看看你身边吧，真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
-我：（咦？仔细一看，这些东西……有办法了！）#profile: painter_surprised #drawingSystem: showMaterialWindow
+我：（咦？仔细一看，点餐纸、铅笔、酱油……有办法了！）<color=green>*鼠标单击桌面上的物品拾取*</color>#profile: painter_surprised #drawingSystem: showMaterialWindow
 系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为画布、笔刷、颜料三类。#profile: none
 系统：个别特殊的物品则不可用来画画。
 系统：每次使用画材时会消耗1点<color=magenta>耐久</color>，<color=magenta>耐久</color>清空后物品会<color=magenta>消失</color>。
@@ -115,7 +115,7 @@ INCLUDE global.ink
 8-2：但就这么一个数，人也还是看不清楚。#portrait: 8-2_thinking
 8-2：所以呢，我的置换成功学课程也就应运而生。哈哈，你刚问我教那老爷子什么，这么说吧，我兼职做的是讲师。#portrait: 8-2_smile2
 我：（果然，不出我所料。）……你是个兼职骗子。#profile: painter_side #portrait: 8-2_laugh 
-我：（说他是骗子的时候，他还笑了！怎么有这么厚颜无耻的人？）#showObservee: evilSmile
+我：（说他是骗子的时候，他还笑了！瞧<color=green>他的嘴角</color>，怎么会有这么厚颜无耻的人？）#showObservee: evilSmile
 我：你居然还好意思说自己研究真理……天，你真应该向老板娘道歉。
 8-2：瞧你说得多难听，这怎么能叫骗人呢？#portrait: 8-2_norm
 8-2：多少人都不了解自己想要什么，能失去的是什么……换来换去，换得一场空。#portrait: 8-2_thinking

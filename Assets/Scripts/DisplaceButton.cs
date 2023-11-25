@@ -24,8 +24,16 @@ public class DisplaceButton : MonoBehaviour
     private string customButtonText;
     private bool hasCustomAction;
 
-    void Start()
+    void Awake()
     {
+        if (buttonType == DisplaceButtonType.FromDrawing)
+        {
+            interactive = true;
+        }
+        else
+        {
+            interactive = false;
+        }
         animator = button.GetComponent<Animator>();
         button.interactable = interactive;
     }
@@ -43,7 +51,6 @@ public class DisplaceButton : MonoBehaviour
                 break;
             case DisplaceButtonType.FromDrawing:
                 displaceFromDrawing.DisplaceWithCurrentInput();
-                displaceFromDrawing.displaceSuccessProceedDialogue();
                 break;
             case DisplaceButtonType.Custom:
                 customEvent.Invoke();

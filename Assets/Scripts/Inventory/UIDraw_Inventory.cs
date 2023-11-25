@@ -162,14 +162,26 @@ public class UIDraw_Inventory : MonoBehaviour
 
     private List<Item> filterDisplayList(List<Item> itemList)
     {
+        List<Item> notDrawList = new List<Item>();
         displayList.Clear();
         foreach (Item item in itemList)
         {
-            if ((int)item.drawType == (int)filterType || filterType == FilterType.all)
+            if (filterType == FilterType.all)
+            {
+                if (item.drawType == DrawType.notDraw)
+                {
+                    notDrawList.Add(item);
+                }
+                else
+                {
+                    displayList.Add(item);
+                }
+            }
+            else if ((int)item.drawType == (int)filterType)
             {
                 displayList.Add(item);
             }
-            if (item.drawType == DrawType.brushPaint)
+            else if (item.drawType == DrawType.brushPaint)
             {
                 if (filterType == FilterType.brush || filterType == FilterType.paint)
                 {
@@ -178,6 +190,8 @@ public class UIDraw_Inventory : MonoBehaviour
 
             }
         }
+        // always append the not draw list at last
+        displayList.AddRange(notDrawList);
         return displayList;
     }
 
@@ -290,6 +304,8 @@ public class UIDraw_Inventory : MonoBehaviour
                 return paintTypeIcon;
             case DrawType.brushPaint:
                 return brushPaintTypeIcon;
+            case DrawType.notDraw:
+                return notDrawTypeIcon;
             default:
                 break;
         }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BGMPlayer : MonoBehaviour
 {
     // format: fade_duration_volume
+    public static BGMPlayer instance;
     [SerializeField] private AudioClip 日常;
     [SerializeField] private AudioClip 黄昏;
     [SerializeField] private AudioClip 戏谑;
@@ -23,13 +24,31 @@ public class BGMPlayer : MonoBehaviour
 
     bool isOn1 = false;
 
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    public static BGMPlayer GetInstance()
+    {
+        return instance;
+    }
     void Start()
     {
         //Calling this function in MonoBehaviour.Awake will result in unexpected behavior. Use MonoBehaviour.Start instead.
         bgmMixer.SetFloat("vol_bgm1", -80f);
         bgmMixer.SetFloat("vol_bgm2", -80f);
 
-        if (beginningBGM!=""){
+        if (beginningBGM != "")
+        {
             ChangeBGM(beginningBGM, 1);
         }
     }

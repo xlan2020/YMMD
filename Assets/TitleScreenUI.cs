@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class TitleScreenUI : MonoBehaviour
 {
     public Button restartButton;
-    public Text restartButtonText;
     public Button continueButton;
+    public Text restartButtonText;
+    public Text continueButtonText;
+    public Text quitButtonText;
 
     void Start()
     {

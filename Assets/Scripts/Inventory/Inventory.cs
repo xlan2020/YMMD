@@ -21,7 +21,10 @@ public class Inventory
     {
         _itemList.Add(item);
         onItemListChanged?.Invoke(this, EventArgs.Empty);
-        onNewItemAdded?.Invoke(this, EventArgs.Empty);
+        if (item.isNew)
+        {
+            onNewItemAdded?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public void RemoveItem(Item item)

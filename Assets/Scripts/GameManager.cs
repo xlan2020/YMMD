@@ -44,10 +44,6 @@ public class GameManager : MonoBehaviour
             cashItem = allItem.arrayById[0]
         };
 
-        if (loadInventory != null)
-        {
-            loadInventory.SetInventory(inventory);
-        }
         if (uiInventory != null)
         {
             uiInventory.SetInventory(inventory);
@@ -87,9 +83,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //SetMoney(initialMoney);
         Load(GameEssential.currentSave);
+        if (loadInventory != null)
+        {
+            loadInventory.AppendListToInventory(inventory);
+        }
         sceneLoader.FadeOutLoadingScreen();
+
+        //AddMoney(initialMoney);
     }
 
 
@@ -294,6 +295,11 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
+    public void RemoveItem(Item item)
+    {
+        inventory.RemoveItem(item);
+    }
     public void DisplaceItem(Item item)
     {
         AddMoney(item.value);
@@ -393,6 +399,7 @@ public class GameManager : MonoBehaviour
         // UNIVERSAL
         public float moneyAmount;   // money
         public int[] itemIdArray;   // owned item list, no changed states
+        // item durability; (subjective) value; isNew?
         public bool[] noteUnlockedState; // notebook unlock state
         public int currPage;
         public string sceneId;  // current scene

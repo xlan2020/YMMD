@@ -7,7 +7,7 @@ public class MapPlayer : MonoBehaviour
 
     private SpriteRenderer sprite;
     private Animator animator;
-    [SerializeField] float speed = 16000f;
+    float speed = 16000f;
     // [SerializeField] UI_Inventory uiInventory;
     private bool canMove = true;
     public PlayerUIManager uiManager;

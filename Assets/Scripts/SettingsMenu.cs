@@ -16,7 +16,7 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer BgmMixer;
     public AudioMixer SfxMixer;
 
-    [Header("Button & GameObjects")]
+    [Header("Master Level Buttons")]
     public Button MenuButton;
     public Button MenuBackButton;
     public Button SettingPanelButton;
@@ -27,8 +27,16 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SettingPanel;
     public GameObject FirstSelectedButton;
 
+    [Header("Setting Button and Controls")]
+    public Slider bgmSlider;
+    public Slider sfxSlider;
+
     [Header("Button Audio SFX")]
     public AudioClip OpenAudio;
+    private float MAX_MIXER_VOL = 20f;
+    private float MIN_MIXER_VOL = -80f;
+    private float DEFAULT_BGM_VAL = 0.8f;
+    private float DEFAULT_SFX_VAL = 0.8f;
 
     private bool _isOpen = false;
     // Change volume of mixer
@@ -44,12 +52,22 @@ public class SettingsMenu : MonoBehaviour
             Destroy(gameObject);
         }
         //DontDestroyOnLoad(gameObject);
+
     }
 
     private void Start()
     {
+        initializeAudio();
+
         BackToGame();
 
+    }
+
+    private void initializeAudio()
+    {
+        bgmSlider.value = DEFAULT_BGM_VAL;
+        sfxSlider.value = DEFAULT_SFX_VAL;
+        UpdateMixerVolumeFromSlider();
     }
 
     private void Update()
@@ -111,7 +129,7 @@ public void SetVolume(float volume)
         }
     }
 
-    public void SaveGame()
+    public void QuickSave()
     {
         gameManager.Save();
     }
@@ -143,8 +161,6 @@ public void SetVolume(float volume)
             mapPlayer.UpdateCanMove();
         }
 
-
-
     }
 
     public void BackToGame()
@@ -161,7 +177,7 @@ public void SetVolume(float volume)
         cursor.SetInGameMode(true);
 
         //sound
-        BgmMixer.SetFloat("MasterVolume", 0f);
+        UpdateMixerVolumeFromSlider();
 
 
         EventSystem.current.SetSelectedGameObject(null);
@@ -194,5 +210,33 @@ public void SetVolume(float volume)
             default:
                 break;
         }
+    }
+
+    public void GoToMainMenu()
+    {
+        gameManager.sceneLoader.LoadScene("0_TitleScreen", autoSave: false);
+    }
+
+    public void OpenSaveLoadScreen()
+    {
+
+    }
+
+    public void UpdateMixerVolumeFromSlider()
+    {
+        float bgmVol = mapSliderValToMixerVol(bgmSlider.value);
+        float sfxVol = mapSliderValToMixerVol(sfxSlider.value);
+        BgmMixer.SetFloat("MasterVolume", bgmVol);
+        SfxMixer.SetFloat("MasterVolume", sfxVol);
+    }
+
+
+    private float mapSliderValToMixerVol(float sliderValue)
+    {
+        return map(sliderValue, 0f, 1f, MIN_MIXER_VOL, MAX_MIXER_VOL);
+    }
+    private float map(float value, float fromLow, float fromHigh, float toLow, float toHigh)
+    {
+        return (value - fromLow) * (toHigh - toLow) / (fromHigh - fromLow) + toLow;
     }
 }

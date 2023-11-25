@@ -116,7 +116,7 @@ public class ThreeChannelText : MonoBehaviour
         textChangeInterval += AcceleratingInterval;
         if (textChangeInterval < 0)
         {
-            UnityEngine.Debug.Log("incorrect accelerating input: the text change interval can't be negative!");
+            UnityEngine.Debug.LogWarning("incorrect accelerating input: the text change interval can't be negative!");
         }
         return textChangeInterval;
 

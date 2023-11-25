@@ -39,12 +39,12 @@ public class InteractableItemManager : MonoBehaviour
             item.interactiveSign.SetCursor(cursor);
         }
 
-        InkDialogueManager.GetInstance().onDialogueEnded += onDialogueEnded_ReactivateCurrentSign;
     }
 
 
     void Start()
     {
+        InkDialogueManager.GetInstance().onDialogueEnded += onDialogueEnded_ReactivateCurrentSign;
         HideAllFarSigns();
         observeModeOverlay.SetActive(false);
     }

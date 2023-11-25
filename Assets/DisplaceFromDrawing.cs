@@ -1,4 +1,5 @@
-using System.Collections;
+using System;
+//using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,64 +11,79 @@ public class DisplaceFromDrawing : MonoBehaviour
     public GameManager gameManager;
     public GameObject drawingDisplay;
     public InkDialogueManager dialogueManager;
-    
 
-    public void DisplaceWithCurrentInput(){
+
+    public void DisplaceWithCurrentInput()
+    {
         displaceWithInput(inputText.text);
     }
 
-    private void displaceWithInput(string input){
+    private void displaceWithInput(string input)
+    {
 
-        if (!float.TryParse(input, out float inputAmount)){
+        if (!float.TryParse(input, out float inputAmount))
+        {
             // input not a number
             this.handleInputNotNum();
             return;
         }
 
-        if (inputAmount <= 0){
+        inputAmount = (float)(System.Math.Round(inputAmount, 2));
+        ItemScriptableObject item = getTargetItemWith(inputAmount);
+
+        if (inputAmount < 0.01f)
+        {
             UnityEngine.Debug.Log("You must input a positive number of money!");
             // UI hint that money is not enough
             this.handleInputIsZero();
             return;
         }
-
-        ItemScriptableObject item = getTargetItemWith(inputAmount);
-        
-        if (inputAmount > gameManager.GetMoney()){
+        else if (inputAmount > gameManager.GetMoney())
+        {
             this.handleMoneyNotEnough();
             return;
         }
-
-        if (item == null){
+        else if (item == null)
+        {
             UnityEngine.Debug.Log("money is not enough for item or target is empty!");
-            // UI hint that money is not enough
+            return;
         }
-        else {
+        else
+        {
+            UnityEngine.Debug.Log("money enough! preparing to displace...");
             // actually displacing
             gameManager.DisplaceItemFromDrawing(inputAmount, item);
             drawingDisplay.SetActive(false);
+            displaceSuccessProceedDialogue();
         }
-        
+
     }
 
-    ItemScriptableObject getTargetItemWith(float inputAmount){
+    ItemScriptableObject getTargetItemWith(float inputAmount)
+    {
         ItemScriptableObject matchItem = null;
         float matchMinMoney = 0f;
 
-        foreach (DisplaceTargetItem targetItem in drawing.targetItems){
-            if (matchItem==null){
+        foreach (DisplaceTargetItem targetItem in drawing.targetItems)
+        {
+            if (matchItem == null)
+            {
                 // simply check and maybe add
-                if (inputAmount > targetItem.minMoney){
+                if (inputAmount > targetItem.minMoney)
+                {
                     // can displace! 
                     matchItem = targetItem.item;
                     matchMinMoney = targetItem.minMoney;
                 }
-            } else {
+            }
+            else
+            {
                 // compare current and the new one
-                if (inputAmount > targetItem.minMoney && targetItem.minMoney > matchMinMoney){
+                if (inputAmount > targetItem.minMoney && targetItem.minMoney > matchMinMoney)
+                {
                     // meaning the input fufil the next-level min requirement
-                    matchItem=targetItem.item;
-                    matchMinMoney=targetItem.minMoney;
+                    matchItem = targetItem.item;
+                    matchMinMoney = targetItem.minMoney;
                 }
             }
         }
@@ -75,19 +91,23 @@ public class DisplaceFromDrawing : MonoBehaviour
         return matchItem;
     }
 
-    private void handleMoneyNotEnough(){
+    private void handleMoneyNotEnough()
+    {
         dialogueManager.MakeChoice(1);
     }
 
-    private void handleInputIsZero(){
+    private void handleInputIsZero()
+    {
         dialogueManager.MakeChoice(2);
     }
 
-    public void handleInputNotNum(){
+    public void handleInputNotNum()
+    {
         dialogueManager.MakeChoice(3);
     }
 
-    public void displaceSuccessProceedDialogue(){
+    public void displaceSuccessProceedDialogue()
+    {
         UnityEngine.Debug.Log("displace success! continue dialogue");
         dialogueManager.MakeChoice(0);
         dialogueManager.ContinueStory();

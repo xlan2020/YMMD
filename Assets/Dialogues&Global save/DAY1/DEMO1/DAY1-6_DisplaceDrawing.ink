@@ -36,7 +36,7 @@ INCLUDE global.ink
 ->displace_input
 
 ==displace_success==
-我：凭空出现了！#profile: painter_surprised #event: hideInput
+我：凭空出现了！#profile: painter_surprised #event: hideInput #choiceType: BUTTON
 我：……但这就是我想要的吗？总觉得有点失望，这远远不够……#profile: painter_depressed 
 我：不如说是差得太多了。是画得不够准确，还是筹码不够？……大概，哪个条件都无法满足吧。
 我：美人鱼，究竟指的是什么？#profile: painter_norm
