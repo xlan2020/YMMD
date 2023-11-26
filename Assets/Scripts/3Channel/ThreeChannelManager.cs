@@ -28,9 +28,11 @@ public class ThreeChannelManager : MonoBehaviour
 
     void Awake()
     {
+
         lineScript = new Queue<ThreeChannelLineUnit>();
 
     }
+
     void Start()
     {
         // loop through children, which are line units
@@ -145,6 +147,12 @@ public class ThreeChannelManager : MonoBehaviour
         return word;
     }
 
+    public void SetInteractive(bool b)
+    {
+        LeftText.SetInteractive(b);
+        MidText.SetInteractive(b);
+        RightText.SetInteractive(b);
 
+    }
 
 }

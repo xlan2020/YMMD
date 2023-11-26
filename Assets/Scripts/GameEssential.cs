@@ -5,6 +5,7 @@ using UnityEngine;
 public static class GameEssential
 {
     public static GameLanguage language = GameLanguage.CH;
+    public static int localeId = 0;
     public static int currentSave = 0;
 
 }

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class TitleScreenUI : MonoBehaviour
 {
-    public Button restartButton;
+    public GameObject startButtonObj;
+    public GameObject restartButtonObj;
     public Button continueButton;
     public Text restartButtonText;
     public Text continueButtonText;
@@ -14,14 +15,17 @@ public class TitleScreenUI : MonoBehaviour
     void Start()
     {
         if (SaveSystem.HasAutoSave())
-        {
+        { // continue and restart
             continueButton.gameObject.SetActive(true);
-            restartButtonText.text = "重新开始";
+            startButtonObj.SetActive(false);
+            restartButtonObj.SetActive(true);
         }
         else
         {
+            // completely new 
             continueButton.gameObject.SetActive(false);
-            restartButtonText.text = "开始游戏";
+            startButtonObj.SetActive(true);
+            restartButtonObj.SetActive(false);
         }
     }
 

@@ -121,7 +121,7 @@ public class ThreeChannelText : MonoBehaviour
         return textChangeInterval;
 
     }
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
         readyToType = true;
         screenAnimator.SetBool("pointerOver", true);
@@ -272,5 +272,15 @@ public class ThreeChannelText : MonoBehaviour
     public void SetPostFXVolume(Volume volume)
     {
         postFXVolume = volume;
+    }
+
+    public void SetInteractive(bool b)
+    {
+        GetComponent<Collider2D>().enabled = b;
+        if (b == false)
+        {
+            readyToType = false;
+        }
+        // otherwise, not necessarily true
     }
 }

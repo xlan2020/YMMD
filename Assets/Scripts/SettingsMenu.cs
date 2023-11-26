@@ -9,6 +9,8 @@ using UnityEngine.EventSystems;
 public class SettingsMenu : MonoBehaviour
 {
     public GameManager gameManager;
+    public MouseCursor cursor;
+    public ThreeChannelManager threeChannelManager;
     public static SettingsMenu instance { get; private set; }
     public MapPlayer mapPlayer;
     [Header("Audio Setting")]
@@ -22,7 +24,6 @@ public class SettingsMenu : MonoBehaviour
     public Button SettingPanelButton;
     public Button ControlPanelButton;
     public GameObject SettingMenuObject;
-    public MouseCursor cursor;
     public GameObject ControlPanel;
     public GameObject SettingPanel;
     public GameObject FirstSelectedButton;
@@ -161,6 +162,11 @@ public void SetVolume(float volume)
             mapPlayer.UpdateCanMove();
         }
 
+        if (threeChannelManager != null)
+        {
+            threeChannelManager.SetInteractive(false);
+        }
+
     }
 
     public void BackToGame()
@@ -185,6 +191,10 @@ public void SetVolume(float volume)
         if (mapPlayer != null)
         {
             mapPlayer.UpdateCanMove();
+        }
+        if (threeChannelManager != null)
+        {
+            threeChannelManager.SetInteractive(true);
         }
 
 
@@ -218,6 +228,11 @@ public void SetVolume(float volume)
     }
 
     public void OpenSaveLoadScreen()
+    {
+
+    }
+
+    public void OpenAdvancedSettings()
     {
 
     }

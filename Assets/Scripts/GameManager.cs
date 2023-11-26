@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextAsset BeginningInkJSON;
     public LoadInventory loadInventory;
     public LoadingScene sceneLoader;
+    public LocaleSelector localeSelector;
     public float initialMoney;
 
     [Header("UI Element")]
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
         bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
         int currPage = SketchbookData.currPage;
         string sceneId = sceneLoader.GetActiveSceneId();
+        int localeId = GameEssential.localeId;
         bool loadSceneFromStart = true;
         string dialogueVariablesState = "";
         string currentDialogueJson = "";
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour
             noteUnlockedState = noteUnlockedState,
             currPage = currPage,
             sceneId = sceneId,
+            localeId = localeId,
             loadSceneFromStart = loadSceneFromStart,
             dialogueVariablesState = dialogueVariablesState,
             currentDialogueJson = currentDialogueJson,
@@ -227,17 +230,21 @@ public class GameManager : MonoBehaviour
 
         // initialize scene info according to scene
         SceneInfo sceneInfo = sceneDict[saveObject.sceneId];
-        switch (GameEssential.language)
+        switch (GameEssential.localeId)
         {
-            case GameLanguage.CH:
+            case 0:
                 infoBar.SetInfoText(sceneInfo.sceneDescription_CH);
                 break;
-            case GameLanguage.EN:
+            case 1:
                 infoBar.SetInfoText(sceneInfo.sceneDescription_EN);
                 break;
             default:
                 break;
         }
+
+        // locale id
+        GameEssential.localeId = saveObject.localeId;
+        localeSelector.UpdateLocaleToGame();
 
         // money
         this.SetMoney(saveObject.moneyAmount);
@@ -405,6 +412,8 @@ public class GameManager : MonoBehaviour
         public string sceneId;  // current scene
         public bool loadSceneFromStart;
 
+        // USER PREF
+        public int localeId;
         // DIALOGUE
         public string dialogueVariablesState;    // ink dialogue variables
         // ink dialogue story progress if any

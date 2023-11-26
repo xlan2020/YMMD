@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class MenuButton : MonoBehaviour
 {
-    public MouseCursor cursor;
     public SettingsMenu settingsMenu;
     private Button menuButton;
     private AudioSource audio;
@@ -18,21 +17,11 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         audio = GetComponent<AudioSource>();
         openAudio = settingsMenu.GetOpenAudio();
         menuButton.onClick.AddListener(PlayClickAudio);
-        cursor = MouseCursor.instance;
 
     }
     void PlayClickAudio()
     {
         audio.clip = openAudio;
         audio.Play();
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        cursor.SetAnimationTrigger("point");
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        cursor.SetAnimationDefault();
     }
 }

@@ -66,7 +66,7 @@ public class MouseCursor : MonoBehaviour
         switch (triggerName)
         {
             case "default":
-                spriteRenderer.sprite = brush;
+                SetAnimationDefault();
                 break;
             case "point":
                 spriteRenderer.sprite = point;
@@ -121,18 +121,19 @@ public class MouseCursor : MonoBehaviour
     public void SetAnimationDefault()
     {
         //animator.SetBool("grab", false);
-        if (_inGameMode)
-        {
-            spriteRenderer.sprite = brush;
-        }
-        else
+        if (!_inGameMode)
         {
             spriteRenderer.sprite = arrow;
+            return;
         }
+
         if (_inFluidBrain)
         {
             spriteRenderer.sprite = observe;
+            return;
         }
+
+        spriteRenderer.sprite = brush;
     }
 
     public void SetInFluidBrain(bool b)
