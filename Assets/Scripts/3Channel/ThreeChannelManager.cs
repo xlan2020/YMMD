@@ -28,9 +28,7 @@ public class ThreeChannelManager : MonoBehaviour
 
     void Awake()
     {
-
         lineScript = new Queue<ThreeChannelLineUnit>();
-
     }
 
     void Start()

@@ -6,8 +6,10 @@ public class ItemScriptableObject : ScriptableObject
 {
     public int id;
     public string itemName;
+    public string itemName_EN;
     public Sprite spriteImage;
     [TextAreaAttribute(3, 3)] public string description;
+    [TextAreaAttribute(3, 3)] public string description_EN;
 
     [Space(10)]
     [Header("Value Attribute")]
@@ -26,7 +28,9 @@ public class ItemScriptableObject : ScriptableObject
     public DrawType drawType = DrawType.notDraw;
     public ArtMaterialScriptableObject artMaterial;
     [TextAreaAttribute(3, 3)] public string drawDescription;
+    [TextAreaAttribute(3, 3)] public string drawDescription_EN;
     public string drawAttribute;
+    public string drawAttribute_EN;
     [Range(1, 5)] public int draw_stable = 1;
     [Range(1, 5)] public int draw_experimental = 1;
     [Range(1, 5)] public int draw_organic = 1;

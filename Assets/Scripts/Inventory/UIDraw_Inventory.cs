@@ -138,7 +138,19 @@ public class UIDraw_Inventory : MonoBehaviour
 
             // update item and UI display
             itemSlot.item = item;
-            itemSlot.itemName.text = item.itemName;
+            switch (GameEssential.localeId)
+            {
+                case 0: //CH
+                    itemSlot.itemName.text = item.itemName;
+                    break;
+                case 1:
+                    itemSlot.itemName.text = item.itemName_EN;
+                    break;
+                default:
+                    UnityEngine.Debug.LogWarning("No matching locale! locale ID is invalid.");
+                    itemSlot.itemName.text = item.itemName;
+                    break;
+            }
             itemSlot.icon.sprite = GetDrawTypeIcon(item);
 
             // update applied item visual
@@ -226,9 +238,25 @@ public class UIDraw_Inventory : MonoBehaviour
             currentSlot.ShowSelfSelected(true);
 
             // update item display UI
-            currentItemDescription.text = currentSlot.item.drawDescription;
-            currentItemAttribute.text = currentSlot.item.drawAttribute;
-            currentItemDurability.text = "耐久：" + currentSlot.item.durability;
+            switch (GameEssential.localeId)
+            {
+                case 0: // CH
+                    currentItemDescription.text = currentSlot.item.description;
+                    currentItemAttribute.text = currentSlot.item.drawAttribute;
+                    break;
+                case 1:
+                    currentItemDescription.text = currentSlot.item.description_EN;
+                    currentItemAttribute.text = currentSlot.item.drawAttribute_EN;
+                    break;
+                default:
+                    UnityEngine.Debug.LogWarning("no matching language!");
+                    currentItemDescription.text = currentSlot.item.description;
+                    currentItemAttribute.text = currentSlot.item.drawAttribute;
+                    break;
+            }
+
+            currentItemDurability.text = "" + currentSlot.item.durability;
+
             if (currentSlot.item.durability == 1)
             {
                 currentItemDurability.color = Color.red;

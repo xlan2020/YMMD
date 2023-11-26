@@ -9,7 +9,9 @@ public class Item
     public float value;
     public float storePrice;
     public string itemName;
+    public string itemName_EN;
     public string description;
+    public string description_EN;
     public Sprite spriteImage;
     public bool destroyOnInteract;
     public bool displaceable;
@@ -22,7 +24,9 @@ public class Item
     public ArtMaterialScriptableObject artMaterial;
     //public int drawType; // 0 - not painting material; 1-  画布; 2 - 画笔; 3 - 颜料; 
     public string drawDescription;
+    public string drawDescription_EN;
     public string drawAttribute;
+    public string drawAttribute_EN;
     public int draw_stable;
     public int draw_experimental;
     public int draw_organic;

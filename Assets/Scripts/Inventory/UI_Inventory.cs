@@ -140,8 +140,22 @@ public class UI_Inventory : MonoBehaviour
             currentSlot.ShowSelfSelected(true);
 
             // update item display UI
-            currentItemName.text = currentSlot.item.itemName;
-            currentItemDescription.text = currentSlot.item.description;
+            switch (GameEssential.localeId)
+            {
+                case 0: // CH
+                    currentItemName.text = currentSlot.item.itemName;
+                    currentItemDescription.text = currentSlot.item.description;
+                    break;
+                case 1:
+                    currentItemName.text = currentSlot.item.itemName_EN;
+                    currentItemDescription.text = currentSlot.item.description_EN;
+                    break;
+                default:
+                    UnityEngine.Debug.LogWarning("no matching language!");
+                    currentItemName.text = currentSlot.item.itemName;
+                    currentItemDescription.text = currentSlot.item.description;
+                    break;
+            }
 
             // check and update displaceButton
             if (!displaceButton.HasCustomAction())
