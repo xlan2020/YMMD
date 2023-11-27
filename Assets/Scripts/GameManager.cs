@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public LoadInventory loadInventory;
     public LoadingScene sceneLoader;
     public LocaleSelector localeSelector;
+    public bool playTestAddMoney = false;
     public float initialMoney;
 
     [Header("UI Element")]
@@ -91,7 +92,10 @@ public class GameManager : MonoBehaviour
         }
         sceneLoader.FadeOutLoadingScreen();
 
-        //AddMoney(initialMoney);
+        if (playTestAddMoney)
+        {
+            AddMoney(initialMoney);
+        }
     }
 
 
@@ -149,6 +153,7 @@ public class GameManager : MonoBehaviour
         bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
         int currPage = SketchbookData.currPage;
         string sceneId = nextSceneId; // this is different!
+        int localeId = GameEssential.localeId;
         string dialogueVariablesState = "";
         if (InkDialogueManager.GetInstance() != null)
         {
@@ -164,6 +169,7 @@ public class GameManager : MonoBehaviour
             noteUnlockedState = noteUnlockedState,
             currPage = currPage,
             sceneId = sceneId,
+            localeId = localeId,
             loadSceneFromStart = true, // for auto save, load from scene start has to be true
             dialogueVariablesState = dialogueVariablesState,
         };

@@ -174,7 +174,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u4E00\u4E2A\u5F88\u957F\u7684\u4ECB\u7ECD\uFF0C\u5176\u5B9E\u4E5F\u4E0D\u4E00\u5B9A\u5F88\u957F\u4E86\uFF0C\u4E3B\u8981\u662F\u8BD5\u4E00\u8BD5\u3002\u5199\u957F\u4E00\u70B9\uFF0C\u5199\u5F97\u518D\u957F\u4E00\u70B9\uFF0C\u770B\u770B\u80FD\u4E0D\u80FD\u653E\u5F97\u4E0B\u3002\u597D\u5427\uFF0C\u597D\u50CF\u8FD8\u662F\u80FD\u88C5\u4E0B\u633A\u591A\u5B57\u7684\uFF0C\u73B0\u5728\u5230\u6700\u540E\u4E00\u884C\u4E86\u3002"
+  m_Text: "\u4E00\u4E2A\u5F88\u957F\u7684\u4ECB\u7ECD\uFF0C\u5176\u5B9E\u4E5F\u4E0D\u4E00\u5B9A\u5F88\u957F\u4E86\uFF0C\u4E3B\u8981\u662F\u8BD5\u4E00\u8BD5\u3002\u5199\u957F\u4E00\u70B9\uFF0C\u5199\u5F97\u518D\u957F\u4E00\u70B9\uFF0C\u770B\u770B\u80FD\u4E0D\u80FD\u653E\u5F97\u4E0B\u3002\u597D\u5427\uFF0C\u597D\u50CF\u8FD8\u662F\u80FD\u88C5\u4E0B\u633A\u591A\u5B57\u7684\uFF0C\u73B0\u5728\u5230\u6700\u540E\u4E00\u884C\u4E86\u3002\u518D\u6765\u4E00\u884C\uFF0C\u4E0D\u5BF9\u8FD8\u6709\u3002"
 --- !u!222 &6503519
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 181, y: -10}
-  m_SizeDelta: {x: 124, y: 124.8812}
+  m_SizeDelta: {x: 124, y: 130}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8976641
 GameObject:
@@ -3946,7 +3946,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &547389004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4555,10 +4555,10 @@ RectTransform:
   m_Father: {fileID: 894627227}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 150, y: 209}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &669662256
 MonoBehaviour:
@@ -5489,7 +5489,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9293,9 +9293,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 399056849}
     - target: {fileID: 6424618973496838826, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
+      propertyPath: initialMoney
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6424618973496838826, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
       propertyPath: BeginningInkJSON
       value: 
       objectReference: {fileID: 4900000, guid: cec6f206f0a744eabb16dc7ee34f1ab2, type: 3}
+    - target: {fileID: 6424618973496838826, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
+      propertyPath: playTestAddMoney
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6424618973496838826, guid: 49df7508d1a9d45ad9a91850017602c0, type: 3}
       propertyPath: uiDraw_Inventory
       value: 

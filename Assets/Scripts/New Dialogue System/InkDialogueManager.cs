@@ -27,6 +27,7 @@ public class InkDialogueManager : MonoBehaviour
     public CharacterVoice voice;
 
     [Header("Dialogue UI")]
+    public ChatHistoryUI chatHistory;
     public DialoguePanel dialoguePanel;
     public Text speakerName;
     public Text dialogueText;
@@ -440,6 +441,11 @@ public class InkDialogueManager : MonoBehaviour
             if (typingLinesCoroutine != null)
             {
                 StopCoroutine(typingLinesCoroutine);
+            }
+            // actually continue new story
+            if (chatHistory != null)
+            {
+                chatHistory.AddLine(currentStory.currentText); // add the line just done to chat history
             }
             typingLinesCoroutine = StartCoroutine(typingLines(currentStory.Continue()));
             dialoguePanel.SetInteractive(true);

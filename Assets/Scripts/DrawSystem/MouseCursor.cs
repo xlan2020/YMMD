@@ -39,7 +39,6 @@ public class MouseCursor : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //DontDestroyOnLoad(gameObject);
 
         brush = cursorSprites.brush;
         dialogue = cursorSprites.dialogue;

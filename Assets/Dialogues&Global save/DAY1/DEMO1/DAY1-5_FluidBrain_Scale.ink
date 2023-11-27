@@ -26,9 +26,9 @@ VAR drinkTime = 0
 我：我看到了……水。到处都是水。水迹濡湿我的皮肤，几乎把我挠痒了。好痒！我难道对水过敏吗？#profile: painter_stunned
 我：用手挠还不够，我得抓住一个更坚硬、更锐利的东西……
 我：……鳞片。#event: largeScale
-我：太痒了！我得<color=purple>挠挠</color>—— #solve: next 
+我：太痒了！我得<color=green>挠挠</color>—— #solve: next 
 我：啊！疼！这比我想象的更尖利……我的鳞片呢？等等，那是什么……<color=green>鱼</color>？#solve: next #profile: painter_concerned
-我：鳞片掉到哪里去了？我的宝儿，快回到我手上……#solve: next #profile: painter_frightened
+我：<color=green>鳞片</color>掉到哪里去了？我的宝儿，快回到我<color=green>手上</color>……#solve: next #profile: painter_frightened
 我：呵呵，在这儿呢。#profile: painter_happy
 我：但是手脏了，好腥，是因为那一点血吗？总之擦掉吧。#solve: next #profile: painter_norm
 ？？？：我已经准备好了呀，画家！#event: paintBlood #profile: hide
@@ -46,13 +46,35 @@ VAR drinkTime = 0
 鱼鳞？：三十天的时间，够你攒够<color=purple>下一次</color>的钱了吧？#solve: nextCanContinue #event: customizeButton
 -> buy_me_scale
 
+VAR buy_me_count = 0
 ===buy_me_scale===
 鱼鳞：买我。#choiceType: AUTO
-+[无操作] -> buy_me_fish
-+[真的买了] -> bought 
+{ buy_me_count:
+    - 5:
+        ~ buy_me_count = 0
+        +[无操作] -> buy_me_hint
+        +[真的买了] -> bought 
+    - else: 
+        ~ buy_me_count++
+        +[无操作] -> buy_me_scale
+        +[真的买了] -> bought 
+}
 
-==buy_me_fish===
+===buy_me_fish===
 鱼：买我。 #choiceType: AUTO
+{ buy_me_count:
+    - 5:
+        ~ buy_me_count = 0
+        +[无操作] -> buy_me_hint
+        +[真的买了] -> bought 
+    - else: 
+        ~ buy_me_count++
+        +[无操作] -> buy_me_scale
+        +[真的买了] -> bought 
+}
+
+===buy_me_hint===
+我：我的鱼，我要买……<color=green>现金</color>在哪？ #choiceType: AUTO
 +[无操作] -> buy_me_scale
 +[真的买了] -> bought 
 

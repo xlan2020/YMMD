@@ -46,7 +46,7 @@ INCLUDE global.ink
 
 ===talk_again===
 老板娘：想好吃什么了吗？#profile: mama_norm
-+ {money > 12} [排骨砂锅(￥12]
++ {money > 12} [排骨砂锅(￥12)]
 我：来一份排骨砂锅饭！#addMoney: -12 #profile：painter_高兴
 ->buy_food
 + {money > 16} [烧烤套餐(￥16)]
@@ -93,11 +93,3 @@ INCLUDE global.ink
 ~ foodOrdered = true
 老板娘：坐那儿等着吧！东西三分钟就给你送来。#profile: mama_satisfied #event: mama_back
 ->DONE
-    
-===finish_displace===
-我：（这就算是完成了？是了，我现在有钱了。）
-我：（等等，我刚才换走了什么东西来着？）
-我：（……我果然很讨厌这种感觉。被置换的东西就会彻底从世界上消失，连存在过的概念都被人遗忘，没人能想得起来那是什么。）#unlockNote: 3_1
-我：（现在去找老板娘买晚饭吧。）
-->DONE
-->END

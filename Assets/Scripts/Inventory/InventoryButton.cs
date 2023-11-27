@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class InventoryButton : MonoBehaviour
     public bool canOpen = true;
 
     private bool hidingDisplaceButton = false;
+    public event EventHandler onInventoryOpened;
     void Awake()
     {
         animator = GetComponent<Animator>();
@@ -57,6 +59,7 @@ public class InventoryButton : MonoBehaviour
         if (showInventory)
         {
             uiInventory.refreshInventoryItems();
+            onInventoryOpened?.Invoke(this, EventArgs.Empty);
         }
 
         if (mapPlayer)

@@ -60,6 +60,6 @@ INCLUDE global.ink
 我：……………………
 我：（现在总算是有点零钱了，天却黑了，能买到画材的店都已经打烊。）
 我：（西边是我租的公寓，东面的娱乐场所倒是开着——但现在我可去不起。）
-我：（回家……可是家里什么都没有，还不如在外面消磨时间更自在点。）#profile: painter_sideSweat
-我：（随便转转，累了就<color=magenta>回家</color>吧。）#profile: painter_side
+我：（回家……可是家里什么都没有，还不如在外面消磨时间更自在点。至少，这里有一片<color=magenta>海滩</color>可以溜达。）#profile: painter_sideSweat
+我：（随便转转，累了就<color=green>回家</color>吧。）#profile: painter_side
 ->DONE
