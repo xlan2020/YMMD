@@ -1,5 +1,5 @@
 INCLUDE global.ink
-我：……后续是什么？#portrait: 天花板 #solve: none #speakerMode: norm #profile: painter_side
+我：……后续是什么？#solve: none #speakerMode: norm #profile: painter_side
 我：刚才的梦是无论如何也想不起来了。
 我：总觉得是很重要的事情，值得我这样躺在床上一直不停地回忆。#profile: painter_sideSweat
 我：………………虽说如此，还是饿了，胃好痛……先下床吧。#profile: painter_depressed

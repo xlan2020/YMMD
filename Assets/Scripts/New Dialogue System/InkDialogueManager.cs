@@ -446,13 +446,22 @@ public class InkDialogueManager : MonoBehaviour
                 StopCoroutine(typingLinesCoroutine);
             }
             // actually continue new story
+            /**
+            // OLDER VERSION: ADDING THE LINE JUST DONE TO HISTORY
+            // MIGHT SWITHC BACK TO THIS ONES, since this won't have duplicated text
             if (chatHistory != null)
             {
                 chatHistory.AddLine(currentStory.currentText); // add the line just done to chat history
             }
-            typingLinesCoroutine = StartCoroutine(typingLines(currentStory.Continue()));
+            */
+            string newLine = currentStory.Continue();
+            typingLinesCoroutine = StartCoroutine(typingLines(newLine));
             dialoguePanel.SetInteractive(true);
             handleTags(currentStory.currentTags);
+            if (chatHistory != null)
+            {
+                chatHistory.AddLine(newLine); // add the line just done to chat history
+            }
 
         }
         else if (currentStory.currentChoices.Count > 0)
@@ -669,7 +678,10 @@ public class InkDialogueManager : MonoBehaviour
                     speakerName.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
-                    portraitAnimator.Play(tagValue);
+                    if (portraitAnimator != null)
+                    {
+                        portraitAnimator.Play(tagValue);
+                    }
                     break;
                 case CHOICECONTAIN_TAG:
                     // change the choice container
@@ -907,6 +919,26 @@ public class InkDialogueManager : MonoBehaviour
             typingLinesCoroutine = StartCoroutine(typingLines(currentStory.currentText));
             dialoguePanel.SetInteractive(true);
             handleTags(currentStory.currentTags);
+        }
+    }
+
+    public string GetChatHistorySaveString()
+    {
+        string saveString = "";
+        if (chatHistory != null)
+        {
+            saveString = chatHistory.chatHistoryText.text;
+            saveString += "\n" + "-----------------------" + "\n" + "\n";
+        }
+        return saveString;
+    }
+    public void LoadChatHistoryText(string saveString)
+    {
+        // load chat history text does not work with language change
+        // must reset chat history when switching language
+        if (chatHistory != null)
+        {
+            chatHistory.AddLine(saveString);
         }
     }
 }

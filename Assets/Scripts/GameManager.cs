@@ -118,12 +118,14 @@ public class GameManager : MonoBehaviour
         string dialogueVariablesState = "";
         string currentDialogueJson = "";
         string currentDialogueState = "";
+        string chatHistory = "";
         if (InkDialogueManager.GetInstance() != null)
         {
             dialogueManager = InkDialogueManager.GetInstance();
             dialogueVariablesState = dialogueManager.GetDialogueVariables().GetGlobalVariablesJsonState();
             currentDialogueJson = dialogueManager.GetCurrentStoryJson();
             currentDialogueState = dialogueManager.GetCurrentStoryJsonState();
+            chatHistory = dialogueManager.GetChatHistorySaveString();
         }
 
         // serialize to SaveObject json string
@@ -138,7 +140,8 @@ public class GameManager : MonoBehaviour
             loadSceneFromStart = loadSceneFromStart,
             dialogueVariablesState = dialogueVariablesState,
             currentDialogueJson = currentDialogueJson,
-            currentDialogueState = currentDialogueState
+            currentDialogueState = currentDialogueState,
+            chatHistory = chatHistory
         };
         string json = JsonUtility.ToJson(saveObject);
 
@@ -155,9 +158,12 @@ public class GameManager : MonoBehaviour
         string sceneId = nextSceneId; // this is different!
         int localeId = GameEssential.localeId;
         string dialogueVariablesState = "";
+        string chatHistory = "";
         if (InkDialogueManager.GetInstance() != null)
         {
-            dialogueVariablesState = InkDialogueManager.GetInstance().GetDialogueVariables().GetGlobalVariablesJsonState();
+            dialogueManager = InkDialogueManager.GetInstance();
+            dialogueVariablesState = dialogueManager.GetDialogueVariables().GetGlobalVariablesJsonState();
+            chatHistory = dialogueManager.GetChatHistorySaveString();
         }
         // no need to save dialogue state, but need to save variables
 
@@ -172,6 +178,7 @@ public class GameManager : MonoBehaviour
             localeId = localeId,
             loadSceneFromStart = true, // for auto save, load from scene start has to be true
             dialogueVariablesState = dialogueVariablesState,
+            chatHistory = chatHistory
         };
         string json = JsonUtility.ToJson(saveObject);
 
@@ -236,17 +243,19 @@ public class GameManager : MonoBehaviour
 
         // initialize scene info according to scene
         SceneInfo sceneInfo = sceneDict[saveObject.sceneId];
+        string sceneInfoText = "";
         switch (GameEssential.localeId)
         {
             case 0:
-                infoBar.SetInfoText(sceneInfo.sceneDescription_CH);
+                sceneInfoText = sceneInfo.sceneDescription_CH;
                 break;
             case 1:
-                infoBar.SetInfoText(sceneInfo.sceneDescription_EN);
+                sceneInfoText = sceneInfo.sceneDescription_EN;
                 break;
             default:
                 break;
         }
+        infoBar.SetInfoText(sceneInfoText);
 
         // locale id
         GameEssential.localeId = saveObject.localeId;
@@ -261,10 +270,25 @@ public class GameManager : MonoBehaviour
         SketchbookData.LoadNotesUnlockedStates(saveObject.noteUnlockedState);
         SketchbookData.currPage = saveObject.currPage;
 
-        if (saveObject.dialogueVariablesState != null && saveObject.dialogueVariablesState != "" && InkDialogueManager.GetInstance() != null)
+        // dialogue loadss
+        if (InkDialogueManager.GetInstance() != null)
         {
+            dialogueManager = InkDialogueManager.GetInstance();
+
             // dialogue variables
-            InkDialogueManager.GetInstance().GetDialogueVariables().LoadGlobalVariablesSave(saveObject.dialogueVariablesState);
+            if (saveObject.dialogueVariablesState != null && saveObject.dialogueVariablesState != "")
+            {
+                dialogueManager.GetDialogueVariables().LoadGlobalVariablesSave(saveObject.dialogueVariablesState);
+            }
+
+            // chat history
+            string chatHistory = saveObject.chatHistory;
+            if (saveObject.loadSceneFromStart)
+            {
+                // add scene title to chat history
+                chatHistory += sceneInfoText + "\n\n";
+            }
+            dialogueManager.LoadChatHistoryText(chatHistory);
         }
 
         if (!saveObject.loadSceneFromStart)
@@ -425,6 +449,7 @@ public class GameManager : MonoBehaviour
         // ink dialogue story progress if any
         public string currentDialogueJson;
         public string currentDialogueState;
+        public string chatHistory;
 
         // SCENE SPECIFIC
         public int drawBinaryVal;

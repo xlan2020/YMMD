@@ -30,14 +30,26 @@ public class ChatHistoryUI : MonoBehaviour
         UIObject.SetActive(displaying);
         if (displaying)
         {
-            scrollbar.value = 0f;
+            UnityEngine.Debug.Log("CHAT HISTORY: update scroll bar value");
+            StartCoroutine(ScrollingToBottom());
         }
     }
 
     public void AddLine(string line)
     {
         chatHistoryText.text += line + "\n";
+        StartCoroutine(ScrollingToBottom());
+    }
+
+    private IEnumerator ScrollingToBottom()
+    {
+        yield return new WaitForSeconds(0.04f);
         scrollbar.value = 0f;
     }
 
+    public void DisplayUI(bool b)
+    {
+        displaying = b;
+        updateChatHistoryDisplay();
+    }
 }
