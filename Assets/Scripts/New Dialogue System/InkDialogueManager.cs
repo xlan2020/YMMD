@@ -240,7 +240,9 @@ public class InkDialogueManager : MonoBehaviour
     {
         for (int i = 0; i < 999; i++)
         { // keep skipping, maximam 999 to avoid infinite loop
-            //UnityEngine.Debug.Log("try to fast skip one line");
+          //UnityEngine.Debug.Log("try to fast skip one line");
+            richTextTyping = false;
+            skippingSyntax = false;
             handleAfterLineComplete();
             ContinueStory();
             yield return new WaitForSeconds(0.2f);
@@ -376,6 +378,7 @@ public class InkDialogueManager : MonoBehaviour
                 }
             }
         }
+
         isTyping = false;   // typing is finished, line complete
         handleAfterLineComplete();
     }

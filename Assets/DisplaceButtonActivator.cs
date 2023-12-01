@@ -6,16 +6,19 @@ public class DisplaceButtonActivator : MonoBehaviour
     [SerializeField] DisplaceButton displaceButton;
     public Animator displaceEffect;
 
-    public void executeDisplaceAction(){
+    public void executeDisplaceAction()
+    {
         displaceButton.ExecuteDisplaceAction();
     }
 
-    private void turnOnDisplaceEffect(){
+    private void turnOnDisplaceEffect()
+    {
         displaceEffect.SetBool("displacing", true);
     }
 
-    private void turnOffDisplaceEffect(){
+    private void turnOffDisplaceEffect()
+    {
         displaceEffect.SetBool("displacing", false);
     }
-    
+
 }

@@ -56,7 +56,7 @@ VAR buy_me_count = 0
         +[真的买了] -> bought 
     - else: 
         ~ buy_me_count++
-        +[无操作] -> buy_me_scale
+        +[无操作] -> buy_me_fish
         +[真的买了] -> bought 
 }
 
