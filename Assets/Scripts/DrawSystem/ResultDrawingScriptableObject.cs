@@ -11,10 +11,13 @@ public class ResultDrawingScriptableObject : ScriptableObject
 
     [Header("Reactions")]
     public Sprite clientProfile;
-    [TextArea]public string clientReaction;
-    [TextArea]public string painterReaction;
+    [TextArea] public string clientReaction;
+    [TextArea] public string painterReaction;
 
     [Header("Visuals")]
     public Sprite image;
+    public Sprite fillLayer;
+    public Sprite pointColorLayer;
+    public Sprite strokeLayer;
 
 }

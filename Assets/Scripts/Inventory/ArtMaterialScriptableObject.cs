@@ -7,6 +7,9 @@ public class ArtMaterialScriptableObject : ScriptableObject
     public Sprite canvasSprite;
     [Header("Brush Modules")]
     public Sprite brushSprite;
+    public Color strokeColor;
     [Header("Paint Modules")]
     public GameObject paintPrefab;
+    public Color fillColor;
+    public Color pointColor;
 }

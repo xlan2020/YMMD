@@ -204,7 +204,7 @@ public class DrawingSystem : MonoBehaviour
         drawResultVisualizer.DisplayResultDrawingInfo(resDraw);
 
         // update res draw visuals
-        drawResultVisualizer.DisplayResultDrawingVisuals(resDraw);
+        drawResultVisualizer.DisplayResultDrawingVisuals(resDraw, canvas.artMaterial, brush.artMaterial, paint.artMaterial);
 
         // set material icons
         drawResultVisualizer.mat1.sprite = canvas.spriteImage;

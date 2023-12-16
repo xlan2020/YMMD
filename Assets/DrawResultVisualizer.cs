@@ -40,9 +40,14 @@ public class DrawResultVisualizer : MonoBehaviour
     //public Text clientName;
     public TextTyper clientReaction;
     public TextTyper painterReaction;
-    
+
     [Header("Result Drawing Visual")]
-    public Image resultDrawingDisplay;
+    public SpriteRenderer drawingInit;
+    public DissolveEffect initDrawDissolve;
+    public Image fillLayer;
+    public Image pointColorLayer;
+    public Image strokeLayer;
+    public SignBrush signBrush;
 
     [Header("AudioClip")]
     public AudioClip scoreUpAudio;
@@ -57,6 +62,7 @@ public class DrawResultVisualizer : MonoBehaviour
     private float displayChangeUnit = 1f;
 
 
+
     public void ShowSelf(bool b)
     {
         gameObject.SetActive(b);
@@ -67,77 +73,102 @@ public class DrawResultVisualizer : MonoBehaviour
             // play draw result bgm
         }
     }
-    public void DisplayMatVals(int experimental, int organic, int premium){
+    public void DisplayMatVals(int experimental, int organic, int premium)
+    {
 
-        this.mat_vals.text=experimental+"\n"+organic+"\n"+premium;
+        this.mat_vals.text = experimental + "\n" + organic + "\n" + premium;
     }
 
-    public void DisplayMatPrefMultiplier(int experimental, int organic, int premium){
-        
-        this.mat_prefs.text = TranslateAttitudeSymbol(experimental)+"\n"+TranslateAttitudeSymbol(organic)+"\n"+TranslateAttitudeSymbol(premium);
+    public void DisplayMatPrefMultiplier(int experimental, int organic, int premium)
+    {
+
+        this.mat_prefs.text = TranslateAttitudeSymbol(experimental) + "\n" + TranslateAttitudeSymbol(organic) + "\n" + TranslateAttitudeSymbol(premium);
     }
 
-    private string TranslateAttitudeSymbol(int multipler){
-        
-        if(multipler==1){
+    private string TranslateAttitudeSymbol(int multipler)
+    {
+
+        if (multipler == 1)
+        {
             return "";
-        }else {
-        string output = "× "+multipler;
-        return output; 
+        }
+        else
+        {
+            string output = "× " + multipler;
+            return output;
         }
     }
 
-    public void DisplayMatSum(int sum){
-        this.mat_sum.text=""+sum;
+    public void DisplayMatSum(int sum)
+    {
+        this.mat_sum.text = "" + sum;
     }
 
-    public void DisplayMatStabilityMultiplier(float mul){
-        this.mat_stability.text= "× " + mul;
+    public void DisplayMatStabilityMultiplier(float mul)
+    {
+        this.mat_stability.text = "× " + mul;
 
-        if (mul==0.5f){
+        if (mul == 0.5f)
+        {
             // 角标 display 不稳定
-            this.mat_stability.color=badColor;
-        } else if (mul==2f){
+            this.mat_stability.color = badColor;
+        }
+        else if (mul == 2f)
+        {
             // 角标 display 非常稳定
-            this.mat_stability.color=goodColor;
-        }else{
+            this.mat_stability.color = goodColor;
+        }
+        else
+        {
             // 角标 display 正常
-            this.mat_stability.color=normColor;
+            this.mat_stability.color = normColor;
         }
     }
 
-    public void DisplayMatResult(float score){
-        this.mat_score.text=""+score;
+    public void DisplayMatResult(float score)
+    {
+        this.mat_score.text = "" + score;
     }
 
-    public void DisplayResultDrawingInfo(ResultDrawingScriptableObject resDraw){
+    public void DisplayResultDrawingInfo(ResultDrawingScriptableObject resDraw)
+    {
         // info
-        title.text=resDraw.title;
-        subject.text=resDraw.subject;
-        theme.text=resDraw.themeDescription;
+        title.text = resDraw.title;
+        subject.text = resDraw.subject;
+        theme.text = resDraw.themeDescription;
 
         // theme score update
-        theme_score.text=""+resDraw.themeScore;
+        theme_score.text = "" + resDraw.themeScore;
 
         // reactions
-        clientProfile.sprite=resDraw.clientProfile;
+        clientProfile.sprite = resDraw.clientProfile;
         //this.clientName.text = resDraw.subject;
         clientReaction.text = resDraw.clientReaction;
-        painterReaction.text=resDraw.painterReaction;
+        painterReaction.text = resDraw.painterReaction;
     }
 
-    public void DisplayResultDrawingVisuals(ResultDrawingScriptableObject resDraw){
-        resultDrawingDisplay.sprite=resDraw.image;
+    public void DisplayResultDrawingVisuals(ResultDrawingScriptableObject resDraw, ArtMaterialScriptableObject canvas, ArtMaterialScriptableObject brush, ArtMaterialScriptableObject paint)
+    {
+        drawingInit.sprite = resDraw.image;
+        fillLayer.sprite = resDraw.fillLayer;
+        fillLayer.color = paint.fillColor;
+        pointColorLayer.sprite = resDraw.pointColorLayer;
+        pointColorLayer.color = paint.pointColor;
+        strokeLayer.sprite = resDraw.strokeLayer;
+        strokeLayer.color = brush.strokeColor;
     }
 
-    public void DisplayTotalScore(float num){
-        all_sum.text=""+num;
+    public void DisplayTotalScore(float num)
+    {
+        all_sum.text = "" + num;
     }
 
-    public void SetTargetGain(float gainAmount){
-        this.targetGain=gainAmount;
+    public void SetTargetGain(float gainAmount)
+    {
+        this.targetGain = gainAmount;
     }
-    public void DisplayGain(){
+    public void DisplayGain()
+    {
         StartCoroutine(changingGainDisplay(this.targetGain));
     }
 
@@ -149,55 +180,65 @@ public class DrawResultVisualizer : MonoBehaviour
         // increasing and decreasing might never meet the target
         // so we are calculating the difference but not only increasing and decreasing
         // difference is absolute, so actually <-1 unit or >1 unit
-        gainAudio.loop=true;
+        gainAudio.loop = true;
         gainAudio.Play();
         while (displayGain - targetGain < -displayChangeUnit)
         {
             displayGain += displayChangeUnit;
-            gain.text = "+￥"+ displayGain.ToString("0.00");
+            gain.text = "+￥" + displayGain.ToString("0.00");
             yield return new WaitForSeconds(0.04f);    // animation interval
         }
         while (displayGain - targetGain > displayChangeUnit)
         {
             displayGain -= displayChangeUnit;
-            gain.text = "+￥"+displayGain.ToString("0.00");
+            gain.text = "+￥" + displayGain.ToString("0.00");
             yield return new WaitForSeconds(0.04f);    // animation interval
         }
         // else: 
         // -1 unit < displayGain - targetGain < 1 unit
         displayGain = targetGain;
-        gain.text = "+￥"+displayGain.ToString("0.00");
+        gain.text = "+￥" + displayGain.ToString("0.00");
         gm.AddMoney(targetGain);
         gainAudio.Stop();
     }
 
-    public void TypeClientReaction(){
+    public void TypeClientReaction()
+    {
         clientReaction.StartTyping();
     }
 
-    public void TypePainterReaction(){
+    public void TypePainterReaction()
+    {
         painterReaction.StartTyping();
     }
 
-    public void PlayAudio(string name){
-        GetComponent<AudioSource>().loop=false;
-        switch(name){
+    public void PlayAudio(string name)
+    {
+        GetComponent<AudioSource>().loop = false;
+        switch (name)
+        {
             case "scoreUp":
-            GetComponent<AudioSource>().clip=scoreUpAudio;
-            break;
+                GetComponent<AudioSource>().clip = scoreUpAudio;
+                break;
             case "scoreInPlace":
-            GetComponent<AudioSource>().clip=scoreInPlaceAudio;
-            break;
+                GetComponent<AudioSource>().clip = scoreInPlaceAudio;
+                break;
             case "textAppearLong":
-            GetComponent<AudioSource>().clip=textAppearLongAudio;
-            break;
+                GetComponent<AudioSource>().clip = textAppearLongAudio;
+                break;
             case "textAppearShort":
-            GetComponent<AudioSource>().clip=textAppearShortAudio;
-            break;
+                GetComponent<AudioSource>().clip = textAppearShortAudio;
+                break;
             default:
-            return;
+                return;
         }
         GetComponent<AudioSource>().Play();
+    }
+
+    public void DissolveInitDrawing()
+    {
+        initDrawDissolve.StartDissolve(1f);
+        signBrush.interactive = true;
     }
 
 }
