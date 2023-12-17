@@ -16,7 +16,9 @@ public class ThreeChannelManager : MonoBehaviour
     public ThreeChannelText RightText;
     public BGMPlayer bgmPlayer;
     public string RandomText;
+    public string RandomText_EN;
     private char[] randomCharArray;
+    private char[] randomCharArray_EN;
 
     private Queue<ThreeChannelLineUnit> lineScript;
     private ThreeChannelLineUnit currLineUnit;
@@ -41,6 +43,7 @@ public class ThreeChannelManager : MonoBehaviour
         NextLineUnit();
 
         randomCharArray = RandomText.ToCharArray();
+        randomCharArray_EN = RandomText_EN.ToCharArray();
     }
 
     void Update()
@@ -59,9 +62,32 @@ public class ThreeChannelManager : MonoBehaviour
 
             currLineUnit.events.Invoke();
 
-            LeftText.SetCurrLines(currLineUnit.LeftLines);
-            MidText.SetCurrLines(currLineUnit.MidLines);
-            RightText.SetCurrLines(currLineUnit.RightLines);
+            string[] leftLines;
+            string[] midLines;
+            string[] rightLines;
+
+            switch (GameEssential.localeId)
+            {
+                case 0:
+                    leftLines = currLineUnit.LeftLines;
+                    midLines = currLineUnit.MidLines;
+                    rightLines = currLineUnit.RightLines;
+                    break;
+                case 1:
+                    leftLines = currLineUnit.LeftLines_EN;
+                    midLines = currLineUnit.MidLines_EN;
+                    rightLines = currLineUnit.RightLines_EN;
+                    break;
+                default:
+                    leftLines = currLineUnit.LeftLines;
+                    midLines = currLineUnit.MidLines;
+                    rightLines = currLineUnit.RightLines;
+                    break;
+            }
+
+            LeftText.SetCurrLines(leftLines);
+            MidText.SetCurrLines(midLines);
+            RightText.SetCurrLines(rightLines);
 
             LeftText.SetAttemptLimit(currLineUnit.OverrideAttemptLimit);
             MidText.SetAttemptLimit(currLineUnit.OverrideAttemptLimit);
@@ -81,19 +107,19 @@ public class ThreeChannelManager : MonoBehaviour
             RightText.doneLines = true;
 
 
-            if (currLineUnit.LeftLines.Length > 0)
+            if (leftLines.Length > 0)
             {
                 LeftText.screenAnimator.SetBool("isNext", true);
                 LeftText.doneLines = false;
             }
 
-            if (currLineUnit.MidLines.Length > 0)
+            if (midLines.Length > 0)
             {
                 MidText.screenAnimator.SetBool("isNext", true);
                 MidText.doneLines = false;
             }
 
-            if (currLineUnit.RightLines.Length > 0)
+            if (rightLines.Length > 0)
             {
                 RightText.screenAnimator.SetBool("isNext", true);
                 RightText.doneLines = false;
@@ -101,9 +127,9 @@ public class ThreeChannelManager : MonoBehaviour
 
             if (currLineUnit.syncAllScreensAsLeft)
             {
-                LeftText.ChangeText(currLineUnit.LeftLines[0]);
-                MidText.ChangeText(currLineUnit.LeftLines[0]);
-                RightText.ChangeText(currLineUnit.LeftLines[0]);
+                LeftText.ChangeText(leftLines[0]);
+                MidText.ChangeText(leftLines[0]);
+                RightText.ChangeText(leftLines[0]);
             }
 
             if (currLineUnit.newBGM != "" && currLineUnit.newBGM != null)
@@ -136,11 +162,25 @@ public class ThreeChannelManager : MonoBehaviour
             return "";
         }
 
+        char[] chars;
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                chars = randomCharArray;
+                break;
+            case 1:
+                chars = randomCharArray_EN;
+                break;
+            default:
+                chars = randomCharArray;
+                break;
+        }
+
         string word = "";
         for (int i = 0; i < wordCount; i++)
         {
             int j = UnityEngine.Random.Range(0, randomCharArray.Length - 1);
-            word = word + randomCharArray[j].ToString();
+            word = word + chars[j].ToString();
         }
         return word;
     }

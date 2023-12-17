@@ -6,8 +6,11 @@ using UnityEngine.Events;
 public class ThreeChannelLineUnit : MonoBehaviour
 {
     public string[] LeftLines;
+    public string[] LeftLines_EN;
     public string[] MidLines;
+    public string[] MidLines_EN;
     public string[] RightLines;
+    public string[] RightLines_EN;
 
     public int OverrideAttemptLimit = -1;
     public float OverrideTextChangeInterval = -1f;
