@@ -24,6 +24,9 @@ public class InkDialogueTrigger : MonoBehaviour
                 dialogue = inkJSON;
                 break;
         }
-        InkDialogueManager.GetInstance().EnterDialogueMode(dialogue);
+        if (InkDialogueManager.GetInstance() != null)
+        {
+            InkDialogueManager.GetInstance().EnterDialogueMode(dialogue);
+        }
     }
 }

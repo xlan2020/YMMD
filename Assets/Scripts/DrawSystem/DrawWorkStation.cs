@@ -8,25 +8,35 @@ public class DrawWorkStation : MonoBehaviour
     // Start is called before the first frame update
 
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Observee"))
+        {
+            other.gameObject.GetComponent<Observee>().SendRight();
+        }
+    }
+
+    /**
     void OnTriggerStay2D(Collider2D other)
     {
         // Debug.Log("something stays in the right screen");
         if (other.gameObject.CompareTag("Observee"))
         {
             Observee observee = other.gameObject.GetComponent<Observee>();
-            observee.SendRight();
             if (other.gameObject.GetComponent<DragDrop>().IsOnDrop() && !observee.IsCollected())
             {
                 observeeManager.MarkAsCollected(observee);
+                observee.SaveSnapPosRight();
             }
         }
     }
+*/
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Observee"))
         {
-            //other.gameObject.GetComponent<Observee>().CanMove(false);
+            other.gameObject.GetComponent<Observee>().SendLeft();
         }
     }
 }

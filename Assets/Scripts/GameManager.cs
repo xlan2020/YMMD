@@ -193,10 +193,10 @@ public class GameManager : MonoBehaviour
         if (saveString == null || saveString == "")
         {
             UnityEngine.Debug.Log("no auto save!");
-            if (HasBeginningDialogue && InkDialogueManager.GetInstance() != null)
+            if (HasBeginningDialogue && GetComponent<InkDialogueTrigger>() != null)
             {
                 // load the dialogue for this scene
-                InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
+                GetComponent<InkDialogueTrigger>().StartDialogue();
 
             }
             return;
@@ -325,12 +325,13 @@ public class GameManager : MonoBehaviour
         }
 
         // enter the beginning dialogue only if the save object wanna load scene from start
-        if (saveObject.loadSceneFromStart && HasBeginningDialogue && InkDialogueManager.GetInstance() != null)
+        if (saveObject.loadSceneFromStart && HasBeginningDialogue && GetComponent<InkDialogueTrigger>() != null)
         {
             // load the dialogue for this scene
-            InkDialogueManager.GetInstance().EnterDialogueMode(BeginningInkJSON);
+            GetComponent<InkDialogueTrigger>().StartDialogue();
 
         }
+
     }
 
     public void RemoveItem(Item item)
@@ -436,7 +437,7 @@ public class GameManager : MonoBehaviour
         // UNIVERSAL
         public float moneyAmount;   // money
         public int[] itemIdArray;   // owned item list, no changed states
-        // item durability; (subjective) value; isNew?
+                                    // item durability; (subjective) value; isNew?
         public bool[] noteUnlockedState; // notebook unlock state
         public int currPage;
         public string sceneId;  // current scene
@@ -446,7 +447,7 @@ public class GameManager : MonoBehaviour
         public int localeId;
         // DIALOGUE
         public string dialogueVariablesState;    // ink dialogue variables
-        // ink dialogue story progress if any
+                                                 // ink dialogue story progress if any
         public string currentDialogueJson;
         public string currentDialogueState;
         public string chatHistory;

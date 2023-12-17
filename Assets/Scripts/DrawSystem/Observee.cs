@@ -11,15 +11,25 @@ public class Observee : MonoBehaviour
     public int choiceIndex;
     public bool canSkip = false;
     public bool canDissolve = true;
-    [TextArea()]public string description;
+    private bool canSubmit = false;
+    [TextArea()] public string description;
     public string submitSpeak;
     private bool isCollected = false;
     private bool canGrab = true;
     private bool canMove = true;
+    private bool submitting = false;
+    private SubmitDrawing submitter;
     private bool hasAppeared = false;
     private Animator animator;
     public UnityEvent eventsOnDisplay;
     [SerializeField] private Color StartDissolveColor;
+
+    private Vector3 snapPosLeft;
+    private Vector3 snapPosRight;
+    private bool isAtRight = false;
+
+    private int LEFT_SORT_LAYER_ID;
+    private string RIGHT_SORT_LAYER_NAME = "observee";
 
     void Awake()
     {
@@ -29,6 +39,15 @@ public class Observee : MonoBehaviour
 
     void Start()
     {
+        snapPosLeft = gameObject.transform.position;
+        if (GetComponent<SpriteRenderer>() != null)
+        {
+            LEFT_SORT_LAYER_ID = GetComponent<SpriteRenderer>().sortingLayerID;
+        }
+        else if (GetComponent<Canvas>() != null)
+        {
+            LEFT_SORT_LAYER_ID = GetComponent<Canvas>().sortingLayerID;
+        }
         gameObject.SetActive(false);
     }
 
@@ -57,10 +76,54 @@ public class Observee : MonoBehaviour
         isCollected = b;
     }
 
+    public void SetSubmitting(bool b, SubmitDrawing submitter)
+    {
+        this.submitter = submitter;
+        submitting = b;
+
+    }
+    public void SetSortingLayer(int layerId, int layerOrder = -1)
+    {
+        if (GetComponent<SpriteRenderer>() != null)
+        {
+            GetComponent<SpriteRenderer>().sortingLayerID = layerId;
+            if (layerOrder >= 0)
+            {
+                GetComponent<SpriteRenderer>().sortingOrder = layerOrder;
+            }
+        }
+        else if (GetComponent<Canvas>() != null)
+        {
+            GetComponent<Canvas>().sortingLayerID = layerId;
+            if (layerOrder >= 0)
+            {
+                GetComponent<Canvas>().sortingOrder = layerOrder;
+            }
+        }
+    }
     public void SendRight()
     {
-        animator.SetTrigger("sendRight");
+        isAtRight = true;
+
+        if (!canSubmit)
+        {
+            animator.SetTrigger("sendRight");
+            SetSortingLayer(SortingLayer.NameToID(RIGHT_SORT_LAYER_NAME));
+
+        }
+
     }
+    public void SendLeft()
+    {
+        isAtRight = false;
+
+        if (!isCollected && !canSubmit)
+        {
+            animator.SetTrigger("sendLeft");
+            SetSortingLayer(LEFT_SORT_LAYER_ID);
+        }
+    }
+
     public bool HasAppeared()
     {
         return hasAppeared;
@@ -108,13 +171,55 @@ public class Observee : MonoBehaviour
         {
             return;
         }
-        manager.SetCursorBool("grab", true);
+        manager.SetCursorBool("grab", true); //change to to right cursor when not collected
     }
 
     private void OnMouseUp()
     {
         manager.SetCursorBool("grab", false);
-        manager.SetDescription(description);
+
+        if (submitting && submitter != null)
+        {
+            submitting = false;
+            submitter.SubmitObservee(this);
+            return;
+        }
+
+        // collected at the right workstation
+        if (!isCollected && isAtRight)
+        {
+            manager.MarkAsCollected(this);
+            manager.SetDescription(description);
+            this.SaveSnapPosRight();
+            return;
+        }
+
+        // collecting, but back to left, then reset it to when it appears
+        if (!isCollected && !isAtRight)
+        {
+            // snap
+            gameObject.transform.position = snapPosLeft;
+            // in this case, don't set its description
+            return;
+        }
+
+        // if already collected, but drag to left, then reset it to right collected position
+        if (isCollected && !isAtRight)
+        {
+            // snap
+            gameObject.transform.position = snapPosRight;
+            manager.SetDescription(description);
+            return;
+        }
+
+        // if already collected, and drag to anotion pos at right
+        // then update its snap postiion right to the current one
+        if (isCollected && isAtRight)
+        {
+            SaveSnapPosRight();
+            manager.SetDescription(description);
+            return;
+        }
     }
 
     private void OnMouseExit()
@@ -125,5 +230,16 @@ public class Observee : MonoBehaviour
         }
         manager.SetCursorTrigger("default");
     }
+
+    private void SaveSnapPosRight()
+    {
+        snapPosRight = gameObject.transform.position;
+    }
+
+    public void SetCanSubmit(bool b)
+    {
+        canSubmit = b;
+    }
+
 
 }

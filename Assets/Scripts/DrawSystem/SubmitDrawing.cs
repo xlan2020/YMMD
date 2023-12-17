@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SubmitDrawing : MonoBehaviour
 {
     [SerializeField] private DrawingSystem drawingSystem;
@@ -10,86 +10,69 @@ public class SubmitDrawing : MonoBehaviour
     [SerializeField] private UIDraw_Inventory uiDraw_Inventory;
     [SerializeField] private bool canSubmit = false;
     public MouseCursor cursor;
-    public Animator progressAnimator;
+    //public Animator progressAnimator;
     private Animator animator;
+
+    [Header("Visual UI Renderers")]
+    public Canvas boardRenderer;
+    public Renderer clipRenderer;
+    public Canvas backBorder;
+
+    private string DEFAULT_LAYER = "drawSubmitterDefault";
+    private string CANSUBMIT_LAYER = "drawSubmitterActive";
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        SetSortingLayer(DEFAULT_LAYER);
     }
-    void OnTriggerStay2D(Collider2D other)
+    public void SubmitObservee(Observee obsv)
     {
-        if (!canSubmit){
+        if (!canSubmit)
+        {
             return;
         }
-        
-        GameObject g = other.gameObject;
-        // Debug.Log("something stays in the submitted drawing");
-        if (g.GetComponent<DragDrop>().IsOnDrop())
-        {
-            if (g.CompareTag("Observee"))
-            {
-                SetCanSubmit(false);
 
-                // let drawing system know which one is submitted
-                Observee obsv = g.GetComponent<Observee>();
-                drawingSystem.SubmitToDrawing(obsv);
+        SetCanSubmit(false);
 
-                // remove observee
-                observeeManager.DissolveCollected();
+        // let drawing system know which one is submitted
+        drawingSystem.SubmitToDrawing(obsv);
 
-                // visual change
-                cursor.SetAnimationTrigger("default");
-            }
-            /**
-            if (g.CompareTag("DrawMaterial"))
-            {
-                canSubmit = false;
-                UnityEngine.Debug.Log("draw material drop");
-                DrawMaterial mat = g.GetComponent<DrawMaterial>();
-                int choiceIndex = mat.GetChoiceIndex();
-                dialogueManager.MakeChoice(choiceIndex);
-                mat.SubmitSelf();
-                progressAnimator.SetInteger("material", choiceIndex);
-                cursor.SetAnimationTrigger("default");
-            }
-            */
-            /**
-            if (g.CompareTag("DrawItem"))
-            {
-                DrawItemObject drawItem = g.GetComponent<DrawItemObject>();
-                //UnityEngine.Debug.Log("submit draw item, name: " + drawItem.GetItem().itemName);
+        // remove observee
+        observeeManager.DissolveCollected();
 
-                // change ui draw inventory slot display 
-                uiDraw_Inventory.ApplyCurrentItem();
+        // visual change
+        cursor.SetAnimationTrigger("default");
 
-                // change ui draw inventory tab complete state
-
-                // change submitter visual display
-
-                // reset item 
-                drawItem.ResetSelf();
-
-                // check if all material is selected and ready
-            }
-            */
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+
+        if (canSubmit && other.gameObject.CompareTag("Observee"))
+        {
+            other.gameObject.GetComponent<Observee>().SetSubmitting(true, this);
+        }
+        /**
         if (other.gameObject.CompareTag("DrawItem"))
         {
             other.gameObject.GetComponent<DrawItemObject>().SetAtDestination(true);
         }
+        */
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("DrawItem"))
+        if (canSubmit && other.gameObject.CompareTag("Observee"))
         {
-            other.gameObject.GetComponent<DrawItemObject>().SetAtDestination(false);
+            other.gameObject.GetComponent<Observee>().SetSubmitting(false, this);
         }
+
+
+        // if (other.gameObject.CompareTag("DrawItem"))
+        // {
+        //     other.gameObject.GetComponent<DrawItemObject>().SetAtDestination(false);
+        // }
     }
 
 
@@ -97,6 +80,23 @@ public class SubmitDrawing : MonoBehaviour
     {
         canSubmit = b;
         animator.SetBool("ready", b);
+        observeeManager.SetCollectedCanSubmit();
+        if (b == true)
+        {
+            // can't submit
+            SetSortingLayer(CANSUBMIT_LAYER);
+        }
+        else
+        {
+            // can't submit, put it to default layer, so that it's above the observee
+            SetSortingLayer(DEFAULT_LAYER);
+        }
     }
 
+    private void SetSortingLayer(string newLayerName)
+    {
+        boardRenderer.sortingLayerID = SortingLayer.NameToID(newLayerName);
+        clipRenderer.sortingLayerID = SortingLayer.NameToID(newLayerName);
+        backBorder.sortingLayerID = SortingLayer.NameToID(newLayerName);
+    }
 }

@@ -391,10 +391,6 @@ public class InkDialogueManager : MonoBehaviour
     {
         handleChoiceType();
 
-        if (currentStory.canContinue)
-        {
-            continueIcon.SetActive(true);
-        }
         // display observees and drawings if there is one
         displayVisualsAfterType();
         //voice.StopTalking();
@@ -407,7 +403,19 @@ public class InkDialogueManager : MonoBehaviour
             autoPlayingCoroutine = StartCoroutine(autoPlaying());
         }
 
-        dialoguePanel.SetInteractive(canContinueToNextLine);
+        if (observeeManager != null)
+        {
+            if (observeeManager.CheckFinishCollecting() == false)
+            {
+                canContinueToNextLine = false;
+            }
+        }
+
+        dialoguePanel.SetInteractive(canContinueToNextLine);// we don't check whether current story cancontinue because the panel is still interactive when there is button choice
+        if (currentStory.canContinue && canContinueToNextLine)
+        {
+            continueIcon.SetActive(true);
+        }
     }
 
     public void ContinueStory()
@@ -434,10 +442,6 @@ public class InkDialogueManager : MonoBehaviour
             // might remove this later. This check if there're still observees uncollected
             if (observeeManager != null)
             {
-                if (observeeManager.CheckFinishCollecting() == false)
-                {
-                    return;
-                }
                 observeeManager.ClearUncollected();
             }
 
@@ -538,6 +542,7 @@ public class InkDialogueManager : MonoBehaviour
             //choiceType = "BUTTON";
             //break;
             case "OBSERVEE":
+                canContinueToNextLine = false;
                 drawingSystem.HandleObserveeChoices();
                 canSkipChoice = false;
                 break;
@@ -825,6 +830,7 @@ public class InkDialogueManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
+        canContinueToNextLine = true;
         UnityEngine.Debug.Log("making choice at index: " + choiceIndex);
 
         // in case this is a 'CANSKIP' choice

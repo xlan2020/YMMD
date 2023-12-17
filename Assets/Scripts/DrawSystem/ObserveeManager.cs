@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ObserveeManager : MonoBehaviour
 {
+    public InkDialogueManager dialogueManager;
     public Observee[] observees;
     public Text descriptionText;
     public GameObject descriptionBox;
@@ -35,11 +36,6 @@ public class ObserveeManager : MonoBehaviour
         descriptionAnimator = descriptionBox.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void SetDescription(string description)
     {
@@ -76,23 +72,26 @@ public class ObserveeManager : MonoBehaviour
     /**
     When it's ready to submit drawing, this adds the Drag/Drop callbacks to observee in order to display speak text. 
     */
-    public void UpdateCollectedObserveeWhenCanSubmit(){
+    public void UpdateCollectedObserveeWhenCanSubmit()
+    {
         foreach (Observee o in currCollected)
         {
             // add show text to drag callback
-            o.GetComponent<DragDrop>().dragCallback += delegate{ShowObserveeSpeakText(o.submitSpeak);};
+            o.GetComponent<DragDrop>().dragCallback += delegate { ShowObserveeSpeakText(o.submitSpeak); };
 
             // add hide text to drop callback
-            o.GetComponent<DragDrop>().dropCallback += delegate{HideObserveeSpeakText();};
+            o.GetComponent<DragDrop>().dropCallback += delegate { HideObserveeSpeakText(); };
         }
     }
 
-    public void ShowObserveeSpeakText(string text){
-        speakTextBox.text=text;
+    public void ShowObserveeSpeakText(string text)
+    {
+        speakTextBox.text = text;
         speakTextAnimator.SetBool("show", true);
     }
 
-    public void HideObserveeSpeakText(){
+    public void HideObserveeSpeakText()
+    {
         speakTextAnimator.SetBool("show", false);
     }
 
@@ -103,9 +102,12 @@ public class ObserveeManager : MonoBehaviour
         List<GameObject> directDestroyObjects = new List<GameObject>();
         foreach (Observee o in currCollected)
         {
-            if (o.canDissolve){
+            if (o.canDissolve)
+            {
                 dissolveObjects.Add(o.gameObject);
-            } else {
+            }
+            else
+            {
                 directDestroyObjects.Add(o.gameObject);
             }
             o.SetCanGrab(false);
@@ -114,12 +116,14 @@ public class ObserveeManager : MonoBehaviour
         currCollected.Clear();
 
         // handle cases that can't be dissolved
-        foreach(GameObject o in directDestroyObjects){
+        foreach (GameObject o in directDestroyObjects)
+        {
             GameObject.Destroy(o);
         }
-        
+
         // dissolve if you can
-        if (dissolveObjects.Count > 0){
+        if (dissolveObjects.Count > 0)
+        {
             DissolveEffect dissolveEffect = GetComponent<DissolveEffect>();
             dissolveEffect.StartDissolve(2f);
             dissolveEffect.SetDestroyObjects(dissolveObjects);
@@ -131,8 +135,13 @@ public class ObserveeManager : MonoBehaviour
     {
         o.SetIsCollected(true);
         currCollected.Add(o);
-
+        if (CheckFinishCollecting() == true)
+        {
+            dialogueManager.SetCanContinueToNextLine(true);
+            dialogueManager.ContinueStory();
+        }
     }
+
     public void ClearUncollected()
     {
         foreach (Observee o in currLeft)
@@ -185,5 +194,13 @@ public class ObserveeManager : MonoBehaviour
         cursor.SetAnimationBool(name, b);
     }
 
-
+    // update the order of observee when can submit
+    public void SetCollectedCanSubmit()
+    {
+        foreach (Observee o in currCollected)
+        {
+            o.SetCanSubmit(true);
+            o.SetSortingLayer(SortingLayer.NameToID("drawSubmitterActive"), 6);
+        }
+    }
 }
