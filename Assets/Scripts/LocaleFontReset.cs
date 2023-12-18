@@ -11,21 +11,29 @@ public class LocaleFontReset : MonoBehaviour
 
     [Header("Scene Specific")]
     public Text[] resetTexts;
+    public Text[] resetFontSize;
+    public int fontSize_CH = 12;
+    public int fontSize_EN = 10;
 
 
     public void UpdateAllFont()
     {
         Font newFont;
+        int fontSize = 12;
+
         switch (GameEssential.localeId)
         {
             case 0:
                 newFont = CH_FONT;
+                fontSize = fontSize_CH;
                 break;
             case 1:
                 newFont = EN_FONT;
+                fontSize = fontSize_EN;
                 break;
             default:
                 newFont = CH_FONT;
+                fontSize = fontSize_CH;
                 break;
         }
 
@@ -33,5 +41,11 @@ public class LocaleFontReset : MonoBehaviour
         {
             text.font = newFont;
         }
+
+        foreach (Text text in resetFontSize)
+        {
+            text.fontSize = fontSize;
+        }
+
     }
 }

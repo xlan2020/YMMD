@@ -33,6 +33,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 910699645345500180}
   - {fileID: 2110121770571211746}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -149,7 +150,7 @@ GameObject:
   - component: {fileID: 7613415506719880113}
   - component: {fileID: 2030543454525205804}
   m_Layer: 5
-  m_Name: Text
+  m_Name: SceneInfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,11 +244,23 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7613415506719880113}
         m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_font
-        m_Mode: 2
+        m_MethodName: set_text
+        m_Mode: 0
         m_Arguments:
-          m_ObjectArgument: {fileID: 12800000, guid: aa238c54e4fc64a3faa77061b86986e6, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Font, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3327822776055053352}
+        m_TargetAssemblyTypeName: LocaleFontReset, Assembly-CSharp
+        m_MethodName: UpdateAllFont
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -256,3 +269,92 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!1001 &1848159001966058628
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7455918704598984099}
+    m_Modifications:
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetTexts.Array.data[0]
+      value: 
+      objectReference: {fileID: 7613415506719880113}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetTexts.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetTexts.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetTexts.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903678447886452833, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: m_Name
+      value: LocaleFontReset
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+--- !u!4 &910699645345500180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1515054810066587792, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+  m_PrefabInstance: {fileID: 1848159001966058628}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3327822776055053352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+  m_PrefabInstance: {fileID: 1848159001966058628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7964d23cb8e7e4307876ff719f4745ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

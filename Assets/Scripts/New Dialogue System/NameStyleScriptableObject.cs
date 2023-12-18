@@ -6,6 +6,7 @@ using UnityEngine;
 public struct NameColor
 {
     public string name;
+    public string[] otherNames;
     public UnityEngine.Color color;
     public AudioClip voiceBlip;
 }

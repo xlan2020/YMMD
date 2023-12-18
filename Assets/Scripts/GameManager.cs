@@ -255,7 +255,11 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-        infoBar.SetInfoText(sceneInfoText);
+        // now use localized string instead, which also works as font resetter activator
+        // only need to resolve how the game manager can access the scene info table
+        // or maybe we just write it twice
+
+        //infoBar.SetInfoText(sceneInfoText);
 
         // locale id
         GameEssential.localeId = saveObject.localeId;

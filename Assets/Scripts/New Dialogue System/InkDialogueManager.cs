@@ -223,6 +223,11 @@ public class InkDialogueManager : MonoBehaviour
         {
             nameColorDict.Add(nameColor.name, nameColor.color);
             nameVoiceDict.Add(nameColor.name, nameColor.voiceBlip);
+            foreach (string otherName in nameColor.otherNames)
+            {
+                nameColorDict.Add(otherName, nameColor.color);
+                nameVoiceDict.Add(otherName, nameColor.voiceBlip);
+            }
         }
     }
 
