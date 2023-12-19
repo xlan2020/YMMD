@@ -33,8 +33,8 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] DrawItemObject drawItemObject;
     [SerializeField] Button applyButton;
     [SerializeField] Text applyButtonText;
-    [SerializeField] string applyText;
-    [SerializeField] string appliedText;
+    string applyText;
+    string appliedText;
 
 
     [Header("Draw Type Icon")]
@@ -64,6 +64,8 @@ public class UIDraw_Inventory : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
+
+        SetupApplyTextLocale();
     }
 
     void Start()
@@ -72,6 +74,24 @@ public class UIDraw_Inventory : MonoBehaviour
         initializeTabButton();
     }
 
+    private void SetupApplyTextLocale()
+    {
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                applyText = "选用";
+                appliedText = "已选用";
+                break;
+            case 1:
+                applyText = "Apply";
+                appliedText = "Applied";
+                break;
+            default:
+                applyText = "选用";
+                appliedText = "已选用";
+                break;
+        }
+    }
     public void ShowSelf(bool b)
     {
         UIObject.SetActive(b);
@@ -368,6 +388,7 @@ public class UIDraw_Inventory : MonoBehaviour
 
     private void SetApplyButtonAlreadyApplied(bool applied)
     {
+
         if (applied)
         {
             applyButton.interactable = false;

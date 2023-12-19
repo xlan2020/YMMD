@@ -13,7 +13,9 @@ public class Observee : MonoBehaviour
     public bool canDissolve = true;
     private bool canSubmit = false;
     [TextArea()] public string description;
+    [TextArea()] public string description_EN;
     public string submitSpeak;
+    public string submitSpeak_EN;
     private bool isCollected = false;
     private bool canGrab = true;
     private bool canMove = true;
