@@ -47,12 +47,12 @@ System：The canvas is lighted up. Try dragging and dropping the inspiration ont
 ==mama_appears==
 Me：(Let's observe him to the finest details... Mama! My meal!）#drawingSystem: addBinaryVal_10 #choiceType: BUTTON
 Mama：Enjoy!#profile: mama_satisfied  
-Mama：Hey, is that your friend? Wait, I know you, you're...master eight plus two!#bgm:戏谑_0.5
+Mama：Hey, is that your friend? Wait, I know you, you're...MASTER EIGHT PLUS TWO!!#bgm:戏谑_0.5
 8-2：*cough*Eightminus Tue, sis.#portrait: 8-2_smile2
 Me：(Pssss...master eight plus two also sounds fine.）#profile: painter_sour
 System：Sounds, words, and smells could also provide vital information for conceptualizing the painting. Observation points could occur anywhere on the screen, don't limit your observation to the object of painting alone. 
 System：You need to capture some of the observation points to continue drawing.
-Mama：Yes, of course, excuse my bad memory, master, such a pleasure--my lover is absorbed by your lectures!#profile: mama_satisfied #showObservee: dashi
+Mama：Yes, of course, excuse my bad memory, MASTER, such a pleasure--my lover is absorbed by your lectures!#profile: mama_satisfied #showObservee: master_EN
 System：In addition to mandatory observation points, there are also optional ones that could be <color=magenta>missed</color> as the dialog develops, limiting the direction of the story. Missing isn't necessarily a bad thing, but you should always look out for an unexpected observation point.
 System：That's all about observation points--don't forget to catch them if you can!
 Mama：I was so worried when he quit the fishing job, but thanks to our master here, we're rich now.
@@ -255,13 +255,13 @@ Me：......
 8-2：And most importantly, win their full, 100%, <b>trust</b>. Not the casual type of trust, but the form of trust that make them believe that they belongs to you.#portrait: 8-2_smile
 Me：That sounds toxic, if not impossible.
 8-2：Think about it. Don't you "have" your Family, lover, friend?#portrait: 8-2_smile2
-8-2："I'm yours"-doesn't it sound familiar and romantic?#showObservee:imYours
+8-2："I'm yours"-doesn't it sound familiar and romantic?#showObservee:imYours_EN
 8-2：Not to say that most people were born with a person--
 Me：The self.
 8-2：Correct, the self. Although some could also lose their selves as time passes.
 8-2：Now, you should understand the second important number--
 8-2：<color=magenta>Ownership</color>. When it applies to other people, it would be the number that represents the total of your understanding of them and their trust in you.#portrait: 8-2_smile
-8-2：100% of understanding times 100% of trust: the perfect 100! You don't have to reach perfection, 90 is good enough for displacement.#portrait: 8-2_smile2 #showObservee: formula
+8-2：100% of understanding times 100% of trust: the perfect 100! You don't have to reach perfection, 90 is good enough for displacement.#portrait: 8-2_smile2 #showObservee: formula_EN
 8-2：Unfortunately, painter, I could see that you have around 0% of trust in me. Stop being so worried, I can't own you, so I can't harm you.#portrait: 8-2_laugh
 Me：You do know that you sound evil?
 8-2：Ah crap, you think I'm terrible!#portrait: 8-2_unhappy
