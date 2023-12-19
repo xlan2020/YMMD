@@ -171,11 +171,27 @@ public class Observee : MonoBehaviour
         {
             return;
         }
+
+        // change grab cursor
+        if (!isCollected && !isAtRight)
+        {
+            // observee not collected and on the left
+            manager.cursor.ChangeGrabSprite("dragRight");
+        }
+        else if (manager.submitter.CanSubmit())
+        {
+            manager.cursor.ChangeGrabSprite("dragDown");
+        }
+
+        // change grab state
         manager.SetCursorBool("grab", true); //change to to right cursor when not collected
+
     }
 
     private void OnMouseUp()
     {
+        // change it back to default
+        manager.cursor.ChangeGrabSprite("grab");
         manager.SetCursorBool("grab", false);
 
         if (submitting && submitter != null)

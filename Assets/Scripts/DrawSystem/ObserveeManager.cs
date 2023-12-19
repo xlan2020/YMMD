@@ -9,6 +9,7 @@ public class ObserveeManager : MonoBehaviour
     public Observee[] observees;
     public Text descriptionText;
     public GameObject descriptionBox;
+    public SubmitDrawing submitter;
     private List<Observee> currLeft;
     private List<Observee> currCollected;
 

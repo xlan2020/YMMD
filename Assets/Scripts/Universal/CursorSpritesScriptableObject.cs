@@ -11,4 +11,6 @@ public class CursorSpritesScriptableObject : ScriptableObject
     public Sprite observe;
     public Sprite arrow;
     public Sprite talk;
+    public Sprite dragRight;
+    public Sprite dragDown;
 }

@@ -90,6 +90,24 @@ public class MouseCursor : MonoBehaviour
         }
 
     }
+    public void ChangeGrabSprite(string newSprite)
+    {
+        switch (newSprite)
+        {
+            case "dragRight":
+                grab = cursorSprites.dragRight;
+                break;
+            case "dragDown":
+                grab = cursorSprites.dragDown;
+                break;
+            case "grab":
+                grab = cursorSprites.grab;
+                break;
+            default:
+                grab = cursorSprites.grab;
+                break;
+        }
+    }
     public void SetAnimationBool(string boolName, bool b)
     {
         if (boolName == "grab")

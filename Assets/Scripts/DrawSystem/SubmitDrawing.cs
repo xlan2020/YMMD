@@ -99,4 +99,9 @@ public class SubmitDrawing : MonoBehaviour
         clipRenderer.sortingLayerID = SortingLayer.NameToID(newLayerName);
         backBorder.sortingLayerID = SortingLayer.NameToID(newLayerName);
     }
+
+    public bool CanSubmit()
+    {
+        return canSubmit;
+    }
 }
