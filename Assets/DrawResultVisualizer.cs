@@ -132,10 +132,36 @@ public class DrawResultVisualizer : MonoBehaviour
 
     public void DisplayResultDrawingInfo(ResultDrawingScriptableObject resDraw)
     {
+        string titleText = "";
+        string subjectText = "";
+        string themeDescription = "";
+        string clientReactionText = "";
+        string painterReactionText = "";
+
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                titleText = resDraw.title;
+                subjectText = resDraw.subject;
+                themeDescription = resDraw.themeDescription;
+                clientReactionText = resDraw.clientReaction;
+                painterReactionText = resDraw.painterReaction;
+                break;
+            case 1:
+                titleText = resDraw.title_EN;
+                subjectText = resDraw.subject_EN;
+                themeDescription = resDraw.themeDescription_EN;
+                clientReactionText = resDraw.clientReaction_EN;
+                painterReactionText = resDraw.painterReaction_EN;
+                break;
+            default:
+                break;
+        }
+
         // info
-        title.text = resDraw.title;
-        subject.text = resDraw.subject;
-        theme.text = resDraw.themeDescription;
+        title.text = titleText;
+        subject.text = subjectText;
+        theme.text = themeDescription;
 
         // theme score update
         theme_score.text = "" + resDraw.themeScore;
@@ -143,8 +169,8 @@ public class DrawResultVisualizer : MonoBehaviour
         // reactions
         clientProfile.sprite = resDraw.clientProfile;
         //this.clientName.text = resDraw.subject;
-        clientReaction.text = resDraw.clientReaction;
-        painterReaction.text = resDraw.painterReaction;
+        clientReaction.text = clientReactionText;
+        painterReaction.text = painterReactionText;
     }
 
     public void DisplayResultDrawingVisuals(ResultDrawingScriptableObject resDraw, ArtMaterialScriptableObject canvas, ArtMaterialScriptableObject brush, ArtMaterialScriptableObject paint)
