@@ -214,7 +214,6 @@ public class InkDialogueManager : MonoBehaviour
                 ContinueStory();
             }
         }
-
     }
 
     private void CreateNameStyleDict()
@@ -520,6 +519,7 @@ public class InkDialogueManager : MonoBehaviour
     {
         return dialogueVariables;
     }
+
     private void displayVisualsAfterType()
     {
         if (observeeManager != null)
@@ -532,8 +532,8 @@ public class InkDialogueManager : MonoBehaviour
             DrawResultManager.DisplayDrawing();
             DrawResultManager.SetCanShow(false);
         }
-
     }
+
     private void handleChoiceType()
     {
         switch (choiceType)
@@ -644,6 +644,8 @@ public class InkDialogueManager : MonoBehaviour
     private IEnumerator ExitDialogueMode()
     {
         dialogueIsPlaying = false;
+        //UnityEngine.Debug.Log("set dialogue panel gray");
+        dialoguePanel.SetInteractive(false);
 
         if (mapPlayer)
         {

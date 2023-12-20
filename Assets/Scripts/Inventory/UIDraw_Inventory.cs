@@ -31,6 +31,7 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] Text currentItemAttribute;
     [SerializeField] Text currentItemDurability;
     [SerializeField] DrawItemObject drawItemObject;
+    [SerializeField] Image currentItemImage;
     [SerializeField] Button applyButton;
     [SerializeField] Text applyButtonText;
     string applyText;
@@ -233,7 +234,8 @@ public class UIDraw_Inventory : MonoBehaviour
         // if the list is empty, then don't bother making updates
         if (displayList.Count == 0)
         {
-            drawItemObject.SetItem(null);
+            //drawItemObject.SetItem(null);
+            currentItemImage.sprite = null;
             currentItemDescription.text = "";
             currentItemAttribute.text = "";
             currentItemDurability.text = "";
@@ -261,16 +263,16 @@ public class UIDraw_Inventory : MonoBehaviour
             switch (GameEssential.localeId)
             {
                 case 0: // CH
-                    currentItemDescription.text = currentSlot.item.description;
+                    currentItemDescription.text = currentSlot.item.drawDescription;
                     currentItemAttribute.text = currentSlot.item.drawAttribute;
                     break;
                 case 1:
-                    currentItemDescription.text = currentSlot.item.description_EN;
+                    currentItemDescription.text = currentSlot.item.drawDescription_EN;
                     currentItemAttribute.text = currentSlot.item.drawAttribute_EN;
                     break;
                 default:
                     UnityEngine.Debug.LogWarning("no matching language!");
-                    currentItemDescription.text = currentSlot.item.description;
+                    currentItemDescription.text = currentSlot.item.drawDescription;
                     currentItemAttribute.text = currentSlot.item.drawAttribute;
                     break;
             }
@@ -286,7 +288,8 @@ public class UIDraw_Inventory : MonoBehaviour
                 currentItemDurability.color = Color.green;
             }
             SetApplyButtonAlreadyApplied(drawingSystem.GetItemByDrawType(currentSlot.item.drawType) == currentSlot.item);
-            drawItemObject.SetItem(currentSlot.item);
+            //drawItemObject.SetItem(currentSlot.item);
+            currentItemImage.sprite = currentSlot.item.spriteImage;
         }
     }
 

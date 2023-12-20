@@ -27,7 +27,8 @@ public class SolvableReceiver : MonoBehaviour
     public bool HasSecondCollider = false;
 
 
-    void Awake(){
+    void Awake()
+    {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
         animator = gameObject.GetComponent<Animator>();
@@ -59,8 +60,8 @@ public class SolvableReceiver : MonoBehaviour
     {
         if (other.gameObject == TargetSolvable.gameObject)
         {
-            other.gameObject.GetComponent<Solvable>().SetAtDestination(true);
-            if (other.GetComponent<DragDrop>().IsOnDrop() || ImmediateTrigger)
+            other.gameObject.GetComponent<Solvable>().SetAtDestination(true, this);
+            if (ImmediateTrigger)
             {
                 TargetSolvable.DoneSolving();
                 ReceiveSolve();
@@ -72,7 +73,7 @@ public class SolvableReceiver : MonoBehaviour
     {
         if (other.gameObject == TargetSolvable.gameObject)
         {
-            if (other.GetComponent<DragDrop>().IsOnDrop() || ImmediateTrigger)
+            if (ImmediateTrigger)
             {
                 TargetSolvable.DoneSolving();
                 ReceiveSolve();
@@ -84,7 +85,7 @@ public class SolvableReceiver : MonoBehaviour
     {
         if (other.gameObject == TargetSolvable.gameObject)
         {
-            other.gameObject.GetComponent<Solvable>().SetAtDestination(false);
+            other.gameObject.GetComponent<Solvable>().SetAtDestination(false, this);
         }
 
     }
@@ -161,7 +162,8 @@ public class SolvableReceiver : MonoBehaviour
         {
             foreach (SolvableReceiver s in ClearSound)
             {
-                if (s!=null){
+                if (s != null)
+                {
                     s.GetComponent<AudioSource>().Stop();
                 }
             }

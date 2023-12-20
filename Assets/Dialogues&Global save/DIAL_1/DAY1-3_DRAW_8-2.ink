@@ -80,7 +80,7 @@ INCLUDE ../global.ink
 我：而且你这个1和0的说法，听着更像是数字命理学之类的吧？
 8-2：嗯，嗯，你就是这么理解的吗？浅了啊，画家。#portrait: 8-2_laugh
 8-2：数字可是很重要的！看看你头顶上，对，就在正中间，那里可是有个很显眼、很重要的数字。#portrait: 8-2_smile2
-我：（很显眼、很重要的数字……嗯？“头顶”上难道是指……）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
+我：（很显眼、很重要的<color=green>数字</color>……嗯？“头顶”上难道是指……<color=green>正中间、最上面</color>？如果能找到的话，我要把它<color=green>立刻放进画里</color>！）#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
 +[ ]->where_is_number
 +[ ]->found_number
 

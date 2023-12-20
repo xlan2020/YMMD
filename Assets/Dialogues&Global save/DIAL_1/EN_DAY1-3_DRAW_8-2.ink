@@ -79,8 +79,8 @@ Me：You taught Mama's lover...maths?#profile: painter_side
 Me：(That sounds crazier than my "inquiry into the nature of art".) You mean that you're self-appointed. #profile: painter_norm
 Me：This talk about 1 and 0 sounds familiar, isn't that called numerology or something?
 8-2：Well, well, that's your understanding? Shallow, ah.#portrait: 8-2_laugh
-8-2：Numbers are crucial! Look at what's on top of your head, yes, right in the middle--that's a very important number.#portrait: 8-2_smile2
-Me：(A very important number... Huh? Does "on top of my head" mean...)#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
+8-2：Numbers are crucial! Look at what's on top of your head, yes, <color=green>right in the middle</color>--that's a very important number.#portrait: 8-2_smile2
+Me：(A very important number... Huh? Does "on top of my head" mean...the <color=green>middle number above</color> everything? I'd submit it directly to the drawing if I can find it...)#profile: painter_stunned #showObservee: moneyAmount #choiceType: OBSERVEE_CANSKIP
 +[ ]->where_is_number
 +[ ]->found_number
 
@@ -182,7 +182,7 @@ Me：(This confusing weirdo...) What are you mumbling about?#profile: painter_si
 ==reveal_liar==
 Me：So, are you selling me your lectures?#profile: painter_side #bgm:fade_0.2_0.5 #drawingSystem: addBinaryVal_-30 #choiceType: BUTTON
 Me：First pretending to know me, then pay me to draw to convince me that you're not a scammer... Ha, no one wants to buy my painting except scammers.#portrait: 8-2_norm2 #bgm:悬疑_1
-Me：Then you used Mama's trust to establish the image of a "master," luring me to ask you about the lectures... Gosh, Mama can't be your trustee, right?
+Me：Then you used Mama's trust to establish the image of a "master," luring me to ask you about the lectures... Gosh, Mama can't be your trustee, right?
 Me：Then you deliberately took "mathematician" as an analogy of "painter," trying to pull me closer.
 Me：Worse, you peaked into my wallet when I was looking for drawing materials and memorized that number to shock me and make yourself look smart.
 Me：Let's guess what should follow--it's time to sell me some lectures, isn't it? If I say that I don't have the money, don't tell me you're not going to recommend an "acquaintance" who can lend me some.#portrait: 8-2_norm

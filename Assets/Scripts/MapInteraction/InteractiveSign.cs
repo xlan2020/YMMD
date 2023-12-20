@@ -8,6 +8,7 @@ public class InteractiveSign : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     private Animator animator;
     private bool isHidden;
+    private bool isNear = false;
     private MouseCursor cursor;
     private Button button;
     [SerializeField] private string changeCursorType = "point";
@@ -29,6 +30,7 @@ public class InteractiveSign : MonoBehaviour, IPointerEnterHandler, IPointerExit
         gameObject.SetActive(true);
         animator.SetTrigger("showNear");
         isHidden = false;
+        isNear = true;
     }
 
     public void showSelfFar()
@@ -37,6 +39,7 @@ public class InteractiveSign : MonoBehaviour, IPointerEnterHandler, IPointerExit
         gameObject.SetActive(true);
         animator.SetTrigger("showFar");
         isHidden = false;
+        isNear = false;
     }
 
     /**
@@ -50,6 +53,12 @@ public class InteractiveSign : MonoBehaviour, IPointerEnterHandler, IPointerExit
         button.interactable = false;
         gameObject.SetActive(false);
         isHidden = true;
+        isNear = false;
+    }
+
+    public bool IsNear()
+    {
+        return isNear;
     }
     public bool IsHidden()
     {

@@ -1,6 +1,6 @@
 INCLUDE ../global.ink
 { foodOrdered: 
-{~老板娘：等会儿啊，东西马上就来！|老板娘：一会儿就好！|老板娘：这会儿也没人，随便坐吧！|老板娘：做着呢！}#profile: mama_norm
+{~老板娘：等会儿啊，东西马上就来！|老板娘：一会儿就好！|老板娘：这会儿也没人，随便坐吧！|老板娘：做着呢！|老板娘：海边很多<color=green>凳子</color>呢，过去坐吧！}#profile: mama_norm
 -> DONE
 }
 { mamaTalk: 

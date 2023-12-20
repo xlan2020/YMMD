@@ -1,4 +1,4 @@
-INCLUDE global.ink
+INCLUDE ../global.ink
 我：（咦？这个鱼缸明明看起来还挺不错的，这就没人要了吗？摊位都搬空了。）#profile: painter_norm
 我：（这样的话，我是不是可以拿走……等等！）#profile: painter_happy
 我：（这是什么？好漂亮的金鱼，它还住在里面。）#profile: painter_surprised

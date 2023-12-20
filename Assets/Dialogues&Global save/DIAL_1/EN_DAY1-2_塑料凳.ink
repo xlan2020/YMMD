@@ -20,23 +20,23 @@ Me：(August 26th, Wed. I promised a friend that we'd...he'd...）
 Me：(Well, that could wait--)#profile: painter_alert
 Me：(That thing's coming over!)#profile: painter_frightened #event: 8-2_walkCloser
 Me：Oi!#profile: painter_surprised
-???：My~~~little~~~painter!#profile: 8-2_smile #bgm:戏谑
+???：My~~~little~~~painter!#profile: 8-2_smile2 #bgm:戏谑
 Me：Huh？#profile: painter_alert
-???：Sure enough, you don't recognize me again.#profile: 8-2_upset
-???：Your cold indifference cuts me to the core.#profile: 8-2_upset
-???：I'm your friend Eightminus Tue!#profile: 8-2_smile
+???：Sure enough, you don't recognize me again.#profile: 8-2_raiseEyebrow
+???：Your cold indifference cuts me to the core.#profile: 8-2_angry
+???：I'm your old friend Eightminus Tue! #profile: 8-2_smile2
 Me：(Eight minus two? Six.)Bro, you've mistaken me for someone else.#profile: painter_sideSweat
-8-2：*Claped*You just call me "bro"! Hey, I'd love that. Are you finally ready to join my One in Seven Fraternity?#event: 8-2_stayDressed #profile: 8-2_smile
+8-2：*Claped*You just call me "bro"! Hey, I'd love that. Are you finally ready to join my One in Seven Fraternity?#event: 8-2_stayDressed #profile: 8-2_laugh
 Me：Fraternity?#profile: painter_side
 Me：(Hmm? When did he put his clothes on?)#profile: painter_sideSweat
-8-2：Gee, you're full of questions right now. It's okay, you'll get it in a moment.#profile: 8-2_smile
-8-2：Painter!let's start by painting me a portrait!
+8-2：Gee, you're full of questions right now. It's okay, you'll get it in a moment. #profile: 8-2_norm3
+8-2：Painter!let's start by painting me a portrait!#profile: 8-2_smile2
 Me：Slow down.(He called me "painter," did I know him from somewhere?)#profile: painter_side
-8-2：Uh-huh. One two three, four five six, seven eight nine ten ARE YOU READY? Let's paint!#profile: 8-2_smile
-8-2：Don't worry, I'll pay!
+8-2：Uh-huh. One two three, four five six, seven eight nine ten ARE YOU READY? Let's paint! #profile: 8-2_laugh
+8-2：Don't worry, I'll pay! #profile: 8-2_norm
 Me：(I do need some money though.)#profile: painter_happy
 Me：(But wait, this guy still looks suspicious.)#painter: painter_alert
-8-2：Here's the deposit.#addMoney: 100 #profile: 8-2_smile
+8-2：Here's the deposit.#addMoney: 100 #profile: 8-2_norm3
 Me：(No shit, a scammer don't give you money upfront.)#profile: painter_stunned
 Me：Dear sir, what kind of portrait would you like?#profile: painter_happy
 Me：Let me get the painting box ready first--

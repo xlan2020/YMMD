@@ -14,6 +14,8 @@ public class InteractableItemManager : MonoBehaviour
     private InteractableItem currentItem;
 
     private static InteractableItemManager instance;
+
+    private List<InteractiveSign> tempDisabledSigns = new List<InteractiveSign>();
     void Awake()
     {
         if (instance != null)
@@ -35,7 +37,7 @@ public class InteractableItemManager : MonoBehaviour
         {
             // add interactive function to each interactive sign from script, no need to do it through inspector
             // whenever the interaction starts, show interactive sign as if it's faraway and non-interatable
-            item.interactiveSign.gameObject.GetComponent<Button>().onClick.AddListener(delegate { player.InteractWithItem(item); item.interactiveSign.showSelfFar(); currentItem = item; });
+            item.interactiveSign.gameObject.GetComponent<Button>().onClick.AddListener(delegate { player.InteractWithItem(item); currentItem = item; deactivateAllSigns(); });
             item.interactiveSign.SetCursor(cursor);
         }
 
@@ -117,6 +119,15 @@ public class InteractableItemManager : MonoBehaviour
 
     public void ReactivateCurrentSign()
     {
+        foreach (InteractiveSign sign in tempDisabledSigns)
+        {
+            if (sign != null)
+            {
+                sign.showSelfNear();
+            }
+        }
+        tempDisabledSigns = new List<InteractiveSign>();
+        /*
         if (currentItem == null)
         {
             UnityEngine.Debug.LogWarning("there isn't a currently interactable item that is tracked!");
@@ -124,6 +135,7 @@ public class InteractableItemManager : MonoBehaviour
         }
         currentItem.interactiveSign.showSelfNear();
         currentItem = null;
+        */
     }
 
     private void onDialogueEnded_ReactivateCurrentSign(object sender, System.EventArgs e)
@@ -133,5 +145,21 @@ public class InteractableItemManager : MonoBehaviour
     public static InteractableItemManager GetInstance()
     {
         return instance;
+    }
+
+    private void deactivateAllSigns()
+    {
+        foreach (InteractableItem item in interactableItems)
+        {
+            if (item != null && currentItem.dialogueTrigger != null)
+            {
+                // deactivate only for dialogue type, but not collect and event trigger type
+                if (item.interactiveSign.IsNear())
+                {
+                    item.interactiveSign.showSelfFar();
+                    tempDisabledSigns.Add(item.interactiveSign);
+                }
+            }
+        }
     }
 }

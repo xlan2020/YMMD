@@ -27,6 +27,7 @@ public class Solvable : MonoBehaviour
     [SerializeField] private SolvableReceiver TargetClickReceiver;
     private Vector3 startPos;
     private bool _atDestination = false;
+    private SolvableReceiver currentReceiver;
     private int choiceIndex = 1;
     private bool _canMakeChoice = false;
     public bool showAfterLast = true;
@@ -75,7 +76,6 @@ public class Solvable : MonoBehaviour
             }
 
         }
-        CheckSnapToStart();
     }
 
     public void Show()
@@ -181,7 +181,8 @@ public class Solvable : MonoBehaviour
 
     public void SolveSelf()
     {
-        if (TargetClickReceiver !=null){
+        if (TargetClickReceiver != null)
+        {
             TargetClickReceiver.ReceiveSolve();
         }
         DoneSolving();
@@ -209,10 +210,22 @@ public class Solvable : MonoBehaviour
         cursor.SetAnimationBool("grab", false);
 
         UnityEngine.Debug.Log("Click on solvable");
+
         if (ClickType && interactive)
         {
             SolveSelf();
+            return;
         }
+
+        if (_atDestination && currentReceiver != null)
+        {
+            SolveSelf();
+            currentReceiver.ReceiveSolve();
+            return;
+        }
+
+        CheckSnapToStart();
+
     }
 
     private void OnMouseExit()
@@ -233,9 +246,10 @@ public class Solvable : MonoBehaviour
         }
     }
 
-    public void SetAtDestination(bool b)
+    public void SetAtDestination(bool b, SolvableReceiver receiver)
     {
         _atDestination = b;
+        this.currentReceiver = receiver;
     }
 
     public void SetSolveToBeChoice(int i)
