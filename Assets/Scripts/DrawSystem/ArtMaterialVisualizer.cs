@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArtMaterialVisualizer : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer canvasObject;
+    [SerializeField] Image canvasObject;
     [SerializeField] MouseCursor cursor;
     [SerializeField] CursorSpritesScriptableObject cursorSprites;
     private GameObject paintObject;

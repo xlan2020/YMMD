@@ -224,7 +224,8 @@ public class Solvable : MonoBehaviour
             return;
         }
 
-        CheckSnapToStart();
+        dragDrop.SetSnapPosition(startPos);
+        dragDrop.Snap();
 
     }
 

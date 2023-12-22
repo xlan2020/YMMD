@@ -918,9 +918,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.5691244
+    width: 0.5029383
+    height: 0.4436924
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 55
@@ -2554,9 +2554,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.5691244
+    width: 0.5029383
+    height: 0.4436924
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2777,7 +2777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b3174364d464fa2b89f8c65c2f7b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasObject: {fileID: 2137314171}
+  canvasObject: {fileID: 2050740353}
   cursor: {fileID: 583783960}
   cursorSprites: {fileID: 11400000, guid: 94d10f54c6c3546d09fa6280807a52bd, type: 2}
 --- !u!114 &850434267 stripped
@@ -8432,6 +8432,7 @@ GameObject:
   - component: {fileID: 2050740352}
   - component: {fileID: 2050740354}
   - component: {fileID: 2050740353}
+  - component: {fileID: 2050740355}
   m_Layer: 5
   m_Name: drawCanvas
   m_TagString: Untagged
@@ -8496,6 +8497,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050740351}
   m_CullTransparentMesh: 1
+--- !u!95 &2050740355
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050740351}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25ff0100baf334dfca0d3e4413fdfab1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2137314169
 GameObject:
   m_ObjectHideFlags: 0
@@ -9089,7 +9111,7 @@ PrefabInstance:
       objectReference: {fileID: 1273523902}
     - target: {fileID: 3840736539293512341, guid: 8d61535dbc8f74fb2a03dc1d584865f9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -40.999878
+      value: -41
       objectReference: {fileID: 0}
     - target: {fileID: 3855178928573702435, guid: 8d61535dbc8f74fb2a03dc1d584865f9, type: 3}
       propertyPath: m_Name

@@ -98,7 +98,7 @@ public class LoadingScene : MonoBehaviour
     public void RestartGame()
     {
         // delete autosave and load scene
-        string sceneName = "DAY1-0"; // might switch language
+        string sceneName = "DAY1-0";
         StartCoroutine(RestartAndLoadSceneAsync(sceneName));
     }
 

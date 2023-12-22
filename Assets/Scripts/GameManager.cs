@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(saveObject);
 
         // write the save file
-        SaveSystem.Save(json);
+        SaveSystem.SaveAtSlot(json, 1);
     }
 
     public void AutoSave(string nextSceneId)
