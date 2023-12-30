@@ -57,7 +57,7 @@ INCLUDE ../global.ink
 ->DONE
 ===no_money===
 我：……………… #profile：painter_side
-我：……我没钱了……那个，可以给我一晚白面条吗，我、我很抱歉，明天卖出一幅画，我一定还上来。#profile: painter_sideSweat
+我：……我没钱了……那个，可以给我一碗白面条吗，我、我很抱歉，明天卖出一幅画，我一定还上来。#profile: painter_sideSweat
 老板娘：怎么会没钱了呢？#profile: mama_norm
 我：说实话，我也不太清楚。我一觉醒来，家里就什么都没有了，钱包也是空的。#profile: painter_depressed
 我：（糟糕，这番话听起来真的很不要脸。我已经落魄到这种地步了吗？）#profile: painter_sideSweat
