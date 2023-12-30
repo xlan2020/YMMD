@@ -1,6 +1,6 @@
 INCLUDE ../global.ink
-Me：...what happened next?#portrait: 天花板 #solve: none #speakerMode: norm #profile: painter_side
-Me：The dream seemed so vivid, but it isn't coming back to me.
+Me：...what happened next?<color=green>(click on any spot at the dialogue window or press SPACE to continue story.)</color>#portrait: 天花板 #solve: none #speakerMode: norm #profile: painter_side
+Me：The dream seemed so vivid, but it isn't coming back to me. <color=green>(Press [H] or [↑] to review chat transcript.)</color>
 Me：It feels like something so important though, worth lying in bed and recollecting over and over again.#profile: painter_sideSweat
 Me：...Despite that, I'm hungry and my stomach hurts. Let's get out of bed first.#profile: painter_depressed
 Me：Huh?#bgm: 悬疑 #profile: painter_surprised

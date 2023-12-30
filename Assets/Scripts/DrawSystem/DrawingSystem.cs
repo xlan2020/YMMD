@@ -194,6 +194,9 @@ public class DrawingSystem : MonoBehaviour
 
     public void ShowDrawResult()
     {
+        // change brush to default
+        artMaterialVisualizer.ChangeCursorBrushDefault();
+
         // decide result
         ResultDrawingScriptableObject resDraw = CalculateResultDrawing();
 

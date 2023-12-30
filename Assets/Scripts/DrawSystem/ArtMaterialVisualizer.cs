@@ -79,4 +79,8 @@ public class ArtMaterialVisualizer : MonoBehaviour
         paintObject = Instantiate(paintPrefab, cursor.gameObject.transform);
 
     }
+    public void ChangeCursorBrushDefault()
+    {
+        cursor.SetBrushSprite(cursorSprites.defaultBrush);
+    }
 }

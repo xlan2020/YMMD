@@ -4,6 +4,7 @@ using UnityEngine;
 public class CursorSpritesScriptableObject : ScriptableObject
 {
     public Sprite brush;
+    public Sprite defaultBrush;
     public Sprite dialogue;
     public Sprite point;
     public Sprite hand;

@@ -77,8 +77,21 @@ public class ObserveeManager : MonoBehaviour
     {
         foreach (Observee o in currCollected)
         {
+            string submitSpeak = "";
+            switch (GameEssential.localeId)
+            {
+                case 0:
+                    submitSpeak = o.submitSpeak;
+                    break;
+                case 1:
+                    submitSpeak = o.submitSpeak_EN;
+                    break;
+                default:
+                    submitSpeak = o.submitSpeak;
+                    break;
+            }
             // add show text to drag callback
-            o.GetComponent<DragDrop>().dragCallback += delegate { ShowObserveeSpeakText(o.submitSpeak); };
+            o.GetComponent<DragDrop>().dragCallback += delegate { ShowObserveeSpeakText(submitSpeak); };
 
             // add hide text to drop callback
             o.GetComponent<DragDrop>().dropCallback += delegate { HideObserveeSpeakText(); };

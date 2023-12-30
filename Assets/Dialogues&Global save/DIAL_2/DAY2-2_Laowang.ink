@@ -43,7 +43,7 @@ INCLUDE ../global.ink
 
 ==first_talk==
 老王：哟，画家。
-我：啊，王大爷好。
+我：嘿，王大爷早。
 老王：今天没和<color=magenta>你那个谁</color>在一块儿啊？
 我：嗯？……什么，谁？
 老王：………… #bgm: fade_0.2_0
