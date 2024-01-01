@@ -168,7 +168,7 @@ public static class SaveSystem
     /// <returns></returns>
     private static string GetFilePath(string FileName = "")
     {
-        string filePath;
+        string filePath = "";
 #if UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX
         // mac
         filePath = Path.Combine(Application.persistentDataPath, ("SavesData/"));

@@ -27,7 +27,7 @@ Me：There's...water. Water everywhere, tickling my skin... It itches! Am I alle
 Me：So itchy! I want to scratch my skin with something harder, something sharper...
 Me：...the fish scale.#event: largeScale
 Me：I have to <color=green>scratch</color>-- #solve: next 
-Me：Ouch! It's sharper than I thought... Where's my scale? Wait, what's this...<color=green>鱼</color>？#solve: next #profile: painter_concerned
+Me：Ouch! It's sharper than I thought... Where's my scale? Wait, what's this...<color=green>fish</color>？#solve: next #profile: painter_concerned
 Me：Where did the <color=green>scale</color> go? My precious, come back to my <color=green>hands</color>...#solve: next #profile: painter_frightened
 Me：Heh, it's here.#profile: painter_happy
 Me：But my hands are dirty with blood... I should wipe them...#solve: next #profile: painter_norm
