@@ -1,8 +1,8 @@
 INCLUDE ../global.ink
  ：The painting is finished.#bgm: 房间 #profile: hide
 System：This is the first time in a few days that the painter finishes their own <color=magenta>creation</color>.
-System：Different from commissions, personal creations would not bring any return in cash, but could become an <color=magenta>accurate description</color> of objects.
-System：With a painting that constitutes an accurate description of an object, the painter could bring the <color=magenta>non-existing</color> object into existence.
+System：Different from commissions, personal creations would not bring any return in cash, but could become an <color=magenta>accurate depiction</color> of objects.
+System：With a painting that constitutes an accurate depiction of an object, the painter could bring the <color=magenta>non-existing</color> object into existence.
 System：In this case, by paying an <color=magenta>equivalent amount of money</color>, the painter can <color=magenta>displace</color> the object from the void.
 System：Of course, displacement does not garentee satisfactory results. The deviations in the painting, the lack of money... these could influence the result of displacement.
 System：In short, when the painting is finished, according to <color=magenta>how much money you're willing to pay</color>, the painter would receive <color=magenta>different objects</color>.

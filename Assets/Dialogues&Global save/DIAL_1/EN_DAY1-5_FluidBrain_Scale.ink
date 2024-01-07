@@ -56,7 +56,7 @@ Fish scale：Buy me.#choiceType: AUTO
         +[Buy it] -> bought 
     - else: 
         ~ buy_me_count++
-        +[Do nothing] -> buy_me_scale
+        +[Do nothing] -> buy_me_fish
         +[Buy it] -> bought 
 }
 

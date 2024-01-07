@@ -91,10 +91,6 @@ public class LoadingScene : MonoBehaviour
         }
     }
 
-
-
-
-
     public void RestartGame()
     {
         // delete autosave and load scene
@@ -139,5 +135,11 @@ public class LoadingScene : MonoBehaviour
     public void FadeOutLoadingScreen()
     {
         animator.SetBool("Loading", false);
+    }
+
+    void OnApplicationQuit()
+    {
+        Debug.Log("Application ending after " + Time.time + " seconds");
+        GlobalSaveManager.Save();
     }
 }

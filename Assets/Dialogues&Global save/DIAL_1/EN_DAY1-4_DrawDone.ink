@@ -22,8 +22,8 @@ Me：I'm not that type of opportunist who likes to exploit.#profile: painter_ale
 8-2：It's disappointing to hear that coming out of you. Painter, before you paint, the painting didn't exist either.#profile: 8-2_cold
 8-2：Both being creating existence out of nothingness, how is the art of displacement different?#profile: 8-2_smile2
 Me：Well thanks for the acknowledgement, but I'm not the God's pen. A painting is just a painting.#profile: painter_norm
-8-2：Hey, that's not what I mean. Your paintings aren't just paper with colors on it. It is a <color=magenta>accurate description</color> of an object.#profile: 8-2_smile2
-8-2：If you could accurately describe something that has <color=magenta>disappeared</color>, if you could remember it and draw it out just as it is... Then you could <color=magenta>displace it back</color>.#profile: 8-2_norm
+8-2：Hey, that's not what I mean. Your paintings aren't just paper with colors on it. It is an <color=magenta>accurate depiction</color> of an object.#profile: 8-2_smile2
+8-2：If you could accurately depict something that has <color=magenta>disappeared</color>, if you could remember it and draw it out just as it is... Then you could <color=magenta>displace it back</color>.#profile: 8-2_norm
 8-2：Did you get what I mean?#profile: 8-2_smile2
 ->did_you_get_it
 
@@ -38,8 +38,8 @@ Me：………………#profile: painter_side
 +[What? Tell me again.]->repeat_description_again
 
 ==repeat_description_again==
-8-2：Your paintings aren't just paper with colors on it. It is an <color=magenta>accurate description</color> of an object.#profile: 8-2_smile2
-8-2：If you could accurately describe something that has <color=magenta>disappeared</color>, if you could remember it and draw it out just as it is... Then you could <color=magenta>displace it back</color>.#profile: 8-2_norm
+8-2：Your paintings aren't just paper with colors on it. It is an <color=magenta>accurate depiction</color> of an object.#profile: 8-2_smile2
+8-2：If you could accurately depict something that has <color=magenta>disappeared</color>, if you could remember it and draw it out just as it is... Then you could <color=magenta>displace it back</color>.#profile: 8-2_norm
 8-2：Did you get what I mean?#profile: 8-2_smile2
 ->did_you_get_it
 

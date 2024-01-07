@@ -473,15 +473,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private class GlobalSaveObject
-    {
-        // note unlocked state;
-        // item gallery
-    }
-
-
-
-
     /**
 private void dialogueIntegrationTest()
 {

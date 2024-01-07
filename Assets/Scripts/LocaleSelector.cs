@@ -48,4 +48,17 @@ public class LocaleSelector : MonoBehaviour
 
         UpdateLocaleToGame();
     }
+
+    public void SelectLocale(int i)
+    {
+        if (active == true)
+        {
+            return;
+        }
+
+        GameEssential.localeId = i;
+
+        UpdateLocaleToGame();
+
+    }
 }

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class CursorChanger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public string changeTo = "point";
+    public string backTo = "default";
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
 
@@ -14,7 +15,7 @@ public class CursorChanger : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
     public void OnPointerExit(PointerEventData pointerEventData)
     {
-        MouseCursor.instance.SetAnimationTrigger("default");
+        MouseCursor.instance.SetAnimationTrigger(backTo);
     }
     public void OnPointerDown(PointerEventData pointerEventData)
     {
@@ -23,7 +24,7 @@ public class CursorChanger : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerUp(PointerEventData pointerEventData)
     {
-        MouseCursor.instance.SetAnimationTrigger("default");
+        MouseCursor.instance.SetAnimationTrigger(backTo);
     }
 
 }

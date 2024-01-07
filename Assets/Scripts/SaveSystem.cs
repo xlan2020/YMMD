@@ -72,7 +72,7 @@ public static class SaveSystem
         }
 
         // slotIndex 0 -> AutoSave
-        if (slotIndex > 10 || slotIndex < 0)
+        if (slotIndex > 99 || slotIndex < 0)
         {
             UnityEngine.Debug.LogWarning("the save slot does not exist!");
             return;
