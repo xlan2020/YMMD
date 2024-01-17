@@ -961,7 +961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.026620371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -969,11 +969,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.94650203
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2056554025495318231, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_RootOrder
@@ -1045,7 +1045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.026620371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -1053,11 +1053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.94650203
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331935906279990310, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_BoundingShape2D
@@ -1073,7 +1073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.026620371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -1081,15 +1081,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.94650203
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0.026620371
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
@@ -1097,11 +1097,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.94650203
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.99999994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7587418477326223144, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_VolumeLayerMask.m_Bits
@@ -1472,6 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTo: point
+  backTo: default
 --- !u!114 &463212045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1862,6 +1863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716444578}
   - component: {fileID: 716444579}
+  - component: {fileID: 716444580}
   m_Layer: 5
   m_Name: blue
   m_TagString: Untagged
@@ -1937,6 +1939,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &716444580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716444577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 18817111345324032
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 716444579}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &728203452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3223,6 +3260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 967084087}
   - component: {fileID: 967084088}
+  - component: {fileID: 967084089}
   m_Layer: 5
   m_Name: yellow
   m_TagString: Untagged
@@ -3298,6 +3336,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &967084089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967084086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 18817220434976768
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 967084088}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!20 &967688288 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
@@ -5145,6 +5218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTo: point
+  backTo: default
 --- !u!114 &1336571951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5577,6 +5651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1457640299}
   - component: {fileID: 1457640300}
+  - component: {fileID: 1457640301}
   m_Layer: 5
   m_Name: "\u5173\u505C\u516C\u544A"
   m_TagString: Untagged
@@ -5652,6 +5727,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1457640301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457640298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 18816674143657984
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1457640300}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1472849069
 GameObject:
   m_ObjectHideFlags: 0
@@ -5823,6 +5933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTo: point
+  backTo: default
 --- !u!114 &1513739931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7386,6 +7497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeTo: point
+  backTo: default
 --- !u!114 &2135837155
 MonoBehaviour:
   m_ObjectHideFlags: 0

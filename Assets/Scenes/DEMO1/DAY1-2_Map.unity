@@ -1730,6 +1730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 435577364}
   - component: {fileID: 435577363}
+  - component: {fileID: 435577365}
   m_Layer: 5
   m_Name: "\u5173\u505C\u516C\u544A"
   m_TagString: Untagged
@@ -1805,6 +1806,41 @@ Transform:
   - {fileID: 325519434}
   m_Father: {fileID: 3929394750138112825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &435577365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435577362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 18816674143657984
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 435577363}
+        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &469746105 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1183604415811328655, guid: f8e1277990b274c91be48d2aa6e5443d, type: 3}
@@ -5068,7 +5104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.07390146
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -5076,7 +5112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.85236347
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2056554025495318231, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5132,7 +5168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.07390146
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -5140,7 +5176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.85236347
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331935906279990310, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_BoundingShape2D
@@ -5152,7 +5188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.07390146
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -5160,7 +5196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.85236347
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
@@ -5168,7 +5204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.07390146
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
@@ -5176,7 +5212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.85236347
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

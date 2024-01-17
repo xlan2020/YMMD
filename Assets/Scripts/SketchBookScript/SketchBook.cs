@@ -84,7 +84,18 @@ public class SketchBook : MonoBehaviour
             if (n.unlocked)
             {
                 // if the note is unlocked, display it
-                notesContainer[i].sprite = n.sprite;
+                switch (GameEssential.localeId)
+                {
+                    case 0:
+                        notesContainer[i].sprite = n.sprite;
+                        break;
+                    case 1:
+                        notesContainer[i].sprite = n.sprite_EN;
+                        break;
+                    default:
+                        break;
+                }
+
             }
             else
             {
@@ -235,6 +246,7 @@ public class SketchBook : MonoBehaviour
 public struct BookNote
 {
     public Sprite sprite;
+    public Sprite sprite_EN;
     public bool unlocked;
     public bool exist;
 }

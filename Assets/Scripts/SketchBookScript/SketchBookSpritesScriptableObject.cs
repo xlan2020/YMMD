@@ -8,7 +8,10 @@ public class SketchBookSpritesScriptableObject : ScriptableObject
     public PageSprites[] pages;
 }
 
-[System.Serializable] public struct PageSprites{
+[System.Serializable]
+public struct PageSprites
+{
     public Sprite[] notes;
+    public Sprite[] notes_EN;
 }
 

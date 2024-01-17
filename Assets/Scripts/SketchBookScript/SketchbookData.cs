@@ -25,6 +25,7 @@ public static class SketchbookData
             {
 
                 Sprite s = null;
+                Sprite s_EN = null;
                 bool exist = false;
                 bool unlocked = false;
                 if (i == 0 || i == 1)
@@ -36,12 +37,14 @@ public static class SketchbookData
                 if (sketchBookSprites.pages.Length > i && sketchBookSprites.pages[i].notes.Length > j)
                 {
                     s = sketchBookSprites.pages[i].notes[j];
+                    s_EN = sketchBookSprites.pages[i].notes_EN[j];
                     exist = true;
                 }
 
                 bookNotes2DArray[i, j] = new BookNote
                 {
                     sprite = s,
+                    sprite_EN = s_EN,
                     unlocked = unlocked,
                     exist = exist
                 };
