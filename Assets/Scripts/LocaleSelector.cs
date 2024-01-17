@@ -27,7 +27,7 @@ public class LocaleSelector : MonoBehaviour
     {
         active = true;
         GameEssential.localeId = _localeID;
-        UnityEngine.Debug.Log("chaning locale to id: " + _localeID);
+        UnityEngine.Debug.Log("changing locale to id: " + _localeID);
         yield return LocalizationSettings.InitializationOperation;
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[_localeID];
         active = false;

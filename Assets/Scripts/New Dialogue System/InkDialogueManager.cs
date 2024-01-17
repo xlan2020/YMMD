@@ -91,7 +91,6 @@ public class InkDialogueManager : MonoBehaviour
 
 
     private static InkDialogueManager instance;
-
     private AudioSource audioSource;
 
     private Coroutine typingLinesCoroutine;
@@ -267,7 +266,7 @@ public class InkDialogueManager : MonoBehaviour
             randomSpeak.Speak();
         }
 
-        string[] splitLines = line.Split(new char[] { ':', '：' }, 2);
+        string[] splitLines = line.Split(new char[] { ':', '：', '?' }, 2);
         speakerName.text = splitLines[0];
         if (nameColorDict.ContainsKey(splitLines[0]))
         {

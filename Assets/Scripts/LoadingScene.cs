@@ -14,7 +14,7 @@ public class LoadingScene : MonoBehaviour
     public GameManager gameManager;
     public bool beginWithoutLoadingScreen = false;
     private bool isLoading = false;
-
+    private static LoadingScene instance;
 
     void Awake()
     {
@@ -23,6 +23,17 @@ public class LoadingScene : MonoBehaviour
         {
             animator.SetBool("Loading", false);
         }
+
+        if (instance != null)
+        {
+            Debug.LogWarning("WARNING: keep only one loading scene per scene!");
+        }
+        instance = this;
+    }
+
+    public static LoadingScene GetInstance()
+    {
+        return instance;
     }
     public string GetActiveSceneId()
     {

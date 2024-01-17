@@ -26,6 +26,7 @@ public class SettingsMenu : MonoBehaviour
     public GameObject SettingMenuObject;
     public GameObject ControlPanel;
     public GameObject SettingPanel;
+    public GameObject SaveLoadScreen;
     public GameObject FirstSelectedButton;
 
     [Header("Setting Button and Controls")]
@@ -62,6 +63,7 @@ public class SettingsMenu : MonoBehaviour
 
         BackToGame();
 
+        SaveLoadScreen.SetActive(false);
     }
 
     private void initializeAudio()
@@ -128,11 +130,6 @@ public void SetVolume(float volume)
         {
             Screen.fullScreen = true;
         }
-    }
-
-    public void QuickSave()
-    {
-        gameManager.Save();
     }
 
     public void QuitGame()
@@ -229,7 +226,7 @@ public void SetVolume(float volume)
 
     public void OpenSaveLoadScreen()
     {
-
+        SaveLoadScreen.SetActive(true);
     }
 
     public void OpenAdvancedSettings()

@@ -36,9 +36,17 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler onItemDisplaced;
 
+    private static GameManager instance;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
+
+        if (instance != null)
+        {
+            Debug.LogWarning("WARNING: keep only one game manager per scene!");
+        }
+        instance = this;
 
         inventory = new Inventory()
         {
@@ -82,8 +90,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public static GameManager GetInstance()
+    {
+        return instance;
+    }
     void Start()
     {
+        UnityEngine.Debug.Log("About to load current save: " + GameEssential.currentSave);
         Load(GameEssential.currentSave);
         if (loadInventory != null)
         {
@@ -103,21 +116,27 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
     }
 
-    public void Save()
+    public SaveObject Save(int saveFileId)
     {
+        if (saveFileId == 0)
+        {
+            UnityEngine.Debug.LogWarning("Can't save as autosave! The autosave only happen during scene transition. ");
+            return null;
+        }
 
         // clean up data to be saved
+        string saveRealTime = GetCurrentTimeString();
         float currMoney = money.GetMoney();
         int[] itemIdArray = inventory.GetItemIdSaveArray();
         bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
         int currPage = SketchbookData.currPage;
         string sceneId = sceneLoader.GetActiveSceneId();
-        int localeId = GameEssential.localeId;
-        bool loadSceneFromStart = true;
+        bool loadSceneFromStart = false;
         string dialogueVariablesState = "";
         string currentDialogueJson = "";
         string currentDialogueState = "";
         string chatHistory = "";
+        // remaining question: if there isn't a dialogue manager, you will loose all your chat history
         if (InkDialogueManager.GetInstance() != null)
         {
             dialogueManager = InkDialogueManager.GetInstance();
@@ -130,12 +149,12 @@ public class GameManager : MonoBehaviour
         // serialize to SaveObject json string
         SaveObject saveObject = new SaveObject
         {
+            saveRealTime = saveRealTime,
             moneyAmount = currMoney,
             itemIdArray = itemIdArray,
             noteUnlockedState = noteUnlockedState,
             currPage = currPage,
             sceneId = sceneId,
-            localeId = localeId,
             loadSceneFromStart = loadSceneFromStart,
             dialogueVariablesState = dialogueVariablesState,
             currentDialogueJson = currentDialogueJson,
@@ -145,17 +164,19 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(saveObject);
 
         // write the save file
-        SaveSystem.SaveAtSlot(json, 1);
+        SaveSystem.SaveAtSlot(json, saveFileId);
+
+        return saveObject;
     }
 
     public void AutoSave(string nextSceneId)
     {
+        string saveRealTime = GetCurrentTimeString();
         float currMoney = money.GetMoney();
         int[] itemIdArray = inventory.GetItemIdSaveArray();
         bool[] noteUnlockedState = SketchbookData.GetNoteUnlockedSaveArray();
         int currPage = SketchbookData.currPage;
         string sceneId = nextSceneId; // this is different!
-        int localeId = GameEssential.localeId;
         string dialogueVariablesState = "";
         string chatHistory = "";
         if (InkDialogueManager.GetInstance() != null)
@@ -169,12 +190,12 @@ public class GameManager : MonoBehaviour
         // serialize to SaveObject json string
         SaveObject saveObject = new SaveObject
         {
+            saveRealTime = saveRealTime,
             moneyAmount = currMoney,
             itemIdArray = itemIdArray,
             noteUnlockedState = noteUnlockedState,
             currPage = currPage,
             sceneId = sceneId,
-            localeId = localeId,
             loadSceneFromStart = true, // for auto save, load from scene start has to be true
             dialogueVariablesState = dialogueVariablesState,
             chatHistory = chatHistory
@@ -254,15 +275,16 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
+        // //infoBar.SetInfoText(sceneInfoText);
+
         // now use localized string instead, which also works as font resetter activator
         // only need to resolve how the game manager can access the scene info table
         // or maybe we just write it twice
 
-        //infoBar.SetInfoText(sceneInfoText);
 
         // locale id
-        GameEssential.localeId = saveObject.localeId;
-        localeSelector.UpdateLocaleToGame();
+        // Now using the global save for locale
+        // localeSelector.UpdateLocaleToGame();
 
         // money
         this.SetMoney(saveObject.moneyAmount);
@@ -435,42 +457,16 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private class SaveObject
+    private string GetCurrentTimeString()
     {
-        // UNIVERSAL
-        public float moneyAmount;   // money
-        public int[] itemIdArray;   // owned item list, no changed states
-                                    // item durability; (subjective) value; isNew?
-        public bool[] noteUnlockedState; // notebook unlock state
-        public int currPage;
-        public string sceneId;  // current scene
-        public bool loadSceneFromStart;
+        DateTime now = DateTime.Now;
+        string s = now.ToString("yyyy-MM-dd HH:mm:ss K");
 
-        // USER PREF
-        public int localeId;
-        // DIALOGUE
-        public string dialogueVariablesState;    // ink dialogue variables
-                                                 // ink dialogue story progress if any
-        public string currentDialogueJson;
-        public string currentDialogueState;
-        public string chatHistory;
+        UnityEngine.Debug.Log("Current Time: " + s);
 
-        // SCENE SPECIFIC
-        public int drawBinaryVal;
-        // collected observee choices
-        public Vector3 mapPlayerPos;
-        public bool[] mapItemCollectedState;
-
-        // 3screen: no save
-        // waking: dialogue
-        // map: player position + map object collected state + ink global var
-        // draw: dialogue + binary val
-        // fluid brain: no save
-        // dfd: dialogue
-
-        // save real life time
-
+        return s;
     }
+
 
     /**
 private void dialogueIntegrationTest()
@@ -489,4 +485,40 @@ private void dialogueIntegrationTest()
         StaticInventory.ItemArry = inventory.GetItemList();
     }
     */
+}
+public class SaveObject
+{
+    // UNIVERSAL
+    public string saveRealTime;
+    public float moneyAmount;   // money
+    public int[] itemIdArray;   // owned item list, no changed states
+                                // item durability; (subjective) value; isNew?
+    public bool[] noteUnlockedState; // notebook unlock state
+    public int currPage;
+    public string sceneId;  // current scene
+    public bool loadSceneFromStart;
+
+    // USER PREF
+    // DIALOGUE
+    public string dialogueVariablesState;    // ink dialogue variables
+                                             // ink dialogue story progress if any
+    public string currentDialogueJson;
+    public string currentDialogueState;
+    public string chatHistory;
+
+    // SCENE SPECIFIC
+    public int drawBinaryVal;
+    // collected observee choices
+    public Vector3 mapPlayerPos;
+    public bool[] mapItemCollectedState;
+
+    // 3screen: no save
+    // waking: dialogue
+    // map: player position + map object collected state + ink global var
+    // draw: dialogue + binary val
+    // fluid brain: no save
+    // dfd: dialogue
+
+    // save real life time
+
 }

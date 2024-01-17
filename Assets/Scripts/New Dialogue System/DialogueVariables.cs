@@ -21,7 +21,7 @@ public class DialogueVariables
         {
             Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
             variables.Add(name, value);
-            Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
+            // Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
         }
     }
 
@@ -86,20 +86,28 @@ public class DialogueVariables
         StopListening(globalVariablesStory);
     }
 
-    public string GetGlobalVariablesJsonState(){
-        if (globalVariablesStory != null){
+    public string GetGlobalVariablesJsonState()
+    {
+        if (globalVariablesStory != null)
+        {
             variablesToStory(globalVariablesStory);
             string saveString = globalVariablesStory.state.ToJson();
             return saveString;
-        } else {
+        }
+        else
+        {
             return null;
         }
     }
-    public void LoadGlobalVariablesSave(string jsonState){
+    public void LoadGlobalVariablesSave(string jsonState)
+    {
 
-        if (jsonState == null){
+        if (jsonState == null)
+        {
             UnityEngine.Debug.LogWarning("global variable save string is null");
-        } else {
+        }
+        else
+        {
             globalVariablesStory.state.LoadJson(jsonState);
         }
 
@@ -109,7 +117,7 @@ public class DialogueVariables
         {
             Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
             variables.Add(name, value);
-            Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
+            //Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
         }
     }
 }

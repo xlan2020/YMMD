@@ -9,7 +9,6 @@ public static class SaveSystem
 {
     private static readonly string SAVE_FOLDER = Application.dataPath + "/SavesData/";
 
-
     public static void Init()
     {
         string savesFolderPath = GetFilePath("");
@@ -43,6 +42,17 @@ public static class SaveSystem
         if (File.Exists(dataPath))
         {
             UnityEngine.Debug.Log("deleting auto save!");
+            File.Delete(dataPath);
+        }
+    }
+
+    public static void DeleteSave(int fileId)
+    {
+        string dataPath = GetFilePath("save_" + fileId);
+
+        if (File.Exists(dataPath))
+        {
+            UnityEngine.Debug.Log("deleting save: " + fileId);
             File.Delete(dataPath);
         }
     }
