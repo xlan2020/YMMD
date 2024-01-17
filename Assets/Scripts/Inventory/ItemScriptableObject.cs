@@ -41,6 +41,7 @@ public class ItemScriptableObject : ScriptableObject
     {
         return isNew;
     }
+
 }
 public enum DrawType
 {

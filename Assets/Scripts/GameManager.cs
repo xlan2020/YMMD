@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     [Header("Scene Start Setup")]
     public bool HasBeginningDialogue = true;
     [SerializeField] TextAsset BeginningInkJSON;
