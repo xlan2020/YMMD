@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Scene Start Setup")]
+    private bool loadCurrentSave = true;
     public bool HasBeginningDialogue = true;
     [SerializeField] TextAsset BeginningInkJSON;
     public LoadInventory loadInventory;
@@ -96,8 +97,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        UnityEngine.Debug.Log("About to load current save: " + GameEssential.currentSave);
-        Load(GameEssential.currentSave);
+        if (loadCurrentSave)
+        {
+            UnityEngine.Debug.Log("About to load current save: " + GameEssential.currentSave);
+            Load(GameEssential.currentSave);
+        }
         if (loadInventory != null)
         {
             loadInventory.AppendListToInventory(inventory);
@@ -110,7 +114,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    public void SetLoadCurrentSave(bool b)
+    {
+        loadCurrentSave = b;
+    }
     IEnumerator LateStart(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
@@ -390,6 +397,9 @@ public class GameManager : MonoBehaviour
     {
         inventory.AddItemFromScriptableObject(item);
 
+        displaceSFX.PlayItemToInventorySound();
+
+
     }
 
     public void AddMoney(float amount)
@@ -460,7 +470,7 @@ public class GameManager : MonoBehaviour
     private string GetCurrentTimeString()
     {
         DateTime now = DateTime.Now;
-        string s = now.ToString("yyyy-MM-dd HH:mm:ss K");
+        string s = now.ToString("yyyy-MM-dd HH:mm:ss");
 
         UnityEngine.Debug.Log("Current Time: " + s);
 

@@ -47,7 +47,7 @@ Mama：Ha, I understand.
 ===talk_again===
 Mama：What would you like to have?#profile: mama_norm
 + {money > 12} [Spare Ribs Casserole(￥12)]
-Me：I'll have the Spare Ribs Casserole with rice!#addMoney: -12 #profile：painter_高兴
+Me：I'll have the Spare Ribs Casserole with rice!#addMoney: -12 #profile：painter_happy
 ->buy_food
 + {money > 16} [BBQ Set(￥16)]
 Me：I'll have the BBQ set! Lamb kebabs and grilled eggplant, please.#addMoney: -16 #profile：painter_happy

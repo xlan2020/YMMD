@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TitleScreenUI : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject startButtonObj;
     public GameObject restartButtonObj;
     public Button continueButton;
@@ -12,6 +13,11 @@ public class TitleScreenUI : MonoBehaviour
     public Text continueButtonText;
     public Text quitButtonText;
 
+    void Awake()
+    {
+        // don't let the game manager automatically load things
+        gameManager.SetLoadCurrentSave(false);
+    }
     void Start()
     {
         if (SaveSystem.HasAutoSave())
@@ -34,8 +40,4 @@ public class TitleScreenUI : MonoBehaviour
         GameEssential.currentSave = -1;
     }
 
-    public void SetResumeGameSave()
-    {
-        GameEssential.currentSave = 0;
-    }
 }

@@ -12,6 +12,7 @@ public class SaveLoad : MonoBehaviour
     public Scrollbar scrollBar;
     public GameObject saveSlotPrefab;
     public Transform saveSlotsParent;
+    public SaveSlot autoSaveSlot;
 
     private SaveSlot[] saveSlots;
     public SceneInfoScriptableObject allSceneInfo;
@@ -29,6 +30,7 @@ public class SaveLoad : MonoBehaviour
     {
         InitializeSaves();
     }
+
 
     private void InitializeSaves()
     {
@@ -52,6 +54,17 @@ public class SaveLoad : MonoBehaviour
                 UpdateSlotUI(slot, saveObject);
             }
             saveSlots[i] = slot;
+        }
+
+        if (!SaveSystem.HasAutoSave())
+        {
+            autoSaveSlot.ShowNoContentUI();
+        }
+        else
+        {
+            string autoSaveString = SaveSystem.Load(0);
+            SaveObject autoSaveObject = JsonUtility.FromJson<SaveObject>(autoSaveString);
+            UpdateSlotUI(autoSaveSlot, autoSaveObject);
         }
         // scrollBar.value = 1f;
     }

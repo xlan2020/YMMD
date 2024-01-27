@@ -224,9 +224,29 @@ public void SetVolume(float volume)
         gameManager.sceneLoader.LoadScene("0_TitleScreen", autoSave: false);
     }
 
-    public void OpenSaveLoadScreen()
+    public void EnterSaveLoadScreen()
     {
         SaveLoadScreen.SetActive(true);
+        MenuBackButton.enabled = false;
+        MenuBackButton.gameObject.GetComponent<Image>().enabled = false;
+    }
+
+    public void CloseSaveLoadScreen()
+    {
+        // this could also work with the title screen
+        // because in the title screen, the menu button are not active game object
+        // setting the images state enabled doesn't change their invisible statess
+        // forget that
+        // in that case we use BackToGame()
+        SaveLoadScreen.SetActive(false);
+        MenuBackButton.enabled = true;
+        MenuBackButton.gameObject.GetComponent<Image>().enabled = true;
+    }
+
+    public void DirectlyEnterSaveLoad()
+    {
+        OpenSettingMenu();
+        EnterSaveLoadScreen();
     }
 
     public void OpenAdvancedSettings()

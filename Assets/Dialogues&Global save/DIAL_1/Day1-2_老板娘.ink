@@ -47,7 +47,7 @@ INCLUDE ../global.ink
 ===talk_again===
 老板娘：想好吃什么了吗？#profile: mama_norm
 + {money > 12} [排骨砂锅(￥12)]
-我：来一份排骨砂锅饭！#addMoney: -12 #profile：painter_高兴
+我：来一份排骨砂锅饭！#addMoney: -12 #profile：painter_happy
 ->buy_food
 + {money > 16} [烧烤套餐(￥16)]
 我：来个烧烤套餐吧！我要羊肉串和茄子。#addMoney: -16 #profile：painter_happy
