@@ -9,19 +9,12 @@ public class LocaleSelector : MonoBehaviour
 
     private void Start()
     {
-        UpdateLocaleToGame();
-    }
-
-    public void UpdateLocaleToGame()
-    {
-
-        if (active == true)
+        if (active == false)
         {
-            return;
+            StartCoroutine(SetLocale(GameEssential.localeId));
         }
-        StartCoroutine(SetLocale(GameEssential.localeId));
-
     }
+
 
     private IEnumerator SetLocale(int _localeID)
     {
@@ -46,7 +39,7 @@ public class LocaleSelector : MonoBehaviour
             GameEssential.localeId = 0;
         }
 
-        UpdateLocaleToGame();
+        StartCoroutine(SetLocale(GameEssential.localeId));
     }
 
     public void SelectLocale(int i)
@@ -58,7 +51,7 @@ public class LocaleSelector : MonoBehaviour
 
         GameEssential.localeId = i;
 
-        UpdateLocaleToGame();
+        StartCoroutine(SetLocale(GameEssential.localeId));
 
     }
 }

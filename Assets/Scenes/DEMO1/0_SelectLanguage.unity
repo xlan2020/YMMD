@@ -868,9 +868,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.65130436
-    width: 0.48801956
-    height: 0.48815218
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 55
@@ -1099,9 +1099,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.65130436
-    width: 0.48801956
-    height: 0.48815218
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -2037,8 +2037,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
-    m_HighlightedColor: {r: 0.9686275, g: 0.7725491, b: 1, a: 1}
-    m_PressedColor: {r: 0.96862745, g: 0.77254903, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.21568629, g: 0.6862745, b: 0.42352945, a: 1}
+    m_PressedColor: {r: 0.21568629, g: 0.6862745, b: 0.42352945, a: 1}
     m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0, g: 0, b: 0, a: 1}
     m_ColorMultiplier: 1
@@ -2381,17 +2381,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1937816804060605685 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6522120123182958759, guid: 8d9e8072f2584406786520378c8afd14, type: 3}
-  m_PrefabInstance: {fileID: 3943699998533058534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &2177641731912651497
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2606,7 +2595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebaba6ec3a184f9ca641ccd68b6dcef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultButton: {fileID: 1937816804060605685}
+  localeSelector: {fileID: 5132784054762489697}
 --- !u!224 &6530813101816028862 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7479291140300291834, guid: 8d9e8072f2584406786520378c8afd14, type: 3}
