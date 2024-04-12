@@ -63,7 +63,7 @@ INCLUDE ../global.ink
 老板娘：哎呦，大师可真爱开玩笑！呵呵，八减七不成了一折了……
 老板娘：您先看着菜单，有需要再叫我啊！
 8-2：没办法，粉丝就是这么多，看来以后得低调点了。#bgm:日常_5 #profile: painter_side #portrait: 8-2_laugh
-8-2：……我去！一没留神，你怎么都给炫完了？#portrait: 8-2_surprised
+8-2：……啊？一没留神，你怎么都给炫完了？#portrait: 8-2_surprised
 我：我很饿……嗝。嗯，现在饱了。#profile: painter_sideSweat
 我：（在接单的时候吃饭，可真是不专业的表现。现在开始专注在对象上吧，应该从哪开始呢？）#choiceType: OBSERVEE
 +[提交：大师]->profession_mathematician
