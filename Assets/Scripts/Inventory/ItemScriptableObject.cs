@@ -17,6 +17,7 @@ public class ItemScriptableObject : ScriptableObject
     public float storePrice;
     public bool displaceable = true;
     public bool isNew = true;
+    public bool is_Chai = false;
     private bool isCash = false;
 
     [Space(10)]

@@ -31,5 +31,6 @@ public class Item
     public int draw_experimental;
     public int draw_organic;
     public int draw_premium;
+    public bool is_Chai;
 
 }
