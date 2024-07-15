@@ -1,4 +1,5 @@
 INCLUDE ../global.ink
+
 //seanamae：But, unlike for other mysterious animals...if mermaids really exist, I hope that humans will never find them. #portrait: haiming_3_smile
 我：（海名的工作室看起来可真棒，能在这里画画倒是一件美事。）#profile: painter_side #portrait: haiming_3_idle #bgm: 日常_0.2 
 我：（说来惭愧，我自封为画家，却连自己的工作室也没有。“流浪”这个浪漫的名号，也有些迫不得已的成分。）#profile: painter_sideSweat
