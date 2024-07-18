@@ -626,6 +626,32 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &7279812875272277533
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: haiming_2_seeYouDoubt
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 54842c1d84fd64305936a6f60e1f458f, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &7322138282698611365
 AnimatorState:
   serializedVersion: 6
@@ -761,7 +787,7 @@ AnimatorStateMachine:
     m_Position: {x: 650, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1301915724171630616}
-    m_Position: {x: 860, y: 430, z: 0}
+    m_Position: {x: 860, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2311256115714595100}
     m_Position: {x: 840, y: 370, z: 0}
@@ -807,12 +833,15 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -2461518227945695668}
     m_Position: {x: 380, y: 310, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7279812875272277533}
+    m_Position: {x: 900, y: 570, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: 950, y: 590, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
