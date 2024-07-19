@@ -165,17 +165,18 @@ INCLUDE ../global.ink
 我：哎？#profile: painter_side
 我：不是，什么啊…… #bgm: 日常_3 #profile: painter_sideSweat #portrait: haiming_1_squint
 海名：放松。我可没有在取笑你，这是线索，也是痕迹。#portrait: haiming_1_smile #profile: hide
-海名：消失的影响本来就是两方面的，一面是本体物理上的不存在，另一面是人的遗忘。#portrait: haiming_3_pushGlass #portrait: haiming_3_norm
-海名：遗忘远没有物理的消失那么干净。它既是群体性的，意味着所有人会在同时间失去对这样物体的记忆，但同时，人失去的记忆却是非常个人的。#portrait: haiming_3_cold
-海名：由于消失的只能是可见的事物，失去一条鱼，并不会让人忘记鱼的概念，而只会忘记你和那条鱼之间发生的所有故事。#portrait: haiming_3_norm
+海名：消失的影响本来就是两方面的，一面是本体在物理意义上不复存在，另一面是人的遗忘。#portrait: haiming_3_pushGlass #portrait: haiming_3_norm
+海名：遗忘远没有物理上的消失那么干净。它既有群体性，意味着所有人会在同时间失去对某样物体的记忆，但同时，人失去的记忆却是非常个人的。#portrait: haiming_3_cold
+海名：消失的只能是可见的事物，失去一条鱼，并不会让人忘记鱼的概念，而只会忘记你和具体那条鱼之间发生的所有故事。#portrait: haiming_3_norm
 我：如果全世界的鱼都消失呢？#profile: painter_side 
 海名：你问住我了。我也在想，这样的灭绝，是不是已经在世界上发生了呢？#profile: hide #portrait: haiming_2_idle #portrait: haiming_2_frown
 海名：也许，过去的世界远比你看到的一切更加丰富立体。#portrait: haiming_2_know
 海名：说不定人鱼一直存在，只是某一天就灭绝了，于是画家背负了找回“最后一条人鱼”的使命？#portrait: haiming_2_seeYouSquint
 我：……总觉得无论真相是什么，都不应该是这个。#profile: painter_noComment
 海名：不逗你了。回到“那条鱼”的事情，就说你从鱼贩手里买了这条鱼，你所遗忘的故事，和鱼贩遗忘的是不同的。#portrait: haiming_3_idle #portrait: haiming_3_norm #profile: hide 
-海名：为了自圆其说，你们会对各种各样的痕迹做出解释。也许你和鱼贩首先会不约而同地忘记彼此，然后你会认为自己砍价失败所以没有买鱼，但鱼贩却留意到进账的记录，所以认为你买了别的鱼。#portrait: haiming_3_pushGlass
-海名：如果买了另一条鱼的顾客此时恰巧消失了，也许这个解释会更加完美？#portrait: haiming_3_squint 
+海名：为了继续生活，人们会自圆其说。#portrait: haiming_3_pushGlass
+海名：你们会对各种各样的痕迹做出解释——也许你和鱼贩首先会不约而同地忘记彼此，然后你会认为自己砍价失败所以没有买鱼，但鱼贩留意到进账的记录，认为你买了别的鱼。
+海名：如果买了另一条鱼的顾客在此时恰巧消失了，也许这个解释会更加完美？#portrait: haiming_3_squint 
 我：不要一脸笑容地讲这么地狱的事情啊！#profile: painter_eyeClosed
 海名：其实，每个人自圆其说的程度也有不同。画家如此受消失困扰，也许是因为，你就是那种下意识抗拒自圆其说的类型。#profile: hide #portrait: haiming_3_norm
 海名：我尊敬你们。#portrait: haiming_3_norm #bgm: fade_0.1_0.1 
