@@ -10,7 +10,7 @@ INCLUDE ../global.ink
 ->clothing
 
 ==clothing==
-灵感：（这家伙的衣着很夸张啊。好吧，虽然在我认识的人里，他并不是最夸张的。）
+->camera
 
 ==camera==
 我：……你能先把相机放下吗？ #profile: painter_noComment

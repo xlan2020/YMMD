@@ -1,5 +1,4 @@
 INCLUDE ../global.ink
-->pink
 boro酱：喏，碗底就是刨冰，小料就是这些了，怎么用也帮你标好了，你看着办吧。 #profile: hide #portrait: boro_2_idle #portrait: boro_welcome #bgm: 日常_0.1
 系统：看来，画家有一些不同寻常的新活了。
 系统：有些顾客会提供用在画作里的<color=green>指定材料</color>，比如boro酱的刨冰创作，就一定要用刨冰、酱汁和小料完成。
@@ -168,7 +167,7 @@ boro酱：噗，卡哇伊是个什么词呀！#profile: hide
 +[温暖？]
 我：粉红色是很温暖的颜色，让人感到很舒适、很快乐。#profile: painter_side 
 boro酱：嘿嘿。#portrait: boro_1_idle #portrait: boro_1_shy
-boro酱：不过如果温暖过头了可怎么办？啊啊，现在是夏天，会不会显得不够清凉，我不会因为这个而流失不少客人吧……#portrait: boro_1_panic #portrait: boro_1_keepScratch
+boro酱：不过如果温暖过头了可怎么办？啊啊，现在是夏天，会不会显得不够清凉，我不会因为这个而流失不少客人吧……#portrait: boro_1_awkward #portrait: boro_1_keepScratch
 我：不至于！#profile: painter_side 
 boro酱：啊啊，不至于、不至于就好…… #portrait: boro_1_idle #portrait: boro_1_thinking #profile: hide 
 ->pink
@@ -293,7 +292,6 @@ boro酱：
 #鲍罗：你是说闻起来臭臭吃起来香香的boro酱吗？
 #+[收集：boro酱]
 #我：……是的，就是你大锅里现熬的酱汁……而且这个名字叫boro酱这一点也很令人困惑。
-
 
 
 boro酱：可是，什么是潮流的什么是土气的，根本就毫无规律，完全是随机的呀！
