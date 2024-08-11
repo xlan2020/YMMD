@@ -1,15 +1,28 @@
 INCLUDE ../global.ink
-我：（……………………）
-我：（现场好乱，人都快跑光了。真没想到，COSPLAY大赛会以这种方式收场。）
+我：（现场好乱，人都快跑光了。）
+我：（真没想到，COSPLAY大赛会以这种方式收场。）
 藏羚羊：画家！
 藏羚羊：真是疯了。那个鱼头人是什么情况？是魔术？还是说，置换还有这种用途？
 藏羚羊：你是不是认识它？
 我：算是吧，但我也没想到她还有这一面。
 藏羚羊：现在怎么办？
 我：（眼看这场比赛是不可能继续了，我应该……）
-+[去追“boro酱”]
-+[去追<color=purple>参赛者29号</color>]
-+[去找8-2和海名]
++[去追<color=purple>参赛者29号</color>]->find_chai
++[去追“boro酱”]->find_boro
++[去找8-2和海名]->find_friends
+
+==find_chai==
+【追忆增加】
+我：你看到29号了吗？
+藏羚羊：不是吧？都现在这样了，你还在找她？
+藏羚羊：那美女到底有什么魔力？所有人见到她都跟疯了一样，你也觉得她就是美人鱼。
+藏羚羊：等等！所谓美人鱼，不会其实不是你消失的爱人，只是你仰慕的什么“女神”吧？
+我：我现在没法回答你。抱歉，藏羚羊，我改天再跟你仔细说。
+我：我得去找她了。
+藏羚羊：可以。那我们之后见。
+~findPerson_CH = "29号……美人鱼……"
+// NOTE FOR SHERRY: This variable also needs translation
+->start_finding
 
 ==find_boro==
 【追忆不变】
@@ -29,18 +42,6 @@ INCLUDE ../global.ink
 // NOTE FOR SHERRY: This variable also needs translation
 ->start_finding
 
-==find_chai==
-【追忆增加】
-我：你看到29号了吗？
-藏羚羊：不是吧？都现在这样了，你还在找她？
-藏羚羊：那美女到底有什么魔力？所有人见到她都跟疯了一样，你也觉得她就是美人鱼。
-藏羚羊：等等！所谓美人鱼，不会其实不是你消失的爱人，只是你仰慕的什么“女神”吧？
-我：我现在没法回答你。抱歉，藏羚羊，我改天再跟你仔细说。
-我：我得去找她了。
-藏羚羊：可以。那我们之后见。
-~findPerson_CH = "29号……美人鱼……"
-// NOTE FOR SHERRY: This variable also needs translation
-->start_finding
 
 ==find_friends==
 【追忆不变】
