@@ -17,7 +17,7 @@ INCLUDE ../global.ink
 路人甲：居然味道不错！#profile: mobA_norm
 路人乙：就像臭豆腐一样，闻着恶心但吃起来……咔嚓……吸溜吸溜……吧吱吧吱……哈……#profile:mobB_norm
 我：（天，他吃得好香！！）#profile: painter_surprised
-我：（显然酒吧并没有开门，他们吃的东西来自别的地方。这是……呃，海鲜？）#profile: painter_norm
+我：（酒吧还没有开门，他们吃的东西来自别的地方。这是……呃，海鲜？）#profile: painter_norm
 我：（也许他们会知道那股鱼腥味的来源。我应该……）#profile: painter_norm
 +[上前问问]->ask
 +[社恐，走吧]->leave
@@ -31,7 +31,7 @@ INCLUDE ../global.ink
 路人乙：味道不错呢！啊哈，我已经是boro酱的粉丝了！#profile: mobB_norm
 我：boro酱？#profile: painter_side
 路人乙：就是这种闻起来臭臭吃起来香香的boro酱~#profile: mobB_norm
-路人甲：是他们家的秘制酱料啦！不过，那个头套人摊主也让人叫他boro酱，这一点也挺迷惑的……#profile: mobA_norm
+路人甲：是他们家的秘制酱料啦！不过，那个头套人摊主也叫boro酱，这一点也挺迷惑的……#profile: mobA_norm
 我：好的，谢谢你们。#profile: painter_side
 我：（头套人开的刨冰摊？似乎就在前面，过去看看吧。）
 ->DONE

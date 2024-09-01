@@ -18,7 +18,7 @@ INCLUDE ../global.ink
 *[硬的卡片]->haiming_letter
 *[软的纸片]->scale_flyer
 * ->empty_box
-
+//Sherry Note: 这里就是这样的吗？和第一天没区别？还是还没写呀？
 ==haiming_letter==
 
 ->letter_box

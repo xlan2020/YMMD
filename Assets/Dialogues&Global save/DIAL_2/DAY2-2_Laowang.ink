@@ -17,8 +17,8 @@ INCLUDE ../global.ink
 
 ==displace_renew==
 我：哎，王大爷，这个置换上新是什么意思？#profile:painter_side
-老王：哈，这就问对了！店里上货不用跟厂家联系，都是走置换！把钱换成东西，这商品直接在店里出现，肯定是没有运输时磕磕碰碰的，我给挑的款也都是最好的。#profile: laowang_pleased
-我：靠置换进货……这不成了二手货了吗？#profile: painter_side
+老王：哈，这就问对了！咱店里上货不用跟厂家联系，都是走置换！把钱换成东西，商品直接在店里出现，百分百避免运输时磕碰坏，我给挑的款也都是最好的。#profile: laowang_pleased
+我：置换进货……这不成了二手货了吗？#profile: painter_side
 老王：什么二手货！厂家也都是这么办的，做好的商品直接置换到虚空里面，我再给换出来，瞧，崭新的！#profile: laowang_mad
 我：大爷，您误会了，我没说旧货不好，我其实很喜欢…… #profile: painter_side
 老王：店里可没有二手货！你瞅瞅，这标上的墨水都泛着油光呢！#profile: laowang_mad
@@ -33,12 +33,12 @@ INCLUDE ../global.ink
 我：呃、大爷，有没有人跟你说过，这广告牌上写的永不售空听起来有点像……滞销。#profile: painter_side
 老王：……………… #profile: laowang_think
 我：（完了，他不会生气了吧？我还真敢说啊。）#profile: painter_sideSweat
-老王：真是没辙了，这店名叫“隔壁老王”也有人说，改成“老王∞”也有人说，现在这“永不售空”也能被挑出刺来。 #profile: laowang_mad
+老王：真是没辙了，这店名叫“隔壁老王”也有人说，改成“老王∞”也有人说，现在这“永不售空”也能被挑出刺儿来。 #profile: laowang_mad
 我：对不起！……………………对不起！#profile: painter_sideSweat
 我：不过，改成“常买常新”怎么样？#profile: painter_norm
 ~lwText_CH = "常买常新"
 ~lwText_EN = "always buy, always new"
-老王：哎，听着不错！就这么办了！
+老王：诶，听着不错！就这么办了！
 ->DONE
 
 ==first_talk==
@@ -64,13 +64,13 @@ INCLUDE ../global.ink
 ==whom==
 我：（不知为何，我很在意这件事。）大爷，您刚才想的那个人是谁？#profile: painter_side
 老王：说了，记错人了！#profile: laowang_mad
-我：（再追问一次就是我的极限了……）哎，我就是好奇，甭管是我还是哪个跟我挺像的，就说您刚才觉得我应该和谁一起出现，这个设想能再给说说吗？#profile: painter_side
-老王：你这，还设想！也不知道听了要干什么。行，我想想啊。#profile: laowang_think
+我：（再追问一次就是我的极限了……）哎，我就是好奇，您刚才觉得我应该和谁一起出现，这个设想能再给我讲讲吗？#profile: painter_side
+老王：还设想！也不知道听了要干什么。行，我想想啊。#profile: laowang_think
 老王：我想想…… 
 老王：想想……………… #profile: laowang_mad
 老王：………………总爱来买东西的……好姑娘…… #profile: laowang_think
 老王：一对儿常客。#profile: laowang_norm
-老王：行，满意了不？我就想起来了一对儿常客！一个只管挑一个只管买，画家，要不也上店里来看看？#profile: laowang_pleased
+老王：行，满意了不？我就想起来了一对儿常客！一个只管挑一个只管买。画家，要不也上店里来看看？#profile: laowang_pleased
 ->come_buy
 
 ==dont_ask==
