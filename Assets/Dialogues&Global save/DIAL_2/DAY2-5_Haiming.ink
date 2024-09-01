@@ -17,7 +17,7 @@
 海名：每次见到你的画，都能发现好多故事的痕迹。
 我：介意我现在在你这里动笔吗？
 海名：求之不得。
- ：海名露出了微笑。#loadScene: DAY2-6_Haiming
+// ：#loadScene: DAY2-6_Haiming
 
 ->END
 
