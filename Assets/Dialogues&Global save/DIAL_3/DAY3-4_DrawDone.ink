@@ -43,7 +43,7 @@ INCLUDE ../global.ink
 ->start_finding
 
 
-==find_friends==
+==find_friends===
 【追忆不变】
 我：我是和朋友一起过来的，现在变成这样了，我得去找他们汇合。
 我：（真奇怪，那两个人谁也不像是会怕事的，怎么现在不见人影。）
