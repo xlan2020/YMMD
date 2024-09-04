@@ -21,23 +21,17 @@ public class WineSelectManager : MonoBehaviour
         // Initialize wine data with attributes
         wines = new List<Wine>
         {
-            new Wine("Deep Sea Special", new List<string> { "Dry", "Light", "Fruit" }, new List<string> { "Modern", "Sea", "Cold", "Nature", "Reality", "Lost" },
-                "冰凉的、漆黑的、深不⻅底的。 *人⻥的眼泪、金酒、⻘柠皮、红茶、深海鱿⻥墨*"),
+            new Wine("Deep Sea Special", new List<string> { "Dry", "Light", "Fruit" }, new List<string> { "Modern", "Sea", "Cold", "Nature", "Reality", "Lost" }),
 
-            new Wine("Hot Mama", new List<string> { "Dry", "Rich", "Fruit" }, new List<string> { "Modern", "Land", "Hot", "Artificial", "Reality", "Return" },
-                "炽热而无法驯服，奂⻔人的精神客厅。 *波本威士忌、鲜姜利口酒、花椒、小米辣、热麻麻精品苹果醋*"),
+            new Wine("Hot Mama", new List<string> { "Dry", "Rich", "Fruit" }, new List<string> { "Modern", "Land", "Hot", "Artificial", "Reality", "Return" }),
 
-            new Wine("Witch's Brew", new List<string> { "Dry", "Rich", "Flower" }, new List<string> { "Mythology", "Land", "Hot", "Artificial", "Dream", "Lost" },
-                "一条腿的女巫住在⻓着⻦类脚爪的森林木屋里，引诱迷途的孩子。她的锅里煮着什么？ *女巫的宝石、⻰舌兰、接⻣木花利口酒、茴香、鸡蛋清*"),
+            new Wine("Witch's Brew", new List<string> { "Dry", "Rich", "Flower" }, new List<string> { "Mythology", "Land", "Hot", "Artificial", "Dream", "Lost" }),
 
-            new Wine("Siren's Whisper", new List<string> { "Sweet", "Light", "Flower" }, new List<string> { "Mythology", "Sea", "Cold", "Nature", "Dream", "Lost" },
-                "她的诡异旋律散在海⻛中。 *海妖之歌、朗姆、荔枝利口酒、木槿糖浆、海盐*"),
+            new Wine("Siren's Whisper", new List<string> { "Sweet", "Light", "Flower" }, new List<string> { "Mythology", "Sea", "Cold", "Nature", "Dream", "Lost" }),
 
-            new Wine("Sand Lady", new List<string> { "Sweet", "Rich", "Flower" }, new List<string> { "Mythology", "Land", "Hot", "Artificial", "Dream", "Lost" },
-                "她游荡于沙漠，使旅人沉入永恒的梦境。 *沙漠之⻛、藏红花白兰地、菠萝汁、椰奶、洋甘菊利口酒、金粉*"),
+            new Wine("Sand Lady", new List<string> { "Sweet", "Rich", "Flower" }, new List<string> { "Mythology", "Land", "Hot", "Artificial", "Dream", "Lost" }),
 
-            new Wine("Twinkling Stars", new List<string> { "Sweet", "Light", "Fruit" }, new List<string> { "Modern", "Sea", "Cold", "Nature", "Reality", "Return" },
-                "为炎热夏日带来神秘的清爽感，隐藏着秘密与魔法。 *蝴蝶闪粉、伏特加、气泡蓝莓汁、薄荷糖浆、薰衣草苦精。*")
+            new Wine("Twinkling Stars", new List<string> { "Sweet", "Light", "Fruit" }, new List<string> { "Modern", "Sea", "Cold", "Nature", "Reality", "Return" })
         };
 
         remainingWines = new List<Wine>(wines);
