@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NetCafeUIManager : MonoBehaviour
 {
     // 新闻面板
+    public GameObject netBar; 
     public GameObject newsHomePage;
     public GameObject[] newsDetailPages;
     public Button[] newsTitleButtons;
@@ -27,7 +28,6 @@ public class NetCafeUIManager : MonoBehaviour
     public Button shutdownCancelButton;
 
     // 前一场景名称
-    public string prevSceneName = "MapScene";
 
     void Start()
     {
@@ -89,7 +89,7 @@ public class NetCafeUIManager : MonoBehaviour
     // 确认关机
     public void ConfirmShutdown()
     {
-        SceneManager.LoadScene(prevSceneName);
+        netBar.SetActive(false);
     }
     
 
