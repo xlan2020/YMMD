@@ -12,3 +12,5 @@ VAR diyRead = false
 // DAY 3
 VAR findPerson_CH = ""
 VAR findPerson_EN = ""
+VAR herName_CH = "柴柴"
+VAR herName_EN = "Chai-chai"
