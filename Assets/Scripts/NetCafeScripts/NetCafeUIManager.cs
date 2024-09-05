@@ -3,7 +3,12 @@ using UnityEngine.UI;
 
 public class NetCafeUIManager : MonoBehaviour
 {
+    [Header("Content Loaded")]
+    [SerializeField] private NetCafeContentScriptableObject contentScriptableObject;
+    private NewsDetailScriptableObject[] newsArray;
+    private PostScriptableObject[] postArray;
 
+    [Header("UI Elements")]
     public GameObject netBar;
     public GameObject newsHomePage; // 同时作为新闻标题容器
     public GameObject forumHomePage; // 同时作为论坛标题容器
@@ -27,6 +32,43 @@ public class NetCafeUIManager : MonoBehaviour
     private GameObject[] forumDetailPages;
     private Button[] forumTitleButtons;
     private Button[] newsTitleButtons;
+
+    void Awake(){
+        newsArray = contentScriptableObject.newsArray;
+        postArray = contentScriptableObject.postArray;
+        
+
+        // 下面这一句，演示完就可以删掉：
+        PrintContentOnConsole();
+    }
+
+    /**
+    这个method的全部作用就是给sherry演示怎么用Scriptable Object
+    拿news举例子，基本上就当一个newsDetailScriptableObject是一个class object，直接access它的attribute就行了。
+    */
+    private void PrintContentOnConsole(){
+        // 可以这样loop through：
+        foreach(NewsDetailScriptableObject n in newsArray){
+            UnityEngine.Debug.Log("标题：" + n.title);
+            UnityEngine.Debug.Log("作者：" + n.author);
+            UnityEngine.Debug.Log("正文："  + n.content);
+        }
+
+        // 也可以单独取一个：
+        if (postArray[0] != null){
+            PostScriptableObject postExample = postArray[0];
+            string postTitle = postExample.title;
+            string postContent = postExample.content;
+            UnityEngine.Debug.Log("Example Post: **" + postTitle + "** "+ postContent);
+        }
+
+        // 甚至可以这样：
+        if (newsArray[0] != null){
+            var newsExample = newsArray[0]; 
+            UnityEngine.Debug.Log("第一条新闻的发表时间是：" + newsExample.time);
+        }
+
+    }
 
     void Start()
     {
