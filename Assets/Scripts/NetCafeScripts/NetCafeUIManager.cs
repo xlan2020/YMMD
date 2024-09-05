@@ -1,36 +1,52 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
 
 public class NetCafeUIManager : MonoBehaviour
 {
-    // 新闻面板
-    public GameObject netBar; 
-    public GameObject newsHomePage;
-    public GameObject[] newsDetailPages;
-    public Button[] newsTitleButtons;
 
-    // 论坛面板
-    public GameObject forumHomePage;
-    public GameObject[] forumDetailPages;
-    public Button[] forumTitleButtons;
+    public GameObject netBar;
+    public GameObject newsHomePage; // 同时作为新闻标题容器
+    public GameObject forumHomePage; // 同时作为论坛标题容器
+
+    // 论坛和新闻的详情页容器
+    public Transform forumDetailPagesContainer;
+    public Transform newsDetailPagesContainer;
 
     // 导航栏按钮
     public Button newsButton;
     public Button forumButton;
     public Button shutdownButton;
 
-
     // 关机弹窗
     public GameObject shutdownPopup;
     public Button shutdownConfirmButton;
     public Button shutdownCancelButton;
 
-    // 前一场景名称
+    // 私有变量：存储动态获取的元素
+    private GameObject[] newsDetailPages;
+    private GameObject[] forumDetailPages;
+    private Button[] forumTitleButtons;
+    private Button[] newsTitleButtons;
 
     void Start()
     {
+        // 动态获取论坛和新闻的标题按钮
+        forumTitleButtons = forumHomePage.GetComponentsInChildren<Button>();
+        newsTitleButtons = newsHomePage.GetComponentsInChildren<Button>();
+
+        // 动态获取论坛和新闻详情页
+        forumDetailPages = new GameObject[forumDetailPagesContainer.childCount];
+        for (int i = 0; i < forumDetailPagesContainer.childCount; i++)
+        {
+            forumDetailPages[i] = forumDetailPagesContainer.GetChild(i).gameObject;
+        }
+
+        newsDetailPages = new GameObject[newsDetailPagesContainer.childCount];
+        for (int i = 0; i < newsDetailPagesContainer.childCount; i++)
+        {
+            newsDetailPages[i] = newsDetailPagesContainer.GetChild(i).gameObject;
+        }
+
         // 设置初始状态：显示新闻首页，隐藏其他页面
         ShowNewsHomePage();
 
@@ -53,6 +69,26 @@ public class NetCafeUIManager : MonoBehaviour
             newsTitleButtons[i].onClick.AddListener(() => ShowNewsDetailPage(index));
         }
 
+        // 设置论坛详情页返回按钮的点击事件
+        foreach (GameObject detailPage in forumDetailPages)
+        {
+            Button backButton = detailPage.GetComponentInChildren<Button>();
+            if (backButton != null)
+            {
+                backButton.onClick.AddListener(ShowForumHomePage);
+            }
+        }
+
+        // 设置新闻详情页返回按钮的点击事件
+        foreach (GameObject detailPage in newsDetailPages)
+        {
+            Button backButton = detailPage.GetComponentInChildren<Button>();
+            if (backButton != null)
+            {
+                backButton.onClick.AddListener(ShowNewsHomePage);
+            }
+        }
+
         // 设置关机弹窗按钮的点击事件
         shutdownConfirmButton.onClick.AddListener(ConfirmShutdown);
         shutdownCancelButton.onClick.AddListener(HideShutdownPopup);
@@ -64,6 +100,10 @@ public class NetCafeUIManager : MonoBehaviour
         newsHomePage.SetActive(true);
         forumHomePage.SetActive(false);
         HideAllDetailPages();
+
+        // 禁用新闻按钮，启用论坛按钮
+        newsButton.interactable = false;
+        forumButton.interactable = true;
     }
 
     // 显示论坛首页
@@ -72,6 +112,10 @@ public class NetCafeUIManager : MonoBehaviour
         newsHomePage.SetActive(false);
         forumHomePage.SetActive(true);
         HideAllDetailPages();
+
+        // 禁用论坛按钮，启用新闻按钮
+        newsButton.interactable = true;
+        forumButton.interactable = false;
     }
 
     // 显示关机弹窗
@@ -91,7 +135,6 @@ public class NetCafeUIManager : MonoBehaviour
     {
         netBar.SetActive(false);
     }
-    
 
     // 隐藏所有详情页
     void HideAllDetailPages()
