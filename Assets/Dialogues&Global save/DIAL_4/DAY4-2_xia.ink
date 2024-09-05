@@ -158,7 +158,7 @@ INCLUDE ../global.ink
 
 ==sell_family==
 
-依然记得
+
 
 
 ==catch_forget==
