@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PostSO_", menuName = "ScriptableObjects/NetCafe/post")]
 public class PostScriptableObject : ScriptableObject
 {
+    public string author;
+    public string author_EN;
+
     [TextAreaAttribute(2,1)]public string title;
     [TextAreaAttribute(2,1)]public string title_EN;
 

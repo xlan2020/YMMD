@@ -7,11 +7,18 @@ public class NetCafeUIManager : MonoBehaviour
     [SerializeField] private NetCafeContentScriptableObject contentScriptableObject;
     private NewsDetailScriptableObject[] newsArray;
     private PostScriptableObject[] postArray;
+    private NewsDetailScriptableObject newsheadline;
 
     [Header("UI Elements")]
     public GameObject netBar;
     public GameObject newsHomePage; // 同时作为新闻标题容器
     public GameObject forumHomePage; // 同时作为论坛标题容器
+
+    public GameObject forumTitlePrefab;
+    public GameObject newsTitlePrefab;
+
+    public Transform newsHomeTitles;
+    public Transform forumHomeTitles;
 
     // 论坛和新闻的详情页容器
     public Transform forumDetailPagesContainer;
@@ -33,41 +40,12 @@ public class NetCafeUIManager : MonoBehaviour
     private Button[] forumTitleButtons;
     private Button[] newsTitleButtons;
 
-    void Awake(){
+
+    void Awake()
+    {
         newsArray = contentScriptableObject.newsArray;
+        newsheadline = contentScriptableObject.headline;
         postArray = contentScriptableObject.postArray;
-        
-
-        // 下面这一句，演示完就可以删掉：
-        PrintContentOnConsole();
-    }
-
-    /**
-    这个method的全部作用就是给sherry演示怎么用Scriptable Object
-    拿news举例子，基本上就当一个newsDetailScriptableObject是一个class object，直接access它的attribute就行了。
-    */
-    private void PrintContentOnConsole(){
-        // 可以这样loop through：
-        foreach(NewsDetailScriptableObject n in newsArray){
-            UnityEngine.Debug.Log("标题：" + n.title);
-            UnityEngine.Debug.Log("作者：" + n.author);
-            UnityEngine.Debug.Log("正文："  + n.content);
-        }
-
-        // 也可以单独取一个：
-        if (postArray[0] != null){
-            PostScriptableObject postExample = postArray[0];
-            string postTitle = postExample.title;
-            string postContent = postExample.content;
-            UnityEngine.Debug.Log("Example Post: **" + postTitle + "** "+ postContent);
-        }
-
-        // 甚至可以这样：
-        if (newsArray[0] != null){
-            var newsExample = newsArray[0]; 
-            UnityEngine.Debug.Log("第一条新闻的发表时间是：" + newsExample.time);
-        }
-
     }
 
     void Start()
@@ -196,6 +174,7 @@ public class NetCafeUIManager : MonoBehaviour
         HideAllDetailPages();
         if (index >= 0 && index < forumDetailPages.Length)
         {
+            LoadForumContent(postArray[index], forumDetailPages[index]);
             forumDetailPages[index].SetActive(true);
         }
     }
@@ -206,7 +185,98 @@ public class NetCafeUIManager : MonoBehaviour
         HideAllDetailPages();
         if (index >= 0 && index < newsDetailPages.Length)
         {
+            LoadNewsContent(newsArray[index], newsDetailPages[index]);
             newsDetailPages[index].SetActive(true);
+
+            // 加载新闻内容
         }
+    }
+
+    // 加载内容到对应的文本框
+    private void LoadNewsContent(NewsDetailScriptableObject content, GameObject detailPage)
+    {
+        // 在详情页中找到对应的 Text 组件
+        Text titleText = FindText(detailPage, "NewsTitle");
+        Text authorText = FindText(detailPage, "NewsAuthor");
+        Text dateText = FindText(detailPage, "NewsTime");
+        Text contentText = FindText(detailPage, "NewsText");
+
+        // 将内容加载到 Text 组件中
+        titleText.text = content.title;
+        authorText.text = content.author;
+        dateText.text = content.time;
+        contentText.text = content.content;
+    }
+
+    private void LoadForumContent(PostScriptableObject content, GameObject detailPage)
+    {
+        // 在详情页中找到对应的 Text 组件
+        Text titleText = FindText(detailPage, "Title");
+        Text contentText = FindText(detailPage, "PostContent");
+
+        // 将内容加载到 Text 组件中
+        titleText.text = content.title + "\n";
+        contentText.text = content.content + "\n";
+    }
+
+    private void LoadForumHomePage(PostScriptableObject content, GameObject homepage)
+    {
+        // 在详情页中找到对应的 Text 组件
+        Text titleText = FindText(homepage, "Title");
+        Text authorTimeText = FindText(homepage, "AuthorTime");
+
+        // 将内容加载到 Text 组件中
+        titleText.text = content.title + "\n";
+        authorTimeText.text = content.author + " / " + content.lastEditTime;
+    }
+
+    private void LoadNewsHomePage()
+    {
+        foreach (Transform child in newsHomeTitles.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < newsArray.Length; i++)
+        {
+            // 动态生成按钮，显示新闻标题
+            GameObject titleButton = Instantiate(NewsTitlePrefab, newsHomePage.transform);
+            Button buttonComponent = titleButton.GetComponent<Button>();
+            Text buttonText = titleButton.GetComponentInChildren<Text>();
+
+            // 设置按钮文本为新闻标题，并为按钮添加点击事件
+            buttonText.text = newsArray[i].title;
+
+            // 将每个按钮的点击事件绑定到显示新闻详情页的方法上
+            int index = i; // 需要一个局部变量来存储当前索引，防止闭包问题
+            buttonComponent.onClick.AddListener(() => ShowNewsDetailPage(index));
+        }
+
+        LoadNewsHeadline(newsheadline, newsHomePage);
+
+
+    }
+
+    private void LoadNewsHeadline(NewsDetailScriptableObject content, GameObject headlinePage)
+    {
+        Text headLine = FindText(headlinePage, "HeadlineTitle");
+        headLine.text = content.title + "\n";
+    }
+
+    private Text FindText(GameObject detailPage, string name)
+    {
+        // 获取所有子对象中包含的 Text 组件
+        Text[] allTextComponents = detailPage.GetComponentsInChildren<Text>(true);
+
+        // 遍历所有 Text 组件，找到名称匹配的对象
+        foreach (Text textComponent in allTextComponents)
+        {
+            if (textComponent.gameObject.name == name)
+            {
+                return textComponent; // 返回找到的 Text 组件
+            }
+        }
+
+        return null;
     }
 }
