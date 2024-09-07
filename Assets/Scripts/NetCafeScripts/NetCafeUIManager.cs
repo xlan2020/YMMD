@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class NetCafeUIManager : MonoBehaviour
 {
-    [Header("Content Loaded")]
-    [SerializeField] private NetCafeContentScriptableObject contentScriptableObject;
     private NewsDetailScriptableObject[] newsArray;
     private NewsDetailScriptableObject newsHeadline;
     private PostScriptableObject[] postArray;
@@ -29,7 +27,7 @@ public class NetCafeUIManager : MonoBehaviour
 
     // headline 是一种特殊的新闻页，功能上和其他新闻一样，但在UI上做区分
     public GameObject newsHeadLine;
-    public Transform headlineDetailPage;
+    //public Transform headlineDetailPage;
 
     // 导航栏按钮
     public Button newsButton;
@@ -44,30 +42,30 @@ public class NetCafeUIManager : MonoBehaviour
     [Header("Font Setter")]
     public SherryFontSetter fontSetter;
 
-    void Awake()
+    // 设置内容的函数，用于外部传递数据
+    public void SetContent(NetCafeContentScriptableObject contentScriptableObject)
     {
-        // 从 ScriptableObject 中加载新闻和论坛数据
         newsArray = contentScriptableObject.newsArray;
         newsHeadline = contentScriptableObject.headline;
         postArray = contentScriptableObject.postArray;
     }
 
-    void Start()
+    // 初始化 UI 的函数，在传递内容后调用
+    public void InitializeUI()
     {
-        // 加载新闻和论坛标题
+        // 初始化页面加载
         LoadNewsHomePage();
         LoadForumHomePage();
 
-        // 设置导航栏按钮的点击事件
+        // 绑定按钮事件
         newsButton.onClick.AddListener(ShowNewsHomePage);
         forumButton.onClick.AddListener(ShowForumHomePage);
         shutdownButton.onClick.AddListener(ShowShutdownPopup);
 
-        // 设置关机弹窗按钮的点击事件
         shutdownConfirmButton.onClick.AddListener(ConfirmShutdown);
         shutdownCancelButton.onClick.AddListener(HideShutdownPopup);
 
-        // 显示初始状态
+        // 显示初始页面
         ShowNewsHomePage();
     }
 
@@ -108,12 +106,7 @@ public class NetCafeUIManager : MonoBehaviour
         {
             Destroy(child.gameObject); // 销毁现有的内容
         }
-
-        foreach (Transform child in headlineDetailPage)
-        {
-            Destroy(child.gameObject); // 销毁现有的内容
-        }
-
+        
         HideShutdownPopup();
     }
 
@@ -132,7 +125,8 @@ public class NetCafeUIManager : MonoBehaviour
     // 确认关机
     public void ConfirmShutdown()
     {
-        netBar.SetActive(false);
+        //netBar.SetActive(false);
+        Destroy(netBar);
     }
 
     // 加载新闻首页标题
@@ -277,7 +271,7 @@ public class NetCafeUIManager : MonoBehaviour
         HideAllDetailPages();
         GameObject detailPage = Instantiate(newsDetailPagePrefab, newsDetailPages.transform);
 
-        // 显式激活生成的对象
+        // 显式激活生成的对象 //headlineDetailPage
         detailPage.SetActive(true);
 
         LoadNewsContent(newsArray[index], detailPage);
@@ -300,7 +294,7 @@ public class NetCafeUIManager : MonoBehaviour
     public void ShowHeadlinePage()
     {
         HideAllDetailPages();
-        GameObject detailPage = Instantiate(newsDetailPagePrefab, headlineDetailPage.transform);
+        GameObject detailPage = Instantiate(newsDetailPagePrefab, newsDetailPages.transform);
 
         // 显式激活生成的对象
         detailPage.SetActive(true);
@@ -311,7 +305,7 @@ public class NetCafeUIManager : MonoBehaviour
         SetBackButtonFunction(detailPage, ShowNewsHomePage);
 
         // 强制更新布局，确保详情页显示正确
-        LayoutRebuilder.ForceRebuildLayoutImmediate(headlineDetailPage.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(newsDetailPages.GetComponent<RectTransform>());
         Canvas.ForceUpdateCanvases();
     }
 
