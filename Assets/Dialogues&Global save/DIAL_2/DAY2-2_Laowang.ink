@@ -11,9 +11,14 @@ INCLUDE ../global.ink
 
 ==default==
  ：老王<color=red>无穷</color>小卖部，每日置换上新，{lwText_CH}！#profile:hide
-+[置换上新？] ->displace_renew
-+[永不售空？] ->never_empty
-+[知道了] -> DONE
+{ lwText_CH == "常买常新":
+    +[置换上新？] ->displace_renew
+    +[知道了] ->come_buy //为什么玩的时候点这个选项，这个Done就会不done?暂且改成这个之后没有这个bug了我不懂啊鹅之后康康
+ - else:
+    +[置换上新？] ->displace_renew
+    +[永不售空？] ->never_empty
+    +[知道了] ->come_buy //为什么玩的时候点这个选项，这个Done就会不done
+}
 
 ==displace_renew==
 我：哎，王大爷，这个置换上新是什么意思？#profile:painter_side
@@ -38,7 +43,7 @@ INCLUDE ../global.ink
 我：不过，改成“常买常新”怎么样？#profile: painter_norm
 ~lwText_CH = "常买常新"
 ~lwText_EN = "always buy, always new"
-老王：诶，听着不错！就这么办了！
+老王：诶，听着不错！就这么办了！#profile: laowang_pleased
 ->DONE
 
 ==first_talk==
