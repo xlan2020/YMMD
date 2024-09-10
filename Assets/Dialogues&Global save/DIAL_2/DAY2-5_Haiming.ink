@@ -18,7 +18,7 @@
 海名：每次见到你的画，都能发现好多故事的痕迹。
 我：介意我现在在你这里动笔吗？#profile: painter_selfMock
 海名：求之不得。#profile: mobA_norm
-// ：#loadScene: DAY2-6_Haiming
+：#loadScene: DAY2-6_Haiming
 
 ->END
 
