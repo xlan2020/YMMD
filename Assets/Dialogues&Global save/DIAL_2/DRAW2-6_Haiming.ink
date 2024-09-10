@@ -61,7 +61,8 @@ INCLUDE ../global.ink
 海名：学界也是在一年前克莱拉·崔西那篇《论痕迹研究在逆转置换事故中的应用》之后才正式承认痕迹学的存在的，在那之前，所有人都当我们是妄想症和闭门造车的偏执狂。#portrait: haiming_2_frown #profile: hide 
 海名：但为了写出这篇数据详实的论文，崔西几乎掏空了自己的一切，又通过痕迹把一切都寻了回来……真的是个奇迹。#portrait: haiming_2_think
 海名：现在的待遇好多了。其实，我离开的这几天是去参加学术峰会了，还是头一次，痕迹学家能聚在一起。#portrait: haiming_2_know
-海名：会场是Carpe Diem资助的，也许是在我们身上发现了某种商业价值吧，他们愿意分享部分数据作研究。我实在没办法信任那个公司，但至少现状是有利于我们的。#portrait: haiming_2_thinkSquint
+海名：会场是Carpe Diem资助的。#portrait: haiming_2_thinkSquint
+海名：也许是在我们身上发现了某种商业价值吧，他们愿意分享部分数据作研究。我实在没办法信任那个公司，但至少现状是有利于我们的。
 我：……………… #profile: painter_side  #portrait: haiming_2_seeYou
 我：（还好我没说出口。太尴尬了。）
 我：（人家不是自封的……………………）#profile: painter_sideSweat #portrait: haiming_2_seeYouSquint
@@ -78,9 +79,10 @@ INCLUDE ../global.ink
 我：曾经珍重到愿意刻在身上的东西，突然有一天就不再拥有含义了。
 海名：只有留在真皮层的痕迹会不断地提醒你，过去曾经存在过。#profile: hide #portrait: haiming_2_idle #portrait: haiming_2_thinkSquint
 海名：这大概是一种很令人不安的感受吧。#portrait: haiming_2_frown
-我：……我能理解。#profile: painter_side #bgm: fade_1_0.3
-海名：嗯……咦？#profile: hide #portrait: haiming_2_seeYou
-我：我的秘密。交换。#profile: painter_side #bgm: 日常_1 #portrait: haiming_2_seeYouSquint
+我：我明白了。事实上……我非常能理解这种不安。#profile: painter_side #bgm: fade_1_0.3
+海名：哦？#profile: hide #portrait: haiming_2_seeYou 
+//S note：玩的时候感觉之前的有点不自然，改了一下
+我：这是我的秘密，和你交换。#profile: painter_side #bgm: 日常_1 #portrait: haiming_2_seeYouSquint
 海名：洗耳恭听。#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
 我：*递出鱼鳞*这就是我的痕迹。#profile: painter_norm
 海名：鱼鳞？#profile: hide #portrait: haiming_2_idle #portrait: haiming_2_think
@@ -318,11 +320,13 @@ INCLUDE ../global.ink
 ==personal_stuff==
 我：……嗯？这是什么？）#profile: painter_surprised
 我：好漂亮的封面图案，是绘本吧……#profile: painter_eyeClosed
- ：（娟秀的字迹）第一天上班，组里的人都好友善^_^公司好大，居然还有置换造景跑道，感觉自己已经是后福特主义的奴隶了… #profile: hide
+ ：（娟秀的字迹）第一天上班，组里的人都好友善^_^ #profile: hide
+ ：公司好大，居然还有置换造景跑道，感觉自己已经是后福特主义的奴隶了…
  +[翻过几页]->note1
  
  ==note1==
- ：（娟秀的字迹）前辈为了业绩竟然会去跟踪客户，也太拼了吧，而且还在伪造一些巧合……这样做的话，心里估价和pua还有什么区别？……
+ ：（娟秀的字迹）前辈为了业绩竟然会去跟踪客户，也太拼了吧，而且还在伪造一些巧合……
+ ：这样做的话，心里估价和pua还有什么区别？……
  +[翻过几页]->note2
  
  ==note2==
@@ -330,7 +334,8 @@ INCLUDE ../global.ink
  +[翻过几页]->note3
  
  ==note3==
- ：（潦草的字迹）想回奂门了，再呼吸一秒这个中央空调的空气都想吐。所有人都道貌岸然。……他们在风口加的什么香精？……
+ ：（潦草的字迹）想回奂门了，再呼吸一秒这个中央空调的空气都想吐。所有人都道貌岸然。
+ ：……他们在风口加的什么香精？……
  +[翻过几页]->note4
  
  ==note4==
