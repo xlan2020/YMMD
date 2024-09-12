@@ -15,3 +15,5 @@ VAR findPerson_EN = ""
 VAR herName_CH = "柴柴"
 VAR herName_EN = "Chai-chai"
 VAR nightClubNumCode = "(6 8)4767-300"
+//DAY 4 
+VAR inCDBuilding = false
