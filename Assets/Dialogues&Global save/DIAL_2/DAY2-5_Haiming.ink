@@ -1,3 +1,4 @@
+INCLUDE ../global.ink
 海名：咦，稀客呀！#profile: haiming_smile
 海名：看来我的明信片没有寄丢。好久不见，画家！#profile: haiming_squintLaugh
 我：好久不见，海名。#profile: painter_happy

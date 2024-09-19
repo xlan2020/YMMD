@@ -1,5 +1,5 @@
 INCLUDE ../global.ink
-我：给您老板，我做完了。
+我：给您老板，我做完了。#bgm: 日常 #profile: painter_norm
 boro酱：给我干什么？你拿着呀。
 我：这碗归我了？
 boro酱：不然呢？我还能拿去卖吗？
