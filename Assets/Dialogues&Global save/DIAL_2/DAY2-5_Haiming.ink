@@ -1,12 +1,12 @@
 海名：咦，稀客呀！#profile: mobA_norm
 海名：看来我的明信片没有寄丢。好久不见，画家！
-我：好久不见，海名。#profile: painter_norm
-我：我真喜欢你这里，店里的氛围棒极了。#profile: painter_happy
+我：好久不见，海名。#profile: painter_happy
+我：我真喜欢你这里，店里的氛围棒极了。#profile: painter_laugh
 海名：那就常来坐坐，十二分欢迎你。#profile: mobA_norm
 我：嘿嘿。#profile: painter_happy
 海名：不过，你好像还欠着我什么东西吧？#bgm: 暂停 #profile: mobA_norm
 海名：今天不交出来，你可就没法从这个店里原样出去了。#bgm: 戏谑
-我：“原样”是指……#profile: painter_surprised
+我：“原样”是指……#profile: painter_worried
 海名：对于拖稿的人，我们的传统连招是……梦梦！#profile: mobA_norm
 孟猛：*沉默地转过身* #profile: mobB_norm
 我：我、我画就是了！（黑店啊！）#profile: painter_sideSweat

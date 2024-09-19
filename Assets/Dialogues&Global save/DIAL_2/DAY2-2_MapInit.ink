@@ -1,5 +1,5 @@
 INCLUDE ../global.ink
-我：（啊，这美好的早晨。啊，太阳，我已经多久没呼吸过这样清新的空气了？）#profile: painter_side
+我：（啊，这美好的早晨。啊，太阳，我已经多久没呼吸过这样清新的空气了？）#bgm: 日常 #profile: painter_side
 我：（我、我吸……）
 我：………………
 我：（……一股鱼腥味。）#profile: painter_sideSweat
