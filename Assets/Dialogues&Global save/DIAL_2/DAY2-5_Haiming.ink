@@ -19,7 +19,7 @@ INCLUDE ../global.ink
 海名：每次见到你的画，都能发现好多故事的痕迹。#profile: haiming_laugh
 我：介意我现在在你这里动笔吗？#profile: painter_selfMock
 海名：求之不得。#profile: haiming_smile
-：#loadScene: DAY2-6_Haiming
+//：#loadScene: DAY2-6_Haiming
 
 ->END
 
