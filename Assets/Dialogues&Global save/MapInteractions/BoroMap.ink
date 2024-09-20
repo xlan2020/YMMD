@@ -48,8 +48,8 @@ boro酱：还要什么别的吗？#profile: boro_thinking
 
 ==end_order==
 // - promoteBoro == 5:
-boro酱：别忘了<color=green>跟五个人提起boro酱</color>，你可是答应人家了的。#profile: boro_awkward
-我：（听起来越来越像是威胁了……）#profile: painter_mournful
+boro酱：那你可千万别忘了，你可是答应人家了的。<color=green>跟五个人提起boro酱</color>。#profile: boro_awkward
+我：（越来越像是威胁了……）#profile: painter_mournful
 //boro酱：~~要常来光顾刨冰摊哦！
 // - else:
 boro酱：~~一定要常来光顾刨冰摊哦！#profile: boro_glad
