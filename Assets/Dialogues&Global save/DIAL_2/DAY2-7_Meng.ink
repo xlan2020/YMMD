@@ -3,7 +3,7 @@ INCLUDE ../global.ink
     - 0:
         ~ mengTalk++
         ->first_talk
-    - else: 
+    - else:
         ~ mengTalk++
         ->default
 }
