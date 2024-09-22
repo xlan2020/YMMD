@@ -13,7 +13,11 @@ INCLUDE ../global.ink
 ==theme==
 我：没问题。题材还是“海底怪兽”，对吧？#profile: painter_side
 海名：没错。我这里姑且也有个店名，就叫“神秘生物研究所”，怪兽、异兽、神兽，不管是古籍史册还是坊间传闻，甚至漫画里的怪物，都是我的创作主题。#portrait: haiming_3_pushGlass #profile: hide
-捕捉：【海蛞蝓】
+【捕捉：
+左边：海名发饰中的海蛞蝓
+右边：细致的海蛞蝓（说起来鹅鹅demo的时候好像p过这个图，我回头发来看看要不要直接用）
+描述：这家伙的发饰，似乎是一种海洋生物？不过，总觉得和神秘还有些距离。
+】
 我：能看出来。海蛞蝓、水母……说起来，这些都是浅海就能看到的生物，甚至奂门都有。而“海底怪兽”，是住在深海的吧？#profile: painter_side
 海名：很敏锐嘛。#profile: hide #portrait: haiming_3_squint
 海名：我也在想，我的脑袋里是不是也有点老学究的古板，一面喜欢幻想题材，另一面，又偏要找出传说和这些可以触及的东西之间的联系。#portrait: haiming_3_norm
@@ -30,7 +34,9 @@ INCLUDE ../global.ink
 海名：咦？难道是因为我成了你的“顾客”，所以才会一下子讲这么多话吗？#portrait: haiming_1_wink
 海名：也许，画家也是个危险的职业呢。#portrait: haiming_1_squint
 我：危险？#profile: painter_side
-【bonus捕捉：危险的职业】
+【bonus捕捉：危险的职业
+待定，没想好怎么做
+】
 海名：这样吧，告诉你一个秘密。#profile: hide #portrait: haiming_1_smile #bgm: fade_1_0.5
 我：秘密？#profile: painter_side
 海名：不过，我得要你的一个秘密来交换。#portrait: haiming_1_squint #profile: hide #bgm: fade_0.1_0.1
@@ -56,7 +62,12 @@ INCLUDE ../global.ink
 我：（画家、数学家、痕迹学家……呵呵，看来给自己的找个名号来依托是人之常情。）#profile: painter_side
 海名：痕迹学，就是研究物品因置换而消失后所留下的痕迹的学说。#portrait: haiming_2_idle #portrait: haiming_2_think
 海名：万物消失之后必将留下痕迹，只是痕迹常常被人遗忘。而追寻痕迹，却是人重新获得存在的自主性的方式。#portrait: haiming_2_seeYouKnow
-捕捉：【痕迹学家】
+【捕捉：痕迹学家
+左边：认真的海名haiming_2_seeYouKnow这个表情
+右边：“痕迹学家”——眼镜反光的睿智学者海名，和一堆书卷
+描述：海名现在的样子，像是个真正埋首学术的学者！只要研究“痕迹”这种课题，就能找回消失的历史吗？
+】
+
 海名：除了研究作为痕迹载体的物品——比如说，你的丈夫消失之后留在浴室的刮胡刀——，我们也研究留下痕迹的行为，研究遗忘的机制。
 海名：学界也是在一年前克莱拉·崔西那篇《论痕迹研究在逆转置换事故中的应用》之后才正式承认痕迹学的存在的，在那之前，所有人都当我们是妄想症和闭门造车的偏执狂。#portrait: haiming_2_frown #profile: hide 
 海名：但为了写出这篇数据详实的论文，崔西几乎掏空了自己的一切，又通过痕迹把一切都寻了回来……真的是个奇迹。#portrait: haiming_2_think
@@ -71,7 +82,11 @@ INCLUDE ../global.ink
 我：就像是人生节点的印记之类的。#profile: painter_norm
 海名：自然是这样。甚至，就算是随意的图案、随意的一天，也会因为自己选择去受一小顿皮肉之苦而有了含义。#profile: hide #portrait: haiming_3_squint
 海名：只是，自置换之后，覆盖纹身的工作就变多了。#portrait: haiming_3_cold #bgm: 悬疑_3
-捕捉：【覆盖纹身】
+【捕捉：覆盖纹身
+左边：“覆盖文身四个字”
+右边：戴着手套口罩，拿着覆盖纹身器械的没有感情的杀（wenshen）手（shi）海名，和一些空气中消失的纹身
+描述：没想到，一名纹身师接过最多的任务是消灭过往的痕迹。覆盖纹身……就好像把历史给丢掉了。
+】
 我：因为人们会忘记。#profile: painter_stunned
 海名：我覆盖过最多的图案，其实是文字。 #profile: hide 
 海名：有一些是名字。#portrait: haiming_3_pushGlass
@@ -150,7 +165,11 @@ INCLUDE ../global.ink
 海名：鲛人、人鱼，当然也有人认为，它们只是头顶海草的儒艮。甚至于，对于他们的传闻多到不需要去刻意收集，连文艺作品都偏爱它们。#portrait: haiming_2_thinkSquint
 海名：说起来，镇上还有卖人鱼潜水服的。#portrait: haiming_2_think
 海名：自古以来，无论人鱼是否存在，它们就算在传说故事里，也是被消费的存在，身体被用来炼油点灯，却被冠上“美”的前缀，总觉得有些可怜。#portrait: haiming_2_frown
-【捕捉：消费人鱼或者炼油点灯——残忍廉价的消费品】
+【捕捉：消费人鱼或者炼油点灯——残忍廉价的消费品
+左边：文字框“炼油点灯”
+右边：残忍廉价的消费品，罐装的紫色鱼油
+描述：炼油点灯……人鱼这样的传说生物，也从生命变成了可以消耗的商品，细想来，这是多么残忍恐怖。
+】
 海名：很遗憾，我对这条紫色头发的人鱼没有印象。也许在这一点上，我作为一个肤浅的现代人，在见过所谓“美人鱼表演”之后，就没办法跳出这些维度去想象了。#portrait: haiming_2_seeYou
 海名：和很多其他神秘生物不同，如果美人鱼存在的话，我希望她们永远不要被人类找到。#portrait: haiming_2_think
 我：……你的意思是，我应该放弃寻找她吗？#portrait: haiming_2_seeYou #profile: painter_side
@@ -163,7 +182,11 @@ INCLUDE ../global.ink
  ：“她是我的！”【黑暗画家小头】 #profile: hide #portrait: haiming_2_seeYou
 海名：咦？嗯，那看来，确实不止美人鱼这么简单了。#profile: hide #portrait: haiming_2_seeYouKnow
 海名：画家很有占有欲嘛。#portrait: haiming_1_idle #portrait: haiming_1_smile
-【捕捉：占有欲——情人】
+【捕捉：占有欲——情人
+左边：文字框“占有欲”
+右边：我的温柔女友人鱼小姐
+描述：占有欲？想想还真羞人，也许在潜意识里，她就是我的梦中情人吧。
+】
 我：哎？#profile: painter_side
 我：不是，什么啊…… #bgm: 日常_3 #profile: painter_sideSweat #portrait: haiming_1_squint
 海名：放松。我可没有在取笑你，这是线索，也是痕迹。#portrait: haiming_1_smile #profile: hide
@@ -191,7 +214,11 @@ INCLUDE ../global.ink
 海名：有人会选择移情，把爱寄托到别的事物上，也许会开始养宠物。
 海名：这是因为，你的行为模式中，依然留有一个“孩子”的占位角色，如果不填补上，就会感到惶恐。
 海名：这种惶恐倒不一定是因为爱或者执念，反倒可能是因为现实与自己习惯中的生活之间的割裂，而对自我产生的焦虑。
-【捕捉：对自我的焦虑——梦魇】
+【捕捉：对自我的焦虑——梦魇
+左边：文字框“对自我产生的焦虑”
+右边：梦魇柴柴，一种恐怖的女鬼
+描述：我对那人鱼的思念，或许也来自于一种焦虑？比起浪漫和爱，她或许只是一个影响我的梦魇。
+】
 海名：所以，觉得这片鱼鳞很宝贵，你不希望美人鱼成为别人身上的图案…… #portrait: haiming_1_idle #portrait: haiming_1_smile
 我：是因为我心目中留有一个属于美人鱼的“占位角色”，并且如你所说，对她有很强的占有欲？#profile: painter_side 
 海名：按我的歪理邪说，就是这样。#portrait: haiming_1_squint

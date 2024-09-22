@@ -20,4 +20,4 @@ INCLUDE ../global.ink
 我：我没问题。回见，海名。#profile: painter_happy
 海名：我会扒在窗口盯着你的。#profile: haiming_seeYouKnow
 海名：回见。#profile: haiming_yinyang
-->END
+->DONE

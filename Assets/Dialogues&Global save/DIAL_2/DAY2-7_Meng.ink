@@ -1,14 +1,10 @@
 INCLUDE ../global.ink
-：{mengTalk}
 { mengTalk: 
     - 0:
         ~ mengTalk++
-        ：{mengTalk}
         ->first_talk
-        
     - else: 
         ~ mengTalk++
-        ：{mengTalk}++
         ->default
 }
 
