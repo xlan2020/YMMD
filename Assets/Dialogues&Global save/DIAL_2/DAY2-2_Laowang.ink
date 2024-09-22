@@ -53,8 +53,7 @@ INCLUDE ../global.ink
 老王：今天没和<color=magenta>你那个谁</color>在一块儿啊？#profile:laowang_norm
 我：嗯？……什么，谁？#profile:painter_surprised
 老王：………… #bgm: fade_0.2_0 #profile: laowang_think
-老王：嗐！瞧我这记性，不是你不是你，记错人了。也是，你这搞艺术的就爱独来独往的哈。#bgm:0.5_1 #profile:laowang_pleased 
-//S: 这块bgm有问题
+老王：嗐！瞧我这记性，不是你不是你，记错人了。也是，你这搞艺术的就爱独来独往的哈。#bgm: fade_1_1 #profile:laowang_pleased 
 我：（记错人了？总觉得哪里怪怪的……就像我以前经常和谁一起出现似的。要再问问吗？） #profile: painter_side
 +[您难道说8-2？]->masaka
 +[您想的人是谁?]->whom
