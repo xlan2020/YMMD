@@ -26,7 +26,7 @@ INCLUDE ../global.ink
 * [心理精算]->value_consult
 * [遗忘康复]->memory_consult
 * [临终狂欢]->sell_self_consult
-->secret_program
++ ->secret_program
 
 ==secret_program==
 前台小李：我们的基础项目就这几项。不过如果想要独属于您的私人咨询服务，可以购买我们的隐藏VVVIP会员套餐，全面托管人生。
@@ -75,8 +75,8 @@ INCLUDE ../global.ink
 ==buy_service==
 我：我要购买服务。
 前台小李：好的客人，我们这边可以提供单次初步体验服务和VIP会员服务，后者不限咨询次数。请问您感兴趣哪一种？
-+[单次体验]
-+[VIP套餐]->vip_service
++[单次体验]->END
++[VIP套餐]->END
 +[还是算了]->dont_want_to_buy
 
 
@@ -85,7 +85,7 @@ INCLUDE ../global.ink
 ==buy_value_service==
 前台小李：初步体验心理精算估价咨询服务，一次666元，您确定要购买吗？
 +[购买单次]->value_program_start
-+[购买VIP]->buy_vip
++[购买VIP]->END
 +[还是算了]->dont_want_to_buy
 
 ==value_program_start
@@ -95,7 +95,7 @@ INCLUDE ../global.ink
 ==buy_memory_service==
 前台小李：初步体验置换事故遗忘康复咨询服务，一次666元，您确定要购买吗？当然，我们还有VIP套餐可供选择。
 +[我要购买！]->memory_program_start
-+[购买VIP]->buy_vip
++[购买VIP]->END
 +[还是算了]->dont_want_to_buy
 
 ==memory_program_start==

@@ -26,12 +26,12 @@ VAR r_count = 0
 {r_count < 2:
  ：水晶门旋转了半圈。
     +[进入街道]->outdoor
-    +[留在门里]->rotating_out
+    +[留在门里]->rotating_in
 }
 {r_count >= 2:
  ：水晶门{&又|再一次|接着}旋转了半圈。
     +[进入街道]->outdoor
-    +[留在门里]->rotating_out
+    +[留在门里]->rotating_in
 }
 {r_count > 10:
 ->kick_out
