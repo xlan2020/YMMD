@@ -10,7 +10,7 @@ INCLUDE ../global.ink
 我：店里收拾得是真干净。#profile: painter_happy
 海名：纹身店嘛，卫生很重要。不过悄悄告诉你…… #profile: haiming_seeYouKnow
 海名：……梦梦有洁癖。#profile: haiming_seeYouSquint
-孟猛：*沉默地回头* #profile: meng_norm
+孟猛：*沉默地回头* #profile: meng_noWord
 我：……这是悄悄吗？#profile: painter_surprised
 我：（不过这么一打岔，心情确实安定了些许。）#profile: painter_norm
 海名：有关美人鱼的信息，我也想要继续调查一下。有情报就告诉你。#profile: haiming_think
