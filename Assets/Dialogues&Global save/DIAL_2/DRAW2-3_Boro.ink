@@ -1,13 +1,11 @@
 INCLUDE ../global.ink
 boro酱：喏，碗底就是刨冰，小料就是这些了，怎么用也帮你标好了，你看着办吧。 #profile: hide #portrait: boro_2_idle #portrait: boro_welcome #bgm: 日常_0.1
 系统：看来，画家有一些不同寻常的新活了。//Sherry Note: 最近看多了知乎网文，总觉得“系统”怪怪的，能不能就空格冒号“ ：”（。）
-系统：有些顾客会提供用在画作里的<color=green>指定材料</color>，比如boro酱的刨冰创作，就一定要用刨冰、酱汁和小料完成。
+系统：有些顾客会提供用在画作里的<color=green>指定材料</color>，比如boro酱的刨冰创作，就一定要用刨冰、酱汁和小料完成。#drawingSystem: showMaterialWindow
 系统：指定材料会临时显现在清单里，而画家原本拥有的画材都会被<color=green>隐藏</color>——在食品上用残留着颜料的笔刷可不太卫生，这也可以理解吧？
 系统：当然，在本次绘画结束后，画家就可以再次浏览、使用自己原有的物品和画材。至于顾客临时提供的材料，除非对方赠予，否则也不归画家所有。
-系统：那么，<color=green>选用全部</color>提供的材料，尽情享受眼前的创作吧！
-+[依次选用所有材料，开始画画]->draw_start
-
-==draw_start==
+系统：那么，<color=green>选用全部</color>提供的材料，尽情享受眼前的创作吧！#drawingSystem: selectMaterial
+// make this exclusive to given material
 我：（用刨冰和小料来画画，这还是人生头一遭。）#profile: painter_norm
 我：（而且，我也想要获得点赞量第一的奖品！这意味着我需要创作出大众喜欢的画作……喜欢真是一个残忍恐怖的词语，我怎么知道别人喜欢什么样的画啊？）#profile: painter_eyeClosed
 我：（没时间兀自纠结，再等下去刨冰都要化了。）老板，可不可以问问……顾客都喜欢什么样的刨冰呢？#profile: painter_side
