@@ -85,7 +85,7 @@ public class InteractableItemManager : MonoBehaviour
         {
             if (item != null)
             {
-                if (!item.IsInteractable())
+                if (!item.IsInteractable() && item.interactiveSign != null)
                 {
                     item.interactiveSign.showSelfFar();
                 }
@@ -100,7 +100,7 @@ public class InteractableItemManager : MonoBehaviour
         {
             if (item != null)
             {
-                if (!item.IsInteractable())
+                if (!item.IsInteractable() && item.interactiveSign != null)
                 {
                     item.interactiveSign.hideSelf();
                 }
@@ -114,17 +114,20 @@ public class InteractableItemManager : MonoBehaviour
         {
             if (item != null)
             {
-                if (item.IsInteractable())
+                if (item.interactiveSign != null)
                 {
-                    item.interactiveSign.showSelfNear();
-                }
-                else if (observing)
-                {
-                    item.interactiveSign.showSelfFar();
-                }
-                else
-                {
-                    item.interactiveSign.hideSelf();
+                    if (item.IsInteractable())
+                    {
+                        item.interactiveSign.showSelfNear();
+                    }
+                    else if (observing)
+                    {
+                        item.interactiveSign.showSelfFar();
+                    }
+                    else
+                    {
+                        item.interactiveSign.hideSelf();
+                    }
                 }
             }
         }
@@ -166,11 +169,14 @@ public class InteractableItemManager : MonoBehaviour
         {
             if (item != null && currentItem.dialogueTrigger != null)
             {
-                // deactivate only for dialogue type, but not collect and event trigger type
-                if (item.interactiveSign.IsNear())
+                if (item.interactiveSign != null)
                 {
-                    item.interactiveSign.showSelfFar();
-                    tempDisabledSigns.Add(item.interactiveSign);
+                    // deactivate only for dialogue type, but not collect and event trigger type
+                    if (item.interactiveSign.IsNear())
+                    {
+                        item.interactiveSign.showSelfFar();
+                        tempDisabledSigns.Add(item.interactiveSign);
+                    }
                 }
             }
         }
