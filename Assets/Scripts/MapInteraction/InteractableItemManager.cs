@@ -37,12 +37,25 @@ public class InteractableItemManager : MonoBehaviour
         {
             // add interactive function to each interactive sign from script, no need to do it through inspector
             // whenever the interaction starts, show interactive sign as if it's faraway and non-interatable
-            item.interactiveSign.gameObject.GetComponent<Button>().onClick.AddListener(delegate { player.InteractWithItem(item); currentItem = item; deactivateAllSigns(); });
-            item.interactiveSign.SetCursor(cursor);
+            if (item.autoTrigger == false)
+            {
+                item.interactiveSign.gameObject.GetComponent<Button>().onClick.AddListener(delegate { this.interactWithItem(item); });
+                item.interactiveSign.SetCursor(cursor);
+            }
+            else
+            {
+                item.SetEventsOnAutoEnter(delegate { this.interactWithItem(item); });
+            }
         }
 
     }
 
+    private void interactWithItem(InteractableItem item)
+    {
+        player.InteractWithItem(item);
+        currentItem = item;
+        deactivateAllSigns();
+    }
 
     void Start()
     {

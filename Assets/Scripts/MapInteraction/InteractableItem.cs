@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class InteractableItem : MonoBehaviour
 {
     [Header("Interaction")]
+    public bool autoTrigger = false;
+    private UnityEvent eventsOnAutoEnter;
     public InteractiveSign interactiveSign;
     public InkDialogueTrigger dialogueTrigger;
     public UnityEvent eventsOnInteraction;
@@ -23,9 +25,24 @@ public class InteractableItem : MonoBehaviour
     {
         dialogueTrigger = GetComponent<InkDialogueTrigger>();
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && autoTrigger)
+        {
+            // trigger all event
+            eventsOnAutoEnter.Invoke();
+        }
+    }
+
+    public void SetEventsOnAutoEnter(UnityEngine.Events.UnityAction call)
+    {
+        eventsOnAutoEnter = new UnityEvent();
+        eventsOnAutoEnter.AddListener(call);
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !autoTrigger)
         {
             if (interactiveSign.IsHidden())
             {
@@ -37,7 +54,7 @@ public class InteractableItem : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !autoTrigger)
         {
             interactiveSign.hideSelf();
             isInteractable = false;

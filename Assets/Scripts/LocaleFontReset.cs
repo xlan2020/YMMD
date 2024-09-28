@@ -39,7 +39,14 @@ public class LocaleFontReset : MonoBehaviour
 
         foreach (Text text in resetTexts)
         {
-            text.font = newFont;
+            if (text != null)
+            {
+                text.font = newFont;
+            }
+            else
+            {
+                UnityEngine.Debug.LogWarning("The text object to reset font is null! ");
+            }
         }
 
         foreach (Text text in resetFontSize)

@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 1
   interactiveSign: {fileID: 172142521}
   dialogueTrigger: {fileID: 17164217}
   eventsOnInteraction:
@@ -225,7 +226,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -9.541138, y: -47.637268}
+  m_Offset: {x: -1826.2811, y: -47.637268}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -236,7 +237,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 43.477295, y: 105.41687}
+  m_Size: {x: 221.5149, y: 105.41687}
   m_EdgeRadius: 0
 --- !u!1 &33233613
 GameObject:
@@ -717,17 +718,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1430595520700488370, guid: 909cf0df0c04341e2b3bf4d38b986f05, type: 3}
   m_PrefabInstance: {fileID: 96227321}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &96227323 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 859671983291697644, guid: 909cf0df0c04341e2b3bf4d38b986f05, type: 3}
-  m_PrefabInstance: {fileID: 96227321}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &96227324 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2198988395537463504, guid: 909cf0df0c04341e2b3bf4d38b986f05, type: 3}
@@ -970,19 +960,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.024305556
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0652921
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99999994
+      value: 0.9516461
       objectReference: {fileID: 0}
     - target: {fileID: 1574646033124691405, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.8688789
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2056554025495318231, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1034,19 +1024,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.024305556
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0652921
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99999994
+      value: 0.9516461
       objectReference: {fileID: 0}
     - target: {fileID: 5902820745403832462, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.8688789
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6331935906279990310, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_BoundingShape2D
@@ -1054,35 +1044,35 @@ PrefabInstance:
       objectReference: {fileID: 744796732}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.024305556
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0652921
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99999994
+      value: 0.9516461
       objectReference: {fileID: 0}
     - target: {fileID: 6352446540577879889, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.8688789
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
-      value: 0
+      value: 0.024305556
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.0652921
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.width
-      value: 0.99999994
+      value: 0.9516461
       objectReference: {fileID: 0}
     - target: {fileID: 7108895419214819499, guid: 2124f0452f48f443d9fe7a4da5ad2183, type: 3}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.8688789
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1511,6 +1501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 844842174}
   dialogueTrigger: {fileID: 0}
   eventsOnInteraction:
@@ -2202,6 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 2050948140}
   dialogueTrigger: {fileID: 533136540}
   eventsOnInteraction:
@@ -2716,6 +2708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 510084853}
   dialogueTrigger: {fileID: 628989518}
   eventsOnInteraction:
@@ -3219,6 +3212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 566820913}
   dialogueTrigger: {fileID: 765731149}
   eventsOnInteraction:
@@ -3351,7 +3345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707a697570553c04681c627aa618956c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactPrompt: {fileID: 96227323}
+  interactPrompt: {fileID: 0}
   interactPromptYOffset: 10
 --- !u!212 &778948235
 SpriteRenderer:
@@ -4212,6 +4206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 1669283149}
   dialogueTrigger: {fileID: 0}
   eventsOnInteraction:
@@ -4311,6 +4306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 1155631825}
   dialogueTrigger: {fileID: 966798410}
   eventsOnInteraction:
@@ -6623,6 +6619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 999068953}
   dialogueTrigger: {fileID: 0}
   eventsOnInteraction:
@@ -8041,6 +8038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 1143657380}
   dialogueTrigger: {fileID: 1984450583}
   eventsOnInteraction:
@@ -8156,6 +8154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 1859475622}
   dialogueTrigger: {fileID: 0}
   eventsOnInteraction:
@@ -8356,6 +8355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d6ff2409a474c97a86bdd3549fbac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoTrigger: 0
   interactiveSign: {fileID: 1892229880}
   dialogueTrigger: {fileID: 2011434754}
   eventsOnInteraction:
