@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -8,6 +9,14 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private MouseCursor cursor;
     private bool interactive = true;
     private Animator animator;
+    [Header("Dialogue UI Objects")]
+    public Text speakerName;
+    public Text dialogueText;
+    public ProfileSwitcher speakerProfile;
+    public GameObject continueIcon;
+    public GameObject autoIcon;
+    public GameObject[] choices;
+    public Button nextButton;
 
     void Awake()
     {
@@ -42,6 +51,5 @@ public class DialoguePanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             animator.SetBool("canContinue", b);
         }
     }
-
 
 }

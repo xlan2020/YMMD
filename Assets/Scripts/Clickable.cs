@@ -45,4 +45,10 @@ public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         cursor.SetAnimationDefault();
         stay = false;
     }
+
+    void OnDisabled()
+    {
+        cursor.SetAnimationDefault();
+        stay = false;
+    }
 }

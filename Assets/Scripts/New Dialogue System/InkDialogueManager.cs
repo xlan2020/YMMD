@@ -29,11 +29,11 @@ public class InkDialogueManager : MonoBehaviour
     [Header("Dialogue UI")]
     public ChatHistoryUI chatHistory;
     public DialoguePanel dialoguePanel;
-    public Text speakerName;
-    public Text dialogueText;
-    public ProfileSwitcher speakerProfile;
-    public GameObject continueIcon;
-    public GameObject autoIcon;
+    private Text speakerName;
+    private Text dialogueText;
+    private ProfileSwitcher speakerProfile;
+    private GameObject continueIcon;
+    private GameObject autoIcon;
     public Animator portraitAnimator;
     public NameStyleScriptableObject nameStyle;
     public UnityEngine.Color ThoughtColor;
@@ -43,7 +43,7 @@ public class InkDialogueManager : MonoBehaviour
     // each choice container is an instance of the choice class
     private InkChoiceContainer[] choiceContainer;
     private Dictionary<string, GameObject[]> choicesDict;
-    public GameObject[] choices;
+    private GameObject[] choices;
     private Text[] choicesText;
 
     [Header("Drawing Interface Special")]
@@ -121,6 +121,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        setUpDialogueObjects();
         initializeChoices();
 
         if (instance != null)
@@ -153,6 +154,16 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+    private void setUpDialogueObjects()
+    {
+        speakerName = dialoguePanel.speakerName;
+        dialogueText = dialoguePanel.dialogueText;
+        speakerProfile = dialoguePanel.speakerProfile;
+        continueIcon = dialoguePanel.continueIcon;
+        autoIcon = dialoguePanel.autoIcon;
+        choices = dialoguePanel.choices;
+        dialoguePanel.nextButton.onClick.AddListener(ContinueStory);
+    }
     private void Update()
     {
         // fast skip: left SHIFT

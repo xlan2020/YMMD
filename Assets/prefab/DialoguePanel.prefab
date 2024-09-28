@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 4983440567724609659}
   - component: {fileID: 7526329284368301605}
   - component: {fileID: 4277998892834849690}
-  - component: {fileID: 8212367836461503118}
   - component: {fileID: 7405034789111767279}
   m_Layer: 5
   m_Name: DialoguePanel
@@ -140,51 +139,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ab197ba5724440cbc793851587f7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &8212367836461503118
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2274298641650530809}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 258.63782, y: 42.423134}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 512.66455, y: 85.48619}
-  m_EdgeRadius: 0
+  speakerName: {fileID: 1990875134033992927}
+  dialogueText: {fileID: 3944688643135672308}
+  speakerProfile: {fileID: 527274573081365539}
+  continueIcon: {fileID: 3806098981246224163}
+  autoIcon: {fileID: 7832406678692491847}
+  choices:
+  - {fileID: 6811342183512715757}
+  - {fileID: 7205429425306516320}
+  - {fileID: 6163025619793187496}
+  nextButton: {fileID: 7543881160108987278}
 --- !u!95 &7405034789111767279
 Animator:
   serializedVersion: 5
@@ -532,7 +496,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1627237575
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 9c4859a04623d4c75a8d45c1875aafcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -617,7 +581,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1627237575
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 5cb3483b2d56c4962854d20456abfeb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -655,6 +619,7 @@ GameObject:
   - component: {fileID: 7139635266683900346}
   - component: {fileID: 2242816348580546879}
   - component: {fileID: 7543881160108987278}
+  - component: {fileID: 3340226321633868260}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -775,18 +740,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InkDialogueManager, Assembly-CSharp
-        m_MethodName: SkipChoice
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!114 &3340226321633868260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813946977036881485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6024f525731496e96912320315bcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClickEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  animationType: dialogue
 --- !u!1 &7832406678692491847
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,7 +827,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1627237575
-  m_SortingLayer: 13
+  m_SortingLayer: 14
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f9e761284b6654d6b91f69d6d76e1488, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1088,6 +1057,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
+--- !u!1 &7205429425306516320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7601416382756073363, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
+  m_PrefabInstance: {fileID: 757576774153934067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7205429425306516321 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7601416382756073362, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
@@ -1271,6 +1245,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7601416382756073362, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
   m_PrefabInstance: {fileID: 4033844613183315582}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6811342183512715757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7601416382756073363, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
+  m_PrefabInstance: {fileID: 4033844613183315582}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4394053948116647227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1436,6 +1415,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
+--- !u!1 &6163025619793187496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7601416382756073363, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
+  m_PrefabInstance: {fileID: 4394053948116647227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6163025619793187497 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7601416382756073362, guid: 46323c1ef55504defaa925330324ee5e, type: 3}
