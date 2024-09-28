@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MapPlayer : MonoBehaviour
 {
-
     private SpriteRenderer sprite;
     private Animator animator;
     float speed = 16000f;
@@ -26,8 +25,6 @@ public class MapPlayer : MonoBehaviour
 
     private void Awake()
     {
-
-
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //speed *= 100f;
@@ -79,7 +76,12 @@ public class MapPlayer : MonoBehaviour
 
     public void InteractWithItem(InteractableItem item)
     {
-        item.TriggerDialogue();
+        if (item.TriggerDialogue() == true)
+        {
+            // turn player around 
+            animator.SetBool("isTalking", true);
+        }
+
         item.TriggerEvents();
 
         if (item.destroyOnInteract)
@@ -143,6 +145,8 @@ public class MapPlayer : MonoBehaviour
         else
         {
             SetCanMove(true);
+            // turn player around
+            animator.SetBool("isTalking", false);
         }
     }
 }

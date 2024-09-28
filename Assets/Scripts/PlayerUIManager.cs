@@ -7,15 +7,16 @@ using UnityEngine.UI;
 public class PlayerUIManager : MonoBehaviour
 {
     //[SerializeField] TextMeshProUGUI interactPrompt;
-    [SerializeField] Text interactPrompt;
+    //[SerializeField] Text interactPrompt;
 
     [SerializeField] int interactPromptYOffset = 10;
     string originPrompt = "";
 
     void Start()
     {
-        interactPrompt.gameObject.SetActive(false);
+        //interactPrompt.gameObject.SetActive(false);
     }
+    /**
     public void ShowInteractPrompt(string text)
     {
         originPrompt = interactPrompt.text;
@@ -40,4 +41,5 @@ public class PlayerUIManager : MonoBehaviour
     {
         return interactPrompt.gameObject.activeSelf;
     }
+    */
 }

@@ -71,12 +71,18 @@ public class InteractableItem : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void TriggerDialogue()
+    /**
+    return TRUE if there is dialogue triggered
+    use this to check mode in Player
+    */
+    public bool TriggerDialogue()
     {
         if (dialogueTrigger != null)
         {
             dialogueTrigger.StartDialogue();
+            return true;
         }
+        return false;
     }
 
     public void TriggerEvents()
