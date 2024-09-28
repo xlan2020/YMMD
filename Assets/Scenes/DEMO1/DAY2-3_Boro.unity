@@ -138,12 +138,12 @@ GameObject:
   - component: {fileID: 59446648}
   - component: {fileID: 59446652}
   m_Layer: 0
-  m_Name: dashi
+  m_Name: saltFish
   m_TagString: Observee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &59446647
 Transform:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 59446646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -112, y: -127.5, z: 0}
+  m_LocalPosition: {x: -59.17, y: -141.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -191,18 +191,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.7017555, y: -2.0050125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 34, y: 18}
+    oldSize: {x: 65, y: 21}
     newSize: {x: 34, y: 18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 34, y: 18}
+  m_Size: {x: 76.70698, y: 24.416061}
   m_EdgeRadius: 0
 --- !u!50 &59446649
 Rigidbody2D:
@@ -244,15 +244,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 901699925}
-  tagName: dashi
+  tagName: saltFish
   choiceIndex: 0
   canSkip: 0
   canDissolve: 1
-  description: "8+2\u5927\u5E08\u2026\u2026\u5356\u8BFE\u7684\uFF1F\u8FD9\u5BB6\u4F19\u5230\u5E95\u662F\u4EC0\u4E48\u4EBA\u554A\u3002"
-  description_EN: The 8+2 Master... selling his class, maybe? Who the heck is this
-    dude?
-  submitSpeak: "\u5927\u5E08\u662F\u600E\u4E48\u56DE\u4E8B\uFF1F"
-  submitSpeak_EN: 'What''s the deal with the ''master''? '
+  description: "\u8868\u91CC\u5982\u4E00\u7684\u54B8\u9C7C\uFF1F\u55EF\uFF0C\u867D\u8BF4\u8868\u73B0\u5982\u6B64\u5938\u5F20\uFF0C\u4F46boro\u9171\u7684\u672C\u8D28\u53EA\u662F\u4E2A\u62C5\u5FE7\u6BCF\u65E5\u8425\u6536\u7684\u751F\u610F\u4EBA\u7F62\u4E86\u3002\u5982\u679C\u5356\u4E0D\u51FA\u53BB\u5C31\u4F1A\u53D8\u6210\u54B8\u9C7C\u2026\u2026\u53EF\u7231\u7684\u5934\u5957\uFF0C\u4E0D\u8FC7\u662F\u5BF9\u751F\u6D3B\u65E0\u5948\u7684\u4F2A\u88C5\u3002"
+  description_EN: 
+  submitSpeak: "\u5E97\u94FA\u8425\u9500\u7F62\u4E86\uFF01"
+  submitSpeak_EN: 
   eventsOnDisplay:
     m_PersistentCalls:
       m_Calls: []
@@ -298,7 +297,7 @@ SpriteRenderer:
   m_SortingLayerID: 591568941
   m_SortingLayer: 16
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9c6f4ecd013434731bf749b99163141b, type: 3}
+  m_Sprite: {fileID: -88632036, guid: 168aa5c25eb224476ac9787dcbcca81f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -319,7 +318,7 @@ Animator:
   m_GameObject: {fileID: 59446646}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 25e39e3c6490946cb86b8aabbc7954f8, type: 2}
+  m_Controller: {fileID: 9100000, guid: fa61749c995854b18887d48d71f8022a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3000,7 +2999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 453361472}
-  observees: []
+  observees:
+  - {fileID: 1071266037}
+  - {fileID: 59446650}
   descriptionText: {fileID: 269629013}
   descriptionBox: {fileID: 1339650154}
   submitter: {fileID: 102284609}
@@ -3803,12 +3804,12 @@ GameObject:
   - component: {fileID: 1071266038}
   - component: {fileID: 1071266040}
   m_Layer: 0
-  m_Name: face
+  m_Name: girl
   m_TagString: Observee
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1071266035
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3850,7 +3851,7 @@ SpriteRenderer:
   m_SortingLayerID: -450791441
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dd1eebef6e840472483baf9bcf6f0bf4, type: 3}
+  m_Sprite: {fileID: 579509607, guid: 168aa5c25eb224476ac9787dcbcca81f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3870,7 +3871,7 @@ Transform:
   m_GameObject: {fileID: 1071266034}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -168.5, y: 62.5, z: 0}
+  m_LocalPosition: {x: -90.9, y: -16.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3889,16 +3890,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 901699925}
-  tagName: face
-  choiceIndex: 0
+  tagName: girl
+  choiceIndex: 1
   canSkip: 0
   canDissolve: 1
-  description: "\u8981\u6355\u63498-2\u7684\u7CBE\u6C14\u795E\u3002\u2026\u2026\u5443\uFF0C\u662F\u8FD9\u79CD\u611F\u89C9\u5417\uFF1F"
-  description_EN: 'Trying to catch the vibe of 8-2... um, is it that kind of feeling?
-
-'
-  submitSpeak: "\u5148\u753B\u4E0A\u53BB\u8BD5\u8BD5\u5427\uFF01"
-  submitSpeak_EN: Just slap it on the canvas and see!
+  description: "\u8FD9\u4E00\u77AC\u95F4\uFF0C\u8001\u677F\u5B8C\u5168\u5C31\u662F\u4E00\u4E2A\u6E34\u671B\u53D7\u6B22\u8FCE\u7684\u9AD8\u4E2D\u5C0F\u5973\u751F\uFF01\u8FD9\u3001\u8FD9\u8FD8\u662F\u5728\u5356\u5228\u51B0\u5417\uFF1F\u5228\u51B0\u5BF9\u4E8E\u5979\u7A76\u7ADF\u610F\u5473\u7740\u4EC0\u4E48\uFF1F"
+  description_EN: 
+  submitSpeak: "\u5979\u771F\u5C31\u662F\u5973\u9AD8\u4E2D\u751F\uFF01"
+  submitSpeak_EN: 
   eventsOnDisplay:
     m_PersistentCalls:
       m_Calls: []
@@ -3935,9 +3934,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1405716, y: 2.6460476}
+  m_Offset: {x: -0.14056396, y: 0.48947144}
   serializedVersion: 2
-  m_Radius: 28.780968
+  m_Radius: 57.43268
 --- !u!50 &1071266039
 Rigidbody2D:
   serializedVersion: 4
@@ -5141,7 +5140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1339650155
 Animator:
   serializedVersion: 5
@@ -9141,10 +9140,7 @@ PrefabInstance:
       objectReference: {fileID: 453361472}
     - target: {fileID: 2204124089871327305, guid: 0e09c1d2c348d47dba4827f456e659d3, type: 3}
       propertyPath: m_Text
-      value: "\u5BF9\u5BF9\uFF0C\u77A7\u6211\u8FD9\u8BB0\u6027\u3002\u6211\u7231\u4EBA\u7ECF\u5E38\u542C\u5927\u5E08\u60A8\u7684\u8BFE\u561E\uFF01\u4E00\u4E9B\u4E2D\u6587\u7684\u8BDD\uFF0C\u54C8\u54C8\uFF0C\u6211\u559C\u6B22\u5199\u7801\uFF0C\u6211\u978B\u7801\u5F88\u5C0F\u3002\u7B97\u4E86~~~\u60F3\u4E0D\u51FA\u8BDD\u6765\u4E86\uFF0C\u771F\u5B9E\u7684\uFF0C\u8BA8\u538C\u5566\uFF01\uFF01\u6211\u771F\u662F\u4E2A\u7B28\u86CB\u2026\u2026\u545C\u545Cqwq\u3002Yes,
-        of course, excuse my bad memory, MASTER, such a pleasure ait, I know you,
-        you're...MASTER EIGHT PLUS TWO!! \"I'm yours\"-doesn't it sound familiar
-        and romantic? \u201C\u6211\u662F\u4F60\u7684\u201D\u2014\u2014\u8FD9\u53E5\u8BDD\u542C\u7740\u633A\u6D6A\u6F2B\u3001\u633A\u8033\u719F\u5427\uFF1F/"
+      value: "\u5982\u679C\u53EF\u4EE5\u8FC7\u4E0A\u90A3\u6837\u7684\u65E5\u5B50\uFF0C\u53EA\u8981\u770B\u8D77\u6765\u9B45\u529B\u65E0\u9650\uFF0C\u5C31\u7B97\u91CC\u9762\u8150\u70C2\u6389\u4E5F\u6CA1\u6709\u5173\u7CFB\u2026\u2026\u603B\u6BD4\u505A\u8868\u91CC\u5982\u4E00\u5730\u81ED\u70D8\u70D8\u7684\u5E72\u762A\u7684\u54B8\u9C7C\u8981\u597D\u5427\u3002"
       objectReference: {fileID: 0}
     - target: {fileID: 2204124089871327305, guid: 0e09c1d2c348d47dba4827f456e659d3, type: 3}
       propertyPath: m_FontData.m_Font
@@ -9366,7 +9362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952175148370647753, guid: 9a9aa6f7e859849e480bb0471d018609, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 378
+      value: 379
       objectReference: {fileID: 0}
     - target: {fileID: 1952175148370647753, guid: 9a9aa6f7e859849e480bb0471d018609, type: 3}
       propertyPath: m_AnchoredPosition.y

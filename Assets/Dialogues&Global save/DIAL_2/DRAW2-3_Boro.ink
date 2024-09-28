@@ -18,13 +18,13 @@ boro酱：为什么要问我呢？为什么会觉得我会给你答案呢？#por
 boro酱：每一天、每一天都在视奸那些人气店铺……社交主页广告店面招聘公告老板履历出生星座性格类型……是新品配方还是设计概念……#portrait: boro_1_awkward
 boro酱：什么是潮流的什么是土气的，根本就毫无规律！
 boro酱：为了在大家点评上追求更高的排名只能抛弃尊严地乞求，可即使是这样依然只有平庸到尴尬的3.4…… #portrait: boro_1_keepScratch
-boro酱：受人欢迎的秘密，我也很想要知道啊！#portrait: boro_1_panic #portrait: boro_1_idle
-我：（总觉得，这样的呐喊哪里怪怪的，好像在什么别的地方听过。简直就像是……）#profile: painter_side
-【收集：
-左边：冒出来的文字泡“受人欢迎的秘密，我也很想要知道啊！”
-右边：呐喊的女高中生boro酱
-描述：这一瞬间，老板完全就是一个渴望受欢迎的高中小女生！这、这还是在卖刨冰吗？刨冰对于她究竟意味着什么？
-】
+boro酱：受人欢迎的秘密，我也很想要知道啊！#portrait: boro_1_panic #portrait: boro_1_idle #showObservee: girl
+我：（这样的呐喊哪里怪怪的，好像在什么别的地方听过。简直就像是……）#profile: painter_side 
+//【收集：
+//左边：冒出来的文字泡“受人欢迎的秘密，我也很想要知道啊！”
+//右边：呐喊的女高中生boro酱
+//描述：这一瞬间，老板完全就是一个渴望受欢迎的高中小女生！这、这还是在卖刨冰吗？刨冰对于她究竟意味着什么？
+//】
 我：（就像是青春期女生一样！）#profile: painter_noComment
 我：（这是在搞什么……等等！我好像明白了。）#profile: painter_eyeClosed
 我：老板，这能算是这个头套角色的人设吗？#profile: painter_side
@@ -35,12 +35,12 @@ boro酱：你是说，我的不安是一种人设？#portrait: boro_1_awkward #p
 boro酱：我倒是希望这是一种设定！“人设”什么的，听起来就像是那些食物链顶端的潮人们会搞的东西。#portrait: boro_1_thinking 
 boro酱：潮人呀——就是那些把每个月的收入和零花钱都扔给身后那家酷得不得了的人气商店的家伙！#portrait: boro_1_shy
 boro酱：好焦虑好伤心——我演的！其实我只是想看见你们这些土狗们排着队来安慰我的样子！——啊啊，我也想要变成这样的人啊，拥有很多很多的爱但内心冷酷无情的家伙，她们每天都在想什么？
-boro酱：如果可以过上那样的日子，只要看起来魅力无限，就算里面腐烂掉也没有关系……总比做表里如一的臭烘烘的干瘪咸鱼要好吧。#portrait: boro_1_awkward 
-【收集：
-左边：对话框文字-干瘪咸鱼
-右边：光鲜亮丽褪去，一条失去梦想瘪掉的扁扁的boro酱
-描述：表里如一的咸鱼？嗯，虽说表现如此夸张，但boro酱的本质只是个担忧每日营收的生意人罢了。如果卖不出去就会变成咸鱼……可爱的头套，不过是对生活无奈的伪装。
-】
+boro酱：如果可以过上那样的日子，只要看起来魅力无限，就算里面腐烂掉也没有关系……总比做表里如一地臭烘烘的干瘪的咸鱼要好吧。#portrait: boro_1_awkward #showObservee: saltFish
+//【收集：
+//左边：对话框文字-干瘪咸鱼
+//右边：光鲜亮丽褪去，一条失去梦想瘪掉的扁扁的boro酱
+//描述：表里如一的咸鱼？嗯，虽说表现如此夸张，但boro酱的本质只是个担忧每日营收的生意人罢了。如果卖不出去就会变成咸鱼……可爱的头套，不过是对生活无奈的伪装。
+//】
 boro酱：他们说不用担心呀、要爱自己呀，这样年纪的女孩子光是呼吸就已经足够伟大了……但这样一来，连现在都过得如此惨淡的话，明天不就更无人问津了吗？#portrait: boro_1_keepScratch
 boro酱：我得学会保鲜自己，得学会隐藏那些腥气，我得再努力……#portrait: boro_1_keepScratchFast
 boro酱：……诶？#portrait: boro_2_idle #portrait: boro_1_thinking
@@ -48,13 +48,13 @@ boro酱：啊啊啊抱歉，一不小心就把内心独白给念出来了……�
 boro酱：呵呵，没错，这只是人设！我其实一点也不担心人流量呀知名度呀评价呀什么的，我只是装作很在乎的样子，这就是——这就是我的人设！#portrait: boro_2_turnHeadOnce
 我：…………（天哪……）#profile: painter_side
 我：（我已经被搞糊涂了，我们还在讨论营销的问题吗？这、这还是角色扮演吗？）#profile: painter_sideSweat
-我：（和老板的对话，总给我一种异样感，明明本质上是卖鱼的小贩，但说起话来好像真像中学里的女孩子一样，自身的人气和店铺的人气也混为一谈……这究竟是怎么一回事？）#profile: painter_side
+我：（和老板的对话，总给我一种异样感，明明本质上是卖鱼的小贩，但说起话来好像真像中学里的女孩子一样，自身的人气和店铺的人气也混为一谈……这究竟是怎么一回事？）#profile: painter_side #choiceType: OBSERVEE
 +[提交“咸鱼”：店铺营销罢了！土鳖+]->sells_tactics
 +[提交“呐喊”：她真就是女高中生！潮流+]->really_is_teen
 
 
 ==sells_tactics==
-我：*叹气*老板，你一直都是这样的吗？#profile: painter_norm
+我：*叹气*老板，你一直都是这样的吗？#profile: painter_norm #choiceType: BUTTON
 boro酱：哪样？嗯？#profile: hide
 我：这么入戏。#profile: painter_eyeClosed
 boro酱：……………… #profile: hide
@@ -69,7 +69,7 @@ boro酱：这样做不过分吧？#portrait: boro_2_idle #portrait: boro_2_welco
 ->why_boro
 
 ==really_is_teen==
-我：（也许老板生活中就是个这样性格的小女孩，又很早出来摆摊压力太大，所有的事情就都搅合在一起了。）#profile: painter_eyeClosed #bgm: 日常_1
+我：（也许老板生活中就是个这样性格的小女孩，又很早出来摆摊压力太大，所有的事情就都搅合在一起了。）#profile: painter_eyeClosed #bgm: 日常_1 #choiceType: BUTTON
 我：（……虽然听起来有点奇怪，但总觉得可以理解。我们搞艺术的不也是这样的人吗？生活、创作、生意、人格、价值……这些全都变成了同一回事。）#profile: painter_norm
 我：（虽然摆摊赚钱和画画完全是两回事，但谁说卖刨冰的人就不是艺术家呢？）
 我：（或许不用分得那么清楚。boro酱就是这样真诚的人，这就是她的生存之道！）#profile: painter_happy
