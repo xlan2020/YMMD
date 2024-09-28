@@ -7,6 +7,8 @@ public class MapPlayer : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator animator;
     float speed = 16000f;
+    float originalSpeed;
+    float speedAcceleration = 3f;
     // [SerializeField] UI_Inventory uiInventory;
     private bool canMove = true;
     public PlayerUIManager uiManager;
@@ -25,6 +27,7 @@ public class MapPlayer : MonoBehaviour
 
     private void Awake()
     {
+        originalSpeed = speed;
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         //speed *= 100f;
@@ -36,6 +39,8 @@ public class MapPlayer : MonoBehaviour
     void Start()
     {
         UpdateCanMove();
+        rb.mass = 10f;
+        rb.drag = 10f;
     }
     private void Update()
     {
@@ -60,6 +65,20 @@ public class MapPlayer : MonoBehaviour
             {
                 sprite.flipX = false;
             }
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                // accelerate
+                speed *= speedAcceleration;
+                animator.SetFloat("speedMultiplier", 2f);
+
+            }
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                // norm speed
+                speed = originalSpeed;
+                animator.SetFloat("speedMultiplier", 1f);
+            }
+
         }
 
     }
