@@ -20,6 +20,8 @@ public class ObserveeManager : MonoBehaviour
     public Text speakTextBox;
 
     private Dictionary<string, Observee> observeeDict;
+    private const string defaultDescription = "暂且没什么想法。";
+    private const string defaultDescription_EN = "Nothing much to say. ";
 
     // Start is called before the first frame update
     void Awake()
@@ -35,6 +37,10 @@ public class ObserveeManager : MonoBehaviour
         }
 
         descriptionAnimator = descriptionBox.GetComponent<Animator>();
+    }
+    void Start()
+    {
+        setDescriptionDefault();
     }
 
 
@@ -56,6 +62,24 @@ public class ObserveeManager : MonoBehaviour
         AudioSource source = descriptionBox.GetComponent<AudioSource>();
         source.Play();
         descriptionText.text = description;
+    }
+
+    private void setDescriptionDefault()
+    {
+        string descri = "";
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                descri = defaultDescription;
+                break;
+            case 1:
+                descri = defaultDescription_EN;
+                break;
+            default:
+                descri = defaultDescription;
+                break;
+        }
+        SetDescription(descri);
     }
 
 
@@ -142,6 +166,9 @@ public class ObserveeManager : MonoBehaviour
             dissolveEffect.StartDissolve(2f);
             dissolveEffect.SetDestroyObjects(dissolveObjects);
         }
+
+        // reset description text
+        setDescriptionDefault();
     }
 
 
