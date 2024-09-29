@@ -84,21 +84,21 @@ boro酱：我早就过了要被人喜欢的年纪啦。#bgm: 戏谑_1
 我：…………嗯？#profile: painter_norm
 我：等等！我以为……你是…… #profile: painter_surprised
 boro酱：呵呵，以为我是小女娃吗？#profile: hide #portrait: boro_2_glad
-我：（小、女、娃？这是哪个年代的词？）#portrait: boro_2_welcome #profile: painter_sideSweat
-【收集：
-左边：boro酱拿着刨冰的手（拿刨冰的那个动作）
-右边：放大的粗糙的手
-咦？这双手，并不像一般少女那样柔嫩。
-】
+我：（小、女、娃？这是哪个年代的词？）#portrait: boro_2_welcome #profile: painter_sideSweat #showObservee: roughHand #choiceType: OBSERVEE_CANSKIP
+//【收集：
+//左边：boro酱拿着刨冰的手（拿刨冰的那个动作）
+//右边：放大的粗糙的手
+//咦？这双手，并不像一般少女那样柔嫩。
+//】
 +[没发现]->no_discovery
 +[观察鲍罗的手（土鳖+）]->hand
 
 ==no_discovery==
-我：（这个头套人“boro酱”究竟是什么来头？）
+我：（这个头套人“boro酱”究竟是什么来头？）#profile: painter_side #choiceType: BUTTON
 ->why_boro
 
 ==hand==
-我：（仔细看来，她的手……）#profile: painter_side
+我：（仔细看来，她的手……）#profile: painter_side #choiceType: BUTTON
 我：（可真是一双饱经沧桑的手啊！）#profile: painter_sideSweat
 我：（这个头套人“boro酱”究竟是什么来头？）
 ->why_boro
@@ -128,33 +128,31 @@ boro酱：你们会爱上的，你们会上瘾的——对我，也对这闻起�
 boro酱：诶！#portrait: boro_2_idle #portrait: boro_2_glad #profile: hide 
 我：好吧，我好像懂了，好像又没有。#profile: painter_norm
 我：不过，你猜你口中的“吃”，或许是想说，女孩子和刨冰都是被消费的形象？你知道，“消费”这个词同时有“物化”“购买”和“吃”的意思。
-我：你想让它保持臭臭的，是因为大家总觉得少女就应该甜美无害，再给她们很多的枷锁。
-我：我明白了！我知道“boro酱”背后的理念了！你想要刨冰摊看起来粉粉嫩嫩，闻着却有种反差。然而，在仔细感受后才能够真正理解，才能爱上真实的她！
-【收集：
-左边：理念-画家对boro酱理念的bulabula学术文字铺满背景，具体内容参考上文（或者其他表达方式）
-右边：高级、时尚、独立的boro酱招牌，以潮人们最喜欢的形式出现。或者是网上帖子标题。里面有boro酱的形象。
-描述：打破对少女们甜美无害的刻板印象，迎接真实的自我——这一定就是boro酱的核心理念！哦，自由的她简直就是少女们的偶像！
-】
-“boro酱”的理念，可能是拖拽boro酱招牌】
+我：你想让它保持臭臭的，是因为大家总觉得少女就应该甜美无害，再给她们很多的枷锁。#portrait: boro_1_idle #portrait: boro_1_thinking
+我：我明白了！我知道“boro酱”背后的理念了！你想要刨冰摊看起来粉粉嫩嫩，闻着却有种反差。然而，在仔细感受后才能够真正理解，才能爱上真实的她！#showObservee: concept
+//【收集：
+//左边：理念-画家对boro酱理念的bulabula学术文字铺满背景，具体内容参考上文（或者其他表达方式）
+//右边：高级、时尚、独立的boro酱招牌，以潮人们最喜欢的形式出现。或者是网上帖子标题。里面有boro酱的形象。
+//描述：打破对少女们甜美无害的刻板印象，迎接真实的自我——这一定就是boro酱的核心理念！哦，自由的她简直就是少女们的偶像！
+//】
 boro酱：噢。#profile: hide 
 我：是这样吗？#profile: painter_side 
 boro酱：我也不知道呀。……呃，我只是比较喜欢臭豆腐。#profile: hide #portrait: boro_1_shy #portrait: boro_1_idle 
-boro酱：奂门别的没有，海鲜多得是。我就觉得，我们刨冰界应该也有自己的臭豆腐。
-【收集：臭豆腐的念头
-左边：boro酱思考文字泡里面有个臭豆腐
-右边：非常土的boro刨冰招牌/广告。里面有boro酱的形象。】
-描述：刨冰界自己的臭豆腐……臭豆腐……原来boro刨冰是这么接地气的产品改良？一下子格调就变了。
-】
+boro酱：奂门别的没有，海鲜多得是。我就觉得，我们刨冰界应该也有自己的臭豆腐。#showObservee: tofu
+//【收集：臭豆腐的念头
+//左边：boro酱思考文字泡里面有个臭豆腐
+//右边：非常土的boro刨冰招牌/广告。里面有boro酱的形象。】
+//描述：刨冰界自己的臭豆腐……臭豆腐……原来boro刨冰是这么接地气的产品改良？一下子格调就变了。】
 我：……………………………… #profile: painter_sideSweat
 我：当我没说。#profile: painter_eyeClosed
 我：（这老板还是有点让人捉摸不透。明明会说很朴实的话，但又突然就会情绪激动起来。那些疯疯癫癫的话全都是角色扮演吗？）#portrait: boro_1_thinking
 boro酱：怎么能被潮流喜爱？我也试过，老老实实地卖甜甜的刨冰，却没能讨到好来。#profile: hide #portrait: boro_2_idle #portrait: boro_2_welcome
-boro酱：但你看呀，我现在卖的刨冰，下面是冰块，上面是鱼肉，它像什么？
+boro酱：但你看呀，我现在卖的刨冰，下面是冰块，上面是鱼肉，它像什么？#choiceType: OBSERVEE
 +[高级刺身拼盘（提交理念）（潮流+）]->sashimi
 +[海鲜市场水产（提交臭豆腐）（土鳖+）]->vendor
 
 ==sashimi==
-我：像是高级料理店的刺身拼盘。#profile: painter_side
+我：像是高级料理店的刺身拼盘。#profile: painter_side #choiceType: BUTTON
 boro酱：是呀，明明只是切成片的鱼，大家却愿意花那么多钱去吃它。#profile: hide 
 boro酱：这世界上有那么多鱼，但能被做成刺身的，只有那些有价值的“好”鱼。
 boro酱：我的鱼鱼冰，能算得上好鱼吗？#portrait: boro_1_idle #portrait: boro_1_thinking
@@ -162,7 +160,7 @@ boro酱：我的鱼鱼冰，能算得上好鱼吗？#portrait: boro_1_idle #port
 
 
 ==vendor==
-我：像是海鲜市场的水产摊。#profile: painter_side
+我：像是海鲜市场的水产摊。#profile: painter_side #choiceType: BUTTON
 boro酱：哈！你也觉得像吧？呵呵，那些垫在下面的冰，只是为了让鱼保持新鲜才存在的。#profile: hide #portrait: boro_2_turnHeadOnce #portrait: boro_2_welcome
 boro酱：但在我的鱼鱼冰里，它却成了刨冰的本体，用来卖钱。
 boro酱：你说，我这么做算不算是黑心商家呢？#portrait: boro_1_idle #portrait: boro_1_thinking

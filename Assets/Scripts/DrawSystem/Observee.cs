@@ -188,9 +188,12 @@ public class Observee : MonoBehaviour
         // change grab state
         manager.SetCursorBool("grab", true); //change to to right cursor when not collected
 
+        // set description (originally on drop)
+        manager.SetDescription(getDescription());
+
     }
 
-    private void OnMouseUp()
+    private string getDescription()
     {
         string descri = "";
         switch (GameEssential.localeId)
@@ -205,6 +208,11 @@ public class Observee : MonoBehaviour
                 descri = description;
                 break;
         }
+        return descri;
+    }
+    private void OnMouseUp()
+    {
+        string descri = getDescription();
 
         // change it back to default
         manager.cursor.ChangeGrabSprite("grab");
@@ -221,7 +229,7 @@ public class Observee : MonoBehaviour
         if (!isCollected && isAtRight)
         {
             manager.MarkAsCollected(this);
-            manager.SetDescription(descri);
+            //manager.SetDescription(descri);
             this.SaveSnapPosRight();
             return;
         }
@@ -240,7 +248,7 @@ public class Observee : MonoBehaviour
         {
             // snap
             gameObject.transform.position = snapPosRight;
-            manager.SetDescription(descri);
+            //manager.SetDescription(descri);
             return;
         }
 
@@ -249,7 +257,7 @@ public class Observee : MonoBehaviour
         if (isCollected && isAtRight)
         {
             SaveSnapPosRight();
-            manager.SetDescription(descri);
+            //manager.SetDescription(descri);
             return;
         }
     }
