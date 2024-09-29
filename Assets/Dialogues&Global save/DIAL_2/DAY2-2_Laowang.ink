@@ -29,7 +29,7 @@ INCLUDE ../global.ink
 我：大爷，您误会了，我没说旧货不好，我其实很喜欢…… #profile: painter_side
 老王：店里可没有二手货！你瞅瞅，这标上的墨水都泛着油光呢！#profile: laowang_mad
 我：……好，我知道了。#profile: painter_side
-我：（王大爷清楚东西的成本，靠置换进货的心理价格就比市价低了，确实有利润。不过厂家……直接把做好的商品换成钱？#profile: painter_norm
+我：（王大爷清楚东西的成本，靠置换进货的心理价格就比市价低了，确实有利润。不过厂家……直接把做好的商品换成钱？）#profile: painter_norm
 我：（听起来，置换系统就像是一个完美无缺的中介、世界的运输中枢。）
 我：（……真是，听起来越完美就越不祥。）#profile: painter_eyeClosed
 老王：常来看，店里东西每天都上新啊！#profile: laowang_norm
@@ -65,6 +65,10 @@ INCLUDE ../global.ink
 老王：八减二……红色长发……对对，我见过这小子。哈！没记错没记错，就是他！他咋样啊？#profile: laowang_think
 我：……挺好的。#profile: painter_sideSweat
 老王：那好！哎，我记得呢，他爱来店里转，买过好几次<color=red>小人书</color>。#profile: laowang_norm
+老王：画家，你不买点啥吗？#profile: laowang_pleased
++[让我看看。]
+->shop
++[还是算了。]
 ->come_buy
 
 ==whom==
@@ -77,11 +81,21 @@ INCLUDE ../global.ink
 老王：………………总爱来买东西的……好姑娘…… #profile: laowang_think
 老王：一对儿常客。#profile: laowang_norm
 老王：行，满意了不？我就想起来了一对儿常客！一个只管挑一个只管买。画家，要不也上店里来看看？#profile: laowang_pleased
++[让我看看。]
+->shop
++[还是算了。]
 ->come_buy
 
 ==dont_ask==
 我：（都说是认错人了，那也没什么好问的。）#profile: painter_norm
 ->come_buy
+
+==shop==
+我：我看看啊。
+我：…… #event
+我：谢谢您嘞！
+->come_buy
+
 
 ==come_buy==
 老王：店里每天都靠置换上新，货架就在那，自己随便挑哈！#profile: laowang_norm

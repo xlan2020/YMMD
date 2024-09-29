@@ -9,4 +9,15 @@ INCLUDE ../global.ink
 我：（还是算了。）#profile: painter_norm
 ->DONE
 
+
+：Enter the Institute of Fantastic Creatures?#profile: hide
++ [Yes]
+Me：(Can't wait to chat with Seanamae.)#profile: painter_norm
+：#loadScene
+->DONE
+
++ [No]
+Me：(Maybe later/)#profile: painter_norm
+->DONE
+
 //tattooshop这个作为之后地图对话模板吧，毕竟每天要load的scene名字都不同，之后再想想。

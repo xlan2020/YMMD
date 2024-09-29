@@ -16,7 +16,7 @@ System：As an item's durability reduces, its displacement value will change.
 Me：(These stuff are good enough for doodling, but for a commission...) Is it really okay with you if I paint with soy sauce?#profile: painter_side 
 8-2：Of course! Play around and blow me away with something that isn't boring.#portrait:8-2_laugh #profile: none
 System：Different drawing materials will have different effects on the image, with four attributes--stable, organic, experimental, and premium.
-System：Using materials with different attributes will affect the earnings of the current commission. Try to pick something according to the customer's preference!
+System：Using materials with different attributes will affect the earnings of the current commission. Try to pick something according to the client's preference!
 System：You can now choose the drawing material.
 Me：(If "<color=magenta>blow me away</color>" count as a demand, I should probably use some <color=magenta>experimental</color> materials. Of course, the choice is still mine. There's nothing smoother than pencils after all.)#profile: painter_side #drawingSystem: selectMaterial
 ->select_material_and_draw
@@ -40,7 +40,7 @@ Me：(The first step of drawing is <color=magenta>observation</color>. Besides t
 Me：(Observe 8-2 closely. Is there anything worth <color=magenta>capturing</color>?）
 System：In the process of drawing, <color=magenta>observation points</color> that can be captured would occur on the screen.
 System：Click the <color=magenta>left mouse button</color> on an observation point and <color=magenta>drag</color> it into the <color=magenta>conception window</color>, the observation point will be transformed into an <color=magenta>inspiration</color>.#showObservee: face
-System：The painter may hold multiple inspirations at the same time. In this case, you should choose carefully. The inspiration you choose will change the outcome of the painting. It also determines the painter's attitude towards the customer, therefore changing the story between them.#portrait: 8-2_norm2
+System：The painter may hold multiple inspirations at the same time. In this case, you should choose carefully. The inspiration you choose will change the outcome of the painting. It also determines the painter's attitude towards the client, therefore changing the story between them.#portrait: 8-2_norm2
 System：Present the inspiration on the <color=magenta>canvas</color> to continue drawing.
 System：The canvas is lighted up. Try dragging and dropping the inspiration onto the canvas!#choiceType: OBSERVEE
 +[Submit]->mama_appears
@@ -126,7 +126,7 @@ Me：......#profile: painter_side
 Me：(When I think about it this way, I did wake up in a weird way today.)#profile: painter_sideSweat
 Me：(This dude obviously knows a lot about displacement. Should I listen to what he had to say?)#profile: painter_norm
 System：There are two different inspirations at hand, and you'll have to make a <color=magenta>choice</color>.
-System：Choosing different inspirations would determine how the painting looks like as well as the painter's <color=magenta>understanding</color> and <color=magenta>attitude</color> regarding the customer. It might change the future!
+System：Choosing different inspirations would determine how the painting looks like as well as the painter's <color=magenta>understanding</color> and <color=magenta>attitude</color> regarding the client. It might change the future!
 Me：(I have to make a choice here... Can I trust 8-2?)#choiceType: OBSERVEE
 +[Help me, master]->teach_me
 
