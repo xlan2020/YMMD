@@ -417,13 +417,13 @@ INCLUDE ../global.ink
 我：咦？#profile: painter_stunned #event: showLighter
 海名：哇哦，好有格调的打火机。可惜没摸出一包烟，不然就真是惊喜了。#portrait: haiming_3_pushGlass
 我：……#profile: painter_stunned
-我：我不抽烟。#bgm: fade_0.2_0 #bgm: pause
+我：我不抽烟。#bgm: fade_0.2_0 
 海名：这样吗？呵呵，我之前也没留意……#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
 海名：………………哎？#portrait: haiming_1_smile
 我：…………………… #profile: painter_stunned
 海名：…………………… #profile: hide #portrait: haiming_1_squint
 海名：………为什么你兜里会有打火机？#portrait: haiming_1_dazed
-我：对呀，为什么呢？#bgm: play #bgm: fade_5_0.2 #bgm: 紧张_0.1  #profile: painter_stunned
+我：对呀，为什么呢？#bgm: 紧张 #bgm: fade_5_0.2   #profile: painter_stunned
 海名：…… #portrait: haiming_2_idle #portrait: haiming_2_think #profile: hide
 海名：给我看看。#portrait: haiming_2_seeYou 
 海名：是美人鱼的造型呢。#portrait: haiming_2_know #event: giveLighter
@@ -469,9 +469,9 @@ INCLUDE ../global.ink
 海名：咦？还挺高档的，摁头和尾巴出现得火焰颜色不同……蓝紫色的？好神奇，灌了两种油吧……#profile: hide #portrait: haiming_2_thinkSquint #event: lightUp
 我：*脸色一白*…… #profile: painter_sideSweat #event: lightUp
 海名：画家？怎么了？#profile: hide #portrait: haiming_2_seeYou 
-我：呕……鲛人油灯…… #profile: painter_sideSweat #event: lightUp
-海名：那种东西不存在啦！……哎呀，说出来了。#portrait: haiming_2_doubt #profile: hide
-我：你到底信不信啊？其实研究神秘生物只是看乐子吧？算了，这个也不是现在的重点…… #profile: painter_side #portrait: haiming_2_think
+我：呕……鲛人油灯…… #profile: painter_sideSweat
+海名：那种东西不存在啦！……哎呀，说出来了。#portrait: haiming_2_seeYouDoubt #profile: hide 
+我：你到底信不信啊？其实研究神秘生物只是看乐子吧？算了，这个也不是现在的重点…… #profile: painter_side #portrait: haiming_2_think #event: lightUp
 海名：看起来是有使用过的痕迹，表面有点划痕，两管油都空了一半。大概，也不是画家准备送人的礼物，而就算是别人给你的，也被画家之外的人用过。#portrait: haiming_2_thinkSquint #profile: hide #event: lightUp
 海名：是很亲密的人吧？会把打火机揣在你的兜里。#portrait: haiming_2_seeYou
 我：早上，王大爷对我说过一句话：“你没和那个谁一起吗？”然后就说自己记错人了。#profile: painter_eyeClosed
