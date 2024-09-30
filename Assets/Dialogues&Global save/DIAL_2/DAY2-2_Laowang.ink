@@ -91,9 +91,9 @@ INCLUDE ../global.ink
 ->come_buy
 
 ==shop==
-我：我看看啊。
+我：我看看啊。#profile: painter_norm
 我：…… #event
-我：谢谢您嘞！
+我：谢谢您嘞！#profile: painter_happy
 ->come_buy
 
 
