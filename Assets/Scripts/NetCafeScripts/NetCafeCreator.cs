@@ -12,7 +12,6 @@ public class NetCafeCreator : MonoBehaviour
     public Transform uiParent;  // NetCafeUIManager放置的父物体（如Canvas）
 
     private string netCafePrefabAddress = "Assets/prefab/NetCafePrefabs/NetCafeUIPrefab.prefab"; //NetCafePrefab的Addressable地址
-    private string localeNetCafePrefabAdress = "Assets/prefab/NetCafePrefabs/EN_NetCafeUIPrefab.prefab";
     private GameObject netCafeInstance;
 
     // 按钮点击时调用的创建函数
@@ -36,22 +35,7 @@ public class NetCafeCreator : MonoBehaviour
             return;
         }
 
-        switch (GameEssential.localeId)
-        {
-            case 0:
-                Addressables.LoadAssetAsync<GameObject>(netCafePrefabAddress).Completed += OnNetCafePrefabLoaded;
-                break;
-            case 1:
-                Addressables.LoadAssetAsync<GameObject>(localeNetCafePrefabAdress).Completed += OnNetCafePrefabLoaded;
-                break;
-            default:
-                Addressables.LoadAssetAsync<GameObject>(netCafePrefabAddress).Completed += OnNetCafePrefabLoaded;
-                break;
-        }
-        
-
-        
-        
+        Addressables.LoadAssetAsync<GameObject>(netCafePrefabAddress).Completed += OnNetCafePrefabLoaded;
     }
 
     // 加载 Prefab 完成后的回调函数
