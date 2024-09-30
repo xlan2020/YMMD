@@ -1,4 +1,5 @@
 INCLUDE ../global.ink
+->pink
 boro酱：喏，碗底就是刨冰，小料就是这些了，怎么用也帮你标好了，你看着办吧。 #profile: hide #portrait: boro_2_idle #portrait: boro_welcome #bgm: 日常_0.1 #drawingSystem: addBinaryVal_50
 系统：看来，画家有一些不同寻常的新活了。//Sherry Note: 最近看多了知乎网文，总觉得“系统”怪怪的，能不能就空格冒号“ ：”（。）
 系统：有些顾客会提供用在画作里的<color=green>指定材料</color>，比如boro酱的刨冰创作，就一定要用刨冰、酱汁和小料完成。#drawingSystem: showMaterialWindow
@@ -230,12 +231,9 @@ boro酱：………………………………… #profile: hide
 boro酱：啊啊啊啊啊我不看！#profile: hide #portrait: boro_2_idle #portrait: boro_2_escape
 我：请你看看！#profile: painter_alert
 boro酱：我不看我不看我不看………… #profile: hide #portrait: boro_2_turnHead #portrait: boro_noEXPR
-// 这里不知道为什么不work
-我：求您看看！！！#profile: painter_angry 
-+[递出鳞片]->see_scale
-
-==see_scale==
-boro酱：我不看我不看我不看我不看我不………… #profile: hide #portrait: boro_2_turnHeadFast
+// 这里动画不知道为什么不work
+我：求您看看！！！#profile: painter_angry #event: showScale
+boro酱：我不看我不看我不看我不看我不………… #profile: hide #portrait: boro_2_turnHeadFast 
 boro酱：…………噶。#portrait: boro_3_idle #portrait: boro_3_silence #bgm: fade_1_0
 boro酱：啊，看到了。
 boro酱：………
@@ -254,7 +252,7 @@ boro酱：把食物刷上色素，伪造成很诱人很华丽的样子，这种�
 我：…………（她刚才的慌张似乎完全消失了。）#profile: painter_norm
 我：老板，我可以相信你吗？#profile: painter_side 
 boro酱：当然，boro酱一直很诚实啦！#profile: hide #portrait: boro_1_keepScratch #portrait: boro_1_panic
-我：……您是什么人？#profile: painter_side #portrait: boro_1_keepScratchFast 
+我：……您是什么人？#profile: painter_side #portrait: boro_1_keepScratchFast #event: hideScale
 boro酱：………… #profile: hide #portrait: boro_3_idle #portrait: boro_3_silence
 我：不怕您笑话，我正在寻找我梦中的那条美人鱼。#profile: painter_eyeClosed
 我：她身上总有伤口，血溶在水里。
