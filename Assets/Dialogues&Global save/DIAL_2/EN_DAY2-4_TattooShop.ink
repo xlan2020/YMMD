@@ -27,6 +27,7 @@ Me：...Ha. I'll find a way...#profile: painter_selfMock
 ->enter_tatoo_shop
 + [Wait]
 Me：I still have time for strolling around. #profile: painter_selfMock
+->DONE
 
 ==enter_tatoo_shop==
 ：#loadScene: DAY2-5_TattooShop
