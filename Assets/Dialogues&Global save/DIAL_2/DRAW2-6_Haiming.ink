@@ -12,13 +12,17 @@ INCLUDE ../global.ink
 
 ==theme==
 我：没问题。题材还是“海底怪兽”，对吧？#profile: painter_side
-海名：没错。我这里姑且也有个店名，就叫“神秘生物研究所”，怪兽、异兽、神兽，不管是古籍史册还是坊间传闻，甚至漫画里的怪物，都是我的创作主题。#portrait: haiming_3_pushGlass #profile: hide
-【捕捉：
-左边：海名发饰中的海蛞蝓
-右边：细致的海蛞蝓（说起来鹅鹅demo的时候好像p过这个图，我回头发来看看要不要直接用）
-描述：这家伙的发饰，似乎是一种海洋生物？不过，总觉得和神秘还有些距离。
-】
-我：能看出来。海蛞蝓、水母……说起来，这些都是浅海就能看到的生物，甚至奂门都有。而“海底怪兽”，是住在深海的吧？#profile: painter_side
+海名：没错。我这里姑且也有个店名，就叫“神秘生物研究所”，怪兽、异兽、神兽，不管是古籍史册还是坊间传闻，甚至漫画里的怪物，都是我的创作主题。#portrait: haiming_3_pushGlass #profile: hide 
+我：（她的确对这些事情痴迷，这一点从<color=green>发饰</color>就能看出来。不过，有一点……）#showObservee: seaSlug #choiceType: OBSERVEE
+//【捕捉：
+//左边：海名发饰中的海蛞蝓
+//右边：细致的海蛞蝓（说起来鹅鹅demo的时候好像p过这个图，我回头发来看看要不要直接用）
+//描述：这家伙的发饰，似乎是一种海洋生物？不过，总觉得和神秘还有些距离。】
++[海蛞蝓提交]
+->theme_continue
+
+==theme_continue==
+我：海蛞蝓、水母……说起来，这些都是浅海就能看到的生物，甚至奂门都有。而“海底怪兽”，是住在深海的吧？#profile: painter_side #choiceType: BUTTON
 海名：很敏锐嘛。#profile: hide #portrait: haiming_3_squint
 海名：我也在想，我的脑袋里是不是也有点老学究的古板，一面喜欢幻想题材，另一面，又偏要找出传说和这些可以触及的东西之间的联系。#portrait: haiming_3_norm
 我：从一个画家的角度来说，这就像是写生练习？就算最终要创作出不存在的事物，也得先参考这些肉眼可见的事物。#profile: painter_side 
@@ -34,14 +38,12 @@ INCLUDE ../global.ink
 海名：咦？难道是因为我成了你的“顾客”，所以才会一下子讲这么多话吗？#portrait: haiming_1_wink
 海名：也许，画家也是个危险的职业呢。#portrait: haiming_1_squint
 我：危险？#profile: painter_side
-【bonus捕捉：危险的职业
-待定，没想好怎么做
-】
+//【bonus捕捉：危险的职业. 待定，没想好怎么做】
 海名：这样吧，告诉你一个秘密。#profile: hide #portrait: haiming_1_smile #bgm: fade_1_0.5
 我：秘密？#profile: painter_side
 海名：不过，我得要你的一个秘密来交换。#portrait: haiming_1_squint #profile: hide #bgm: fade_0.1_0.1
-+[错过bonus]->sure
-+[危险的职业]->danger
++[好呀！]->sure
++[……]->danger
 
 ==sure==
 我：没问题，你说吧。#profile: painter_side #bgm: fade_0.2_1
@@ -61,13 +63,12 @@ INCLUDE ../global.ink
 我：（吓死我了，还以为她真是什么秘密侦探呢。）#profile: painter_sideSweat #portrait: haiming_3_norm
 我：（画家、数学家、痕迹学家……呵呵，看来给自己的找个名号来依托是人之常情。）#profile: painter_side
 海名：痕迹学，就是研究物品因置换而消失后所留下的痕迹的学说。#portrait: haiming_2_idle #portrait: haiming_2_think
-海名：万物消失之后必将留下痕迹，只是痕迹常常被人遗忘。而追寻痕迹，却是人重新获得存在的自主性的方式。#portrait: haiming_2_seeYouKnow
-【捕捉：痕迹学家
-左边：认真的海名haiming_2_seeYouKnow这个表情
-右边：“痕迹学家”——眼镜反光的睿智学者海名，和一堆书卷
-描述：海名现在的样子，像是个真正埋首学术的学者！只要研究“痕迹”这种课题，就能找回消失的历史吗？
-】
-
+海名：万物消失之后必将留下痕迹，只是痕迹常常被人遗忘。而追寻痕迹，却是人重新获得存在的自主性的方式。#portrait: haiming_2_seeYouKnow 
+我：（她的<color=green>神色</color>一下子变得好认真。）#showObservee: traceScholar
+//【捕捉：痕迹学家
+//左边：认真的海名haiming_2_seeYouKnow这个表情
+//右边：“痕迹学家”——眼镜反光的睿智学者海名，和一堆书卷
+//描述：海名现在的样子，像是个真正埋首学术的学者！只要研究“痕迹”这种课题，就能找回消失的历史吗？】
 海名：除了研究作为痕迹载体的物品——比如说，你的丈夫消失之后留在浴室的刮胡刀——，我们也研究留下痕迹的行为，研究遗忘的机制。
 海名：学界也是在一年前克莱拉·崔西那篇《论痕迹研究在逆转置换事故中的应用》之后才正式承认痕迹学的存在的，在那之前，所有人都当我们是妄想症和闭门造车的偏执狂。#portrait: haiming_2_frown #profile: hide 
 海名：但为了写出这篇数据详实的论文，崔西几乎掏空了自己的一切，又通过痕迹把一切都寻了回来……真的是个奇迹。#portrait: haiming_2_think
@@ -81,12 +82,11 @@ INCLUDE ../global.ink
 我：这样想的话，纹身其实也是一种痕迹？#profile: painter_stunned #portrait: haiming_3_pushGlass #portrait: haiming_3_norm
 我：就像是人生节点的印记之类的。#profile: painter_norm
 海名：自然是这样。甚至，就算是随意的图案、随意的一天，也会因为自己选择去受一小顿皮肉之苦而有了含义。#profile: hide #portrait: haiming_3_squint
-海名：只是，自置换之后，覆盖纹身的工作就变多了。#portrait: haiming_3_cold #bgm: 悬疑_3
-【捕捉：覆盖纹身
-左边：“覆盖文身四个字”
-右边：戴着手套口罩，拿着覆盖纹身器械的没有感情的杀（wenshen）手（shi）海名，和一些空气中消失的纹身
-描述：没想到，一名纹身师接过最多的任务是消灭过往的痕迹。覆盖纹身……就好像把历史给丢掉了。
-】
+海名：只是，自置换之后，覆盖纹身的工作就变多了。#portrait: haiming_3_cold #bgm: 悬疑_3 #showObservee: coverTattoo
+//【捕捉：覆盖纹身
+//左边：“覆盖文身四个字”
+//右边：戴着手套口罩，拿着覆盖纹身器械的没有感情的杀（wenshen）手（shi）海名，和一些空气中消失的纹身
+//描述：没想到，一名纹身师接过最多的任务是消灭过往的痕迹。覆盖纹身……就好像把历史给丢掉了。】
 我：因为人们会忘记。#profile: painter_stunned
 海名：我覆盖过最多的图案，其实是文字。 #profile: hide 
 海名：有一些是名字。#portrait: haiming_3_pushGlass
@@ -99,9 +99,9 @@ INCLUDE ../global.ink
 //S note：玩的时候感觉之前的有点不自然，改了一下
 我：这是我的秘密，和你交换。#profile: painter_side #bgm: 日常_1 #portrait: haiming_2_seeYouSquint
 海名：洗耳恭听。#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
-我：*递出鱼鳞*这就是我的痕迹。#profile: painter_norm
+我：这就是我的痕迹。#profile: painter_norm #event: showScale
 海名：鱼鳞？#profile: hide #portrait: haiming_2_idle #portrait: haiming_2_think
- ：海名小心翼翼地接过鳞片。【手上动画变化】#portrait: haiming_2_thinkSquint
+ ：海名小心翼翼地接过鳞片。#portrait: haiming_2_thinkSquint #event: giveScale
 我：你明信片里问过怎么联系不上我，其实，就在昨天，我大概是遭遇了一起置换事故。#profile: painter_depressed 
 我：我的东西全没了，只剩下这枚鱼鳞。不要问我它是什么。#profile: painter_eyeClosed
 海名：我明白了。#profile: hide #portrait: haiming_2_know
@@ -109,12 +109,12 @@ INCLUDE ../global.ink
 海名：没想到画家也有一天，会露出和我的客人这么相似的神情。我理解你。#profile: hide #portrait: haiming_2_seeYou
 海名：不过，画家今天在我面前拿出这枚“痕迹”，是为了什么呢？#portrait: haiming_2_seeYouKnow
 我：为了……什么？
-海名：作为纹身师，我的工作是覆盖痕迹。作为痕迹学家，我只会刨根问底。画家，你希望我怎么帮助你呢？#bgm: fade_0.2_1 #portrait: haiming_2_seeYouSquint
+海名：作为纹身师，我的工作是覆盖痕迹。作为痕迹学家，我只会刨根问底。画家，你希望我怎么帮助你呢？#bgm: fade_0.2_1 #portrait: haiming_2_seeYouSquint #choiceType: OBSERVEE
 +[痕迹学家（+追忆）]->findOut
 +[纹身师（+遗忘）]->cover
 
 ==findOut==
-我：我当然想知道鳞片的来历。#profile: painter_side
+我：我当然想知道鳞片的来历。#profile: painter_side #choiceType: BUTTON
 海名：就知道你会这么说。#profile: hide #portrait: haiming_2_seeYouKnow
 海名：这枚鳞片，就是痕迹的载体。#portrait: haiming_2_know
 我：海洋生物爱好者，能看出它是什么吗？#profile: painter_side
@@ -131,9 +131,9 @@ INCLUDE ../global.ink
 ->mermaid
 
 ==cover==
-我：如果能彻底忘记就好了。#profile: painter_side 
+我：如果能彻底忘记就好了。#profile: painter_side #choiceType: BUTTON
 我：就当是删档从来！重生之我是大画家！……之类的。
-海名：这枚鳞片让你很困扰。#profile: hide #portrait: haiming_2_seeYou
+海名：这枚鳞片让你很困扰。#profile: hide #portrait: haiming_2_seeYou 
 海名：有没有想过置换走它？#portrait: haiming_2_seeYouSquint
 我：…… #profile: painter_side
 我：………………不。#portrait: haiming_2_seeYou
@@ -156,7 +156,7 @@ INCLUDE ../global.ink
 我：我想、我猜……我不知道，但就在我摸着鳞片……不、喝了鳞片水之后……不要问我为什么，总之，就画出了一条美人鱼。#profile: painter_side 
 我：好吧，根本就是毫无根据。#profile: painter_sideSweat
 海名：可以给我看看画吗？#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_smile
-我：没问题，我正好夹在画箱里。#profile: painter_side #portrait: haiming_1_squint
+我：没问题，我正好夹在画箱里。#profile: painter_side #portrait: haiming_1_squint 
 我：喏。 
 海名：……很美丽呢。#portrait: haiming_2_idle #portrait: haiming_2_know 
 【event：海名手里出现画】
@@ -502,24 +502,4 @@ INCLUDE ../global.ink
 我：………………嗯……好。#profile: painter_side
 我：………………
 +[递出未完成的画作]
-
 ->END
-
-
-
-
-==older_test==
-我：我以为纹身师都会更……呃，就是打扮上，会更……#profile: painter_side #portrait: haiming_3_norm
-海名：更亚一点？#profile: hide 
-我：……对。#profile: painter_side
-海名：也许，这是因为我还有另一个职业。#profile: hide
-海名：我是一名痕迹学家。#portrait: haiming_3_smile
-我：（画家、数学家、旅行家……呵呵，看来给自己的找个名号来依托是人之常情。）#profile: painter_side
-我：痕迹学家……有意思。我还是第一次听说。#profile: painter_side
-海名：学界也是在一年前克莱拉·崔西那篇《论痕迹研究在逆转置换事故中的应用》之后才正式承认痕迹学的存在的，在那之前，所有人都当我们是妄想症和闭门造车的偏执狂。#portrait: haiming_2_lookHand #profile: hide
-海名：但为了写出这篇数据详实的论文，崔西几乎掏空了自己的一切，又通过痕迹把一切都寻了回来……真的是个奇迹。
-海名：现在的待遇好多了。前两天我去交流的时候，Carpe Diem也同意和我们分享部分数据用作研究，这真是太好了……#portrait: haiming_3_smile
-我：……………… #profile: painter_side
-我：（天哪，还好我没说出口……太尴尬了。）
-我：（人家不是自封的……………………）#profile: painter_sideSweat
-->DONE

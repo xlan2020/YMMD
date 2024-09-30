@@ -325,6 +325,11 @@ public class UIDraw_Inventory : MonoBehaviour
     }
     private bool isSpecifiedMaterial(Item currItem)
     {
+        if (drawingSystem.specifiedMaterialItems == null)
+        {
+            UnityEngine.Debug.LogWarning("Specified Material Items not initialized!");
+            return true;
+        }
         if (drawingSystem.specifiedMaterialItems.Length == 0)
         {
             // no need to compare, all item is specified

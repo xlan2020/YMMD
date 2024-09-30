@@ -154,6 +154,7 @@ public class Observee : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        UnityEngine.Debug.Log("Mouse Enter Observee: " + tagName);
         if (!canGrab)
         {
             return;

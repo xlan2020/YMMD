@@ -15,8 +15,7 @@ Me：I remember that she has a scary bodyguard. Would I be tied up to the workbe
 Me: I did put this off for too long. Eh...should I prepare myself for longer?#profile: painter_selfMock
 + [Enter]
 Me：...Ha. I'll find a way...#profile: painter_selfMock
-：#loadScene: DAY2-5_Tattooshop
-->DONE
+->enter_tatoo_shop
 + [Wait]
 Me：I still have time for strolling around. #profile: painter_selfMock
 ->DONE
@@ -25,7 +24,10 @@ Me：I still have time for strolling around. #profile: painter_selfMock
 ：should I prepare myself for longer?#profile: hide
 + [Enter]
 Me：...Ha. I'll find a way...#profile: painter_selfMock
-：#loadScene: DAY2-5_Tattooshop
-->DONE
+->enter_tatoo_shop
 + [Wait]
 Me：I still have time for strolling around. #profile: painter_selfMock
+
+==enter_tatoo_shop==
+：#loadScene: DAY2-5_TattooShop
+-> DONE
