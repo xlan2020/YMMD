@@ -1,6 +1,5 @@
 INCLUDE ../global.ink
-//seanamae：But, unlike for other mysterious animals...if mermaids really exist, I hope that humans will never find them. #portrait: haiming_3_smile
-我：（海名的工作室看起来可真棒，在这里画画倒是一件美事。）#profile: painter_side #portrait: haiming_3_idle #bgm: 日常_0.2 
+我：（海名的工作室看起来可真棒，在这里画画倒是一件美事。）#profile: painter_side #portrait: haiming_3_idle #bgm: 日常_0.2 #drawingSystem: addBinaryVal_50
 我：（说来惭愧，我自封为画家，却连自己的工作室也没有。“流浪”这个浪漫的名号，也有些迫不得已的成分。）#profile: painter_sideSweat
 我：（咦，不过海名好像也住在工作室里？……瞧我，明明不是第一次来了，总觉得印象有点模糊。）#profile: painter_side
 我：（无论如何，先专心眼前的事吧！）这次的稿件，会被转化成文身吗？#profile: painter_norm
@@ -50,7 +49,7 @@ INCLUDE ../global.ink
 ->trace_scholar
 
 ==danger==
-我：………… #profile: painter_alert 
+我：………… #profile: painter_alert #drawingSystem: addBinaryVal_10
 海名：……也不用这么如临大敌。差点忘记了，你也是个心思重的家伙，比起“秘密”，或许更应该叫做“有趣的事实”？#profile: hide #bgm: fade_2_1
 我：好吧，那你先说。#profile: painter_eyeClosed #portrait: haiming_1_smile
 ->trace_scholar
@@ -114,7 +113,7 @@ INCLUDE ../global.ink
 +[纹身师（+遗忘）]->cover
 
 ==findOut==
-我：我当然想知道鳞片的来历。#profile: painter_side #choiceType: BUTTON
+我：我当然想知道鳞片的来历。#profile: painter_side #choiceType: BUTTON #drawingSystem: addBinaryVal_20
 海名：就知道你会这么说。#profile: hide #portrait: haiming_2_seeYouKnow
 海名：这枚鳞片，就是痕迹的载体。#portrait: haiming_2_know
 我：海洋生物爱好者，能看出它是什么吗？#profile: painter_side
@@ -131,7 +130,7 @@ INCLUDE ../global.ink
 ->mermaid
 
 ==cover==
-我：如果能彻底忘记就好了。#profile: painter_side #choiceType: BUTTON
+我：如果能彻底忘记就好了。#profile: painter_side #choiceType: BUTTON #drawingSystem: addBinaryVal_-20
 我：就当是删档从来！重生之我是大画家！……之类的。
 海名：这枚鳞片让你很困扰。#profile: hide #portrait: haiming_2_seeYou 
 海名：有没有想过置换走它？#portrait: haiming_2_seeYouSquint
@@ -155,38 +154,35 @@ INCLUDE ../global.ink
 ==mermaid==
 我：我想、我猜……我不知道，但就在我摸着鳞片……不、喝了鳞片水之后……不要问我为什么，总之，就画出了一条美人鱼。#profile: painter_side 
 我：好吧，根本就是毫无根据。#profile: painter_sideSweat
-海名：可以给我看看画吗？#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_smile
-我：没问题，我正好夹在画箱里。#profile: painter_side #portrait: haiming_1_squint 
-我：喏。 
-海名：……很美丽呢。#portrait: haiming_2_idle #portrait: haiming_2_know 
-【event：海名手里出现画】
-我：能让你想到什么吗？#profile: painter_side
+海名：可以给我看看画吗？嗯，鳞片还给你。#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_smile #event: showEmptyHand 
+我：没问题，我正好夹在画箱里。#profile: painter_side #portrait: haiming_1_squint #event: getScaleBack  
+我：喏。 #event: showDrawing 
+海名：很美丽呢。虽说，你的作画条件有点……出乎意料。#portrait: haiming_2_idle #portrait: haiming_2_know #event: giveDrawing
+我：别挤兑我了。这能让你想到什么吗？#profile: painter_side
 海名：人鱼本身，大概也是最流行的传说生物之一了。#profile: hide #portrait: haiming_2_think
 海名：鲛人、人鱼，当然也有人认为，它们只是头顶海草的儒艮。甚至于，对于他们的传闻多到不需要去刻意收集，连文艺作品都偏爱它们。#portrait: haiming_2_thinkSquint
 海名：说起来，镇上还有卖人鱼潜水服的。#portrait: haiming_2_think
-海名：自古以来，无论人鱼是否存在，它们就算在传说故事里，也是被消费的存在，身体被用来炼油点灯，却被冠上“美”的前缀，总觉得有些可怜。#portrait: haiming_2_frown
-【捕捉：消费人鱼或者炼油点灯——残忍廉价的消费品
-左边：文字框“炼油点灯”
-右边：残忍廉价的消费品，罐装的紫色鱼油
-描述：炼油点灯……人鱼这样的传说生物，也从生命变成了可以消耗的商品，细想来，这是多么残忍恐怖。
-】
+海名：自古以来，无论人鱼是否存在，它们就算在传说故事里，也是被消费的存在，身体被用来炼油点灯，却被冠上“美”的前缀，总觉得有些可怜。#portrait: haiming_2_frown #showObservee: merch
+//【捕捉：消费人鱼或者炼油点灯——残忍廉价的消费品
+//左边：文字框“炼油点灯”
+//右边：残忍廉价的消费品，罐装的紫色鱼油
+//描述：炼油点灯……人鱼这样的传说生物，也从生命变成了可以消耗的商品，细想来，这是多么残忍恐怖。】
 海名：很遗憾，我对这条紫色头发的人鱼没有印象。也许在这一点上，我作为一个肤浅的现代人，在见过所谓“美人鱼表演”之后，就没办法跳出这些维度去想象了。#portrait: haiming_2_seeYou
 海名：和很多其他神秘生物不同，如果美人鱼存在的话，我希望她们永远不要被人类找到。#portrait: haiming_2_think
 我：……你的意思是，我应该放弃寻找她吗？#portrait: haiming_2_seeYou #profile: painter_side
 海名：哎？我倒没有这个意思。不过，她对你来说，只是“美人鱼”吗？#profile: hide 
 我：我倒希望我能知道更多。#profile: painter_side
-海名：好像没能帮到你，画先还给你吧。#profile: hide #portrait: haiming_2_think
-海名：【event：画消失】说起来，这也是海底怪兽呀！画很美，我都想开个价了。#portrait: haiming_2_seeYouKnow
+海名：好像没能帮到你，画先还给你吧。#profile: hide #portrait: haiming_2_think #event: showEmptyHand
+海名：说起来，这也是海底怪兽呀！画很美，我都想开个价了。#portrait: haiming_2_seeYouKnow #event: getDrawingBack 
 我：谢谢你，不过我一想到她会被纹在别人的身上……嘶。 #profile: painter_side #portrait: haiming_2_seeYouSquint
 我：或是被做成批量生产的贴纸？真是个可怕的念头。
- ：“她是我的！”【黑暗画家小头】 #profile: hide #portrait: haiming_2_seeYou
+ ：“她是我的！” #profile: painter_dark #portrait: haiming_2_seeYou
 海名：咦？嗯，那看来，确实不止美人鱼这么简单了。#profile: hide #portrait: haiming_2_seeYouKnow
-海名：画家很有占有欲嘛。#portrait: haiming_1_idle #portrait: haiming_1_smile
-【捕捉：占有欲——情人
-左边：文字框“占有欲”
-右边：我的温柔女友人鱼小姐
-描述：占有欲？想想还真羞人，也许在潜意识里，她就是我的梦中情人吧。
-】
+海名：画家很有占有欲嘛。#portrait: haiming_1_idle #portrait: haiming_1_smile #showObservee: lover
+//【捕捉：占有欲——情人
+//左边：文字框“占有欲”
+//右边：我的温柔女友人鱼小姐
+//描述：占有欲？想想还真羞人，也许在潜意识里，她就是我的梦中情人吧。】
 我：哎？#profile: painter_side
 我：不是，什么啊…… #bgm: 日常_3 #profile: painter_sideSweat #portrait: haiming_1_squint
 海名：放松。我可没有在取笑你，这是线索，也是痕迹。#portrait: haiming_1_smile #profile: hide
@@ -213,25 +209,24 @@ INCLUDE ../global.ink
 海名：假如你曾经拥有孩子，有一天孩子消失了，你无法回忆起孩子的样貌和性格，但是你依然保持着忧虑的习惯，依然有照护的责任。
 海名：有人会选择移情，把爱寄托到别的事物上，也许会开始养宠物。
 海名：这是因为，你的行为模式中，依然留有一个“孩子”的占位角色，如果不填补上，就会感到惶恐。
-海名：这种惶恐倒不一定是因为爱或者执念，反倒可能是因为现实与自己习惯中的生活之间的割裂，而对自我产生的焦虑。
-【捕捉：对自我的焦虑——梦魇
-左边：文字框“对自我产生的焦虑”
-右边：梦魇柴柴，一种恐怖的女鬼
-描述：我对那人鱼的思念，或许也来自于一种焦虑？比起浪漫和爱，她或许只是一个影响我的梦魇。
-】
+海名：这种惶恐倒不一定是因为爱或者执念，反倒可能是因为现实与自己习惯中的生活之间的割裂，而对自我产生的焦虑。#showObservee: nightmare
+//【捕捉：对自我的焦虑——梦魇
+//左边：文字框“对自我产生的焦虑”
+//右边：梦魇柴柴，一种恐怖的女鬼
+//描述：我对那人鱼的思念，或许也来自于一种焦虑？比起浪漫和爱，她或许只是一个影响我的梦魇。】
 海名：所以，觉得这片鱼鳞很宝贵，你不希望美人鱼成为别人身上的图案…… #portrait: haiming_1_idle #portrait: haiming_1_smile
 我：是因为我心目中留有一个属于美人鱼的“占位角色”，并且如你所说，对她有很强的占有欲？#profile: painter_side 
 海名：按我的歪理邪说，就是这样。#portrait: haiming_1_squint
 海名：上述内容是我投稿的第一篇痕迹学研究的摘要，但由于对“情感”“态度”这些概念的使用太不专业，当年就被驳回了。#portrait: haiming_1_dazed
 我：至少我听起来很唬人。#portrait: haiming_1_squint
 海名：那就说明这不太靠谱，大部分学术研究听起来都相当枯燥。#portrait: haiming_1_smile
-海名：但就当是随便聊天吧。在你的心中，“美人鱼”属于什么样的占位角色呢？#portrait: haiming_1_wink
-+[消费品（不加不减）]->object
+海名：但就当是随便聊天吧。在你的心中，“美人鱼”属于什么样的占位角色呢？#portrait: haiming_1_wink #choiceType: OBSERVEE
++[东西or消费品（不加不减）]->object
 +[情人（+追忆）]->lover
 +[梦魇（+遗忘）]->nightmare
 
 ==object==
-我：听你这么说完，我都有点怀疑美人鱼到底是不是人了。#profile: painter_eyeClosed
+我：听你这么说完，我都有点怀疑美人鱼到底是不是人了。#profile: painter_eyeClosed #choiceType: BUTTON #drawingSystem: addBinaryVal_5
 我：瞧我这话说的，我想我一直默认把她当成某个重要的人来看待。#profile: painter_norm
 我：但说到底，我对于那些传说，也没有什么真实感。#profile: painter_eyeClosed
 我：也许它只是一样东西。#profile: painter_norm
@@ -244,10 +239,10 @@ INCLUDE ../global.ink
 ->canI
 
 ==lover==
-我：有点不好意思说出口……#profile: painter_sideSweat
+我：有点不好意思说出口……#profile: painter_sideSweat #choiceType: BUTTON #drawingSystem: addBinaryVal_30
 海名：前女友？#profile: hide #portrait: haiming_1_wink
 我：……#profile: painter_side #portrait: haiming_1_squint
-我：听起来是不是有点像猥琐大叔酒后胡言？变成了穷光蛋，还哭着意淫自己的前妻什么的。#profile: painter_sideSweat `
+我：听起来是不是有点像猥琐大叔酒后胡言？变成了穷光蛋，还哭着意淫自己的前妻什么的。#profile: painter_sideSweat
 海名：你不说出来，才没有人会这么想。#profile: hide #portrait: haiming_1_squintLaugh
 我：所以你现在这么想了吗？#profile: painter_side #portrait: haiming_1_smile
 海名：*叹气*不，画家。我倒希望你干脆变成猥琐大叔算了。#portrait: haiming_1_eyeClosed #profile: hide
@@ -259,7 +254,7 @@ INCLUDE ../global.ink
 ->canI
 
 ==nightmare==
-我：说实话，我有点害怕她。#profile: painter_eyeClosed
+我：说实话，我有点害怕她。#profile: painter_eyeClosed #choiceType: BUTTON #drawingSystem: addBinaryVal_-30
 我：怎么说呢，其实家里就剩个床垫，大夏天的也一样能过。画材没了，捡点东西做创作也是一种乐趣，但只有美人鱼……#profile: painter_norm
 我：只要想到，就有种喘不过气的感觉。#profile: painter_alert
 我：好像无论做什么，只要不解决掉关于她的谜团，就没办法继续生活。#profile: painter_eyeClosed
@@ -268,7 +263,7 @@ INCLUDE ../global.ink
 海名：画家想要解脱，却也觉得，在自己解脱之前，得做点什么让那条人鱼也解脱才对。#portrait: haiming_1_sad
 我：你这样讲，显得美人鱼像某种哀怨的地缚灵一样。#profile: painter_sideSweat #portrait: haiming_1_smile
 海名：谁说虚空不可能是冥界呢？#profile: hide #portrait: haiming_1_squint
-我：姐，你的神秘生物“研究”涉猎是不是有点太杂了？#profile: haiming_1_eyeClosed
+我：姐，你的神秘生物“研究”涉猎是不是有点太杂了？#portrait: haiming_1_eyeClosed
 海名：呵呵。#portrait: haiming_1_squint #profile: hide
 我：说真的，“让她解脱”什么的，我能做到吗？#profile: painter_side
 ->canI
@@ -287,13 +282,13 @@ INCLUDE ../global.ink
 海名：对了，后面这一柜子书，你都可以翻翻找灵感，任何时候都欢迎。#portrait: haiming_3_pushGlass #portrait: haiming_3_norm
 海名：除了这几个格子是学术书籍，其他都是和神秘生物有关的，有画册，海洋的在这里……你随意看，我去添点茶水。#portrait: haiming_3_squint
  ：海名站起身。#event: haimingLeave
-我：（海名的藏书真不少。应该翻翻哪本呢？）#profile: painter_norm
+我：（海名的藏书真不少。应该翻翻哪本呢？）#profile: painter_norm #choiceType: BUTTON
 +[神秘生物图册]->monster_book
 +[痕迹学论文]->trace_essay
 +[？？？]->personal_stuff
 
 ==monster_book==
-我：（还是看看神秘生物图册吧，也许可以当作参考。）#profile: painter_eyeClosed
+我：（还是看看神秘生物图册吧，也许可以当作参考。）#profile: painter_eyeClosed #drawingSystem: addBinaryVal_-10
 我：（看看目录……好有趣，应该先看哪个呢？）#profile: painter_happy
 +[轮回胎魔]->8_2_monster
 +[饕餮水怪]->chai_monster
@@ -314,8 +309,7 @@ INCLUDE ../global.ink
  ：早晚有一天大海和陆地都会被她吃下去。
  ：被讨伐，用铁链把膨胀的身体锁在海底，直到她变化出了绝美的形态诱惑看守，随后把看守吃了下去。
  ：上岸，每个白天去陆地游弋，以人类的身体诱惑人下水，但每个傍晚都必须回到深海里去。
-我：（为什么会有这样的生物……总觉得，什么都不在乎的话，这一辈子也太可怜了。））#profile: painter_depressed
-【隐藏：追忆增加】
+我：（为什么会有这样的生物……总觉得，什么都不在乎的话，这一辈子也太可怜了。））#profile: painter_depressed #drawingSystem: addBinaryVal_25
 ->haiming_back
 
 ==xstar_monster==
@@ -338,15 +332,21 @@ INCLUDE ../global.ink
 ->haiming_back
 
 ==trace_essay==
-我：其实，我对海名口中的痕迹学也挺感兴趣的。来挑战一下吧！）
- ：(这个回头补档)
+我：其实，我对海名口中的痕迹学也挺感兴趣的。来挑战一下吧！）#profile: painter_norm #drawingSystem: addBinaryVal_10
+ ：……痕迹研究的困难一直被认为来源于样本的不可控性。#profile: hide 
+ ：“痕迹”本身是对记忆的实体化研究的锚点，其具有公信力的认证规范却只能追溯到《个人所有物置换认证规范》的一节（后称：DP-3x3）。
+ ：根据DP-3x3标准，痕迹的有效性认证需要三个时刻、三个人以上集体记忆的佐证。
+ ：在后置换时代，记忆的消失已然被归于不可抗力。记忆的样本缺乏实验需要最基本的稳定性，符合标准的认证非常难以获得。
+ ：甚至于，由于DP-3x3广泛用于对民众财产纠纷的判定，其数据具有伪造嫌疑。
+ ：实体化记忆需要痕迹为锚点，痕迹的认证却需要几乎不可能获得的DP-3x3记录。这种现象，正是痕迹学研究递归性困难的体现。
+ ：我们需要制定一种全新的标准，一种更灵活、更大胆、更有想象力的规范；这种规范必须跳出量化研究的老旧科学基础。
+ ：我们需要更多的故事、绘图、艺术、声音；我们需要以一种全新的维度来理解痕迹和记忆。……
+我：（……我好像没有自己认为的那么感兴趣。）#profile: painter_sideSweat
  ->haiming_back
 
-
-
 ==personal_stuff==
-我：……嗯？这是什么？）#profile: painter_surprised
-我：好漂亮的封面图案，是绘本吧……#profile: painter_eyeClosed
+我：（……嗯？这是什么？）#profile: painter_surprised
+我：（好漂亮的封面图案，是绘本吧……）#profile: painter_eyeClosed
  ：（娟秀的字迹）第一天上班，组里的人都好友善^_^ #profile: hide
  ：公司好大，居然还有置换造景跑道，感觉自己已经是后福特主义的奴隶了…
  +[翻过几页]->note1
@@ -383,7 +383,7 @@ INCLUDE ../global.ink
 ->haiming_back_personal
 
 ==haiming_back_personal==
-海名：咦，画家…… 
+海名：咦，画家…… #profile: hide
 我：（糟糕！她回来了。）#profile: painter_side
 我：（别让她发现我在翻她的日记本。哎，刚才从哪一格拿的来着……）#profile: painter_sideSweat
 海名：画、家。#bgm: 戏谑_2 #profile: hide
@@ -414,7 +414,7 @@ INCLUDE ../global.ink
 我：*接过衣服*空调衣，真是奢侈的发明……不过你这里还真有点冷，先穿上吧。#profile: painter_eyeClosed
 我：嗯……嗯？哎？
 我：兜里什么东西……
-我：咦？#profile: painter_stunned
+我：咦？#profile: painter_stunned #event: showLighter
 海名：哇哦，好有格调的打火机。可惜没摸出一包烟，不然就真是惊喜了。#portrait: haiming_3_pushGlass
 我：……#profile: painter_stunned
 我：我不抽烟。#bgm: fade_0.2_0 #bgm: pause
@@ -423,11 +423,10 @@ INCLUDE ../global.ink
 我：…………………… #profile: painter_stunned
 海名：…………………… #profile: hide #portrait: haiming_1_squint
 海名：………为什么你兜里会有打火机？#portrait: haiming_1_dazed
-我：对呀，为什么呢？#bgm: play #bgm: fade_5_0.2 #bgm: 紧张_0.1 
+我：对呀，为什么呢？#bgm: play #bgm: fade_5_0.2 #bgm: 紧张_0.1  #profile: painter_stunned
 海名：…… #portrait: haiming_2_idle #portrait: haiming_2_think #profile: hide
-海名：给我看看。#portrait: haiming_2_seeYou
-【event：手上出现打火机】
-海名：是美人鱼的造型呢。#portrait: haiming_2_know
+海名：给我看看。#portrait: haiming_2_seeYou 
+海名：是美人鱼的造型呢。#portrait: haiming_2_know #event: giveLighter
 海名：画家，原来你是会为了点生日蜡烛或者烟花之类的，而买这么漂亮的打火机的家伙吗？#portrait: haiming_2_seeYouKnow
 我：你看我像那种人吗？#profile: painter_side
 海名：火机是你的吗？#bgm: fade_5_0.6 #portrait: haiming_2_seeYou #profile: hide
@@ -439,7 +438,7 @@ INCLUDE ../global.ink
 
 ==good_idea==
 我：好主意。让我试试…… #profile: painter_side
-我：………………【置换特效】#portrait: haiming_2_seeYou #event: displaceEffect
+我：……………… #portrait: haiming_2_seeYou #event: displaceEffect #drawingSystem: addBinaryVal_-10
 我：我好像换不走它。
 海名：你动作也太快了点吧？#profile: hide #portrait: haiming_2_seeYouKnow
 海名：开玩笑的，真换走了，我们也没必要再调查任何事了。#portrait: haiming_2_seeYou
@@ -448,7 +447,7 @@ INCLUDE ../global.ink
 ->my_past
 
 ==nope==
-我：算了吧，等我换走了，咱们一起忘记这回事吗？#profile: painter_norm
+我：算了吧，等我换走了，咱们一起忘记这回事吗？#profile: painter_norm #drawingSystem: addBinaryVal_10
 我：大痕迹学家，就别在这逗我了。#profile: painter_eyeClosed
 海名：好，那我们摊开说吧。我想，这就是我们追溯往事的重要契机。#profile: hide #portrait: haiming_2_seeYou
 ->my_past
@@ -467,17 +466,17 @@ INCLUDE ../global.ink
 我：非常确定。#profile: painter_side
 海名：火机这种东西，总感觉是很私密的。介意让我试一下吗？#profile: hide
 我：请。#profile: painter_side #portrait: haiming_2_think
-海名：咦？还挺高档的，摁头和尾巴出现得火焰颜色不同……蓝紫色的？好神奇，灌了两种油吧……#profile: hide #portrait: haiming_2_thinkSquint
-我：*脸色一白*…… #profile: painter_sideSweat
-海名：画家？怎么了？#profile: hide #portrait: haiming_2_seeYou
-我：呕……鲛人油灯…… #profile: painter_sideSweat
+海名：咦？还挺高档的，摁头和尾巴出现得火焰颜色不同……蓝紫色的？好神奇，灌了两种油吧……#profile: hide #portrait: haiming_2_thinkSquint #event: lightUp
+我：*脸色一白*…… #profile: painter_sideSweat #event: lightUp
+海名：画家？怎么了？#profile: hide #portrait: haiming_2_seeYou 
+我：呕……鲛人油灯…… #profile: painter_sideSweat #event: lightUp
 海名：那种东西不存在啦！……哎呀，说出来了。#portrait: haiming_2_doubt #profile: hide
 我：你到底信不信啊？其实研究神秘生物只是看乐子吧？算了，这个也不是现在的重点…… #profile: painter_side #portrait: haiming_2_think
-海名：看起来是有使用过的痕迹，表面有点划痕，两管油都空了一半。大概，也不是画家准备送人的礼物，而就算是别人给你的，也被画家之外的人用过。#portrait: haiming_2_thinkSquint #profile: hide
+海名：看起来是有使用过的痕迹，表面有点划痕，两管油都空了一半。大概，也不是画家准备送人的礼物，而就算是别人给你的，也被画家之外的人用过。#portrait: haiming_2_thinkSquint #profile: hide #event: lightUp
 海名：是很亲密的人吧？会把打火机揣在你的兜里。#portrait: haiming_2_seeYou
 我：早上，王大爷对我说过一句话：“你没和那个谁一起吗？”然后就说自己记错人了。#profile: painter_eyeClosed
 我：我当时还觉得有点奇怪。
-海名：*长叹一口气*…… #portrait: haiming_1_idle #portrait: haiming_1_sad #profile: hide
+海名：*长叹一口气*…… #portrait: haiming_1_idle #portrait: haiming_1_sad #profile: hide #event: getLighterBack
 海名：画家，我很抱歉。
 海名：你身边的人消失了。因为置换。#bgm: 黄昏_4
 我：…… #profile: painter_depressed
@@ -487,7 +486,7 @@ INCLUDE ../global.ink
 海名：痕迹学说到底也是一种研究理论问题的学术，没办法解决一切的。#profile: hide #portrait: haiming_3_idle #portrait: haiming_3_cold
 我：你见过她吧？呵呵，外套可是落在你这里的。#profile: painter_eyeClosed
 海名：…… #portrait: haiming_3_cold
-海名：作为朋友，我其实觉得，画家可以试着放下她。记挂虚空里的人，太难啦。把过往覆盖掉，刷一层大白，再去生活吧。#portrait: haiming_3_pushGlass #portrait: haiming_3_norm 
+海名：作为朋友，我其实觉得，画家可以试着放下她。记挂虚空里的人，太难啦。把过往覆盖掉，刷一层大白，再去生活吧。#portrait: haiming_3_pushGlass #portrait: haiming_3_norm
 海名：不过，如果你想要去寻找她，我会竭尽所能地帮助你。#portrait: haiming_3_pushGlass
 海名：痕迹学的终极幻想，就是循着人鱼回归大海的水迹，从虚空中捞回挚爱吧？#portrait: haiming_3_eyeClosed
 海名：………… #portrait: haiming_3_norm
@@ -499,7 +498,7 @@ INCLUDE ../global.ink
 海名：画家呀…… #portrait: haiming_1_sad
 海名：……
 海名：刚才的画，给我看看吧？就算是没完成的草稿，也没有关系。#portrait: haiming_1_smile
-我：………………嗯……好。#profile: painter_side
-我：………………
+我：………………嗯……好。#profile: painter_depressed
+我：………………#profile: painter_eyeClosed
 +[递出未完成的画作]
 ->END

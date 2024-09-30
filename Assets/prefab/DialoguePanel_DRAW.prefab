@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 747480523693310047}
   - component: {fileID: 6401447233757243262}
   - component: {fileID: 2082713077597049127}
+  - component: {fileID: 4061928958601104200}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -345,6 +346,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4061928958601104200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483535271248423154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6024f525731496e96912320315bcd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClickEvents:
+    m_PersistentCalls:
+      m_Calls: []
+  animationType: dialogue
 --- !u!1 &4746611066462144273
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +539,6 @@ GameObject:
   - component: {fileID: 2397697562335278835}
   - component: {fileID: 3334039535848242279}
   - component: {fileID: 1697814844981598533}
-  - component: {fileID: 7191049154322032669}
   - component: {fileID: 8222255637929673477}
   m_Layer: 5
   m_Name: DialoguePanel_DRAW
@@ -657,51 +673,6 @@ MonoBehaviour:
   - {fileID: 3015188075740050592}
   - {fileID: 7802727523362704350}
   nextButton: {fileID: 2082713077597049127}
---- !u!61 &7191049154322032669
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7173387517491208989}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 258.63782, y: 42.423134}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 512.66455, y: 85.48619}
-  m_EdgeRadius: 0
 --- !u!95 &8222255637929673477
 Animator:
   serializedVersion: 5
