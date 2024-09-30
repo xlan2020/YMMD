@@ -10,7 +10,7 @@ INCLUDE ../global.ink
 }
 
 ==first_talk==
-Seanamae：Already back? The draft's ready?#profile: haiming_seeYouKnow
+Seanamae：Back already? Ready to hand in the draft?#profile: haiming_seeYouKnow
 Me：Ah, uh, no idea. Sorry. So sorry.#profile: painter_concerned
 Seanamae：Enough teasing. #profile: haiming_smile
 Seanamae：I'm going to keep investigating for the mermaid. I'll let you know once I get anything worth mentioning.#profile: haiming_think

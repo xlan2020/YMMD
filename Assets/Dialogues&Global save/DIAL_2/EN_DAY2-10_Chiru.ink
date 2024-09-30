@@ -1,7 +1,7 @@
 INCLUDE ../global.ink
 
 ==chiru_appear==
-???：Hey.
+？？？：Hey.
 Me：………………
 Young man：You looking for something?
 Young man：Can't go find it in the sea, can you?
