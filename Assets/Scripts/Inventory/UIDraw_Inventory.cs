@@ -290,7 +290,55 @@ public class UIDraw_Inventory : MonoBehaviour
             SetApplyButtonAlreadyApplied(drawingSystem.GetItemByDrawType(currentSlot.item.drawType) == currentSlot.item);
             //drawItemObject.SetItem(currentSlot.item);
             currentItemImage.sprite = currentSlot.item.spriteImage;
+
+            if (currentSlot.item.drawType == DrawType.notDraw)
+            {
+                // if item is not draw type, regardless of what specified item is
+                // don't show apply button
+                applyButton.gameObject.SetActive(false);
+            }
+            else if (isSpecifiedMaterial(currentSlot.item) == false)
+            {
+                // show item not specified UI
+                applyButton.gameObject.SetActive(false);
+                // change description to not specified item
+                switch (GameEssential.localeId)
+                {
+                    case 0: // CH
+                        currentItemAttribute.text = "<color=red>无法用于当前对象</color>";
+                        break;
+                    case 1:
+                        currentItemAttribute.text = "<color=red>Does not fit the current subject </color>";
+                        break;
+                    default:
+                        UnityEngine.Debug.LogWarning("no matching language!");
+                        currentItemAttribute.text = "<color=red>当前的作画对象不适用这种材料。</color>";
+                        break;
+                }
+            }
+            else
+            {
+                // show apply button as normal
+                applyButton.gameObject.SetActive(true);
+            }
         }
+    }
+    private bool isSpecifiedMaterial(Item currItem)
+    {
+        if (drawingSystem.specifiedMaterialItems.Length == 0)
+        {
+            // no need to compare, all item is specified
+            return true;
+        }
+
+        foreach (ItemScriptableObject i in drawingSystem.specifiedMaterialItems)
+        {
+            if (i.id == currItem.id)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void UpdateCurrentSlotIndex(int index)

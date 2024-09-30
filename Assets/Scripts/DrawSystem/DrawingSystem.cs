@@ -19,6 +19,7 @@ public class DrawingSystem : MonoBehaviour
     [SerializeField] GameManager gameManager;
     public ClientSpecialScriptableObject clientSpecial;
     // threshold: 0-100 rate how ____ something is; for the case of 8-2, that's the trust
+    public ItemScriptableObject[] specifiedMaterialItems;
 
     private Item canvas;
     private Item brush;
