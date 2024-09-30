@@ -10,7 +10,7 @@ INCLUDE ../global.ink
 }
 
 ==eating==
-Jill：...Click...squeak...crunch...Hah!...#profile: mobB_norm
+John：...Click...squeak...crunch...Hah!...#profile: mobB_norm
 ->DONE
 
 ==first_talk==
