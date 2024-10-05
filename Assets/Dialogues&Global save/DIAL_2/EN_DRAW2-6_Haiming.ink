@@ -1,6 +1,6 @@
 INCLUDE ../global.ink
 Me：(Seanamae's studio looks awesome. How I'd love a studio of my own...)#profile: painter_side #portrait: haiming_3_idle #bgm: 日常_0.2 #drawingSystem: addBinaryVal_50
-Me：(No wonder I'm just a self-proclaimed painter. There's nothing romantic about being penniless, once you look at it close enough.)#profile: painter_sideSweat
+Me：(No wonder I'm just a self-proclaimed painter. There's nothing romantic about being penniless, when you look at it closely enough.)#profile: painter_sideSweat
 Me：(Does Seanamae live in her studio, though? It's not the first time I'm here, but everything seem unfamiliar.)#profile: painter_side
 Me：(The draft!) You'll turn what I draw into a tattoo design?#profile: painter_norm
 Seanamae：Sure, if a client likes it. I'll also make some tattoo stickers out of them for sale.#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_smile
