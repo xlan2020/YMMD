@@ -286,12 +286,12 @@ Seanamae：I'm gonna make some tea, feel free to take your time.#portrait: haimi
 Seanamae：By the way, you can take a look at the book shelf. For inspiration.#portrait: haiming_3_squint
  ：Seanamae left.#event: haimingLeave
 Me：(Seanamae has quite a collection of books. Which one should I flip through?)#profile: painter_norm #choiceType: BUTTON
-+[神秘生物图册]->monster_book
-+[痕迹学论文]->trace_essay
++[Field Guide]->monster_book
++[Essay]->trace_essay
 +[？？？]->personal_stuff
 
 ==monster_book==
-Me：(Mysterious Creatures Atlas. Sounds interesting.)#profile: painter_eyeClosed #drawingSystem: addBinaryVal_-10
+Me：(Field Guide of Mysterious Creatures. Sounds interesting.)#profile: painter_eyeClosed #drawingSystem: addBinaryVal_-10
 Me：(Which one should I look at first?)#profile: painter_happy
 +[Reincarnation Demon]->8_2_monster
 +[Deepsea Taotie]->chai_monster
