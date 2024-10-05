@@ -262,7 +262,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 7aca811fbfb494fa9b620cb7abe486d4, type: 2}
   m_audioClip: {fileID: 8300000, guid: a3a5f4cbc93994da0a6f797cc216070d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 4184336229182673665}
   - component: {fileID: 8507347727420630418}
   - component: {fileID: 2231951089522167925}
+  - component: {fileID: 3772990176333593644}
   m_Layer: 5
   m_Name: "\u5B9E\u9A8C\u6709\u673A\u5962\u4F88"
   m_TagString: Untagged
@@ -638,7 +639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -29.6, y: 84.7}
+  m_AnchoredPosition: {x: -36, y: 84.7}
   m_SizeDelta: {x: 86.8, y: 46.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8507347727420630418
@@ -683,6 +684,46 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u5B9E\u9A8C\n\u6709\u673A\n\u5962\u4F88"
+--- !u!114 &3772990176333593644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098628159244696850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:6f2c2ec3b41c24c36a16cecfbedf7f8a
+    m_TableEntryReference:
+      m_KeyId: 114019806263369728
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2231951089522167925}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1133573333012638290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1005,7 +1046,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1814537087
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: b1cc8690a23194a66826f9cb6296ea40, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1243,7 +1284,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1814537087
-  m_SortingLayer: 17
+  m_SortingLayer: 18
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 9c4859a04623d4c75a8d45c1875aafcb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2184,7 +2225,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a3a5f4cbc93994da0a6f797cc216070d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2458,6 +2499,7 @@ GameObject:
   - component: {fileID: 1482517278406470693}
   - component: {fileID: 6629843927628767242}
   - component: {fileID: 9019254648304284949}
+  - component: {fileID: 3436084774332006090}
   m_Layer: 5
   m_Name: 'DR_SCORE_notepad '
   m_TagString: Untagged
@@ -2546,6 +2588,41 @@ Canvas:
   m_SortingLayerID: 745750201
   m_SortingOrder: 1
   m_TargetDisplay: 0
+--- !u!114 &3436084774332006090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857195821664818773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 12709358180753408
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6629843927628767242}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5123728438261956026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2771,7 +2848,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 745750201
-  m_SortingLayer: 16
+  m_SortingLayer: 17
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 9c060cbe08547434c97eb80ac379770e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2810,6 +2887,7 @@ GameObject:
   - component: {fileID: 6795367311749674198}
   - component: {fileID: 717826576741805956}
   - component: {fileID: 6057197201948063696}
+  - component: {fileID: 5207176764186659057}
   m_Layer: 5
   m_Name: DR_DrawDone
   m_TagString: Untagged
@@ -2874,6 +2952,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5207176764186659057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204434214717464645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 12709125271052288
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6057197201948063696}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5473855097941094782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,7 +3058,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 745750201
-  m_SortingLayer: 16
+  m_SortingLayer: 17
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: af219ff69d23944db889c3e854d41dfc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3221,7 +3334,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &8421197726758272362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3590,7 +3703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.4, y: -69.6}
+  m_AnchoredPosition: {x: -11, y: -70.5}
   m_SizeDelta: {x: 86.8, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4708199907336529498
@@ -3905,7 +4018,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 745750201
-  m_SortingLayer: 16
+  m_SortingLayer: 17
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
@@ -4060,6 +4173,7 @@ GameObject:
   - component: {fileID: 2222906573828076852}
   - component: {fileID: 382180949200166377}
   - component: {fileID: 3475688127339090505}
+  - component: {fileID: 9161907360191849388}
   m_Layer: 5
   m_Name: DR_LeftPanel
   m_TagString: Untagged
@@ -4147,6 +4261,41 @@ Canvas:
   m_SortingLayerID: 745750201
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &9161907360191849388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939383263645727293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55fcc3768689a4f9cf863b8c11c618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalizedAssetReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:df95997e41c6c4cc48c6749ed4e25981
+    m_TableEntryReference:
+      m_KeyId: 12709278518337536
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+  m_UpdateAsset:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 382180949200166377}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
+        m_MethodName: set_sprite
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9139486596628109311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4158,8 +4307,9 @@ GameObject:
   - component: {fileID: 4063057970760086704}
   - component: {fileID: 6460571890416546434}
   - component: {fileID: 3559813506246722029}
+  - component: {fileID: 7665973589720428143}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: signNoteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4225,8 +4375,36 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8BF7\u753B\u5BB6\u5728\u753B\u4F5C\u4EFB\u610F\u4F4D\u7F6E\u7B7E\u540D
-    \u5199\u4E0A\u53BB\u5C31\u64E6\u4E0D\u6389\u5566\uFF0C\u8981\u4E00\u7B14\u5408\u6210\u54E6\uFF01"
+  m_Text: 'Sign anywhere on this canvas. Try doing it in one stroke - there''s no
+    way back! '
+--- !u!114 &7665973589720428143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9139486596628109311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:6f2c2ec3b41c24c36a16cecfbedf7f8a
+    m_TableEntryReference:
+      m_KeyId: 114021468679954432
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &2792310492064508007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4277,7 +4455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
       propertyPath: resetTexts.Array.size
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetFontSize.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
       propertyPath: resetTexts.Array.data[0]
@@ -4306,7 +4488,19 @@ PrefabInstance:
     - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
       propertyPath: resetTexts.Array.data[6]
       value: 
-      objectReference: {fileID: 2218123014852946688}
+      objectReference: {fileID: 3559813506246722029}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetFontSize.Array.data[0]
+      value: 
+      objectReference: {fileID: 3559813506246722029}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetFontSize.Array.data[1]
+      value: 
+      objectReference: {fileID: 2231951089522167925}
+    - target: {fileID: 4002354253255909548, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
+      propertyPath: resetFontSize.Array.data[2]
+      value: 
+      objectReference: {fileID: 3559813506246722029}
     - target: {fileID: 4903678447886452833, guid: 47cfa209a5c244cf7afd618bc9309905, type: 3}
       propertyPath: m_Name
       value: LocaleFontReset
