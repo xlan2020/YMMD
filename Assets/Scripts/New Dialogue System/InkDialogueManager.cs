@@ -114,7 +114,7 @@ public class InkDialogueManager : MonoBehaviour
     string closingSyntax = "";
     string richText = "";
     int firstRichCharIndex = 0;
-    string indentation = "";
+    //string indentation = "";
 
 
     public event EventHandler onDialogueEnded;
@@ -140,7 +140,6 @@ public class InkDialogueManager : MonoBehaviour
 
     private void Start()
     {
-
         canContinueToNextLine = true;
         finishedRequiredOpera = true;
         dialogueIsPlaying = false;
@@ -194,10 +193,19 @@ public class InkDialogueManager : MonoBehaviour
             if (typingLinesCoroutine != null && isTyping)
             {
                 // if is typing, then skip the typing effect
+                // // stop typing and print the current sentence
                 StopCoroutine(typingLinesCoroutine);
                 isTyping = false;
-                dialogueText.text = indentation + currentLine;
-                //UnityEngine.Debug.Log("complete current line");
+                dialogueText.text = currentLine;
+                // // reset all syntax variable to default
+                richTextTyping = false; // stop any syntax
+                skippingSyntax = false; // stop any syntax
+                beginningSyntax = "";
+                closingSyntax = "";
+                richText = "";
+                firstRichCharIndex = 0;
+                // UnityEngine.Debug.Log("complete current line");
+                // handle complete
                 handleAfterLineComplete();
             }
             else
@@ -215,15 +223,24 @@ public class InkDialogueManager : MonoBehaviour
             // toggle auto playing
             autoMode = !autoMode;
             autoIcon.SetActive(autoMode);
-            if (autoPlayingCoroutine != null)
+
+            // if the current sentence has already been completed, and the autoCoroutine hasn't started
+            if (autoMode == true && !isTyping)
             {
-                StopCoroutine(autoPlayingCoroutine);
+                autoPlayingCoroutine = StartCoroutine(autoPlaying());
+                UnityEngine.Debug.Log("AUTO: requested after line completed, start auto coroutine. ");
             }
-            if (autoMode)
+
+            if (autoMode == false && autoPlayingCoroutine != null)
             {
-                ContinueStory();
+                // if not in auto mode, and there the auto coroutine hasn't been null by reaching the end of the line 
+                // stop it 
+                StopCoroutine(autoPlayingCoroutine);
+                UnityEngine.Debug.Log("Auto mode is stopped at request. ");
             }
         }
+
+
     }
 
     private void CreateNameStyleDict()
@@ -242,12 +259,9 @@ public class InkDialogueManager : MonoBehaviour
 
     private IEnumerator autoPlaying()
     {
-        UnityEngine.Debug.Log("auto playing");
-        while (currentStory.canContinue)
-        {
-            yield return new WaitForSeconds(autoPlayingTimeInterval);
-            ContinueStory();
-        }
+        UnityEngine.Debug.Log("auto playing, waiting to play the next line");
+        yield return new WaitForSeconds(autoPlayingTimeInterval);
+        ContinueStory();
     }
 
     private IEnumerator skippingLines()
@@ -267,7 +281,7 @@ public class InkDialogueManager : MonoBehaviour
     {
         isTyping = true;
 
-        dialogueText.text = indentation;
+        dialogueText.text = "";
         hideChoices();
         continueIcon.SetActive(false);
 
@@ -412,10 +426,6 @@ public class InkDialogueManager : MonoBehaviour
         {
             randomSpeak.Stop();
         }
-        if (autoMode)
-        {
-            autoPlayingCoroutine = StartCoroutine(autoPlaying());
-        }
 
         if (observeeManager != null)
         {
@@ -430,6 +440,15 @@ public class InkDialogueManager : MonoBehaviour
         {
             continueIcon.SetActive(true);
         }
+
+        // if auto, this means every action at the end of the sentence has been completed
+        // wait, and then continue the story
+        if (autoMode) // also check if there is already one working 
+        {
+            UnityEngine.Debug.Log("AUTO: reach the end of the after line complete actions, will load next line. ");
+            autoPlayingCoroutine = StartCoroutine(autoPlaying());
+        }
+
     }
 
     public void ContinueStory()
