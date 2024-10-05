@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour
     public Text walletText;                            // 显示玩家金钱的UI
     public Text desText;                               // 描述文本
     public Text priceText;                             // 价格文本
+    public Text refreshText;                             // refresh价格
     public Button buyButton;                           // 全局的购买按钮
     public Button refreshButton;                       // 刷新按钮
     public GameObject popup;                           // 购买提示弹窗
@@ -19,12 +20,15 @@ public class ShopManager : MonoBehaviour
     private ItemScriptableObject selectedItem;         // 当前选中的物品
     private Transform selectedSlot;                    // 当前选中的物品格子
     private List<ItemScriptableObject> randomList;
+    private int refreshTime = 0;
+    private int refreshCost = 50;
 
     void Start()
     {
         // 初始化商店
         LoadInitialItems();
         UpdateWalletDisplay();
+        refreshText.text = refreshCost.ToString();
         randomList = new List<ItemScriptableObject>(randomItems.items);
         // 隐藏购买按钮，直到选中物品
         buyButton.gameObject.SetActive(false);
@@ -126,21 +130,39 @@ public class ShopManager : MonoBehaviour
     // 刷新按钮点击时的逻辑
     public void OnRefreshButtonPressed()
     {
-        // 清空当前的物品格子
-        foreach (Transform slot in itemSlots)
-        {
-            slot.gameObject.SetActive(false);  // 隐藏每个物品格子
+        if (playerMoney >= refreshCost)
+        { 
+            refreshTime++;
+            if (refreshTime >= 3)
+            {
+                refreshCost += refreshTime * 10;
+                refreshText.text = refreshCost.ToString();
+            }
+
+            //update金钱
+            playerMoney -= refreshCost;
+            UpdateWalletDisplay();
+
+            // 清空当前的物品格子
+            foreach (Transform slot in itemSlots)
+            {
+                slot.gameObject.SetActive(false);  // 隐藏每个物品格子
+            }
+
+            // 随机选择新的一组物品
+            List<ItemScriptableObject> randomSelection = new List<ItemScriptableObject>();
+            for (int i = 0; i < itemSlots.Count; i++)
+            {
+                ItemScriptableObject newItem = randomItems.items[Random.Range(0, randomList.Count)];
+                randomSelection.Add(newItem);
+            }
+
+            // 显示新的物品
+            DisplayItems(randomSelection);
+
+        } else {
+            Debug.Log("钱不够了！");
         }
 
-        // 随机选择新的一组物品
-        List<ItemScriptableObject> randomSelection = new List<ItemScriptableObject>();
-        for (int i = 0; i < itemSlots.Count; i++)
-        {
-            ItemScriptableObject newItem = randomItems.items[Random.Range(0, randomList.Count)];
-            randomSelection.Add(newItem);
-        }
-
-        // 显示新的物品
-        DisplayItems(randomSelection);
     }
 }
