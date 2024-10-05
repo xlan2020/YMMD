@@ -17,8 +17,8 @@ boro-chan：Why would you ask boro-chan? Why do you think boro-chan could answer
 boro-chan：Every single day, boro-chan peeks at those popular shops... Homepages, ads, owner biographies birth signs personality types... Recipes for new product... Design concepts...#portrait: boro_1_awkward
 boro-chan：What's in, what's out, there's no pattern at all!
 boro-chan：Abandoned dignity and begged for good reviews on Wellp but the rating's still a mediocre, embarrassing 3.4... #portrait: boro_1_keepScratch
-boro-chan：The secret to being popular -- boro-chan also wants to know!! #portrait: boro_1_panic #portrait: boro_1_idle #showObservee: girl
-Me：(This is strangely familiar.)#profile: painter_side 
+boro-chan：The secret to being popular -- boro-chan also wants to know!! #portrait: boro_1_panic #portrait: boro_1_idle #showObservee: girl_EN
+Me：(This is strangely familiar.)#profile: painter_side
 //【收集：
 //左边：冒出来的文字泡“受人欢迎的秘密，Me也很想要知道啊！”
 //右边：呐喊的女高中生boro-chan
@@ -35,7 +35,7 @@ boro-chan：I'd rather it's a persona! The whole "persona" thing sounds like wha
 boro-chan：Popular people -- you see them throwing money into that posh store right behind me.#portrait: boro_1_shy
 boro-chan："So anxious, so sad -- Not really! I just want to see people not as trendy as I am lining up to comfort me!" 
 boro-chan：Ahhh!! Boro-chan wants to be like them too! Them popular people -- with lots of love but are cold inside! What do they think about every day?
-boro-chan：If I can live like that, as long as I look glamorous, it doesn't matter if I'm already rotten on the inside... Better than being a stinky dried salt fish.#portrait: boro_1_awkward #showObservee: saltFish
+boro-chan：If I can live like that, as long as I look glamorous, it doesn't matter if I'm already rotten on the inside... Better than being a stinky dried salt fish.#portrait: boro_1_awkward #showObservee: saltFish_EN
 boro-chan：They say don't worry, love yourself, a teenage girl is great enough as long as she breathes... But what about tomorrow? A future forever unnoticed?#portrait: boro_1_keepScratch
 boro-chan：Boro-chan gotta keep herself fresh. Gotta hide those fishy smell, gotta try harder...#portrait: boro_1_keepScratchFast
 boro-chan：...Eh?#portrait: boro_2_idle #portrait: boro_1_thinking
@@ -124,7 +124,7 @@ boro-chan：Yes!#portrait: boro_2_idle #portrait: boro_2_glad #profile: hide
 Me：Okay. I seem to get it. #profile: painter_norm
 Me：Perhaps by "eat," you mean "consume"? Teenage girls and shaved-ice are both images under consumerism, being objectified, rendered objects that could be bought, owned, with money.
 Me：You want the sauce to stay stinky, because the idea "teenage girls should all be sweet and innocent" is nothing but a stereotype, a shackle.#portrait: boro_1_idle #portrait: boro_1_thinking
-Me：I get it! The shop looks pink and sweet, but the stinky smell contrasts this image. You have to really taste and feel to understand, to love her!#showObservee: concept
+Me：I get it! The shop looks pink and sweet, but the stinky smell contrasts this image. You have to really taste and feel to understand, to love her!#showObservee: concept_EN
 //【收集：
 //左边：理念-画家对boro-chan理念的bulabula学术文字铺满背景，具体内容参考上文(或者其他表达方式)
 //右边：高级、时尚、独立的boro-chan招牌，以潮人们最喜欢的形式出现。或者是网上帖子标题。里面有boro-chan的形象。
@@ -133,7 +133,7 @@ Me：I get it! The shop looks pink and sweet, but the stinky smell contrasts thi
 boro-chan：Oh.#profile: hide 
 Me：Did I get it right?#profile: painter_side 
 boro-chan：Well, I don't know, I just like stinky tofu.#profile: hide #portrait: boro_1_shy #portrait: boro_1_idle 
-boro-chan：I just thought that we should have a stinky shaved-ice. And here you can get seafood for low prices.#showObservee: tofu
+boro-chan：I just thought that we should have a stinky shaved-ice. And here you can get seafood for low prices.#showObservee: tofu_EN
 //【收集：臭豆腐的念头
 //左边：boro-chan思考文字泡里面有个臭豆腐
 //右边：非常土的boro刨冰招牌/广告。里面有boro-chan的形象。】

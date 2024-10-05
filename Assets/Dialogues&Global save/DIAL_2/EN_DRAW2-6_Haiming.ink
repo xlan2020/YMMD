@@ -11,7 +11,7 @@ Seanamae：I'm only using your draft as the basis for the final designs, so I'm 
 
 ==theme==
 Me：Cool. The theme would be, ugh, something about deep sea monsters, right?#profile: painter_side
-Seanamae：You do remember that I like to call this place "Institute of Fantastic Creatures."#portrait: haiming_3_pushGlass #profile: hide 
+Seanamae：You do remember that I like to call this place "Institute of Fantastic Creatures."#portrait: haiming_3_pushGlass #profile: hide
 Seanamae: I work with monsters, exotic creatures, divine creatures, whether they are from ancient history books, rumors, or even comics. #portrait: haiming_3_norm
 Me：(She is so obsessed with these legends. I could see it from her <color=green>hairband</color>. But isn't this...?)#showObservee: seaSlug #choiceType: OBSERVEE
 //【捕捉：
@@ -87,7 +87,7 @@ Me：Is it like an interdisciplinary research for you, originating from the art 
 Me：Like, if we see tattoo as some sort of a trace.#profile: painter_stunned #portrait: haiming_3_pushGlass #portrait: haiming_3_norm
 Me：We often make them to conmemorate things that are important to us, that we'd have them engraved on our body, in case we forget.#profile: painter_norm
 Seanamae：Exactly. Even if it's just a tattoo on impulse, you'd remember that chose to make it. Even when you'd forgotten all about why. That's how humans assign meaning.#profile: hide #portrait: haiming_3_squint
-Seanamae：I had to complain, though, more people have been coming to me to cover their tattoos since displacement became popular.  #portrait: haiming_3_cold #bgm: 悬疑_3 #showObservee: coverTattoo
+Seanamae：I had to complain, though, more people have been coming to me to cover their tattoos since displacement became popular.  #portrait: haiming_3_cold #bgm: 悬疑_3 #showObservee: coverTattoo_EN
 //【捕捉：覆盖纹身
 //左边：“覆盖文身四个字”
 //右边：戴着手套口罩，拿着覆盖纹身器械的没有感情的杀(wenshen)手(shi)Seanamae，和一些空气中消失的纹身
@@ -168,7 +168,7 @@ Me：Hey, stop the teasing. Can you think of something?#profile: painter_side
 Seanamae：Mermaid is one of the most welcomed fairytales about fantastic marine life.#profile: hide #portrait: haiming_2_think
 Seanamae：some believe that they are just dugongs with seaweed on their heads. There are so many rumors about them, even literature favors them.#portrait: haiming_2_thinkSquint
 Seanamae：Speaking of which, there are mermaid wetsuits for sale in town.#portrait: haiming_2_think
-Seanamae：Mermaid are always the consumed. their bodies always labeled with beauty, obejct of desire, fragility, like foam. Sometimes even said to be used for refining oil and lighting lamps.#portrait: haiming_2_frown #showObservee: merch
+Seanamae：Mermaid are always the consumed. their bodies always labeled with beauty, obejct of desire, fragility, like foam. Sometimes even said to be used for refining oil and lighting lamps.#portrait: haiming_2_frown #showObservee: merch_EN
 //【捕捉：消费人鱼或者炼油点灯——残忍廉价的消费品
 //左边：文字框“炼油点灯”
 //右边：残忍廉价的消费品，罐装的紫色鱼油
@@ -184,7 +184,7 @@ Me：Thanks. But I deteste the idea of her being tattooed onto someone else. #pr
 Me：Mass-produced tattoo stickers? No thanks.
  ：“She's mine!” #profile: painter_dark #portrait: haiming_2_seeYou
 Seanamae：Ahh, I see. Definitely not just a mermaid, then.#profile: hide #portrait: haiming_2_seeYouKnow
-Seanamae：I sense some unusual possessiveness here.#portrait: haiming_1_idle #portrait: haiming_1_smile #showObservee: lover
+Seanamae：I sense some unusual possessiveness here.#portrait: haiming_1_idle #portrait: haiming_1_smile #showObservee: lover_EN
 //【捕捉：占有欲——情人
 //左边：文字框“占有欲”
 //右边：Me的温柔女友人鱼小姐
@@ -214,7 +214,7 @@ Me：Placeholders?#profile: painter_side
 Seanamae：We're all somewhat self-centered, that we only perceive things in relation to ourselves.  #profile: hide
 Seanamae：If you had a child who disappeared, you'd maintain the habit of care-taking even when you'd forgotten all about the child.
 Seanamae：Perhaps you would get a pet instead.
-Seanamae：This behavior of finding substitutions, or "placeholders," helps with the illusion that nothing had changed. Eases the anxiety. #showObservee: nightmare
+Seanamae：This behavior of finding substitutions, or "placeholders," helps with the illusion that nothing had changed. Eases the anxiety. #showObservee: nightmare_EN
 //【捕捉：对自Me的焦虑——梦魇
 //左边：文字框“对自Me产生的焦虑”
 //右边：梦魇柴柴，一种恐怖的女鬼
