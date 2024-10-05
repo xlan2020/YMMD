@@ -31,7 +31,6 @@ public class DrawingSystem : MonoBehaviour
     void Start()
     {
         uIDraw_Inventory.ShowSelf(false);
-        uIDraw_Inventory.ShowApplyButton(false);
         startDrawingVisualizer.ShowSelf(false);
         drawResultVisualizer.ShowSelf(false);
         binaryValDisplay.value = binaryVal * 0.01f;
@@ -119,7 +118,7 @@ public class DrawingSystem : MonoBehaviour
     {
         uIDraw_Inventory.ShowSelf(true);
         artMaterialVisualizer.InitializeMaterialSelection();
-        uIDraw_Inventory.ShowApplyButton(true);
+        uIDraw_Inventory.SetCanApply(true);
         startDrawingVisualizer.ShowSelf(true);
     }
     public void StartDrawing()

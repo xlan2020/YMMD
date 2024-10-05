@@ -51,6 +51,8 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] DrawTypeTab paintTab;
     [SerializeField] DrawTypeTab allTab;
 
+    private bool canApply = false;
+
 
     private FilterType filterType = FilterType.all;
 
@@ -73,6 +75,7 @@ public class UIDraw_Inventory : MonoBehaviour
     {
         SetDrawTypeFilter(FilterType.canvas);
         initializeTabButton();
+        showApplyButton(false);
     }
 
     private void SetupApplyTextLocale()
@@ -98,10 +101,24 @@ public class UIDraw_Inventory : MonoBehaviour
         UIObject.SetActive(b);
     }
 
-    public void ShowApplyButton(bool b)
+    private void showApplyButton(bool b)
     {
-        applyButton.gameObject.SetActive(b);
+        if (canApply)
+        {
+            applyButton.gameObject.SetActive(b);
+        }
+        else
+        {
+            applyButton.gameObject.SetActive(false);
+        }
     }
+
+    public void SetCanApply(bool b)
+    {
+        canApply = b;
+        refreshSelectionUI(); // show hidden apply button if any
+    }
+
     private void initializeTabButton()
     {
         //UnityEngine.Debug.Log("ui inventory initialize button onclick action");
@@ -190,8 +207,8 @@ public class UIDraw_Inventory : MonoBehaviour
         }
 
         refreshSelectionUI();
-
     }
+
 
     private List<Item> filterDisplayList(List<Item> itemList)
     {
@@ -295,12 +312,12 @@ public class UIDraw_Inventory : MonoBehaviour
             {
                 // if item is not draw type, regardless of what specified item is
                 // don't show apply button
-                applyButton.gameObject.SetActive(false);
+                showApplyButton(false);
             }
             else if (isSpecifiedMaterial(currentSlot.item) == false)
             {
                 // show item not specified UI
-                applyButton.gameObject.SetActive(false);
+                showApplyButton(false);
                 // change description to not specified item
                 switch (GameEssential.localeId)
                 {
@@ -319,7 +336,7 @@ public class UIDraw_Inventory : MonoBehaviour
             else
             {
                 // show apply button as normal
-                applyButton.gameObject.SetActive(true);
+                showApplyButton(true);
             }
         }
     }
