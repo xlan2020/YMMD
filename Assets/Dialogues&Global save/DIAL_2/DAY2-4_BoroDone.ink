@@ -26,7 +26,7 @@ boro酱：那个，就是看……看boro酱参加那个<color=green>COSPLAY大�
 我：（咦？我好像是在哪里见过这场活动的海报。）#profile: painter_stunned
 我：你要cosplay成什么角色？#profile: painter_norm
 boro酱：boro酱呀！#profile: boro_glad
-我：等等，你刚才不是还在说，你就是你吗？为什么又是cosplay了呢？#profile: painter_surprised
+我：等等，你刚才不是还在说，boro酱就是boro酱吗？为什么又是cosplay了呢？#profile: painter_surprised
 boro酱：所以boro酱才只会扮演boro酱呀。#profile: boro_glad
 我：…………（总觉得，她好像对cosplay有什么误解。）#profile: painter_noComment
 我：（我不能再思考boro酱到底是个什么定位了，感觉再想下去，我的头都要炸了……）#profile: painter_sideSweat

@@ -1,12 +1,12 @@
 INCLUDE ../global.ink
 boro-chan：Here. The ice's already filled in the bowl. These are the ingredients free for use. Just start.#profile: hide #portrait: boro_2_idle #portrait: boro_welcome #bgm: 日常_0.1 #drawingSystem: addBinaryVal_50
 System：Looks like the painter has an unusual commission.
-System：Some clients may provide <color=green>specified materials</color> for the artwork, such as boro-chan's shaved ice creation. It must be made with ice, sauce, and ingredients.#drawingSystem: showMaterialWindow
+System：Some clients may provide <color=green>specified materials</color> for the artwork. Boro-chan's shaved ice creation, for instance, must be made with ice, sauce, and given ingredients.#drawingSystem: showMaterialWindow
 System：The specified materials will be temporarily availiable in the list, while the painter's drawing materials <color=green>cannot be selected</color>.
 System：It's not quite hygienic to use brushes and paint on food, right?
 System：Choose <color=green>materials provided by boro-chan</color> and start painting!#drawingSystem: selectMaterial
 Me：(Painting with shaved-ice, that's a first.)#profile: painter_norm
-Me：(And I want the grand prize! That means I have to create something popular... Liked by the general public...)#profile: painter_eyeClosed
+Me：(I want the grand prize! That means I have to create something popular... Liked by the general public...)#profile: painter_eyeClosed
 Me：(Liked... What a brutal word... How do I know what people like?!) #profile: painter_sideSweat
 Me：(No time to dwell on this.) Boro-chan? What kind of ice do customers usually like?#profile: painter_side
 boro-chan：Are you asking, boro-chan, what kind of ice customers like?#profile: hide #portrait: boro_1_idle #portrait: boro_1_thinking
@@ -17,7 +17,7 @@ boro-chan：Why would you ask boro-chan? Why do you think boro-chan could answer
 boro-chan：Every single day, boro-chan peeks at those popular shops... Homepages, ads, owner biographies birth signs personality types... Recipes for new product... Design concepts...#portrait: boro_1_awkward
 boro-chan：What's in, what's out, there's no pattern at all!
 boro-chan：Abandoned dignity and begged for good reviews on Wellp but the rating's still a mediocre, embarrassing 3.4... #portrait: boro_1_keepScratch
-boro-chan：The secret to being popular, boro-chan wants to know too!! #portrait: boro_1_panic #portrait: boro_1_idle #showObservee: girl
+boro-chan：The secret to being popular -- boro-chan also wants to know!! #portrait: boro_1_panic #portrait: boro_1_idle #showObservee: girl
 Me：(This is strangely familiar.)#profile: painter_side 
 //【收集：
 //左边：冒出来的文字泡“受人欢迎的秘密，Me也很想要知道啊！”
@@ -28,23 +28,23 @@ Me：(Just like a teenage girl!)#profile: painter_noComment
 Me：(Wait! I seem to get it.)#profile: painter_eyeClosed
 Me：Boro-chan, is this the persona of your character?#profile: painter_side
 boro-chan：...Eh?#profile: hide #portrait: boro_1_thinking
-Me：You know, the attention-seeking thing, it's like a personification of the shop? Is this your market plan?#profile: painter_side
+Me：You know, the attention-seeking thing, it's like a personification of the shop? Is this your marketing plan?#profile: painter_side
 boro-chan：You mean, my angst is a persona?#portrait: boro_1_awkward #profile: hide
 Me：... Sorry, I only thought it's cute.#profile: painter_side
 boro-chan：I'd rather it's a persona! The whole "persona" thing sounds like what popular people at the top of the food chain would do.#portrait: boro_1_thinking 
-boro-chan：Popular people -- you see them throwing money into that cool, pop store just behind me.#portrait: boro_1_shy
+boro-chan：Popular people -- you see them throwing money into that posh store right behind me.#portrait: boro_1_shy
 boro-chan："So anxious, so sad -- Not really! I just want to see people not as trendy as I am lining up to comfort me!" 
-boro-chan：Ahhh!! Boro-chan wants to be like them too! Popular people with lots of love but are cold inside, what do they think about every day?
+boro-chan：Ahhh!! Boro-chan wants to be like them too! Them popular people -- with lots of love but are cold inside! What do they think about every day?
 boro-chan：If I can live like that, as long as I look glamorous, it doesn't matter if I'm already rotten on the inside... Better than being a stinky dried salt fish.#portrait: boro_1_awkward #showObservee: saltFish
-boro-chan：They say don't worry, love yourself, a teenage girl is great enough as long as she breathes... But what about tomorrow? Won't it be even more unattended? #portrait: boro_1_keepScratch
-boro-chan：Boro-chan hides, got to hide those fishy smell, got to try harder...#portrait: boro_1_keepScratchFast
+boro-chan：They say don't worry, love yourself, a teenage girl is great enough as long as she breathes... But what about tomorrow? A future forever unnoticed?#portrait: boro_1_keepScratch
+boro-chan：Boro-chan gotta keep herself fresh. Gotta hide those fishy smell, gotta try harder...#portrait: boro_1_keepScratchFast
 boro-chan：...Eh?#portrait: boro_2_idle #portrait: boro_1_thinking
 boro-chan：Ahhhh, sorry, accidentally said my inner monologue out loud... What were we talking about? Yes, persona.#portrait: boro_2_idle #portrait: boro_2_welcome
 boro-chan：Hehe, yes, it's just a persona! I don't actually worry about being popular, nor do I care about guest flow, ratings on Wellp, or likes on Z, it's just -- persona!#portrait: boro_2_turnHeadOnce
 Me：...(Eh...)#profile: painter_side
-Me：(I'm confused. Are we still taking about marketing the shop? Is this part of the performance?)#profile: painter_sideSweat
+Me：(I'm confused. Are we still taking about marketing strategies? Is this still part of it?)#profile: painter_sideSweat
 Me：(There's something strange about our conversation. As a truck owner who sells fish, boro-chan sounds really like a girl in middle school.)
-Me：(And boro-chan's personality is all mixed up with the shop. What's going on here?)#profile: painter_side #choiceType: OBSERVEE
+Me：(Boro-chan's personality is also all mixed up with the shop. What's going on here?)#profile: painter_side #choiceType: OBSERVEE
 +[提交“咸鱼”：店铺营销罢了！土鳖+]->sells_tactics
 +[提交“呐喊”：她真就是女高中生！潮流+]->really_is_teen
 
@@ -59,8 +59,8 @@ boro-chan：Thanks for the compliment! "persona" -- I didn't think of the word i
 Me：(So relieved she admitted it. I really can't be sure if she's performing.) I'm really impressed.#profile: painter_eyeClosed
 boro-chan：* blushes * Heh, heh... #profile: hide #portrait: boro_1_idle #portrait: boro_1_shy
 boro-chan：In the old days, no one thinks about likes or dislikes. But look at those KOLs on the internet... They're so pretty! I'd also love to eat whatever their hands made...
-boro-chan：Who's eat the things made by my hands...#portrait: boro_1_thinking
-boro-chan：But! Boro-chan is the symbol of this shop, she wants to be liked, discussed, eaten!#portrait: boro_1_shy
+boro-chan：* mumbles * No one would like to eat the food made by my hands...#portrait: boro_1_thinking
+boro-chan：Boro-chan is the symbol of this shop, she wants to be liked, discussed, eaten!#portrait: boro_1_shy
 boro-chan：It's fun, isn't it?#portrait: boro_2_idle #portrait: boro_2_welcome
 ->why_boro
 
@@ -111,16 +111,15 @@ Me：Which one comes first? The sauce or the personification?#profile: painter_s
 Me：It's really confusing, you know, with boro-chan selling "boro-chan"...#profile: painter_side 
 boro-chan：...#portrait: boro_1_idle #portrait: boro_1_thinking #profile: hide
 boro-chan：...... You can smell it, right?#portrait: boro_1_shy
-Me：什么？#profile: painter_side 
 boro-chan：In the pot over there, the smell of boro-chan.#portrait: boro_1_shy #profile: hide
-Me：Hmm-hm. I could smell it from far away. The smell is...impressive.#profile: painter_side 
+Me：Uh-huh. I could smell it from far away. The smell is...impressive.#profile: painter_side 
 boro-chan：Stinky smell, heavenly taste. Dead fish, teenage girl.#profile: hide
 boro-chan：Popular girls could also live in garbage piles. They might hate washing their hair, they might hate how they smell...
 boro-chan：Every morning, I throw a lot of fish into the pot and simmer them. It's hard to keep them fresh in the heat.#portrait: boro_1_thinking
 boro-chan：Add more salt? Bitter salt fish. Add more sugar? Cloying jam.#portrait: boro_1_keepScratch
 boro-chan：What kind of taste do I want to preserve? It is the essence of that stinky, fishy smell.
 boro-chan：You'll love it, you'll be addicted--to me, and to the stinky smell of the sauce... #portrait: boro_1_keepScratchFast
-Me：--boro-chan。#portrait: boro_1_idle #profile: painter_side
+Me：--boro-chan.#portrait: boro_1_idle #profile: painter_side
 boro-chan：Yes!#portrait: boro_2_idle #portrait: boro_2_glad #profile: hide 
 Me：Okay. I seem to get it. #profile: painter_norm
 Me：Perhaps by "eat," you mean "consume"? Teenage girls and shaved-ice are both images under consumerism, being objectified, rendered objects that could be bought, owned, with money.
@@ -163,8 +162,8 @@ boro-chan：Do you think that makes me a shady fish vendor?#portrait: boro_1_idl
 ->displacement_time
 
 ==displacement_time==
-boro-chan：Values -- too elusive in the era of displacement.
-boro-chan：When we want ice, we just displace them at home.
+boro-chan：Value -- becomes too elusive to measure in the era of displacement.
+boro-chan：When we want ice, we could just displace them at home.
 boro-chan：Once you know how to make the ice, you can displace it directly from the void. The ingredients are so cheap, why pay for the work?#portrait: boro_1_awkward
 boro-chan：The regular ice -- mango, pineapple? No one would buy them anymore. Get them through displacement, with absolutely fair prices.#portrait: boro_1_thinking
 boro-chan：When everyone starts to do that, what happens to our shaved-ice shops? What should I sell for a living?#portrait: boro_2_idle #portrait: boro_2_welcome
@@ -173,12 +172,12 @@ boro-chan：Exactly! People could only displace things they could imagine. What 
 boro-chan：In this era, that's how we survive--selling imagination.#portrait: boro_2_welcome
 boro-chan：You ever been to the pop shop behind? I learned from it.#portrait: boro_2_escape 
 Me：I see, so that's why you're obsessed with popularity. (Only that boro-chan's image is quite classical...)#profile: painter_side
-Me：(Is this really trendy?)#profile: painter_sideSweat
-Me：But how do you ensure that? How do you know people can't imagine it?#profile: painter_side 
+Me：(Is it really trendy?)#profile: painter_sideSweat
+Me：But how do you ensure that? How do you know people can't imagine the ice you created?#profile: painter_side 
 boro-chan：Because, I sell boro-chan, boro-chan is me. Heh.#portrait: boro_2_welcome #profile: hide 
 boro-chan：No on can really understand me in this world. That's my biggest advantage.#portrait: boro_2_glad #bgm: pause 
  ：boro-chan sounds cheerful.
- ：All people could see is the head with an eternal smile.
+ ：The head wears an eternal smile.
 boro-chan：Do you know why the shop is pink?#bgm: play
 +[Cute?]
 Me：Because it's kawaii?#profile: painter_side
@@ -199,7 +198,7 @@ boro-chan：Powerful? Hmm. Yes, just like blood.#portrait: boro_1_idle #portrait
 ==pink==
 boro-chan：I see pink more often than any other color.#portrait: boro_1_idle #portrait: boro_1_thinking #bgm: 柴柴_3
 boro-chan：People often forget that fish also bleed.
-boro-chan：Blood, in the ocean, in the ice, diluted by water, turns into a light pink. #portrait: boro_1_shy
+boro-chan：Blood, running into the sea, into the ice, diluted by water, turns into a light pink. #portrait: boro_1_shy
 boro-chan：Pink is the color of a wounded fish.
 Me：(Wait...)#profile: painter_stunned
 Me：Why would you know that?#profile: painter_surprised #bgm: fade_0.1_0
@@ -255,7 +254,7 @@ Me：I miss her.#profile: painter_depressed
 boro-chan：You don't think I'm your mermaid?#profile: hide #portrait: boro_3_headUp #bgm: fade_1_0
 Me：... #profile: painter_depressed
 boro-chan：Psst.#profile: hide #portrait: boro_2_idle #portrait: boro_2_welcome #bgm: fade_1_0.3
-boro-chan：That's definitely not me. I promise.#portrait: boro_2_glad
+boro-chan：That's definitely not me. Zero possibility. I promise.#portrait: boro_2_glad
 boro-chan：Okay?
 Me：...#profile: painter_side
 +[Okay.]
@@ -264,7 +263,7 @@ boro-chan：Pinky swear!#profile: hide #portrait: boro_2_turnHead #portrait: bor
 boro-chan：I am boro-chan, stinky smell~heavenly taste~~boro-chan!#profile: hide 
 ->back_to_boro
 
-+[Don't understand.]
++[What?]
 Me：I don't understand.#profile: painter_eyeClosed
 boro-chan：Don't you get it? Boro-chan is only boro-chan, stinky smell~heavenly taste~~the only~boro-chan!#profile: hide #portrait: boro_2_turnHead #portrait: boro_noEXPR #bgm: fade_1_1
 ->back_to_boro
@@ -274,8 +273,8 @@ boro-chan：Don't you dare forget me again~❤ #portrait: boro_2_idle #portrait:
 Me：Fine, Boro.#profile: painter_sideSweat #portrait: boro_2_glad
 Me：(I'm pretty much done with the ice.)#profile: painter_side #portrait: boro_2_welcome 
 Me：(Is it going to be popular? I have no idea. More confused about popularity, after the mysterious conversation with boro-chan.)
-Me：(Food isn't like oil painting that could be modified over and over again. It's like watercolor, you can't add more when it's full.)
-Me：(Let's wrap up this painting...this bowl of shaved-ice!)
+Me：(Food isn't like oil painting, that could be modified over and over again. It's like watercolor, you can't add more when it's full.)
+Me：(Let's wrap up this painting...this bowl of shaved-ice.)
 Me：Boro, I'm finished. The last step would be-- #profile: painter_norm
 boro-chan：Here!#profile: hide #portrait: boro_2_glad
 Me：That's it!#profile: painter_laugh

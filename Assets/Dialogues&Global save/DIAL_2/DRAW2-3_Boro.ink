@@ -91,13 +91,13 @@ boro酱：呵呵，以为我是小女娃吗？#profile: hide #portrait: boro_2_g
 +[观察鲍罗的手（土鳖+）]->hand
 
 ==no_discovery==
-我：（她到底是不是真实的“boro酱”？难道这些都是她的表演吗？）#profile: painter_side #choiceType: BUTTON
+我：（她到底是不是真实的“boro酱”？难道这些全部都是她的表演吗？）#profile: painter_side #choiceType: BUTTON
 ->why_boro
 
 ==hand==
 我：（仔细看来，她的手……）#profile: painter_side #choiceType: BUTTON #drawingSystem: addBinaryVal_-15
 我：（可真是一双饱经沧桑的手啊！）#profile: painter_sideSweat
-我：（她到底是不是真实的“boro酱”？难道这些都是她的表演吗？）
+我：（她到底是不是真实的“boro酱”？难道这些全部都是她的表演吗？）
 ->why_boro
 
 ==why_boro==
