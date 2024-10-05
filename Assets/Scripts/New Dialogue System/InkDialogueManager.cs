@@ -259,7 +259,7 @@ public class InkDialogueManager : MonoBehaviour
 
     private IEnumerator autoPlaying()
     {
-        UnityEngine.Debug.Log("auto playing, waiting to play the next line");
+        // UnityEngine.Debug.Log("auto playing, waiting to play the next line");
         yield return new WaitForSeconds(autoPlayingTimeInterval);
         ContinueStory();
     }
@@ -445,7 +445,7 @@ public class InkDialogueManager : MonoBehaviour
         // wait, and then continue the story
         if (autoMode) // also check if there is already one working 
         {
-            UnityEngine.Debug.Log("AUTO: reach the end of the after line complete actions, will load next line. ");
+            // UnityEngine.Debug.Log("AUTO: reach the end of the after line complete actions, will load next line. ");
             autoPlayingCoroutine = StartCoroutine(autoPlaying());
         }
 
