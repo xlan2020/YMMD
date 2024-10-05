@@ -1259,10 +1259,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.399384
+    x: 0
     y: 0
-    width: 0.51289076
-    height: 0.49211907
+    width: 1
+    height: 1
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 55
@@ -2463,10 +2463,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.399384
+    x: 0
     y: 0
-    width: 0.51289076
-    height: 0.49211907
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -3020,10 +3020,14 @@ MonoBehaviour:
   dialogueManager: {fileID: 453361472}
   observees:
   - {fileID: 1071266037}
+  - {fileID: 869581890}
   - {fileID: 59446650}
+  - {fileID: 1578054915}
   - {fileID: 1487178551}
   - {fileID: 2049309607}
+  - {fileID: 137499036}
   - {fileID: 1253235301}
+  - {fileID: 2081186229}
   descriptionText: {fileID: 269629013}
   descriptionBox: {fileID: 1339650154}
   submitter: {fileID: 102284609}
@@ -6108,7 +6112,7 @@ Transform:
   m_GameObject: {fileID: 1578054910}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -59.17, y: -141.83, z: 0}
+  m_LocalPosition: {x: -224.02, y: -154.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6167,7 +6171,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7017555, y: -2.0050125}
+  m_Offset: {x: 2.3807144, y: -0.0010986328}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6178,7 +6182,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 76.70698, y: 24.416061}
+  m_Size: {x: 104.3286, y: 23.657806}
   m_EdgeRadius: 0
 --- !u!50 &1578054914
 Rigidbody2D:
@@ -8873,12 +8877,14 @@ PrefabInstance:
       objectReference: {fileID: 453361472}
     - target: {fileID: 2204124089871327305, guid: 0e09c1d2c348d47dba4827f456e659d3, type: 3}
       propertyPath: m_Text
-      value: "\u5982\u679C\u53EF\u4EE5\u8FC7\u4E0A\u90A3\u6837\u7684\u65E5\u5B50\uFF0C\u53EA\u8981\u770B\u8D77\u6765\u9B45\u529B\u65E0\u9650\uFF0C\u5C31\u7B97\u91CC\u9762\u8150\u70C2\u6389\u4E5F\u6CA1\u6709\u5173\u7CFB\u2026\u2026\u603B\u6BD4\u505A\u8868\u91CC\u5982\u4E00\u5730\u81ED\u70D8\u70D8\u7684\u5E72\u762A\u7684\u54B8\u9C7C\u8981\u597D\u5427\u3002"
+      value: If I can live like that, as long as I look glamorous, it doesn't matter
+        if I'm already rotten on the inside... Better than being a stinky dried salt
+        fish.
       objectReference: {fileID: 0}
     - target: {fileID: 2204124089871327305, guid: 0e09c1d2c348d47dba4827f456e659d3, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 8e6ed4565704348b6b92c69ec5aef11b, type: 3}
+      objectReference: {fileID: 12800000, guid: aa238c54e4fc64a3faa77061b86986e6, type: 3}
     - target: {fileID: 2204124089871327305, guid: 0e09c1d2c348d47dba4827f456e659d3, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 12
@@ -9160,7 +9166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210726959595340331, guid: 8d61535dbc8f74fb2a03dc1d584865f9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -232.0001
+      value: -232.00012
       objectReference: {fileID: 0}
     - target: {fileID: 1210726959595340331, guid: 8d61535dbc8f74fb2a03dc1d584865f9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9653,11 +9659,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0dbb00c66d4d4e35a0db1ec3b260eaf, type: 3}
---- !u!1 &7864205718146103300 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6631727424994532870, guid: 0e09c1d2c348d47dba4827f456e659d3, type: 3}
-  m_PrefabInstance: {fileID: 1200521215224324171}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8102401939034612106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9729,7 +9730,7 @@ PrefabInstance:
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: autoIcon
       value: 
-      objectReference: {fileID: 7864205718146103300}
+      objectReference: {fileID: 0}
     - target: {fileID: 8102401938581987018, guid: 9e8ed11cc3f4840b2b4f6bd4fe1b1d29, type: 3}
       propertyPath: nameStyle
       value: 
