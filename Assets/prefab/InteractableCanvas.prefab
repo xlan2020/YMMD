@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 6857777771027942448}
   - component: {fileID: 1865863588706968654}
   - component: {fileID: 8167427530937141933}
+  - component: {fileID: 1376810034020781546}
   m_Layer: 8
   m_Name: door-closed
   m_TagString: Untagged
@@ -333,19 +334,7 @@ MonoBehaviour:
   dialogueTrigger: {fileID: 0}
   eventsOnInteraction:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6857777771027942448}
-        m_TargetAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
-        m_MethodName: set_sprite
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 21300000, guid: 08b1cdcfddc694cb2a91e28f48b8ee94, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   itemScriptableObject: {fileID: 0}
   collectAfterDialogue: 0
   collectOnInteract: 0
@@ -395,6 +384,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 68, y: 204.42801}
   m_EdgeRadius: 0
+--- !u!114 &1376810034020781546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589562776925928708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7cdbab58dfd4513a734097ecf985e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6857777771027942448}
+  sprite1: {fileID: 21300000, guid: 7aa23112d3ecc44f497d213e61886e87, type: 3}
+  sprite2: {fileID: 21300000, guid: 08b1cdcfddc694cb2a91e28f48b8ee94, type: 3}
+  changeSpriteButton: {fileID: 5244554550759212255}
 --- !u!1 &2074211686554060040
 GameObject:
   m_ObjectHideFlags: 0
@@ -4138,6 +4143,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7102454208817574042, guid: ea42d30825f274128a0a2f718b6f69fb, type: 3}
   m_PrefabInstance: {fileID: 5677592388019108371}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5244554550759212255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 433113717526134476, guid: ea42d30825f274128a0a2f718b6f69fb, type: 3}
+  m_PrefabInstance: {fileID: 5677592388019108371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5965164942041525159
 PrefabInstance:
   m_ObjectHideFlags: 0
