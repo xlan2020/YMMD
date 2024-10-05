@@ -1,5 +1,5 @@
 INCLUDE ../global.ink
-Me：Here, I've finished.#bgm: 日常 #profile: painter_norm
+Me：Here, my DIY shaved ice.#bgm: 日常 #profile: painter_norm
 boro-chan：Why? Hold it yourself.#profile: boro_escape
 Me：It's for me?#profile: painter_surprised
 boro-chan：What else? You think I could sell it?#profile: boro_thinking
@@ -26,7 +26,7 @@ boro-chan：It's just... Boro-chan in the <color=green>COSPLAY Contest</color>..
 Me：(Hey, I've seen a poster about that cosplay event somewhere.)#profile: painter_stunned
 Me：Who are you gonna be?#profile: painter_norm
 boro-chan：Boro-chan. Apparently!#profile: boro_glad
-Me：But you just told me you're just you? Why is it a cosplay again?#profile: painter_surprised
+Me：But you just told me Boro-chan is just Boro-chan? Why is it a cosplay again?#profile: painter_surprised
 boro-chan：Boro-chan is me, so I only know how to play Boro-chan.#profile: boro_glad
 Me：...... (I feel that she has misunderstood the word "cosplay".)#profile: painter_noComment
 Me：(Enough of Boro-chan! My head's exploding.)#profile: painter_sideSweat
