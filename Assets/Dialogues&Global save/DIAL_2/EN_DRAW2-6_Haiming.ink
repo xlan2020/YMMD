@@ -418,99 +418,97 @@ Seanamae：Is this jacket yours?#profile: hide #event: haimingAppear #portrait: 
 
 
 ==lost_item==
-Me：哎？……还真是！上次落在你这的？#profile: painter_surprised
-Seanamae：看来是这样了。不是第一次有客人在这里落东西了，Me离开两周，回来都忘记了。#profile: hide #portrait: haiming_3_eyeClosed
-Me：哈哈，这对于现在的Me来说，还真是个好消息。#portrait: haiming_3_norm #profile: painter_side
-Me：(这可是Me为数不多的财物了。)#profile: painter_sideSweat
-Seanamae：惨的呀，画家。#profile: hide 
-Me：*接过衣服*空调衣，真是奢侈的发明……不过你这里还真有点冷，先穿上吧。#profile: painter_eyeClosed
-Me：嗯……嗯？哎？
-Me：兜里什么东西……
-Me：咦？#profile: painter_stunned #event: showLighter
-Seanamae：哇哦，好有格调的打火机。可惜没摸出一包烟，不然就真是惊喜了。#portrait: haiming_3_pushGlass
-Me：……#profile: painter_stunned
-Me：Me不抽烟。#bgm: fade_0.2_0 
-Seanamae：这样吗？呵呵，Me之前也没留意……#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
-Seanamae：………………哎？#portrait: haiming_1_smile
-Me：…………………… #profile: painter_stunned
-Seanamae：…………………… #profile: hide #portrait: haiming_1_squint
-Seanamae：………为什么你兜里会有打火机？#portrait: haiming_1_dazed
-Me：对呀，为什么呢？#bgm: 紧张 #bgm: fade_5_0.2   #profile: painter_stunned
-Seanamae：…… #portrait: haiming_2_idle #portrait: haiming_2_think #profile: hide
-Seanamae：给Me看看。#portrait: haiming_2_seeYou 
-Seanamae：是美人鱼的造型呢。#portrait: haiming_2_know #event: giveLighter
-Seanamae：画家，原来你是会为了点生日蜡烛或者烟花之类的，而买这么漂亮的打火机的家伙吗？#portrait: haiming_2_seeYouKnow
-Me：你看Me像那种人吗？#profile: painter_side
-Seanamae：火机是你的吗？#bgm: fade_5_0.6 #portrait: haiming_2_seeYou #profile: hide
-Me：Me有点晕…… #profile: painter_side
-Seanamae：有个检验的办法。如果你能置换走它，但就说明你拥有它。#profile: hide #portrait: haiming_2_think
-Me：(置换走美人鱼打火机，以此来检验自己是否拥有它……)#profile: painter_side
-+[好主意。]->good_idea
-+[才不要！]->nope
+Me：Wow, I forgot all about it. Thanks. I guest I left it here last time.#profile: painter_surprised
+Seanamae：Must be a few weeks before.#profile: hide #portrait: haiming_3_eyeClosed
+Me：Good for me to find something that belongs to me.#portrait: haiming_3_norm #profile: painter_sideSweat
+Seanamae：Aw, painter.#profile: hide 
+Me：It's a bit cold in there, I'll put it on...#profile: painter_eyeClosed
+Me：Hmm...
+Me：There's something in the pocket...
+Me：Huh?#profile: painter_stunned #event: showLighter
+Seanamae：Wow, what a classy lighter. Too bad you didn't pull out a pack of cigarettes from there too.#portrait: haiming_3_pushGlass
+Me：...#profile: painter_stunned
+Me：I don't smoke.#bgm: fade_0.2_0 
+Seanamae：Ah, I see. Well, I didn't really notice before...#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
+Seanamae：...Eh?#portrait: haiming_1_smile
+Me：...... #profile: painter_stunned
+Seanamae：...... #profile: hide #portrait: haiming_1_squint
+Seanamae：So why do you have a lighter in your pocket?#portrait: haiming_1_dazed
+Me：Exactly, why?#bgm: 紧张 #bgm: fade_5_0.2   #profile: painter_stunned
+Seanamae：... #portrait: haiming_2_idle #portrait: haiming_2_think #profile: hide
+Seanamae：Let me see it.#portrait: haiming_2_seeYou 
+Seanamae：It's a mermaid.#portrait: haiming_2_know #event: giveLighter
+Seanamae：Are you the guy who buys fancy lighters to light birthday candels?#portrait: haiming_2_seeYouKnow
+Me：Do I look like that to you?#profile: painter_side
+Seanamae：Is this your lighter?#bgm: fade_5_0.6 #portrait: haiming_2_seeYou #profile: hide
+Me：I'm a little dizzy... #profile: painter_side
+Seanamae：Well. There's a way to test it. If you can displace it, you own it.#profile: hide #portrait: haiming_2_think
+Me：(Displace the lighter to see if I own it...)#profile: painter_side
++[Great idea.]->good_idea
++[Nooooo.]->nope
 
 ==good_idea==
-Me：好主意。让Me试试…… #profile: painter_side
-Me：……………… #portrait: haiming_2_seeYou #event: displaceEffect #drawingSystem: addBinaryVal_-10
-Me：Me好像换不走它。
-Seanamae：你动作也太快了点吧？#profile: hide #portrait: haiming_2_seeYouKnow
-Seanamae：开玩笑的，真换走了，Me们也没必要再调查任何事了。#portrait: haiming_2_seeYou
-Me：Me想，无论换得走还是换不走，都是一种天意。#profile: painter_side
-Me：看来必须得追根溯源了。#profile: painter_alert
+Me：You're a genius, Seanamae. #profile: painter_side
+Me：...... #portrait: haiming_2_seeYou #event: displaceEffect #drawingSystem: addBinaryVal_-10
+Me：I can't seem to displace it.
+Seanamae：That was fast.#profile: hide #portrait: haiming_2_seeYouKnow
+Seanamae：Hey, if you really displaced it away, there's no need to investigate anything anymore.#portrait: haiming_2_seeYou
+Me：I think it's in the fate that it stayed.#profile: painter_side
+Me：Perhaps a messege from the void? "Go find the mermaid!" Or something.#profile: painter_alert
 ->my_past
 
 ==nope==
-Me：算了吧，等Me换走了，咱们一起忘记这回事吗？#profile: painter_norm #drawingSystem: addBinaryVal_10
-Me：大痕迹学家，就别在这逗Me了。#profile: painter_eyeClosed
-Seanamae：好，那Me们摊开说吧。Me想，这就是Me们追溯往事的重要契机。#profile: hide #portrait: haiming_2_seeYou
+Me：Stop kidding, what if I really displaced it away?#profile: painter_norm #drawingSystem: addBinaryVal_10
+Me：We forget about this together? Then we start our conversation today all over again?#profile: painter_eyeClosed
+Seanamae：Okay. Let's spread it out. I think this lighter is key for us to trace back what happened between you and the mermaid.#profile: hide #portrait: haiming_2_seeYou
 ->my_past
 
 ==my_past==
-Seanamae：又是美人鱼。Me好像能理解一些你的执念了。#profile: hide #portrait: haiming_2_think
-Seanamae：关于这枚火机的来历，画家一点都想不起来吗？ #portrait: haiming_2_seeYou
-Me：完全不能……不过有点熟悉，可能是Me准备给什么人的礼物吧，或者别人给Me的。#profile: painter_eyeClosed
-Seanamae：自圆其说。#profile: hide #portrait: haiming_2_seeYouDoubt
-Me：哎？#profile: painter_stunned
-Seanamae：因为遗忘了火机的来历，你在自圆其说。 #profile: hide
-Me：(天，Me好像真的在……Seanamae的神情突然好严肃。)#profile: painter_side
-Seanamae：这枚火机，应该就是一种痕迹。#portrait: haiming_2_think
-Seanamae：无论你能不能换走它，对于不抽烟的画家来说，打火机都不是自己常用的物件。
-Seanamae：你确定这件衣服是你的？#portrait: haiming_2_seeYou
-Me：非常确定。#profile: painter_side
-Seanamae：火机这种东西，总感觉是很私密的。介意让Me试一下吗？#profile: hide
-Me：请。#profile: painter_side #portrait: haiming_2_think
-Seanamae：咦？还挺高档的，摁头和尾巴出现得火焰颜色不同……蓝紫色的？好神奇，灌了两种油吧……#profile: hide #portrait: haiming_2_thinkSquint #event: lightUp
-Me：*脸色一白*…… #profile: painter_sideSweat #event: lightUp
-Seanamae：画家？怎么了？#profile: hide #portrait: haiming_2_seeYou 
-Me：呕……鲛人油灯…… #profile: painter_sideSweat
-Seanamae：那种东西不存在啦！……哎呀，说出来了。#portrait: haiming_2_seeYouDoubt #profile: hide 
-Me：你到底信不信啊？其实研究神秘生物只是看乐子吧？算了，这个也不是现在的重点…… #profile: painter_side #portrait: haiming_2_think #event: lightUp
-Seanamae：看起来是有使用过的痕迹，表面有点划痕，两管油都空了一半。大概，也不是画家准备送人的礼物，而就算是别人给你的，也被画家之外的人用过。#portrait: haiming_2_thinkSquint #profile: hide #event: lightUp
-Seanamae：是很亲密的人吧？会把打火机揣在你的兜里。#portrait: haiming_2_seeYou
-Me：早上，王大爷对Me说过一句话：“你没和那个谁一起吗？”然后就说自己记错人了。#profile: painter_eyeClosed
-Me：Me当时还觉得有点奇怪。
-Seanamae：*长叹一口气*…… #portrait: haiming_1_idle #portrait: haiming_1_sad #profile: hide #event: getLighterBack
-Seanamae：画家，Me很抱歉。
-Seanamae：你身边的人消失了。因为置换。#bgm: 黄昏_4
-Me：…… #profile: painter_depressed
-Me：……………… #portrait: haiming_1_sad
-Me：…………………………
-Me：Me能怎么办哪…… #profile: painter_eyeClosed
-Seanamae：痕迹学说到底也是一种研究理论问题的学术，没办法解决一切的。#profile: hide #portrait: haiming_3_idle #portrait: haiming_3_cold
-Me：你见过她吧？呵呵，外套可是落在你这里的。#profile: painter_eyeClosed
-Seanamae：…… #portrait: haiming_3_cold
-Seanamae：作为朋友，Me其实觉得，画家可以试着放下她。记挂虚空里的人，太难啦。把过往覆盖掉，刷一层大白，再去生活吧。#portrait: haiming_3_pushGlass #portrait: haiming_3_norm
-Seanamae：不过，如果你想要去寻找她，Me会竭尽所能地帮助你。#portrait: haiming_3_pushGlass
-Seanamae：痕迹学的终极幻想，就是循着人鱼回归大海的水迹，从虚空中捞回挚爱吧？#portrait: haiming_3_eyeClosed
-Seanamae：………… #portrait: haiming_3_norm
-Seanamae：看来你已经决定了。那么画家，答应Me，不要放弃任何一点关于她的痕迹。#portrait: haiming_3_squint 
-Seanamae：她一定会回到你身边的。#portrait: haiming_3_norm #portrait: haiming_3_pushGlass
-Me：谢谢你。真的……谢谢你。#profile: painter_side
-Me：抱歉，Me有点……这幅画，Me今天可能没办法完成了。
-Seanamae：没关系，之后还有时间，要是想在Me这里画也是可以的。#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_smile
-Seanamae：画家呀…… #portrait: haiming_1_sad
-Seanamae：……
-Seanamae：刚才的画，给Me看看吧？就算是没完成的草稿，也没有关系。#portrait: haiming_1_smile
-Me：………………嗯……好。#profile: painter_depressed
-Me：………………#profile: painter_eyeClosed
-+[递出未完成的画作]
+Seanamae：...I seem to understand why you're so obsessed. Mermaids just keep popping out in your life.#profile: hide #portrait: haiming_2_think
+Seanamae：You can't think of anything at all about where you got this lighter? #portrait: haiming_2_seeYou
+Me：I can't...but it feels familiar. Perhaps a gift from someone?#profile: painter_eyeClosed
+Seanamae：Self justification.#profile: hide #portrait: haiming_2_seeYouDoubt
+Me：Eh?#profile: painter_stunned
+Seanamae：You're justifying your memory, because you forgot where the lighter came from.#profile: hide
+Me：(Man, that's true. Seanamae looks suddenly serious.)#profile: painter_side
+Seanamae：The lighter might be the container of trace. Like the razor in the story with the disappeared husband.#portrait: haiming_2_think
+Seanamae：Are you sure the jacket is yours?#portrait: haiming_2_seeYou
+Me：I'm certain.#profile: painter_side
+Seanamae：Lighters always feel intimate. Mind if I try it?#profile: hide
+Me：Go ahead.#profile: painter_side #portrait: haiming_2_think
+Seanamae：Hey, it's fun. Different flames appear when you press the head and the tail. Blue-purple? Amazing. Must be two different kinds of oil... #profile: hide #portrait: haiming_2_thinkSquint #event: lightUp
+Me：Ew! #profile: painter_sideSweat #event: lightUp
+Seanamae：What?#profile: hide #portrait: haiming_2_seeYou 
+Me：Mermaid-oil lamp...#profile: painter_sideSweat
+Seanamae：That kind of things don't exist! ...Oops. Said it out loud. #portrait: haiming_2_seeYouDoubt #profile: hide 
+Me：Do you really believe in these creatures or not?!#profile: painter_side #portrait: haiming_2_think #event: lightUp
+Me：Anyways. It's not the point...
+Seanamae：Its look shows signs of use, scratches on the surface, both tubes of oil half empty.#portrait: haiming_2_thinkSquint #profile: hide #event: lightUp
+Seanamae：Must be someone very close to you, right? Would carry their own lighter in your pocket.#portrait: haiming_2_seeYou
+Me：Mr. Wong asked me in the morning, "you're not with your you-know-who?" Then he claimed he was mistaken.#profile: painter_eyeClosed
+Me：That sounded weird.
+Seanamae：*sign*... #portrait: haiming_1_idle #portrait: haiming_1_sad #profile: hide #event: getLighterBack
+Seanamae：I'm sorry, painter.
+Seanamae：Now we could say for sure. It is someone close to you, who had disappeared due to displacement.#bgm: 黄昏_4
+Me：... #profile: painter_depressed
+Me：...... #portrait: haiming_1_sad
+Me：What should I do, then... #profile: painter_eyeClosed
+Seanamae：Ichnology is, afterall, only theoretical. It can't help much about telling you what to do.#profile: hide #portrait: haiming_3_idle #portrait: haiming_3_cold
+Me：You've met her too, right? The jacket's at your place.#profile: painter_eyeClosed
+Seanamae：... #portrait: haiming_3_cold
+Seanamae：As your friend, I'd suggest you let her go. You don't have to give up more in life, just to remember a faint shadow from the void.#portrait: haiming_3_pushGlass #portrait: haiming_3_norm
+Seanamae：But if you've made up your mind to trace her back, I'll do my best to help.#portrait: haiming_3_pushGlass
+Seanamae：Perhaps the ultimate fantasy of an ichnologist is to follow the trails of a mermaid and retrieve true love from the void?#portrait: haiming_3_eyeClosed
+Seanamae：......#portrait: haiming_3_norm
+Seanamae：Looks like you've decided. Then, promise me that you won't let any trace go without close examination. Even the slightest ones.#portrait: haiming_3_squint 
+Seanamae：She will come back.#portrait: haiming_3_norm #portrait: haiming_3_pushGlass
+Me：Thanks...really, thank you, Seanamae.#profile: painter_side
+Me：I'm sorry, I think I won't be albe to finish it today.
+Seanamae：It's okay.#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_smile
+Seanamae：Painter... #portrait: haiming_1_sad
+Seanamae：...
+Seanamae：Can I see the draft?#portrait: haiming_1_smile
+Me：... Sure... Well... It's...#profile: painter_depressed
+Me：...#profile: painter_eyeClosed
++[Hand out drawing]
 ->END
