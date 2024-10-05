@@ -25,6 +25,7 @@ public class MapPlayer : MonoBehaviour
     public SettingsMenu settingsMenu;
     public InventoryButton inventoryButton;
 
+
     private void Awake()
     {
         originalSpeed = speed;

@@ -109,6 +109,11 @@ public class LoadingScene : MonoBehaviour
         StartCoroutine(RestartAndLoadSceneAsync(sceneName));
     }
 
+    public void RestartGameFromScene(string sceneName)
+    {
+        StartCoroutine(RestartAndLoadSceneAsync(sceneName));
+    }
+
     IEnumerator RestartAndLoadSceneAsync(string sceneName)
     {
         animator.SetTrigger(animationTrigger);

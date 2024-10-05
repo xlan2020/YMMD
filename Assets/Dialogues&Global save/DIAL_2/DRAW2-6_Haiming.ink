@@ -501,4 +501,5 @@ INCLUDE ../global.ink
 我：………………嗯……好。#profile: painter_depressed
 我：………………#profile: painter_eyeClosed
 +[递出未完成的画作]
+ ：#drawingSystem: showDrawResult #profile: none #bgm: fade_0.5_0
 ->END
