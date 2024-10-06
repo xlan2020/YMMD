@@ -3,7 +3,7 @@ INCLUDE ../global.ink
  老王：哟，画家。买点啥不？#profile: laowang_norm
  +[上新了啥？]
  老王：来，随便看随便挑。#profile: laowang_pleased 
- 我：…… #profile: painter_norm //event: 总之setActive laowangshop
+ 我：…… #profile: painter_norm #event: showKiosk
  我：诶，麻烦您嘞。#profile: painter_happy
  ->DONE
  
