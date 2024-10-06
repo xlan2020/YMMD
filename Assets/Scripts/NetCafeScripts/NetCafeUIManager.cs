@@ -6,6 +6,8 @@ public class NetCafeUIManager : MonoBehaviour
     private NewsDetailScriptableObject[] newsArray;
     private NewsDetailScriptableObject newsHeadline;
     private PostScriptableObject[] postArray;
+    private string newsAnnounce;
+    private string forumAnnounce;
 
     [Header("UI Elements")]
     public GameObject netBar;
@@ -29,6 +31,9 @@ public class NetCafeUIManager : MonoBehaviour
     public GameObject newsHeadLine;
     //public Transform headlineDetailPage;
 
+    public Text newsBulletin;
+    public Text forumBulletin;
+
     // 导航栏按钮
     public Button newsButton;
     public Button forumButton;
@@ -48,6 +53,9 @@ public class NetCafeUIManager : MonoBehaviour
         newsArray = contentScriptableObject.newsArray;
         newsHeadline = contentScriptableObject.headline;
         postArray = contentScriptableObject.postArray;
+        newsAnnounce = contentScriptableObject.newsAnnounce;
+        Debug.Log(newsAnnounce);
+        forumAnnounce = contentScriptableObject.forumAnnounce;
     }
 
     // 初始化 UI 的函数，在传递内容后调用
@@ -132,6 +140,8 @@ public class NetCafeUIManager : MonoBehaviour
     // 加载新闻首页标题
     private void LoadNewsHomePage()
     {
+        newsBulletin.text = newsAnnounce + "\n";
+
         // 清空现有新闻标题按钮
         foreach (Transform child in newsHomeTitles.transform)
         {
@@ -169,6 +179,7 @@ public class NetCafeUIManager : MonoBehaviour
 
     private void LoadForumHomePage()
     {
+        forumBulletin.text = forumAnnounce;
         // 清空现有论坛标题按钮
         foreach (Transform child in forumHomeTitles.transform)
         {
@@ -231,12 +242,6 @@ public class NetCafeUIManager : MonoBehaviour
         if (buttonComponent != null)
         {
             buttonComponent.enabled = true; // 确保按钮激活
-        }
-
-        ButtonHoverUnderline underline = buttonObj.GetComponent<ButtonHoverUnderline>();
-        if (underline != null)
-        {
-            underline.enabled = true;
         }
 
         // 激活所有子级 Text 组件

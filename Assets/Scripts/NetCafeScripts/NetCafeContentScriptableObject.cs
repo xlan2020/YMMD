@@ -8,4 +8,6 @@ public class NetCafeContentScriptableObject : ScriptableObject
     public NewsDetailScriptableObject headline;
     public NewsDetailScriptableObject[] newsArray; // all news to be displayed in this scene
     public PostScriptableObject[] postArray; // all posts available to view in this scene
+    [TextAreaAttribute(10, 3)] public string newsAnnounce;
+    [TextAreaAttribute(10, 3)] public string forumAnnounce;
 }
