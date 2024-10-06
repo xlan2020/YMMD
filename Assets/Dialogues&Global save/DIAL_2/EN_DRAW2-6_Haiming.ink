@@ -511,4 +511,5 @@ Seanamae：Can I see the draft?#portrait: haiming_1_smile
 Me：... Sure... Well... It's...#profile: painter_depressed
 Me：...#profile: painter_eyeClosed
 +[Hand out drawing]
+ ：#drawingSystem: showDrawResult #profile: none #bgm: fade_0.5_0
 ->END
