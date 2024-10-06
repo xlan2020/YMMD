@@ -98,7 +98,7 @@ INCLUDE ../global.ink
 //S note：玩的时候感觉之前的有点不自然，改了一下
 我：这是我的秘密，和你交换。#profile: painter_side #bgm: 日常_1 #portrait: haiming_2_seeYouSquint
 海名：洗耳恭听。#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
-我：这就是我的痕迹。#profile: painter_norm #event: showScale
+我：这就是困扰我的痕迹。#profile: painter_norm #event: showScale
 海名：鱼鳞？#profile: hide #portrait: haiming_2_idle #portrait: haiming_2_think
  ：海名小心翼翼地接过鳞片。#portrait: haiming_2_thinkSquint #event: giveScale
 我：你明信片里问过怎么联系不上我，其实，就在昨天，我大概是遭遇了一起置换事故。#profile: painter_depressed 

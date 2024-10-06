@@ -1,6 +1,6 @@
 INCLUDE ../global.ink
 Seanamae：Hey, what a pleasant surprise!#profile: haiming_smile
-Seanamae：Looks like we didn't lose my postcard in the mail. It's been long, painter. #profile: haiming_squintLaugh
+Seanamae：It seems that my postcard has made it to your mailbox. It's been long, painter. #profile: haiming_squintLaugh
 Me：Nice to see you again, Seanamae.#profile: painter_happy
 Me：I love it here. Great atmosphere.#profile: painter_laugh
 Seanamae：Then come visit often, you're more than welcome.#profile: haiming_smile
@@ -9,7 +9,7 @@ Seanamae：So. If my memory serves me right, you owe me something.#bgm: 暂停 #
 Seanamae：I'm afraid you won't be able to go home in one piece, if you don't hand it over today.#bgm: 戏谑 #profile: haiming_seeYouSquint
 Me：Eh, in one piece...#profile: painter_surprised
 Seanamae：For those who procrastinate... Meng!#profile: haiming_seeYouKnow
-Meng：* Turns agressively * #profile: meng_norm
+Meng：* Turns agressively * #profile: meng_noWord
 Me：I, I'll just do it now! (What kind of shop is this!)#profile: painter_sideSweat
 Seanamae：Hah, gotcha.#profile: haiming_yinyang #bgm: 日常
 //孟猛：*沉默地背过身*#profile: meng_norm //S note: 做演出的时候感觉没有这句比较自然

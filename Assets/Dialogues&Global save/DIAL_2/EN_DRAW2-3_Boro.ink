@@ -42,7 +42,7 @@ boro-chan：...Eh?#portrait: boro_2_idle #portrait: boro_1_thinking
 boro-chan：Ahhhh, sorry, accidentally said my inner monologue out loud... What were we talking about? Yes, persona.#portrait: boro_2_idle #portrait: boro_2_welcome
 boro-chan：Hehe, yes, it's just a persona! I don't actually worry about being popular, nor do I care about guest flow, ratings on Wellp, or likes on Z, it's just -- persona!#portrait: boro_2_turnHeadOnce
 Me：...(Eh...)#profile: painter_side
-Me：(I'm confused. Are we still taking about marketing strategies? Is this still part of it?)#profile: painter_sideSweat
+Me：(I'm confused. Are we still talking about marketing strategies? Is this still part of it?)#profile: painter_sideSweat
 Me：(There's something strange about our conversation. As a truck owner who sells fish, boro-chan sounds really like a girl in middle school.)
 Me：(Boro-chan's personality is also all mixed up with the shop. What's going on here?)#profile: painter_side #choiceType: OBSERVEE
 +[提交“咸鱼”：店铺营销罢了！土鳖+]->sells_tactics
@@ -175,7 +175,7 @@ Me：I see, so that's why you're obsessed with popularity. (Only that boro-chan'
 Me：(Is it really trendy?)#profile: painter_sideSweat
 Me：But how do you ensure that? How do you know people can't imagine the ice you created?#profile: painter_side 
 boro-chan：Because, I sell boro-chan, boro-chan is me. Heh.#portrait: boro_2_welcome #profile: hide 
-boro-chan：No on can really understand me in this world. That's my biggest advantage.#portrait: boro_2_glad #bgm: pause 
+boro-chan：No one can really understand me in this world. That's my biggest advantage.#portrait: boro_2_glad #bgm: pause 
  ：boro-chan sounds cheerful.
  ：The head wears an eternal smile.
 boro-chan：Do you know why the shop is pink?#bgm: play
@@ -205,7 +205,7 @@ Me：Why would you know that?#profile: painter_surprised #bgm: fade_0.1_0
 boro-chan：Eh? Why, why wouldn't I?#profile: hide #portrait: boro_1_keepScratch
 Me：(Last night, I drew a mermaid...peeling scales, bleeding fish, bleeding... I was... Ah! My head aches...)#profile: painter_eyeClosed 
 Me：Why would you know so much?#profile: painter_alert #portrait: boro_1_keepScratchFast #bgm: 紧张_1 #bgm: fade_0.1_0.2
-boro-chan：What are you taking about? Why wouldn't I?#portrait: boro_1_panic #profile: hide 
+boro-chan：What are you talking about? Why wouldn't I?#portrait: boro_1_panic #profile: hide 
 boro-chan：My job involves cutting up a lot of fish? On daily basis.
 Me：Fish?#profile: painter_alert 
 boro-chan：What...what about fish?#profile: hide #portrait: boro_1_keepScratchSuperFast

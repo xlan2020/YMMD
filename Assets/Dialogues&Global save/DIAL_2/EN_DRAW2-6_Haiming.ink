@@ -86,7 +86,7 @@ Me：(She's not self-claimed, like 8-2 or myself...)#profile: painter_sideSweat 
 Me：Is it like an interdisciplinary research for you, originating from the art of tattoo?#profile: painter_norm #portrait: haiming_2_seeYouKnow
 Me：Like, if we see tattoo as some sort of a trace.#profile: painter_stunned #portrait: haiming_3_pushGlass #portrait: haiming_3_norm
 Me：We often make them to conmemorate things that are important to us, that we'd have them engraved on our body, in case we forget.#profile: painter_norm
-Seanamae：Exactly. Even if it's just a tattoo on impulse, you'd remember that chose to make it. Even when you'd forgotten all about why. That's how humans assign meaning.#profile: hide #portrait: haiming_3_squint
+Seanamae：Exactly. Even if it's just a tattoo on impulse, an arbiturary day, these things will start to have meaning because you chose to have ink injected into your skin on that exact day.  #profile: hide #portrait: haiming_3_squint
 Seanamae：I had to complain, though, more people have been coming to me to cover their tattoos since displacement became popular.  #portrait: haiming_3_cold #bgm: 悬疑_3 #showObservee: coverTattoo_EN
 //【捕捉：覆盖纹身
 //左边：“覆盖文身四个字”
@@ -103,7 +103,7 @@ Seanamae：Oh?#profile: hide #portrait: haiming_2_seeYou
 //S note：玩的时候感觉之前的有点不自然，改了一下
 Me：It's my secret, in return for yours.#profile: painter_side #bgm: 日常_1 #portrait: haiming_2_seeYouSquint
 Seanamae：I'm all ears.#profile: hide #portrait: haiming_1_idle #portrait: haiming_1_squint
-Me：This is my trace.#profile: painter_norm #event: showScale
+Me：This is the trace... that bothers me. #profile: painter_norm #event: showScale
 Seanamae：... Fish scale?#profile: hide #portrait: haiming_2_idle #portrait: haiming_2_think
  ：Seanamae carefully observes the scale. #portrait: haiming_2_thinkSquint #event: giveScale
 Me：You asked in your postcard how you couldn't reach me. Yesterday, I was probably involved in a displacement accident.#profile: painter_depressed 
