@@ -3,7 +3,7 @@ INCLUDE ../global.ink
  Old Wong：Yo, painter. Buy anything?#profile: laowang_norm
  +[What do you have?]
  Old Wong：Pick anything you like.#profile: laowang_pleased 
- Me：...... #profile: painter_norm //event: 总之setActive laowangshop
+ Me：...... #profile: painter_norm #event: showKiosk
  Me：Thanks a lot.#profile: painter_happy
  ->DONE
  
