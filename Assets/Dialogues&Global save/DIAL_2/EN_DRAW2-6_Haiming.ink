@@ -41,7 +41,7 @@ Seanamae：Hey, I've been talking so much today! It's rare that I became the cli
 Seanamae：Perhaps painting is also a dangerous profession, don't you think?#portrait: haiming_1_squint
 Me：Dangerous, how?#profile: painter_side
 //【bonus捕捉：危险的职业. 待定，没想好怎么做】
-Seanamae：It's just like being a bartender. You'll have to be discrete...about all the frightening truths.#profile: hide #portrait: haiming_1_smile 
+Seanamae：It's just like being a bartender. You'll know more than you should. #profile: hide #portrait: haiming_1_smile 
 Seanamae: To make it fair play, how about I tell you a secret?#bgm: fade_1_0.5
 Me：Oh... You have other secrets?#profile: painter_side
 Seanamae：Haha, if you agree to tell me a secret in return. #portrait: haiming_1_squint #profile: hide #bgm: fade_0.1_0.1
