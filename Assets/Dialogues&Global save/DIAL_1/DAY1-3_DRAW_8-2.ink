@@ -8,16 +8,16 @@ INCLUDE ../global.ink
 8-2：你<b>以前</b>可不是这样的。#portrait: 8-2_admire
 8-2：我是不挑的。不如先看看你身边吧，真的没什么能拿来画画的东西吗？#portrait: 8-2_smile
 我：（咦？仔细一看，点餐纸、铅笔、酱油……有办法了！）<color=green>*鼠标单击桌面上的物品拾取*</color>#profile: painter_surprised #drawingSystem: showMaterialWindow
-系统：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为画布、笔刷、颜料三类。#profile: none
-系统：个别特殊的物品则不可用来画画。
-系统：每次使用画材时会消耗1点<color=magenta>耐久</color>，<color=magenta>耐久</color>清空后物品会<color=magenta>损坏</color>。
-系统：部分笔刷自带颜料，使用时会消耗2点耐久。
-系统：注意，耐久消耗过多时，物品的置换价值也会随之发生变化。
+ ：收集到的<color=magenta>物品</color>可以作为<color=magenta>画材</color>使用，分为画布、笔刷、颜料三类。#profile: hide
+ ：个别特殊的物品则不可用来画画。
+ ：每次使用画材时会消耗1点<color=magenta>耐久</color>，<color=magenta>耐久</color>清空后物品会<color=magenta>损坏</color>。
+ ：部分笔刷自带颜料，使用时会消耗2点耐久。
+ ：注意，耐久消耗过多时，物品的置换价值也会随之发生变化。
 我：（这些东西拿来涂鸦是够的，不过如果是接稿的话……）就用这些给你画……真的没问题吗？#profile: painter_side 
 8-2：当然。我只想要一些不无聊的画，随你发挥吧，来让我大吃一惊。#portrait:8-2_laugh #profile: none
-系统：不同的画材会对画面产生不同的效果，有稳定、有机、实验和优质四种属性。
-系统：根据金主的喜好，使用不同属性的画材会影响当次画画委托的收益。试着投其所好吧！
-系统：现在可以选择画材了。
+ ：不同的画材会对画面产生不同的效果，有稳定、有机、实验和优质四种属性。#profile: hide
+ ：根据金主的喜好，使用不同属性的画材会影响当次画画委托的收益。试着投其所好吧！
+ ：现在可以选择画材了。
 我：（如果<color=magenta>大吃一惊</color>也算需求的话，不如用一些<color=magenta>实验性</color>的画材？当然，选择权还是在我，毕竟没什么比铅笔更顺手了。）#profile: painter_side #drawingSystem: selectMaterial
 ->select_material_and_draw
 
@@ -38,24 +38,24 @@ INCLUDE ../global.ink
 我：（……无论如何，我确实下笔太草率了。）
 我：（画画的第一步是<color=magenta>观察</color>，除了死板的比例关系，我还得把<color=magenta>对象</color>——也就是8-2——的精气神儿抓住。）
 我：（仔细观察对象吧，有什么可以<color=magenta>捕捉</color>的东西吗？）
-系统：在画画过程中，屏幕中会时不时出现可以捕捉的<color=magenta>观察点</color>。
-系统：在观察点上单击<color=magenta>鼠标左键</color>，将其<color=magenta>拖放</color>到<color=magenta>构想窗口</color>内，观察点会自动转变为<color=magenta>灵感</color>。#showObservee: face
-系统：未来，画家可能会持有多种灵感。选择呈现合适的灵感，会改变画画的结果，也决定了画家对绘画对象的态度，故事因此发生改变。#portrait: 8-2_norm2
-系统：在需要的时机把灵感呈现在<color=magenta>画布</color>上，才能让画画进行下去。
-系统：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！#choiceType: OBSERVEE
+ ：在画画过程中，屏幕中会时不时出现可以捕捉的<color=magenta>观察点</color>。#profile: hide
+ ：在观察点上单击<color=magenta>鼠标左键</color>，将其<color=magenta>拖放</color>到<color=magenta>构想窗口</color>内，观察点会自动转变为<color=magenta>灵感</color>。#showObservee: face
+ ：未来，画家可能会持有多种灵感。选择呈现合适的灵感，会改变画画的结果，也决定了画家对绘画对象的态度，故事因此发生改变。#portrait: 8-2_norm2
+ ：在需要的时机把灵感呈现在<color=magenta>画布</color>上，才能让画画进行下去。
+ ：咦，画布已经亮起了。现在，试着把灵感拖放到画布上吧！#choiceType: OBSERVEE
 +[提交]->mama_appears
 ==mama_appears==
-我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）#drawingSystem: addBinaryVal_10 #choiceType: BUTTON
+我：（再看看他吧，还有什么值得注意的……嗯？那个是……老板娘。我的饭！）#drawingSystem: addBinaryVal_10 #choiceType: BUTTON #profile: painter_happy
 老板娘：给您放桌上了！#profile: mama_satisfied  
 老板娘：呦，朋友也来啦？哎呀，你是不是那个……那个谁，那个八加二大师？#bgm:戏谑_0.5
 8-2：咳，巴简二，姐姐。#portrait: 8-2_smile2
 我：（噗……8+2大师……）#profile: painter_sour
-系统：除了视觉上的观察，声音、语言、气味都可以成为构想画面的重要信息。除了对象附近，观察点也可以出现在屏幕的任何地方。
-系统：对于普通的观察点，只有捕捉才能让画画进行下去。
+ ：除了视觉上的观察，声音、语言、气味都可以成为构想画面的重要信息。除了对象附近，观察点也可以出现在屏幕的任何地方。#profile: hide
+ ：对于普通的观察点，只有捕捉才能让画画进行下去。
 老板娘：对对，瞧我这记性。我爱人经常听大师您的课嘞！#profile: mama_satisfied #showObservee: dashi
-系统：但是，个别的观察点会随着对话发展而被<color=magenta>错过</color>，从而限制故事的走向。错过不一定是坏事，但这点还请留意。
-系统：关于观察点，之后不会再有提醒了。画家要记得观察和捕捉哦！
-老板娘：多亏了大师呀！他要不是辞去了那个打渔的活儿，我天天都得揪心呐。
+ ：但是，个别的观察点会随着对话发展而被<color=magenta>错过</color>，从而限制故事的走向。错过不一定是坏事，但这点还请留意。#profile: hide
+ ：关于观察点，之后不会再有提醒了。画家要记得观察和捕捉哦！
+老板娘：多亏了大师呀！他要不是辞去了那个打渔的活儿，我天天都得揪心呐。#profile: mama_satisfied
 老板娘：现在好啊，靠着置换也发了点小财，一天赚的比以前跑三趟还多！
 8-2：不用谢，姐姐。我这个人啊，没别的爱好，就是喜欢帮助别人。#portrait: 8-2_deepLove
 老板娘：大师的心地就是好呀……给您上点儿茶水。想要什么尽管点，您叫这个名，我就给您打六折！
@@ -125,11 +125,12 @@ INCLUDE ../global.ink
 我：……………………#profile: painter_side
 我：（别说，今天睡醒的事我还真是想不明白，这家伙或许能知道点什么。）#profile: painter_sideSweat
 我：（我该相信他的话吗？）#profile: painter_norm
-系统：目前可以呈现的灵感有两种，必须要做出<color=magenta>选择</color>了。
-系统：选择不同的灵感会给画面带来改变，也决定了画家对绘画对象的<color=magenta>理解</color>和<color=magenta>态度</color>。未来说不定会因此发生改变！
-我：（必须要做出选择了……我该相信8-2吗？）#choiceType: OBSERVEE
+ ：目前可以呈现的灵感有两种，必须要做出<color=green>选择</color>了。#profile: hide
+ ：选择不同的灵感会给画面带来改变，也象征着画家对绘画对象的<color=magenta>认知</color>——看到右侧的那个<color=green>滑块</color>了吗？那便是画家当下的态度。
+ ：作画的选择决定了未来的走向，而滑块代表的态度则随着对话自然改变。
+ ：最终，画家将据此创作出<color=green>不同的画作</green>。
+我：（必须要做出选择了……我该相信8-2吗？）#choiceType: OBSERVEE #profile: painter_norm
 +[帮我看看，大师]->teach_me
-
 +[这人有问题！]->reveal_liar
 
 ==teach_me==

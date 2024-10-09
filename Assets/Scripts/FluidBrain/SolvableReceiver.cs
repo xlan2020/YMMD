@@ -69,17 +69,17 @@ public class SolvableReceiver : MonoBehaviour
         }
     }
 
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject == TargetSolvable.gameObject)
-        {
-            if (ImmediateTrigger)
-            {
-                TargetSolvable.DoneSolving();
-                ReceiveSolve();
-            }
-        }
-    }
+    // void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (other.gameObject == TargetSolvable.gameObject)
+    //     {
+    //         if (ImmediateTrigger)
+    //         {
+    //             TargetSolvable.DoneSolving();
+    //             ReceiveSolve();
+    //         }
+    //     }
+    // }
 
     void OnTriggerExit2D(Collider2D other)
     {

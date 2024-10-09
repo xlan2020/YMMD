@@ -4,5 +4,5 @@ Me：(A specific time of a day could hold particular significance--like dreading
 Me：(To me, dusk is such a time. I always felt that something would happen when the night starts to stretch its shadows. Unnoticed, in silence, there's something in the dark...)
 Me：(...disappearing into thin air.)#profile: painter_side
 Me：*gulp...*Ah, it's not the time to think about these abstract stories. I'm so hungry that I could fold in half.#profile: painter_norm
-Me：Gotta get something to eat! What's on the Hot Mama's menu today? <color=green>(press A/D to move / left click on signs to interact / Press TAB to see faraway signs )</color>
+Me：Gotta get something to eat! What's on the Hot Mama's menu today? <color=green>(press A/D to move / press SHIFT to accelerate / left click on signs to interact)</color>
 ->DONE

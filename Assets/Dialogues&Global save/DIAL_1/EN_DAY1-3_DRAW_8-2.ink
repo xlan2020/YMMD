@@ -8,16 +8,16 @@ Me：I probably can't draw. I mean, without my supplies.
 8-2：You <b>used to</b> be better than that.#portrait: 8-2_admire
 8-2：Why don't you look around first? Is there really nothing you could use to draw?#portrait: 8-2_smile
 Me：(Huh. Tissue paper, pencil, soy sauce... These could work!）<color=green>*Click to pick up items on the table*</color>#profile: painter_surprised #drawingSystem: showMaterialWindow
-System：The collected <color=magenta>items</color> could be used as <color=magenta>drawing materials</color>--canvas, brush, and paint.#profile: none
-System：Note that there are special items that cannot be used as drawing material.
-System：Each time you use an item, its <color=magenta>durability</color> will be reduced by 1 point. When the <color=magenta>durability</color> is cleared, the item will <color=magenta>break</color>.
-System：Some of the brushes include paint. Using them would cost 2 durability points.
-System：As an item's durability reduces, its displacement value will change.
-Me：(These stuff are good enough for doodling, but for a commission...) Is it really okay with you if I paint with soy sauce?#profile: painter_side 
+ ：The collected <color=magenta>items</color> could be used as <color=magenta>drawing materials</color>--canvas, brush, and paint. #profile: hide
+ ：Note that there are special items that cannot be used as drawing material.
+ ：Each time you use an item, its <color=magenta>durability</color> will be reduced by 1 point. When the <color=magenta>durability</color> is cleared, the item will <color=magenta>break</color>.
+ ：Some of the brushes include paint. Using them would cost 2 durability points.
+ ：As an item's durability reduces, its displacement value will change.
+Me：(These stuff are good enough for doodling, but for a commission...) Is it really okay with you if I paint with soy sauce? #profile: painter_side 
 8-2：Of course! Play around and blow me away with something that isn't boring.#portrait:8-2_laugh #profile: none
-System：Different drawing materials will have different effects on the image, with four attributes--stable, organic, experimental, and premium.
-System：Using materials with different attributes will affect the earnings of the current commission. Try to pick something according to the client's preference!
-System：You can now choose the drawing material.
+ ：Different drawing materials will have different effects on the image, with four attributes--stable, organic, experimental, and premium. #profile: hide
+ ：Using materials with different attributes will affect the earnings of the current commission. Try to pick something according to the client's preference!
+ ：You can now choose the drawing material.
 Me：(If "<color=magenta>blow me away</color>" count as a demand, I should probably use some <color=magenta>experimental</color> materials. Of course, the choice is still mine. There's nothing smoother than pencils after all.)#profile: painter_side #drawingSystem: selectMaterial
 ->select_material_and_draw
 
@@ -38,24 +38,24 @@ Me：My apologies.
 Me：(...perhaps I am being a bit too hasty.)
 Me：(The first step of drawing is <color=magenta>observation</color>. Besides the rigid proportionality, I should capture the essence of my <color=magenta>object</color>.)
 Me：(Observe 8-2 closely. Is there anything worth <color=magenta>capturing</color>?）
-System：In the process of drawing, <color=magenta>observation points</color> that can be captured would occur on the screen.
-System：Click the <color=magenta>left mouse button</color> on an observation point and <color=magenta>drag</color> it into the <color=magenta>conception window</color>, the observation point will be transformed into an <color=magenta>inspiration</color>.#showObservee: face
-System：The painter may hold multiple inspirations at the same time. In this case, you should choose carefully. The inspiration you choose will change the outcome of the painting. It also determines the painter's attitude towards the client, therefore changing the story between them.#portrait: 8-2_norm2
-System：Present the inspiration on the <color=magenta>canvas</color> to continue drawing.
-System：The canvas is lighted up. Try dragging and dropping the inspiration onto the canvas!#choiceType: OBSERVEE
+ ：In the process of drawing, <color=magenta>observation points</color> that can be captured would occur on the screen. #profile: hide
+ ：Click the <color=magenta>left mouse button</color> on an observation point and <color=magenta>drag</color> it into the <color=magenta>conception window</color>, the observation point will be transformed into an <color=magenta>inspiration</color>.#showObservee: face
+ ：The painter may hold multiple inspirations at the same time. In this case, you should choose carefully. The inspiration you choose will change the outcome of the painting. It also determines the painter's attitude towards the client, therefore changing the story between them.#portrait: 8-2_norm2
+ ：Present the inspiration on the <color=magenta>canvas</color> to continue drawing.
+ ：The canvas is lighted up. Try dragging and dropping the inspiration onto the canvas!#choiceType: OBSERVEE
 +[Submit]->mama_appears
 ==mama_appears==
-Me：(Let's observe him to the finest details... Mama! My meal!）#drawingSystem: addBinaryVal_10 #choiceType: BUTTON
+Me：(Let's observe him to the finest details... Mama! My meal!）#drawingSystem: addBinaryVal_10 #choiceType: BUTTON #profile: painter_happy
 Mama：Enjoy!#profile: mama_satisfied  
 Mama：Hey, is that your friend? Wait, I know you, you're...MASTER EIGHT PLUS TWO!!#bgm:戏谑_0.5
 8-2：*cough*Eightminus Tue, sis.#portrait: 8-2_smile2
 Me：(Pssss...master eight plus two also sounds fine.）#profile: painter_sour
-System：Sounds, words, and smells could also provide vital information for conceptualizing the painting. Observation points could occur anywhere on the screen, don't limit your observation to the object of painting alone. 
-System：You need to capture some of the observation points to continue drawing.
+ ：Sounds, words, and smells could also provide vital information for conceptualizing the painting. Observation points could occur anywhere on the screen, don't limit your observation to the object of painting alone. #profile: hide
+ ：You need to capture some of the observation points to continue drawing.
 Mama：Yes, of course, excuse my bad memory, MASTER, such a pleasure--my lover is absorbed by your lectures!#profile: mama_satisfied #showObservee: master_EN
-System：In addition to mandatory observation points, there are also optional ones that could be <color=magenta>missed</color> as the dialog develops, limiting the direction of the story. Missing isn't necessarily a bad thing, but you should always look out for an unexpected observation point.
-System：That's all about observation points--don't forget to catch them if you can!
-Mama：I was so worried when he quit the fishing job, but thanks to our master here, we're rich now.
+ ：In addition to mandatory observation points, there are also optional ones that could be <color=magenta>missed</color> as the dialog develops, limiting the direction of the story. Missing isn't necessarily a bad thing, but you should always look out for an unexpected observation point.
+ ：That's all about observation points--don't forget to catch them if you can!
+Mama：I was so worried when he quit the fishing job, but thanks to our master here, we're rich now. #profile: mama_satisfied
 Mama：Ah, by displacement, our earnings tripled! You saved my family, master...
 8-2：You're welcome, sister. Me, I don't have many hobbies. I just enjoy helping others so much. #portrait: 8-2_deepLove
 Mama：Such kind-hearted, master. Here's our best Oolong tea, just for you! Let me know what you'd like for dinner, I'll give you 40% off everything.
@@ -125,11 +125,12 @@ Me：I can't believe you have the nerve to claim that you study the truth. Gosh,
 Me：......#profile: painter_side
 Me：(When I think about it this way, I did wake up in a weird way today.)#profile: painter_sideSweat
 Me：(This dude obviously knows a lot about displacement. Should I listen to what he had to say?)#profile: painter_norm
-System：There are two different inspirations at hand, and you'll have to make a <color=magenta>choice</color>.
-System：Choosing different inspirations would determine how the painting looks like as well as the painter's <color=magenta>understanding</color> and <color=magenta>attitude</color> regarding the client. It might change the future!
-Me：(I have to make a choice here... Can I trust 8-2?)#choiceType: OBSERVEE
+ ：There are two different inspirations at hand, and you'll have to make a <color=magenta>choice</color>.#profile: hide 
+ ：Choosing different inspirations would determine how the painting looks like as well as the painter's<color=magenta> interpretation</color> of the subject - did you notice the slide bar on the right? That is the painter's evaluation. 
+ ：The choice decides the future stories, while the evaluation changes naturally as the dialogue goes. 
+ ：Eventually, the painter will make <color=green>different drawing</color> depending on this value.
+Me：(I have to make a choice here... Can I trust 8-2?)#choiceType: OBSERVEE #profile: painter_norm
 +[Help me, master]->teach_me
-
 +[There's something wrong with this guy!]->reveal_liar
 
 ==teach_me==

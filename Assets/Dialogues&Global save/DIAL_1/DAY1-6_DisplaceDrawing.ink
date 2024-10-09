@@ -1,14 +1,14 @@
 INCLUDE ../global.ink
  ：画作完成了。#bgm: 房间 #profile: hide
-系统：这是画家近些天第一次完成自己的<color=magenta>创作</color>。
-系统：和给顾客的稿件不同，创作并不会带来金钱上的收益，却有机会成为对事物的<color=magenta>准确描绘</color>。
-系统：参照准确描绘的画作，画家可以凭空想象出世界上<color=magenta>不存在</color>的东西。
-系统：在这种情况下，只要有<color=magenta>等价的金钱</color>作为筹码，就可以把画作里的东西<color=magenta>置换</color>出来！
-系统：当然，置换并不会每一次都带给你想要的。金钱的限制、作画的偏差……这一切，都让置换的结果存在不确定性。
-系统：简单来说，在画作已经完成的情况下，根据<color=magenta>付出金钱的多少</color>，画家有机会获得<color=magenta>不同的东西</color>。
-系统：这是一场博弈和冒险，或者说，比那更加孤注一掷。
-系统：在置换完成后，付出的金钱是无法追回的，但画作本身并不会消失，只要愿意再次投入，无论置换多少次都可以。
-系统：这么想来，是不是还挺浪漫的？那么，现在就请画家试试看吧。
+ ：这是画家近些天第一次完成自己的<color=magenta>创作</color>。
+ ：和给顾客的稿件不同，创作并不会带来金钱上的收益，却有机会成为对事物的<color=magenta>准确描绘</color>。
+ ：参照准确描绘的画作，画家可以凭空想象出世界上<color=magenta>不存在</color>的东西。
+ ：在这种情况下，只要有<color=magenta>等价的金钱</color>作为筹码，就可以把画作里的东西<color=magenta>置换</color>出来！
+ ：当然，置换并不会每一次都带给你想要的。金钱的限制、作画的偏差……这一切，都让置换的结果存在不确定性。
+ ：简单来说，在画作已经完成的情况下，根据<color=magenta>付出金钱的多少</color>，画家有机会获得<color=magenta>不同的东西</color>。
+ ：这是一场博弈和冒险，或者说，比那更加孤注一掷。
+ ：在置换完成后，付出的金钱是无法追回的，但画作本身并不会消失，只要愿意再次投入，无论置换多少次都可以。
+ ：这么想来，是不是还挺浪漫的？那么，现在就请画家试试看吧。
 我：虽然还完全不明白，但我直觉它是对我很重要的东西——一条美人鱼。……美人鱼？这个世界上存在这种东西吗？#profile: painter_side
 我：没什么好说的，我想要它。
 我：对于能置换出什么，我有一种模糊的感觉。花<color=green>更多的钱</color>就可以触碰到它，在水中一起遨游……等等，怎么感觉很熟悉？
@@ -28,11 +28,11 @@ INCLUDE ../global.ink
 ->displace_input
 
 ==input_is_zero==
-系统：你在想什么呢！舍不得本钱可什么都得不到哦。#profile: hide #event: hideInput #choiceType: BUTTON
+ ：你在想什么呢！舍不得本钱可什么都得不到哦。#profile: hide #event: hideInput #choiceType: BUTTON
 ->displace_input
 
 ==input_not_number==
-系统：金额需要输入数字哦！#choiceType: BUTTON #profile: hide #event: hideInput
+ ：金额需要输入数字哦！#choiceType: BUTTON #profile: hide #event: hideInput
 ->displace_input
 
 ==displace_success==

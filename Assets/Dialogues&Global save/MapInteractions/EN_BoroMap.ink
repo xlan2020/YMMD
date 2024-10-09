@@ -13,19 +13,21 @@ boro酱：What ice would you like?#profile: boro_shy
 
 ==order_ice==
 Me：What to order... #profile: painter_norm
-+ [Pineapple!]
++ {money>=8}[Pineapple!]
 ->order_sweet
-+ [Torpedo!]
++ {money>=18}[Torpedo!]
 ->order_new
-+ [Premium!]
++ {money>=24}[Premium!]
 ->order_classic
++ {money<24} [No thanks.]
+->end_order
 
 ==order_new==
-Me：I'll have this Torpedo ice!#profile: painter_happy #addMoney:
+Me：I'll have this Torpedo ice!#profile: painter_happy #addMoney: -18
 boro-chan：Just a sec... #profile: boro_escape
- ：......
+ ：...... #profile: hide 
  ：.........
-boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #sceneEvent: 
+boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #event: addTorpedo
 boro-chan: Is there anything else you need?#profile: boro_thinking
 + [Let me think...]
 ->order_ice
@@ -33,11 +35,11 @@ boro-chan: Is there anything else you need?#profile: boro_thinking
 ->end_order
 
 ==order_classic==
-Me：I'll have this Premium Platter Ice!#profile: painter_happy #addMoney:
+Me：I'll have this Premium Platter Ice!#profile: painter_happy #addMoney: -24
 boro-chan：Just a sec... #profile: boro_escape
- ：......
+ ：...... #profile: hide 
  ：.........
-boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #sceneEvent: 
+boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #event: addClassic
 boro-chan: Is there anything else you need?#profile: boro_thinking
 + [Let me think...]
 ->order_ice
@@ -45,11 +47,11 @@ boro-chan: Is there anything else you need?#profile: boro_thinking
 ->end_order
 
 ==order_sweet==
-Me：I'll have the Pineapple one!#profile: painter_happy #addMoney:
+Me：I'll have the Pineapple one!#profile: painter_happy #addMoney: -8
 boro-chan：Just a sec... #profile: boro_escape
- ：......
+ ：...... #profile: hide 
  ：.........
-boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #sceneEvent: 
+boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #event: addSweet
 boro-chan: Is there anything else you need?#profile: boro_thinking
 + [Let me think...]
 ->order_ice

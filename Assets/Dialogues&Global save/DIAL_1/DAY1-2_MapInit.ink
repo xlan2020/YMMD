@@ -4,4 +4,4 @@ INCLUDE ../global.ink
 我：（对我来说，这个重要的时刻就是黄昏。夜幕降临的时候，总觉得会发生什么事情，有什么东西将在黑暗中……）
 我：（……消失不见。）#profile: painter_side
 我：*咕…*啊，不是想这些有的没的的时候，我已经饿得快要折叠了。#profile: painter_norm
-我：总之得先去吃点东西。就去门口那家热麻麻吧。<color=green>（键盘A-D移动，鼠标点击标记交互，摁住TAB查看远处可交互）</color> ->END
+我：总之得先去吃点东西。就去门口那家热麻麻吧。<color=green>（键盘A-D移动，SHIFT加速，鼠标点击标记以交互）</color> ->END

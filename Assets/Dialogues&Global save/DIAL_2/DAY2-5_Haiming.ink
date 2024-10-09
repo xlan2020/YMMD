@@ -9,7 +9,7 @@ INCLUDE ../global.ink
 海名：今天不交出来，你可就没法从这个店里原样出去了。#bgm: 戏谑 #profile: haiming_seeYouSquint
 我：“原样”是指……#profile: painter_surprised
 海名：对于拖稿的人，我们的传统连招是……梦梦！#profile: haiming_seeYouKnow
-孟猛：*沉默地转过身* #profile: meng_norm
+孟猛：*沉默地转过身* #profile: meng_noWord
 我：我、我画就是了！（黑店啊！）#profile: painter_sideSweat
 海名：开玩笑的。#profile: haiming_yinyang #bgm: 日常
 //孟猛：*沉默地背过身*#profile: meng_norm //S note: 做演出的时候感觉没有这句比较自然

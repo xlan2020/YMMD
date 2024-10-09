@@ -259,18 +259,6 @@ MonoBehaviour:
   events:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1169062825}
-        m_TargetAssemblyTypeName: InkDialogueManager, Assembly-CSharp
-        m_MethodName: MakeChoice
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 55805921}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
@@ -283,9 +271,21 @@ MonoBehaviour:
           m_StringArgument: toChai
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1169062825}
+        m_TargetAssemblyTypeName: InkDialogueManager, Assembly-CSharp
+        m_MethodName: MakeChoice
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: toChai
+          m_BoolArgument: 0
+        m_CallState: 2
   NextReceivers:
   - {fileID: 1973378339}
-  ImmediateTrigger: 0
+  ImmediateTrigger: 1
   DisableColliderAfterUse: 1
   HasSecondCollider: 0
 --- !u!61 &55805925

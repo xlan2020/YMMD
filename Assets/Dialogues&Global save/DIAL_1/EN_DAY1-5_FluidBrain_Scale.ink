@@ -31,24 +31,24 @@ Me：Ouch! It's sharper than I thought... Where's my scale? Wait, what's this...
 Me：Where did the <color=green>scale</color> go? My precious, come back to my <color=green>hands</color>...#solve: next #profile: painter_frightened
 Me：Heh, it's here.#profile: painter_happy
 Me：But my hands are dirty with blood... I should wipe them...#solve: next #profile: painter_norm
-???：I'm ready, painter.#event: paintBlood #profile: hide
+？？：I'm ready, painter.#event: paintBlood #profile: hide
 Me：What? Who's talking?#profile: painter_side
-Fish?：<color=green>Strip</color> <color=purple>me</color> <color=green>naked</color> <color=purple>now</color>.#solve: next #profile: hide
+"Fish"：<color=green>Strip</color> <color=purple>me</color> <color=green>naked</color> <color=purple>now</color>.#solve: next #profile: hide
 Me：What? That was... #profile: painter_frightened
-Fish scale?：Do you see me? There's so, so many me on the shelf--which one is the real me?#profile: hide
-Fish scale?：Am I special?#event: zoomInTexture
-Fish?：Will you take me home?
-Fish?：￥40 per kilogram, that isn't too expensive for you, is it?
-Fish?：Are you afraid of me? It's okay. Fish likes to jump around. <color=purple>Strip me of my fins</color>, too-So that I can't swim away from you anymore.#solve: next
-Fish?：Is it still not enough? I'm literally ready for the table. You've scaled me off, yet still not ready to <color=purple>eat</color> me?
-Fish?：What, you don't have enough money for a fish? Buy a piece of scale, then.
-Fish scale?：Take with water, it will help you regain beauty and health. Strengthens the body, replenishes kidney and Yang... The efficacy of the medicine will last 30 days!
-Fish scale?：30 days should be long enough for you to save up for <color=purple>the next time</color>.#solve: nextCanContinue #event: customizeButton
+"Fish scale"：Do you see me? There's so, so many me on the shelf--which one is the real me?#profile: hide
+"Fish scale"：Am I special?#event: zoomInTexture
+"Fish"：Will you take me home?
+"Fish"：￥40 per kilogram, that isn't too expensive for you, is it?
+"Fish"：Are you afraid of me? It's okay. Fish likes to jump around. <color=purple>Strip me of my fins</color>, too-So that I can't swim away from you anymore.#solve: next
+"Fish"：Is it still not enough? I'm literally ready for the table. You've scaled me off, yet still not ready to <color=purple>eat</color> me?
+"Fish"：What, you don't have enough money for a fish? Buy a piece of scale, then.
+"Fish scale"：Take with water, it will help you regain beauty and health. Strengthens the body, replenishes kidney and Yang... The efficacy of the medicine will last 30 days!
+"Fish scale"：30 days should be long enough for you to save up for <color=purple>the next time</color>.#solve: nextCanContinue #event: customizeButton
 -> buy_me_scale
 
 VAR buy_me_count = 0
 ===buy_me_scale===
-Fish scale：Buy me.#choiceType: AUTO
+"Fish scale"：Buy me.#choiceType: AUTO
 { buy_me_count:
     - 5:
         ~ buy_me_count = 0
@@ -61,7 +61,7 @@ Fish scale：Buy me.#choiceType: AUTO
 }
 
 ===buy_me_fish===
-Fish：Buy me. #choiceType: AUTO
+"Fish"：Buy me. #choiceType: AUTO
 { buy_me_count:
     - 5:
         ~ buy_me_count = 0
@@ -75,8 +75,8 @@ Fish：Buy me. #choiceType: AUTO
 
 ===buy_me_hint===
 Me：My fish, I'll buy... Where's my <color=green>cash</color>?#choiceType: AUTO
-+[Do nothing] -> buy_me_scale
-+[Buy it] -> bought 
++[Do nothing]->buy_me_scale
++[Buy it]->bought 
 
 ===bought===
 Me：I, I'll buy......#bgm: fade_5_0 #addMoney: -30 #profile: painter_stunned #choiceType: BUTTON
