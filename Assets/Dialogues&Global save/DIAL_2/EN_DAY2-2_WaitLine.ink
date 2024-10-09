@@ -19,8 +19,8 @@ Me：(Few people are in the line, but you also can't say it's not popular at all
 
 
 ==menu==
-Me：(I should read the menu as I wait.)#event: showMenu
-+[I'm done.]#event: //hideMenu
+Me：(Let me see...)#event: showMenu 
++[I'm done.]
 ->my_turn
 
 ==owner==
@@ -39,35 +39,35 @@ Me：(But I'm just a penniless painter, with important work to finish in this to
 ->my_turn
 
 ==my_turn==
-Me：(Ah, my turn.)#profile: painter_norm
+Me：(Ah, my turn.)#profile: painter_norm #event: hideMenu
 ？？？："Boroboro" Fish Shaved~Ice! Hello there, "Boro-chan" at your service❤!#profile: boro_welcome
 boro-chan：What kind of shaved ice would you like? Would you taste our limited special -- Torpedo Avocado Aficionado's Ice?
-+[Torpedo, please!]//Sherry Note: 要不要菜单上有的都放到选项？
++ {money > 18} [Torpedo, please!]//Sherry Note: 要不要菜单上有的都放到选项？
 ->order_new
-+[I want the classic.]
++ {money > 24} [I want the classic.]
 ->order_classic
 +[The DIY event...]
 ->diy
 
 ==order_new==
-Me：The torpedo-something, I want it!#profile: painter_happy #addMoney: -20
+Me：The torpedo-something, I want it!#profile: painter_happy #addMoney: -18
 boro-chan：Great choice!#profile: boro_shy
 boro-chan: The Torpedo Avocado Afictionado's Ice is the modified version of our most-beloved Deep Sea Treasure Ice, with chunks of three different fishes dipped in boro-chan sauce, hidden inside the ice.#profile: boro_thinking
 boro-chan：Just a sec... #profile: boro_escape
  ：......
  ：.........
-boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #sceneEvent: 
+boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #event: addTorpedo
 boro-chan: Is there anything else you need?#profile: boro_thinking
 +[The DIY event...]
 ->diy
 
 ==order_classic==
 Me：(The couple at the bar were holding what looked like this Premium Platter ice...)#profile: painter_happy
-Me: I'm having the Premium Platter!#addMoney: -20
+Me: I'm having the Premium Platter! #addMoney: -24
 boro-chan：Just a sec... #profile: boro_escape
  ：......
  ：.........
-boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #sceneEvent: 
+boro-chan：It's ready! Hope you enjoy it!#profile: boro_glad #event: addClassic
 boro-chan: Is there anything else you need?#profile: boro_thinking
 +[The DIY event...]
 ->diy

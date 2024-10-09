@@ -18,7 +18,7 @@ public class InkDialogueManager : MonoBehaviour
     [SerializeField] LoadingScene loadingScene;
 
     [Header("Params")]
-    public float typingSpeed = 0.04f;
+    private float typingSpeed = 0.02f;
     public float autoPlayingTimeInterval = 1.5f;
     public bool autoMode = false;
 
@@ -128,9 +128,9 @@ public class InkDialogueManager : MonoBehaviour
         {
             Debug.LogWarning("WARNING: keep only one ink dialogue manager per scene!");
         }
-        instance = this;
-        // pass that variable to the DIalogueVariables constructor in the Awake method
+        // pass that variable to the DialogueVariables constructor in the Awake method
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
+        instance = this;
         CreateNameStyleDict();
 
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -218,7 +218,7 @@ public class InkDialogueManager : MonoBehaviour
         }
 
         // auto plays: CONTROL
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl))
         {
             // toggle auto playing
             autoMode = !autoMode;

@@ -53,9 +53,22 @@ public class NetCafeUIManager : MonoBehaviour
         newsArray = contentScriptableObject.newsArray;
         newsHeadline = contentScriptableObject.headline;
         postArray = contentScriptableObject.postArray;
-        newsAnnounce = contentScriptableObject.newsAnnounce;
-        Debug.Log(newsAnnounce);
-        forumAnnounce = contentScriptableObject.forumAnnounce;
+
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                newsAnnounce = contentScriptableObject.newsAnnounce;
+                forumAnnounce = contentScriptableObject.forumAnnounce;
+                break;
+            case 1:
+                newsAnnounce = contentScriptableObject.newsAnnounce_EN;
+                forumAnnounce = contentScriptableObject.forumAnnounce_EN;
+                break;
+            default:
+                newsAnnounce = contentScriptableObject.newsAnnounce;
+                forumAnnounce = contentScriptableObject.forumAnnounce;
+                break;
+        }
     }
 
     // 初始化 UI 的函数，在传递内容后调用
@@ -114,7 +127,7 @@ public class NetCafeUIManager : MonoBehaviour
         {
             Destroy(child.gameObject); // 销毁现有的内容
         }
-        
+
         HideShutdownPopup();
     }
 
@@ -140,6 +153,7 @@ public class NetCafeUIManager : MonoBehaviour
     // 加载新闻首页标题
     private void LoadNewsHomePage()
     {
+
         newsBulletin.text = newsAnnounce + "\n";
 
         // 清空现有新闻标题按钮
@@ -163,7 +177,18 @@ public class NetCafeUIManager : MonoBehaviour
             Text buttonText = FindText(titleButton, "Title");
 
             // 设置新闻标题文本
-            buttonText.text = newsArray[i].title + "\n";
+            switch (GameEssential.localeId)
+            {
+                case 0:
+                    buttonText.text = newsArray[i].title + "\n";
+                    break;
+                case 1:
+                    buttonText.text = newsArray[i].title_EN + "\n";
+                    break;
+                default:
+                    buttonText.text = newsArray[i].title + "\n";
+                    break;
+            }
 
             // 将点击事件绑定到新闻详情页的显示
             int index = i; // 闭包问题解决
@@ -200,8 +225,21 @@ public class NetCafeUIManager : MonoBehaviour
 
 
             // 设置论坛标题文本
-            buttonText.text = postArray[i].title + "\n";
-            authorTime.text = postArray[i].author + " / " + postArray[i].lastEditTime + "\n";
+            switch (GameEssential.localeId)
+            {
+                case 0:
+                    buttonText.text = postArray[i].title + "\n";
+                    authorTime.text = postArray[i].author + " / " + postArray[i].lastEditTime + "\n";
+                    break;
+                case 1:
+                    buttonText.text = postArray[i].title_EN + "\n";
+                    authorTime.text = postArray[i].author_EN + " / " + postArray[i].lastEditTime_EN + "\n";
+                    break;
+                default:
+                    buttonText.text = postArray[i].title + "\n";
+                    authorTime.text = postArray[i].author + " / " + postArray[i].lastEditTime + "\n";
+                    break;
+            }
 
             // 将点击事件绑定到论坛详情页的显示
             int index = i; // 闭包问题解决
@@ -219,7 +257,18 @@ public class NetCafeUIManager : MonoBehaviour
     private void LoadNewsHeadline(NewsDetailScriptableObject content, GameObject headlinePage)
     {
         Text headlineText = FindText(headlinePage, "HeadlineTitle");
-        headlineText.text = content.title + "\n";
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                headlineText.text = content.title + "\n";
+                break;
+            case 1:
+                headlineText.text = content.title_EN + "\n";
+                break;
+            default:
+                headlineText.text = content.title + "\n";
+                break;
+        }
 
         Button headlineButton = headlinePage.GetComponentInChildren<Button>();
         headlineButton.onClick.AddListener(ShowHeadlinePage);
@@ -248,12 +297,13 @@ public class NetCafeUIManager : MonoBehaviour
         Text[] textComponents = buttonObj.GetComponentsInChildren<Text>(true);
         if (textComponents != null)
         {
-            foreach (Text t in textComponents) {
+            foreach (Text t in textComponents)
+            {
                 t.gameObject.SetActive(true);
                 t.enabled = true;
                 t.GetComponent<ContentSizeFitter>().enabled = true;
             }
-            
+
         }
 
         // 激活 SizeFitter 和 LayoutGroup 组件
@@ -363,10 +413,28 @@ public class NetCafeUIManager : MonoBehaviour
         Text contentText = FindText(detailPage, "NewsText");
 
         // 设置详情页内容
-        titleText.text = content.title + "\n";
-        authorText.text = content.author + "\n";
-        dateText.text = content.time + "\n";
-        contentText.text = content.content + "\n";
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                titleText.text = content.title + "\n";
+                authorText.text = content.author + "\n";
+                dateText.text = content.time + "\n";
+                contentText.text = content.content + "\n";
+                break;
+            case 1:
+                titleText.text = content.title_EN + "\n";
+                authorText.text = content.author_EN + "\n";
+                dateText.text = content.time_EN + "\n";
+                contentText.text = content.content_EN + "\n";
+                break;
+            default:
+                titleText.text = content.title + "\n";
+                authorText.text = content.author + "\n";
+                dateText.text = content.time + "\n";
+                contentText.text = content.content + "\n";
+                break;
+        }
+
     }
 
     // 加载论坛内容到详情页
@@ -376,8 +444,22 @@ public class NetCafeUIManager : MonoBehaviour
         Text contentText = FindText(detailPage, "PostContent");
 
         // 设置论坛内容
-        titleText.text = content.title + "\n";
-        contentText.text = content.content + "\n";
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                titleText.text = content.title + "\n";
+                contentText.text = content.content + "\n";
+                break;
+            case 1:
+                titleText.text = content.title_EN + "\n";
+                contentText.text = content.content_EN + "\n";
+                break;
+            default:
+                titleText.text = content.title + "\n";
+                contentText.text = content.content + "\n";
+                break;
+        }
+
     }
 
     // 查找指定名称的 Text 组件

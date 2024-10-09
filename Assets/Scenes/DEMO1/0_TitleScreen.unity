@@ -662,7 +662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &369299243
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2020,6 +2020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5318286544998975626, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5318286544998975627, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2181,17 +2185,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
---- !u!114 &709165662 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5318286544998975624, guid: ff50a84300fa842a3a266e7cc4d8b172, type: 3}
-  m_PrefabInstance: {fileID: 709165661}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e8459cf74d3974593dfa863f21a174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &776030439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 605883291736271544, guid: 3dd337d23628740008c550c9e04ee58d, type: 3}
@@ -4404,9 +4397,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 709165662}
-        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: DirectlyEnterSaveLoad
+      - m_Target: {fileID: 2288644193567872414}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadAutoSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

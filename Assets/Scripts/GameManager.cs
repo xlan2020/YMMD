@@ -114,6 +114,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+
+    }
+
     public void SetLoadCurrentSave(bool b)
     {
         loadCurrentSave = b;
@@ -122,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
     }
+
 
     public SaveObject Save(int saveFileId)
     {
@@ -213,7 +219,7 @@ public class GameManager : MonoBehaviour
         SaveSystem.AutoSave(json);
     }
 
-    private void LoadAutoSave()
+    public void LoadAutoSave()
     {
         string saveString = SaveSystem.Load(0);
 
@@ -395,11 +401,13 @@ public class GameManager : MonoBehaviour
 
     public void AddItemToInventory(ItemScriptableObject item)
     {
+        if (inventory == null)
+        {
+            UnityEngine.Debug.Log("Hard to believe, but inventory is null!");
+        }
         inventory.AddItemFromScriptableObject(item);
 
         displaceSFX.PlayItemToInventorySound();
-
-
     }
 
     public void AddMoney(float amount)
@@ -409,9 +417,18 @@ public class GameManager : MonoBehaviour
 
         updateCashItem();
 
+        if (dialogueVariables == null)
+        {
+            dialogueVariables = InkDialogueManager.GetInstance().GetDialogueVariables();
+        }
+
         if (dialogueVariables != null)
         {
             dialogueVariables.SetGlobalVariable("money", currAmount);
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Try to add money, but dialogue variable is null!");
         }
     }
 

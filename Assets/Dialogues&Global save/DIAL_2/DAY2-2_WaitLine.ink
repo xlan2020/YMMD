@@ -19,7 +19,7 @@ INCLUDE ../global.ink
 
 
 ==menu==
-我：（趁着这工夫看看菜单吧。）#event: showMenu
+我：（看看菜单……）#event: showMenu
 +[我看好了]
 ->my_turn
 
@@ -39,33 +39,33 @@ INCLUDE ../global.ink
 ->my_turn
 
 ==my_turn==
-我：（啊，排到我了。）#profile: painter_norm
+我：（啊，排到我了。）#profile: painter_norm #event: hideMenu
 头套人：“啵咯啵咯”鱼鱼刨~冰！你好呀，“啵咯”酱为你服务❤！#profile: boro_welcome
 boro酱：想要什么样的刨冰呢？要不要试试我们本周推出的限时特价新品——深水鱼雷炸弹冰？
-+[我要点特价新品！]//Sherry Note: 要不要菜单上有的都放到选项？
++{money > 18} [我要点特价新品！]//Sherry Note: 要不要菜单上有的都放到选项？
 ->order_new
-+[我要点人气经典！]
++{money > 24} [我要点人气经典！]
 ->order_classic
 +[那个DIY活动……]
 ->diy
 
 ==order_new==
-我：这个新品，我要了！#profile: painter_happy #addMoney: -20
+我：这个新品，我要了！#profile: painter_happy #addMoney: -18
 boro酱：好品味！深水鱼雷炸弹冰是海底宝藏鱼鱼冰的改良版，三种海鱼大块蘸满“啵咯”酱藏在刨冰里面，吃起来超级满足的！#profile: boro_shy
 boro酱：等我一下噢…… #profile: boro_escape
  ：………
  ：……………………
-boro酱：好了，你的冰！#profile: boro_glad #sceneEvent: 
+boro酱：好了，你的冰！#profile: boro_glad #event: addTorpedo
 boro酱：还有什么别的需要吗？#profile: boro_thinking
 +[那个DIY活动……]
 ->diy
 
 ==order_classic==
-我：（刚才酒吧附近那几个路人手里拿的好像是这个至尊海鲜什么的……）我要这个人气经典款！#profile: painter_happy #addMoney: -20
+我：（刚才酒吧附近那几个路人手里拿的好像是这个至尊海鲜什么的……）我要这个人气经典款！#profile: painter_happy #addMoney: -24
 boro酱：等我一下噢…… #profile: boro_escape
  ：……… #profile: hide 
  ：…………………… #profile: hide 
-boro酱：好了，你的冰！#profile: boro_glad #sceneEvent: 
+boro酱：好了，你的冰！#profile: boro_glad #event: addClassic
 boro酱：还有什么别的需要吗？#profile: boro_thinking
 +[那个DIY活动……]
 ->diy

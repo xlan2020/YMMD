@@ -1,7 +1,7 @@
 INCLUDE ../global.ink
 我：……后续是什么？<color=green>（点击对话框任意位置或使用[空格键]推进故事）</color>#solve: none #speakerMode: norm #profile: painter_side
 我：刚才的梦是无论如何也想不起来了。<color=green>（摁下[H]或[↑]以查看对话历史记录）</color>
-我：总觉得是很重要的事情，值得我这样躺在床上一直不停地回忆。#profile: painter_sideSweat
+我：总觉得是很重要的事情，值得我这样躺在床上一直不停地回忆。(摁下[CONTROL]以自动播放对话， [SHIFT]以快进)</color>#profile: painter_sideSweat
 我：………………虽说如此，还是饿了，胃好痛……先下床吧。#profile: painter_depressed
 我：咦？#bgm: 悬疑 #profile: painter_surprised
 我：家里的东西似乎少了一些。#profile: painter_frightened

@@ -48,10 +48,10 @@ public class ThreeChannelManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Space))
-        {
-            NextLineUnit();
-        }
+        //if (Input.GetKeyUp(KeyCode.Return) || Input.GetKeyUp(KeyCode.Space))
+        //{
+        //    NextLineUnit();
+        //}
     }
 
     private void NextLineUnit()

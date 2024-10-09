@@ -43,7 +43,7 @@ public class DrawResultVisualizer : MonoBehaviour
 
     [Header("Result Drawing Visual")]
     public SpriteRenderer drawingInit;
-    public DissolveEffect initDrawDissolve;
+    //public DissolveEffect initDrawDissolve;
     public Image fillLayer;
     public Image pointColorLayer;
     public Image strokeLayer;
@@ -54,6 +54,7 @@ public class DrawResultVisualizer : MonoBehaviour
     public AudioClip scoreInPlaceAudio;
     public AudioClip textAppearLongAudio;
     public AudioClip textAppearShortAudio;
+    public AudioClip curtainRevealAudio;
     private AudioSource auido;
 
     // logic
@@ -255,15 +256,23 @@ public class DrawResultVisualizer : MonoBehaviour
             case "textAppearShort":
                 GetComponent<AudioSource>().clip = textAppearShortAudio;
                 break;
+            case "curtainReveal":
+                GetComponent<AudioSource>().clip = curtainRevealAudio;
+                break;
             default:
                 return;
         }
         GetComponent<AudioSource>().Play();
     }
 
-    public void DissolveInitDrawing()
+    //public void DissolveInitDrawing()
+    //{
+    //    initDrawDissolve.StartDissolve(1f);
+    //    signBrush.interactive = true;
+    //}
+
+    public void AllowSigning()
     {
-        initDrawDissolve.StartDissolve(1f);
         signBrush.interactive = true;
     }
 
