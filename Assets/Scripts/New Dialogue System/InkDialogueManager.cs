@@ -964,23 +964,24 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
-    public string GetChatHistorySaveString()
+    public List<string> GetChatHistorySaveObject()
     {
-        string saveString = "";
+        List<string> saveObject = new List<string>();
+
         if (chatHistory != null)
         {
-            saveString = chatHistory.chatHistoryText.text;
-            saveString += "\n" + "-----------------------" + "\n" + "\n";
+            saveObject = chatHistory.GetAllChatHistoryForSave();
         }
-        return saveString;
+        return saveObject;
     }
-    public void LoadChatHistoryText(string saveString)
+
+    public void LoadChatHistorySaveObject(List<string> saveObject)
     {
         // load chat history text does not work with language change
         // must reset chat history when switching language
         if (chatHistory != null)
         {
-            chatHistory.AddLine(saveString);
+            chatHistory.LoadAllChatHistory(saveObject);
         }
     }
 }

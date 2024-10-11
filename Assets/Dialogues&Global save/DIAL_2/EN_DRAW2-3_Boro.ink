@@ -1,10 +1,10 @@
 INCLUDE ../global.ink
 boro-chan：Here. The ice's already filled in the bowl. These are the ingredients free for use. Just start.#profile: hide #portrait: boro_2_idle #portrait: boro_welcome #bgm: 日常_0.1 #drawingSystem: addBinaryVal_50
-System：Looks like the painter has an unusual commission.
-System：Some clients may provide <color=green>specified materials</color> for the artwork. Boro-chan's shaved ice creation, for instance, must be made with ice, sauce, and given ingredients.#drawingSystem: showMaterialWindow
-System：The specified materials will be temporarily availiable in the list, while the painter's drawing materials <color=green>cannot be selected</color>.
-System：It's not quite hygienic to use brushes and paint on food, right?
-System：Choose <color=green>materials provided by boro-chan</color> and start painting!#drawingSystem: selectMaterial
+ ：Looks like the painter has an unusual commission.
+ ：Some clients may provide <color=green>specified materials</color> for the artwork. Boro-chan's shaved ice creation, for instance, must be made with ice, sauce, and given ingredients.#drawingSystem: showMaterialWindow
+ ：The specified materials will be available in the list, while the painter's drawing materials will be <color=green>temporarily hidden</color>.
+ ：It's not quite hygienic to use brushes and paint on food, right?
+ ：Choose <color=green>materials provided by boro-chan</color> and start painting!#drawingSystem: selectMaterial
 Me：(Painting with shaved-ice, that's a first.)#profile: painter_norm
 Me：(I want the grand prize! That means I have to create something popular... Liked by the general public...)#profile: painter_eyeClosed
 Me：(Liked... What a brutal word... How do I know what people like?!) #profile: painter_sideSweat

@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
         string dialogueVariablesState = "";
         string currentDialogueJson = "";
         string currentDialogueState = "";
-        string chatHistory = "";
+        List<string> chatHistory = new List<string>();
         // remaining question: if there isn't a dialogue manager, you will loose all your chat history
         if (InkDialogueManager.GetInstance() != null)
         {
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
             dialogueVariablesState = dialogueManager.GetDialogueVariables().GetGlobalVariablesJsonState();
             currentDialogueJson = dialogueManager.GetCurrentStoryJson();
             currentDialogueState = dialogueManager.GetCurrentStoryJsonState();
-            chatHistory = dialogueManager.GetChatHistorySaveString();
+            chatHistory = dialogueManager.GetChatHistorySaveObject();
         }
 
         // serialize to SaveObject json string
@@ -191,12 +191,12 @@ public class GameManager : MonoBehaviour
         int currPage = SketchbookData.currPage;
         string sceneId = nextSceneId; // this is different!
         string dialogueVariablesState = "";
-        string chatHistory = "";
+        List<string> chatHistory = new List<string>();
         if (InkDialogueManager.GetInstance() != null)
         {
             dialogueManager = InkDialogueManager.GetInstance();
             dialogueVariablesState = dialogueManager.GetDialogueVariables().GetGlobalVariablesJsonState();
-            chatHistory = dialogueManager.GetChatHistorySaveString();
+            chatHistory = dialogueManager.GetChatHistorySaveObject();
         }
         // no need to save dialogue state, but need to save variables
 
@@ -320,13 +320,16 @@ public class GameManager : MonoBehaviour
             }
 
             // chat history
-            string chatHistory = saveObject.chatHistory;
+            List<string> chatHistory = saveObject.chatHistory;
             if (saveObject.loadSceneFromStart)
             {
                 // add scene title to chat history
-                chatHistory += sceneInfoText + "\n\n";
+                if (chatHistory != null && chatHistory.Count > 0)
+                {
+                    chatHistory[chatHistory.Count - 1] += sceneInfoText + "\n\n";
+                }
             }
-            dialogueManager.LoadChatHistoryText(chatHistory);
+            dialogueManager.LoadChatHistorySaveObject(chatHistory);
         }
 
         if (!saveObject.loadSceneFromStart)
@@ -531,7 +534,7 @@ public class SaveObject
                                              // ink dialogue story progress if any
     public string currentDialogueJson;
     public string currentDialogueState;
-    public string chatHistory;
+    public List<string> chatHistory;
 
     // SCENE SPECIFIC
     public int drawBinaryVal;

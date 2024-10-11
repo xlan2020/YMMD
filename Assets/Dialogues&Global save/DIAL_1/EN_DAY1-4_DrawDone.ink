@@ -60,6 +60,6 @@ Me：(And you never know if he's telling the truth.)
 Me：......
 Me：(At least I've got some cash. But I can't find an art supply store that opens till this late.)
 Me：(My appartment is to the west. To the east, there are places where I could kill time...if I weren't so impoverished.)
-Me：(Back home...there's nothing besides the walls. At least here's a stretch of <color=magenta>beach</color> where I could take a walk.)#profile: painter_sideSweat
+Me：(Back home...there's nothing besides the walls. At least here's a stretch of <color=green>beach</color> where I could take a walk.)#profile: painter_sideSweat
 Me：(Let's take a stroll before <color=green>going back home</color>.)#profile: painter_side
 ->DONE

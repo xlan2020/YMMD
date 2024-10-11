@@ -20,11 +20,11 @@ Me：(August 26th, Wed. I promised a friend that we'd...he'd...）
 Me：(Well, that could wait--)#profile: painter_alert
 Me：(That thing's coming over!)#profile: painter_frightened #event: 8-2_walkCloser
 Me：Oi!#profile: painter_surprised
-???：My~~~little~~~painter!#profile: 8-2_smile2 #bgm:戏谑
+？？？：My~~~little~~~painter!#profile: 8-2_smile2 #bgm:戏谑
 Me：Huh？#profile: painter_alert
-???：Sure enough, you don't recognize me again.#profile: 8-2_raiseEyebrow
-???：Your cold indifference cuts me to the core.#profile: 8-2_angry
-???：I'm your old friend Eightminus Tue! #profile: 8-2_smile2
+？？？：Sure enough, you don't recognize me again.#profile: 8-2_raiseEyebrow
+？？？：Your cold indifference cuts me to the core.#profile: 8-2_angry
+？？？：I'm your old friend Eightminus Tue! #profile: 8-2_smile2
 Me：(Eight minus two? Six.)Bro, you've mistaken me for someone else.#profile: painter_sideSweat
 8-2：*Claped*You just call me "bro"! Hey, I'd love that. Are you finally ready to join my One in Seven Fraternity?#event: 8-2_stayDressed #profile: 8-2_laugh
 Me：Fraternity?#profile: painter_side

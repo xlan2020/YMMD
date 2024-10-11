@@ -4,11 +4,11 @@ INCLUDE ../global.ink
  ：Different from commissions, personal creations would not bring any return in cash, but could become an <color=magenta>accurate depiction</color> of objects.
  ：With a painting that constitutes an accurate depiction of an object, the painter could bring the <color=magenta>non-existing</color> object into existence.
  ：In this case, by paying an <color=magenta>equivalent amount of money</color>, the painter can <color=magenta>displace</color> the object from the void.
- ：Of course, displacement does not garentee satisfactory results. The deviations in the painting, the lack of money... these could influence the result of displacement.
- ：In short, when the painting is finished, according to <color=magenta>how much money you're willing to pay</color>, the painter would receive <color=magenta>different objects</color>.
+ ：Of course, displacement does not garentee satisfactory results. The deviations in the painting, the lack of money...
+ ：Depending on <color=magenta>how much money you're willing to pay</color>, the painter would receive <color=magenta>different objects</color>.
  ：It's a game and an adventure...
- ：After displacement, the money cannot be returned regardless of the result. The painting, because it is only the description, will not disappear. You can try displacing multiple times based on the same painting, as long as you're willing to pay.
- ：Isn't that romantic. You should try it out.
+ ：After displacement, the money cannot be returned regardless of the result. The painting, because it is only the depiction, will not disappear. 
+ ：Now, try it out.
 Me：I still don't understand, but I feel that it's very important to me-a mermaid. A mermaid... Does mermaids' non-existence marks their potential of existence from the Void?#profile: painter_side
 Me：Anyways. I want it.
 Me：I could feel it... By paying <color=green>more</color>, I could touch it. I could swim around with it... Wait, it feels familiar.

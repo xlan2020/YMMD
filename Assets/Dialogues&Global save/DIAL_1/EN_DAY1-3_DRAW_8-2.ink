@@ -50,10 +50,11 @@ Mama：Enjoy!#profile: mama_satisfied
 Mama：Hey, is that your friend? Wait, I know you, you're...MASTER EIGHT PLUS TWO!!#bgm:戏谑_0.5
 8-2：*cough*Eightminus Tue, sis.#portrait: 8-2_smile2
 Me：(Pssss...master eight plus two also sounds fine.）#profile: painter_sour
- ：Sounds, words, and smells could also provide vital information for conceptualizing the painting. Observation points could occur anywhere on the screen, don't limit your observation to the object of painting alone. #profile: hide
+ ：Sounds, words, and smells could also provide vital information for conceptualizing the painting. Observation points could occur anywhere on the screen.  #profile: hide
  ：You need to capture some of the observation points to continue drawing.
 Mama：Yes, of course, excuse my bad memory, MASTER, such a pleasure--my lover is absorbed by your lectures!#profile: mama_satisfied #showObservee: master_EN
- ：In addition to mandatory observation points, there are also optional ones that could be <color=magenta>missed</color> as the dialog develops, limiting the direction of the story. Missing isn't necessarily a bad thing, but you should always look out for an unexpected observation point.
+ ：In addition to mandatory observation points, there are also optional ones that could be <color=green>missed</color> as the dialog develops, limiting the direction of the story. 
+ ：Missing isn't necessarily a bad thing, but you could always look out for an unexpected observation point when the canvas lights up and submit it <color=green>in one drag-n-drop</color>. 
  ：That's all about observation points--don't forget to catch them if you can!
 Mama：I was so worried when he quit the fishing job, but thanks to our master here, we're rich now. #profile: mama_satisfied
 Mama：Ah, by displacement, our earnings tripled! You saved my family, master...
@@ -110,7 +111,8 @@ Me：You liar!#profile: painter_mad
 Me：That's not maths.#profile: painter_side 
 8-2：Of course its' maths. There were a lot of meaningful numbers in one's life, but now there's only one left.#portrait: 8-2_norm2
 8-2：The one that represents <color=magenta>value</color>.#portrait: 8-2_norm3
-8-2：It's on top of everyone's head, on top of everything. I'm not talking about a price tag. bro. You'll recognize that number when you see one--the elusive one, the one that's unique to everyone.#portrait: 8-2_smile
+8-2：It's on top of everyone's head, on top of everything. I'm not talking about a price tag. bro. #portrait: 8-2_smile
+8-2：You'll recognize that number when you see one--the elusive one, the one that's unique to everyone.
 8-2：Yes! I'm talking about the mythical <color=magenta>value to you</color>. When you displace something, you'll receive that number in cash.
 8-2：It's just a number, yet no one can see it clearly.#portrait: 8-2_thinking
 8-2：That's where my Displacement to Success lecture comes in. You catch what I mean?#portrait: 8-2_smile2
@@ -342,7 +344,8 @@ Me：Nobody could remember the things that have disappeared, isn't it?
 8-2：Heh.#portrait: 8-2_mysterious
 Me：Hey, tell me what it's like on the other side.
 8-2：It'd not be called "the Void" if there's anything there except the void.#portrait: 8-2_norm
-8-2：Take a step back, I wouldn't be able to remember anything. Only the non-existent goes to the void. I didn't even exist, how could I know? Well, I guess you could also say that I didn't go anywhere. The Void is metaphorical, you see.#portrait: 8-2_thinking
+8-2：Take a step back, I wouldn't be able to remember anything. Only the non-existent goes to the void. I didn't even exist, how could I know? #portrait: 8-2_thinking
+8-2：Well, I guess you could also say that I didn't go anywhere. The Void is metaphorical, you see.
 Me：Fine. No comments.#portrait: 8-2_smile 
 Me：(Yet the existence...the non-existence of the Void is captivating. There's nothing and everything at the same time.)
 Me：(Something still feels missing, though.)#unlockNote: 3_4

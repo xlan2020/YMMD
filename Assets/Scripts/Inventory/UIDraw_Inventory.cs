@@ -214,7 +214,28 @@ public class UIDraw_Inventory : MonoBehaviour
     {
         List<Item> notDrawList = new List<Item>();
         displayList.Clear();
-        foreach (Item item in itemList)
+
+
+        // filter the first round according to client specified object
+        List<Item> specifiedList = new List<Item>();
+        // if there is no client specified item, the result should be the full item list
+        if (drawingSystem.specifiedMaterialItems == null || drawingSystem.specifiedMaterialItems.Length == 0)
+        {
+            specifiedList = itemList;
+        }
+        else
+        {
+            foreach (Item item in itemList)
+            {
+                if (isSpecifiedMaterial(item))
+                {
+                    specifiedList.Add(item);
+                }
+            }
+        }
+
+        // then filtere according to filter type 
+        foreach (Item item in specifiedList)
         {
             if (filterType == FilterType.all)
             {

@@ -23,7 +23,7 @@ Postcard：I'll be in the shop by Thursday. Meet me at <color=magenta>Institute 
 Postcard：* ——seanamae 8月20日
 Me：(seanamae... Oh, the tattooist. It said the 25th, she was back yesterday.)#profile: painter_side
 Me：(...I completely forgot the commission, and I have zero inspiration about what to draw.)#profile: painter_sideSweat
-Me：(Why don't I talk to her at the shop <color=blue>tomorrow</color>? I had the impression that she's the friendly type.)#profile: painter_norm
+Me：(Why don't I talk to her at the shop <color=green>tomorrow</color>? I had the impression that she's the friendly type.)#profile: painter_norm
 ->letter_box
 
 ==scale_flyer==
