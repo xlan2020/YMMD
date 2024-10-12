@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 public class UI_Money : MonoBehaviour
 {
     private Money money;
@@ -10,6 +9,7 @@ public class UI_Money : MonoBehaviour
     private float displayMoney;
     private float displayMoneyTarget;
     private float displayChangeUnit = 1f;
+    private Coroutine changingMoneyCoroutine;
 
     public void SetMoney(Money money)
     {
@@ -19,11 +19,33 @@ public class UI_Money : MonoBehaviour
 
     private void Money_OnMoneyChanged(object sender, System.EventArgs e)
     {
-        StartCoroutine(changingMoneyDisplay(money.GetMoney()));
+        if (changingMoneyCoroutine != null)
+        {
+            StopCoroutine(changingMoneyCoroutine);
+        }
+        changingMoneyCoroutine = StartCoroutine(changingMoneyDisplay(money.GetMoney()));
     }
 
     private IEnumerator changingMoneyDisplay(float targetMoney)
     {
+        // make change faster if it's too different
+        if (displayMoney - targetMoney > 10000f || displayMoney - targetMoney < -10000f)
+        {
+            displayChangeUnit = 1000f;
+        }
+        else if (displayMoney - targetMoney > 1000f || displayMoney - targetMoney < -1000f)
+        {
+            displayChangeUnit = 100f;
+        }
+        else if (displayMoney - targetMoney > 100f || displayMoney - targetMoney < -100f)
+        {
+            displayChangeUnit = 10f;
+        }
+        else
+        {
+            displayChangeUnit = 1f;
+        }
+
         // take consideration of the case if money is not an integer
         // the display animation increase / decrease money by 1 unit
         // if the the difference between the target and current display is less than 1 unit

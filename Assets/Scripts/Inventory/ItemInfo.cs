@@ -15,6 +15,9 @@ public class ItemInfo : MonoBehaviour
     [Header("Value Attribute")]
     public float value;
     public float storePrice;
+    public string storeTalk;
+    public string storeTalk_EN;
+
     public bool displaceable = true;
     private bool isNew = true;
 

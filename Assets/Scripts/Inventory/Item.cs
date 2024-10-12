@@ -12,6 +12,8 @@ public class Item
     public string itemName_EN;
     public string description;
     public string description_EN;
+    public string storeTalk;
+    public string storeTalk_EN;
     public Sprite spriteImage;
     public bool destroyOnInteract;
     public bool displaceable;

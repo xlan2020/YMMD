@@ -106,6 +106,9 @@ public class Inventory
             itemName_EN = itemInfo.itemName_EN,
             description = itemInfo.description,
             description_EN = itemInfo.description_EN,
+            storeTalk = itemInfo.storeTalk,
+            storeTalk_EN = itemInfo.storeTalk_EN,
+
             spriteImage = itemInfo.spriteImage,
             destroyOnInteract = itemInfo.destroyOnInteract,
             displaceable = itemInfo.displaceable,

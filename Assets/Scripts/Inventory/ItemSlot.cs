@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
+    public bool shopMode = false;
     public Item item;
     private UI_Inventory ui_Inventory;
     public int uiIndex = -1;
@@ -46,8 +47,11 @@ public class ItemSlot : MonoBehaviour
 
     public void SelectSelf()
     {
-        ui_Inventory.UpdateCurrentSlotIndex(uiIndex);
-        item.isNew = false;
-        SetSlotNew(false);
+        if (!shopMode)
+        {
+            ui_Inventory.UpdateCurrentSlotIndex(uiIndex);
+            item.isNew = false;
+            SetSlotNew(false);
+        }
     }
 }

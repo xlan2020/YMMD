@@ -257,6 +257,11 @@ public class InkDialogueManager : MonoBehaviour
         }
     }
 
+    public Dictionary<string, UnityEngine.Color> GetNameColorDict()
+    {
+        return nameColorDict;
+    }
+
     private IEnumerator autoPlaying()
     {
         // UnityEngine.Debug.Log("auto playing, waiting to play the next line");

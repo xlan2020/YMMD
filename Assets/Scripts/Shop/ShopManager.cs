@@ -5,20 +5,33 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    [Header("Logic Need")]
+    public GameManager gameManager;
+
+    [Header("Shop Special")]
     public ShopItemListScriptableObject initialItems;  // 初始货架物品列表
     public ShopItemListScriptableObject randomItems;   // 随机刷新物品列表
-    public List<Transform> itemSlots;                  // Hierarchy中的物品格子列表
-    public Text walletText;                            // 显示玩家金钱的UI
+    [Header("Sale Person")]
+    //public ProfileSwitcher salePersonProfile;
+    public TextTyper saleSpeechTyper;
+    public string[] saleSpeech;
+    public string[] saleSpeech_EN;
+    public string initialSpeech;
+    public string initialSpeech_EN;
+    private int saleSpeechIndex = 0;
+    [Header("UI Store View")]
+    public List<ItemSlot> itemSlots;                  // Hierarchy中的物品格子列表
+    public Text namePriceText;                             // name文本
     public Text desText;                               // 描述文本
-    public Text priceText;                             // 价格文本
-    public Text refreshText;                             // refresh价格
     public Button buyButton;                           // 全局的购买按钮
     public Button refreshButton;                       // 刷新按钮
+    public Text refreshText;                           // refresh价格
     public GameObject popup;                           // 购买提示弹窗
-    public float playerMoney = 1000;                   // 玩家金钱
+
+    //public float playerMoney = 1000;                   // 玩家金钱
     private List<ItemScriptableObject> currentItems;   // 当前显示的物品
     private ItemScriptableObject selectedItem;         // 当前选中的物品
-    private Transform selectedSlot;                    // 当前选中的物品格子
+    private ItemSlot selectedSlot;                    // 当前选中的物品格子
     private List<ItemScriptableObject> randomList;
     private int refreshTime = 0;
     private int refreshCost = 50;
@@ -27,7 +40,6 @@ public class ShopManager : MonoBehaviour
     {
         // 初始化商店
         LoadInitialItems();
-        UpdateWalletDisplay();
         refreshText.text = refreshCost.ToString();
         randomList = new List<ItemScriptableObject>(randomItems.items);
         // 隐藏购买按钮，直到选中物品
@@ -36,6 +48,18 @@ public class ShopManager : MonoBehaviour
 
         // 关联刷新按钮的点击事件
         refreshButton.onClick.AddListener(OnRefreshButtonPressed);
+
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                saleSpeechTyper.StartTypingLine(initialSpeech);
+                break;
+            case 1:
+                saleSpeechTyper.StartTypingLine(initialSpeech_EN);
+                break;
+            default:
+                break;
+        }
     }
 
     void LoadInitialItems()
@@ -51,14 +75,13 @@ public class ShopManager : MonoBehaviour
             if (i < items.Count)
             {
                 ItemScriptableObject item = items[i];
-                Transform slot = itemSlots[i];
+                ItemSlot slot = itemSlots[i];
 
                 // 设置物品图片
-                Image itemImage = slot.GetComponent<Image>(); // 获取Image组件
-                itemImage.sprite = item.spriteImage;
+                slot.itemImage.sprite = item.spriteImage;
 
                 // 设置物品格子的点击事件，点击后选择该物品
-                Button slotButton = slot.GetComponent<Button>();  // 将整个物品格子设为按钮
+                Button slotButton = slot.selectButton;  // 将整个物品格子设为按钮
                 slotButton.onClick.RemoveAllListeners();  // 清空之前的监听器，防止重复绑定
                 slotButton.onClick.AddListener(() => OnSelectItem(item, slot));
 
@@ -74,16 +97,92 @@ public class ShopManager : MonoBehaviour
     }
 
     // 选中物品时的逻辑
-    public void OnSelectItem(ItemScriptableObject item, Transform slot)
+    public void OnSelectItem(ItemScriptableObject item, ItemSlot slot)
     {
+        // clear selection
+        foreach (ItemSlot s in itemSlots)
+        {
+            s.ShowSelfSelected(false);
+        }
+        slot.ShowSelfSelected(true);
+
         selectedItem = item;  // 设置当前选中的物品
         selectedSlot = slot;  // 记录当前选中的物品格子
+
+        // display description
+        string money = "";
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                money = "¥";
+                break;
+            case 1:
+                money = "$";
+                break;
+            default:
+                money = "¥";
+                break;
+        }
+        string displayText = "<color=magenta>[" + money + item.storePrice.ToString() + "]</color> " + item.itemName;
+        namePriceText.text = displayText;
         desText.text = item.description;
-        priceText.text = item.storePrice.ToString();
+
+        // update talking line, and sale person is preset
+        saleSpeechTyper.StopTyping();
+        saleSpeechTyper.StartTypingLine(getRandomSaleSpeech());
 
         // 显示全局的购买按钮
         buyButton.gameObject.SetActive(true);
     }
+    private string getRandomSaleSpeech()
+    {
+        int i = 0;
+
+        switch (GameEssential.localeId)
+        {
+            case 0:
+                if (saleSpeech.Length == 0)
+                {
+                    return "...";
+                }
+                // If there is only one element, return it directly to avoid infinite loop
+                if (saleSpeech.Length == 1)
+                {
+                    return saleSpeech[0];
+                }
+
+                // Randomly select a different index if there are multiple elements
+                do
+                {
+                    i = Random.Range(0, saleSpeech.Length);
+                } while (i == saleSpeechIndex); // Repeat until a new index is chosen
+
+                saleSpeechIndex = i;
+                return saleSpeech[saleSpeechIndex];
+
+            case 1:
+                if (saleSpeech_EN.Length == 0)
+                {
+                    return "...";
+                }
+                if (saleSpeech_EN.Length == 1)
+                {
+                    return saleSpeech_EN[0];
+                }
+
+                do
+                {
+                    i = Random.Range(0, saleSpeech_EN.Length);
+                } while (i == saleSpeechIndex); // Same logic for English speeches
+
+                saleSpeechIndex = i;
+                return saleSpeech_EN[saleSpeechIndex];
+
+            default:
+                return "";
+        }
+    }
+
 
     // 购买按钮点击时的逻辑
     public void OnBuyButtonPressed()
@@ -94,11 +193,10 @@ public class ShopManager : MonoBehaviour
             return;
         }
 
-        if (playerMoney >= selectedItem.storePrice)
+        if (gameManager.GetMoney() >= selectedItem.storePrice)
         {
-            playerMoney -= selectedItem.storePrice;
+            gameManager.AddMoney(-selectedItem.storePrice);
             currentItems.Remove(selectedItem);  // 从当前物品列表中移除选中物品
-            UpdateWalletDisplay();
 
             // 隐藏已购买的物品格子
             selectedSlot.gameObject.SetActive(false);
@@ -113,6 +211,7 @@ public class ShopManager : MonoBehaviour
         else
         {
             Debug.Log("钱不够了！");
+            // let the person say this
         }
     }
 
@@ -122,16 +221,11 @@ public class ShopManager : MonoBehaviour
         // 这里可以进一步配置弹窗内容，比如显示刚刚获得的物品信息
     }
 
-    void UpdateWalletDisplay()
-    {
-        walletText.text = "钱包: " + playerMoney + " 金币";
-    }
-
     // 刷新按钮点击时的逻辑
     public void OnRefreshButtonPressed()
     {
-        if (playerMoney >= refreshCost)
-        { 
+        if (gameManager.GetMoney() >= refreshCost)
+        {
             refreshTime++;
             if (refreshTime >= 3)
             {
@@ -140,11 +234,10 @@ public class ShopManager : MonoBehaviour
             }
 
             //update金钱
-            playerMoney -= refreshCost;
-            UpdateWalletDisplay();
+            gameManager.AddMoney(-refreshCost);
 
             // 清空当前的物品格子
-            foreach (Transform slot in itemSlots)
+            foreach (ItemSlot slot in itemSlots)
             {
                 slot.gameObject.SetActive(false);  // 隐藏每个物品格子
             }
@@ -160,7 +253,9 @@ public class ShopManager : MonoBehaviour
             // 显示新的物品
             DisplayItems(randomSelection);
 
-        } else {
+        }
+        else
+        {
             Debug.Log("钱不够了！");
         }
 

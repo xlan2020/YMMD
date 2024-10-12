@@ -11,29 +11,41 @@ public class TextTyper : MonoBehaviour
     public float typingSpeed = 0.1f;
     public AudioSource typeSound;
 
-    void Awake(){
-        textBox=GetComponent<Text>();
+    void Awake()
+    {
+        textBox = GetComponent<Text>();
     }
 
-    void Start(){
-        textBox.text="";
+    void Start()
+    {
+        textBox.text = "";
     }
 
-    public void StartTyping(){
+    public void StartTyping()
+    {
         typingLinesCoroutine = StartCoroutine(typingLines(this.text));
     }
 
-    public void StopTyping(){
-        StopCoroutine(typingLinesCoroutine);
-        typeSound.Stop();
+    public void StopTyping()
+    {
+        if (typingLinesCoroutine != null)
+        {
+            StopCoroutine(typingLinesCoroutine);
+            typeSound.Stop();
+        }
+    }
+
+    public void StartTypingLine(string line)
+    {
+        typingLinesCoroutine = StartCoroutine(typingLines(line));
     }
 
     private IEnumerator typingLines(string line)
     {
-        textBox.text="";
+        textBox.text = "";
 
         // play sound
-        typeSound.loop=false;
+        typeSound.loop = false;
 
 
         yield return new WaitForSeconds(0.04f);

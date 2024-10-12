@@ -15,6 +15,8 @@ public class ItemScriptableObject : ScriptableObject
     [Header("Value Attribute")]
     public float value;
     public float storePrice;
+    [TextAreaAttribute(2, 2)] public string storeTalk = "店长：买买买！【placeholder】";
+    [TextAreaAttribute(2, 2)] public string storeTalk_EN = "SALES: Hey, doesn't this look good? [placeholder]";
     public bool displaceable = true;
     public bool isNew = true;
     public bool is_Chai = false;
