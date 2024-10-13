@@ -402,15 +402,15 @@ public class GameManager : MonoBehaviour
         onItemDisplaced?.Invoke(this, EventArgs.Empty);
     }
 
-    public void AddItemToInventory(ItemScriptableObject item)
+    public Item AddItemToInventory(ItemScriptableObject item)
     {
         if (inventory == null)
         {
             UnityEngine.Debug.Log("Hard to believe, but inventory is null!");
         }
-        inventory.AddItemFromScriptableObject(item);
 
         displaceSFX.PlayItemToInventorySound();
+        return inventory.AddItemFromScriptableObject(item);
     }
 
     public void AddMoney(float amount)
@@ -469,19 +469,20 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void BuyItem(ItemScriptableObject item)
+    public Item BuyItem(ItemScriptableObject item)
     {
         if (money.GetMoney() - item.storePrice < 0)
         {
             // money not enough to buy
             UnityEngine.Debug.Log("not enough money!");
+            return null;
         }
         else
         {
             // buy item
             AddMoney(-item.storePrice);
-            AddItemToInventory(item);
             displaceSFX.PlayBuyItemSound();
+            return AddItemToInventory(item);
 
         }
 

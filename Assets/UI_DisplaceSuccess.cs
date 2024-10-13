@@ -11,11 +11,13 @@ public class UI_DisplaceSuccess : MonoBehaviour
     [SerializeField] Image displaceOutItemImage;
     [SerializeField] private Text displaceGainAmount;
 
-    public void HideResultWindow(){
+    public void HideResultWindow()
+    {
         this.gameObject.SetActive(false);
     }
 
-    public void ShowResultWindow_itemToMoney(Item displacedItem){
+    public void ShowResultWindow_itemToMoney(Item displacedItem)
+    {
 
         this.gameObject.SetActive(true);
 
@@ -43,10 +45,11 @@ public class UI_DisplaceSuccess : MonoBehaviour
         }
     }
 
-    public void ShowResultWindow_moneyToItem(Item item){
+    public void ShowResultWindow_moneyToItem(Item item)
+    {
 
         this.gameObject.SetActive(true);
-        
+
         // in image
         displaceInItemImage.gameObject.SetActive(false);
 

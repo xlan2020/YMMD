@@ -21,10 +21,10 @@ public class ShopManager : MonoBehaviour
     public List<ItemSlot> itemSlots;                  // Hierarchy中的物品格子列表
     public Text namePriceText;                             // name文本
     public Text desText;                               // 描述文本
-    public Button buyButton;                           // 全局的购买按钮
+    public DisplaceButton buyButton;                           // 全局的购买按钮
     public Button refreshButton;                       // 刷新按钮
     public Text refreshText;                           // refresh价格
-    public GameObject popup;                           // 购买提示弹窗
+    public UI_DisplaceSuccess buySuccess;                           // 购买提示弹窗
 
     //public float playerMoney = 1000;                   // 玩家金钱
     private List<ItemScriptableObject> currentItems;   // 当前显示的物品
@@ -41,12 +41,15 @@ public class ShopManager : MonoBehaviour
         refreshText.text = refreshCost.ToString();
         randomList = new List<ItemScriptableObject>(randomItems.items);
         // 隐藏购买按钮，直到选中物品
-        buyButton.gameObject.SetActive(false);
-        buyButton.onClick.AddListener(OnBuyButtonPressed);  // 将购买按钮关联到点击事件
-
+        buyButton.ShowButton(false);
+        buyButton.customEvent.AddListener(OnBuyButtonPressed);
+        // hide弹窗
+        buySuccess.HideResultWindow();
         // 关联刷新按钮的点击事件
         refreshButton.onClick.AddListener(OnRefreshButtonPressed);
 
+
+        // Speech
         shopSpeech.PlayWelcomeSpeech(saleSpeechTyper);
     }
 
@@ -99,27 +102,37 @@ public class ShopManager : MonoBehaviour
 
         // display description
         string money = "";
+        string name = "";
+        string des = "";
         switch (GameEssential.localeId)
         {
             case 0:
                 money = "¥";
+                name = item.itemName;
+                des = item.description;
                 break;
             case 1:
                 money = "$";
+                name = item.itemName_EN;
+                des = item.description_EN;
                 break;
             default:
                 money = "¥";
+                name = item.itemName;
+                des = item.description;
                 break;
         }
-        string displayText = "<color=magenta>[" + money + item.storePrice.ToString() + "]</color> " + item.itemName;
+        //string displayText = "<color=magenta>[" + money + item.storePrice.ToString() + "]</color> " + name;
+        string displayText = name;
+        string descriptionText = "<color=magenta>[" + money + item.storePrice.ToString() + "]</color>\n" + des;
         namePriceText.text = displayText;
-        desText.text = item.description;
+        desText.text = descriptionText;
 
         // update talking line, and sale person is preset
         shopSpeech.PlaySaleSpeech(saleSpeechTyper);
 
         // 显示全局的购买按钮
-        buyButton.gameObject.SetActive(true);
+        buyButton.ShowButton(true);
     }
 
 
@@ -134,18 +147,18 @@ public class ShopManager : MonoBehaviour
 
         if (gameManager.GetMoney() >= selectedItem.storePrice)
         {
-            gameManager.AddMoney(-selectedItem.storePrice);
+            Item itemAdded = gameManager.BuyItem(selectedItem);
             currentItems.Remove(selectedItem);  // 从当前物品列表中移除选中物品
 
             // 隐藏已购买的物品格子
             selectedSlot.gameObject.SetActive(false);
 
             // 隐藏购买按钮，重置选中物品
-            buyButton.gameObject.SetActive(false);
+            buyButton.ShowButton(false);
             selectedItem = null;
 
             // 弹出获得物品的提示
-            ShowItemAcquiredPopup();
+            ShowItemAcquiredPopup(itemAdded);
 
             // speech
             shopSpeech.PlayBuySuccessSpeech(saleSpeechTyper);
@@ -157,10 +170,9 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void ShowItemAcquiredPopup()
+    void ShowItemAcquiredPopup(Item item)
     {
-        popup.SetActive(true);
-        // 这里可以进一步配置弹窗内容，比如显示刚刚获得的物品信息
+        buySuccess.ShowResultWindow_moneyToItem(item);
     }
 
     // 刷新按钮点击时的逻辑

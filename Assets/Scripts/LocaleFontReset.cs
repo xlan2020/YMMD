@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LocaleFontReset : MonoBehaviour
 {
+    public bool updateAtStart = false;
     [Header("Asset Info")]
     public Font CH_FONT;
     public Font EN_FONT;
@@ -15,6 +16,13 @@ public class LocaleFontReset : MonoBehaviour
     public int fontSize_CH = 12;
     public int fontSize_EN = 10;
 
+    void Start()
+    {
+        if (updateAtStart)
+        {
+            UpdateAllFont();
+        }
+    }
 
     public void UpdateAllFont()
     {

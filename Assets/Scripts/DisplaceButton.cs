@@ -19,23 +19,30 @@ public class DisplaceButton : MonoBehaviour
     private bool interactive;
     [SerializeField] Text buttonText;
     [SerializeField] DisplaceFromDrawing displaceFromDrawing;
-    [SerializeField] DisplaceButtonType buttonType = DisplaceButtonType.CurrentItem;
-    private UnityEvent customEvent;
+    public DisplaceButtonType buttonType = DisplaceButtonType.CurrentItem;
+    public UnityEvent customEvent;
     private string customButtonText;
     private bool hasCustomAction;
 
     void Awake()
     {
-        if (buttonType == DisplaceButtonType.FromDrawing)
+        switch (buttonType)
         {
-            interactive = true;
-        }
-        else
-        {
-            interactive = false;
+            case DisplaceButtonType.CurrentItem:
+                this.SetInteractive(false);
+                break;
+            case DisplaceButtonType.FromDrawing:
+                this.SetInteractive(true);
+                break;
+            case DisplaceButtonType.Custom:
+                this.SetInteractive(true);
+                break;
+            default:
+                this.SetInteractive(false);
+                break;
         }
         animator = button.GetComponent<Animator>();
-        button.interactable = interactive;
+
     }
 
     public void ShowButton(bool b)
