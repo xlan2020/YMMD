@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ShopSpeech : MonoBehaviour
 {
+    [Header("Visual")]
+    public Sprite[] profileSprites;
+    [Header("Text")]
     public string welcomeSpeech;
     public string welcomeSpeech_EN;
     public string[] saleSpeech;
