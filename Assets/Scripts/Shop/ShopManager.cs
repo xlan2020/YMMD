@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    [Header("Logic Need")]
+    [Header("Top-Level Logic")]
     public GameManager gameManager;
 
     [Header("Shop Special")]
     public ShopItemListScriptableObject initialItems;  // 初始货架物品列表
     public ShopItemListScriptableObject randomItems;   // 随机刷新物品列表
+
     [Header("Sale Person")]
-    //public ProfileSwitcher salePersonProfile;
+    public ShopSpeech shopSpeech;
     public TextTyper saleSpeechTyper;
-    public string[] saleSpeech;
-    public string[] saleSpeech_EN;
-    public string initialSpeech;
-    public string initialSpeech_EN;
-    private int saleSpeechIndex = 0;
+    //public ProfileSwitcher salePersonProfile;
+
     [Header("UI Store View")]
     public List<ItemSlot> itemSlots;                  // Hierarchy中的物品格子列表
     public Text namePriceText;                             // name文本
@@ -49,17 +47,7 @@ public class ShopManager : MonoBehaviour
         // 关联刷新按钮的点击事件
         refreshButton.onClick.AddListener(OnRefreshButtonPressed);
 
-        switch (GameEssential.localeId)
-        {
-            case 0:
-                saleSpeechTyper.StartTypingLine(initialSpeech);
-                break;
-            case 1:
-                saleSpeechTyper.StartTypingLine(initialSpeech_EN);
-                break;
-            default:
-                break;
-        }
+        shopSpeech.PlayWelcomeSpeech(saleSpeechTyper);
     }
 
     void LoadInitialItems()
@@ -128,59 +116,10 @@ public class ShopManager : MonoBehaviour
         desText.text = item.description;
 
         // update talking line, and sale person is preset
-        saleSpeechTyper.StopTyping();
-        saleSpeechTyper.StartTypingLine(getRandomSaleSpeech());
+        shopSpeech.PlaySaleSpeech(saleSpeechTyper);
 
         // 显示全局的购买按钮
         buyButton.gameObject.SetActive(true);
-    }
-    private string getRandomSaleSpeech()
-    {
-        int i = 0;
-
-        switch (GameEssential.localeId)
-        {
-            case 0:
-                if (saleSpeech.Length == 0)
-                {
-                    return "...";
-                }
-                // If there is only one element, return it directly to avoid infinite loop
-                if (saleSpeech.Length == 1)
-                {
-                    return saleSpeech[0];
-                }
-
-                // Randomly select a different index if there are multiple elements
-                do
-                {
-                    i = Random.Range(0, saleSpeech.Length);
-                } while (i == saleSpeechIndex); // Repeat until a new index is chosen
-
-                saleSpeechIndex = i;
-                return saleSpeech[saleSpeechIndex];
-
-            case 1:
-                if (saleSpeech_EN.Length == 0)
-                {
-                    return "...";
-                }
-                if (saleSpeech_EN.Length == 1)
-                {
-                    return saleSpeech_EN[0];
-                }
-
-                do
-                {
-                    i = Random.Range(0, saleSpeech_EN.Length);
-                } while (i == saleSpeechIndex); // Same logic for English speeches
-
-                saleSpeechIndex = i;
-                return saleSpeech_EN[saleSpeechIndex];
-
-            default:
-                return "";
-        }
     }
 
 
@@ -207,11 +146,14 @@ public class ShopManager : MonoBehaviour
 
             // 弹出获得物品的提示
             ShowItemAcquiredPopup();
+
+            // speech
+            shopSpeech.PlayBuySuccessSpeech(saleSpeechTyper);
         }
         else
         {
             Debug.Log("钱不够了！");
-            // let the person say this
+            shopSpeech.PlayNoMoneySpeech(saleSpeechTyper);
         }
     }
 
@@ -253,10 +195,14 @@ public class ShopManager : MonoBehaviour
             // 显示新的物品
             DisplayItems(randomSelection);
 
+            // play speech
+            shopSpeech.PlayRefreshSpeech(saleSpeechTyper);
+
         }
         else
         {
             Debug.Log("钱不够了！");
+            shopSpeech.PlayNoMoneySpeech(saleSpeechTyper);
         }
 
     }
