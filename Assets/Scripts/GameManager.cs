@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Scene Start Setup")]
     private bool loadCurrentSave = true;
-    public bool HasBeginningDialogue = true;
+    private bool HasBeginningDialogue = true;
     [SerializeField] TextAsset BeginningInkJSON;
     public LoadInventory loadInventory;
     public LoadingScene sceneLoader;
@@ -402,7 +402,7 @@ public class GameManager : MonoBehaviour
         onItemDisplaced?.Invoke(this, EventArgs.Empty);
     }
 
-    public Item AddItemToInventory(ItemScriptableObject item)
+    public void AddItemToInventory(ItemScriptableObject item)
     {
         if (inventory == null)
         {
@@ -410,7 +410,7 @@ public class GameManager : MonoBehaviour
         }
 
         displaceSFX.PlayItemToInventorySound();
-        return inventory.AddItemFromScriptableObject(item);
+        inventory.AddItemFromScriptableObject(item);
     }
 
     public void AddMoney(float amount)
@@ -469,21 +469,19 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public Item BuyItem(ItemScriptableObject item)
+    public void BuyItem(ItemScriptableObject item)
     {
         if (money.GetMoney() - item.storePrice < 0)
         {
             // money not enough to buy
             UnityEngine.Debug.Log("not enough money!");
-            return null;
         }
         else
         {
             // buy item
             AddMoney(-item.storePrice);
             displaceSFX.PlayBuyItemSound();
-            return AddItemToInventory(item);
-
+            this.AddItemToInventory(item);
         }
 
     }

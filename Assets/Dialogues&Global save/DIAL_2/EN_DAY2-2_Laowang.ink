@@ -12,13 +12,13 @@ INCLUDE ../global.ink
 ==default==
  ：Old Wong's <color=red>Infinity</color> Kiosk, restocking directly through displacement, {lwText_EN}!#profile:hide
 { lwText_CH == "常买常新":
+    +[Take a look] ->shop
     +[Displacement?] ->displace_renew
-    +[I see.] ->come_buy //为什么玩的时候点这个选项，这个Done就会不done? 暂且改成这个之后没有这个bug了:still typing, can't continue story. 这时候任何操作都不算数。
-    // UnityEngine.Debug:Log (object)InkDialogueManager:ContinueStory () (at Assets/Scripts/New Dialogue System/InkDialogueManager.cs:431) UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
+    +[I see.] ->come_buy 
  - else:
-    +[Displacement?] ->displace_renew
     +[Never sold out?] ->never_empty
-    +[I see] ->come_buy
+    +[Displacement?] ->displace_renew
+    +[I see.] ->come_buy
 }
 
 ==displace_renew==
@@ -97,9 +97,9 @@ Me：(Wrong person. No big deal.)#profile: painter_norm
 
 ==shop==
 Me: Let me take a look.#profile: painter_norm
-Me: ... #event
-Me: Thanks a lot!#profile: painter_happy
-->come_buy
+ : #event: enterKiosk
+Old Wong：Come back any time!#profile: laowang_pleased
+->DONE
 
 ==come_buy==
 Old Wong：Come back soon, painter! We're restocking daily, directly from displacement.#profile: laowang_norm

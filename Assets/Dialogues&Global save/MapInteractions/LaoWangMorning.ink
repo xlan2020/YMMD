@@ -1,10 +1,8 @@
 INCLUDE ../global.ink
  ：老王<color=red>无穷</color>小卖部，每日置换上新，{lwText_CH}！#profile:hide
- 老王：哟，画家。买点啥不？#profile: laowang_norm
- +[上新了啥？]
- 老王：来，随便看随便挑。#profile: laowang_pleased 
- 我：…… #profile: painter_norm #event: showKiosk
- 我：诶，麻烦您嘞。#profile: painter_happy
+ +[进去看看]
+ ： #event: enterKiosk
+老王：有空再来！#profile: laowang_pleased
  ->DONE
  
  +[先不了。]

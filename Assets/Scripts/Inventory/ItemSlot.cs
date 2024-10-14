@@ -6,6 +6,7 @@ public class ItemSlot : MonoBehaviour
 {
     public bool shopMode = false;
     public Item item;
+    public ItemScriptableObject itemScriptableObject;
     private UI_Inventory ui_Inventory;
     public int uiIndex = -1;
     private Animator animator;
@@ -54,4 +55,20 @@ public class ItemSlot : MonoBehaviour
             SetSlotNew(false);
         }
     }
+    public void SetSelfSoldOut(bool isSoldOut)
+    {
+        if (!animator)
+        {
+            animator = GetComponent<Animator>();
+        }
+        if (isSoldOut)
+        {
+            ShowSelfSelected(false);
+        }
+
+        animator.SetBool("SoldOut", isSoldOut);
+        selectButton.interactable = !isSoldOut;
+
+    }
+
 }

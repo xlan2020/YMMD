@@ -65,4 +65,24 @@ public class UI_DisplaceSuccess : MonoBehaviour
         displaceGainAmount.gameObject.SetActive(false);
     }
 
+    public void ShowResultWindow_moneyToItem_SO(ItemScriptableObject item)
+    {
+
+        this.gameObject.SetActive(true);
+
+        // in image
+        displaceInItemImage.gameObject.SetActive(false);
+
+        // in money
+        displaceInAmount.gameObject.SetActive(true);
+        displaceInAmount.text = "-" + item.value;
+
+        // out image
+        displaceOutItemImage.gameObject.SetActive(true);
+        displaceOutItemImage.sprite = item.spriteImage;
+
+        // out money
+        displaceGainAmount.gameObject.SetActive(false);
+    }
+
 }

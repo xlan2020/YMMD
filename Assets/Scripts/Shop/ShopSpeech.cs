@@ -5,7 +5,9 @@ using UnityEngine;
 public class ShopSpeech : MonoBehaviour
 {
     [Header("Visual")]
-    public Sprite[] profileSprites;
+    public Sprite normalSprite;
+    public Sprite pleasedSprite;
+    public Sprite noMoneySprite;
     [Header("Text")]
     public string welcomeSpeech;
     public string welcomeSpeech_EN;
@@ -22,7 +24,7 @@ public class ShopSpeech : MonoBehaviour
     private int refreshIndex = 0;
 
 
-    public void PlayWelcomeSpeech(TextTyper typer)
+    public void PlayWelcomeSpeech(TextTyper typer, SpriteRenderer spriteRenderer)
     {
         switch (GameEssential.localeId)
         {
@@ -35,13 +37,15 @@ public class ShopSpeech : MonoBehaviour
             default:
                 break;
         }
+        spriteRenderer.sprite = normalSprite;
     }
-    public void PlaySaleSpeech(TextTyper typer)
+    public void PlaySaleSpeech(TextTyper typer, SpriteRenderer spriteRenderer)
     {
         typer.StopTyping();
         typer.StartTypingLine(getRandomSaleSpeech());
+        spriteRenderer.sprite = normalSprite;
     }
-    public void PlayNoMoneySpeech(TextTyper typer)
+    public void PlayNoMoneySpeech(TextTyper typer, SpriteRenderer spriteRenderer)
     {
         typer.StopTyping();
         switch (GameEssential.localeId)
@@ -55,16 +59,19 @@ public class ShopSpeech : MonoBehaviour
             default:
                 break;
         }
+        spriteRenderer.sprite = noMoneySprite;
     }
-    public void PlayBuySuccessSpeech(TextTyper typer)
+    public void PlayBuySuccessSpeech(TextTyper typer, SpriteRenderer spriteRenderer)
     {
         typer.StopTyping();
         typer.StartTypingLine(getBuySuccessSpeech());
+        spriteRenderer.sprite = pleasedSprite;
     }
-    public void PlayRefreshSpeech(TextTyper typer)
+    public void PlayRefreshSpeech(TextTyper typer, SpriteRenderer spriteRenderer)
     {
         typer.StopTyping();
         typer.StartTypingLine(getRefreshSpeech());
+        spriteRenderer.sprite = pleasedSprite;
     }
     private string getBuySuccessSpeech()
     {

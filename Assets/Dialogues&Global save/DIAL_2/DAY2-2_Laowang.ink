@@ -12,12 +12,13 @@ INCLUDE ../global.ink
 ==default==
  ：老王<color=red>无穷</color>小卖部，每日置换上新，{lwText_CH}！#profile:hide
 { lwText_CH == "常买常新":
+    +[进去看看] -> shop  
     +[置换上新？] ->displace_renew
     +[知道了] ->come_buy //为什么玩的时候点这个选项，这个Done就会不done? 暂且改成这个之后没有这个bug了:still typing, can't continue story. 这时候任何操作都不算数。
     // UnityEngine.Debug:Log (object)InkDialogueManager:ContinueStory () (at Assets/Scripts/New Dialogue System/InkDialogueManager.cs:431) UnityEngine.EventSystems.EventSystem:Update () (at ./Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs:530)
  - else:
-    +[置换上新？] ->displace_renew
     +[永不售空？] ->never_empty
+    +[置换上新？] ->displace_renew
     +[知道了] ->come_buy
 }
 
@@ -92,10 +93,9 @@ INCLUDE ../global.ink
 
 ==shop==
 我：我看看啊。#profile: painter_norm
-我：…… #event
-我：谢谢您嘞！#profile: painter_happy
+ ：  #event: enterKiosk
+老王：随时再来！#profile: laowang_pleased
 ->come_buy
-
 
 ==come_buy==
 老王：店里每天都靠置换上新，货架就在那，自己随便挑哈！#profile: laowang_norm

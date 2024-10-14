@@ -50,6 +50,8 @@ public class UIDraw_Inventory : MonoBehaviour
     [SerializeField] DrawTypeTab brushTab;
     [SerializeField] DrawTypeTab paintTab;
     [SerializeField] DrawTypeTab allTab;
+    [Header("Temp")]
+    public GameObject devNotDoneSign;
 
     private bool canApply = false;
 

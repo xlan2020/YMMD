@@ -61,12 +61,24 @@ public class ArtMaterialVisualizer : MonoBehaviour
     }
     void ChangeCanvasSprite(Sprite sprite)
     {
+        if (sprite == null)
+        {
+            UnityEngine.Debug.LogWarning("Draw Type is wrong, or development not done! ");
+            showDevNotDoneSign();
+            return;
+        }
         canvasObject.sprite = sprite;
         canvasObject.GetComponent<Animator>().SetBool("isUp", true);
     }
 
     void ChangeBrushSprite(Sprite sprite)
     {
+        if (sprite == null)
+        {
+            UnityEngine.Debug.LogWarning("Draw Type is wrong, or development not done! ");
+            showDevNotDoneSign();
+            return;
+        }
         cursor.SetBrushSprite(sprite);
     }
 
@@ -76,11 +88,27 @@ public class ArtMaterialVisualizer : MonoBehaviour
         {
             Destroy(paintObject);
         }
+        if (paintPrefab == null)
+        {
+            UnityEngine.Debug.LogWarning("Draw Type is wrong, or development not done! ");
+            showDevNotDoneSign();
+            return;
+        }
         paintObject = Instantiate(paintPrefab, cursor.gameObject.transform);
 
     }
     public void ChangeCursorBrushDefault()
     {
         cursor.SetBrushSprite(cursorSprites.defaultBrush);
+    }
+    private void showDevNotDoneSign()
+    {
+        DrawingSystem drawingSystem = this.GetComponent<DrawingSystem>();
+        if (drawingSystem == null)
+        {
+            return;
+        }
+        GameObject sign = drawingSystem.GetDrawInventory().devNotDoneSign;
+        sign.SetActive(true);
     }
 }

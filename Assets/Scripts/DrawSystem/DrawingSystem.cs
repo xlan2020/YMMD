@@ -89,6 +89,10 @@ public class DrawingSystem : MonoBehaviour
             startDrawingVisualizer.ShowStartDrawingButton(false);
         }
     }
+    public UIDraw_Inventory GetDrawInventory()
+    {
+        return uIDraw_Inventory;
+    }
 
     private bool TypeHasAppliedItem(DrawType type)
     {
